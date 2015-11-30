@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/home/jinshui/software/android/AndroidstudioProjects/Yc_ui_fragment_tabhost/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.0/jars/libs/internal_impl-21.0.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="1609e6d42d0480b0f4188e2c29f75388fa12a8f0">
+        <dex dex="/home/jinshui/software/android/AndroidstudioProjects/Yc_ui_fragment_tabhost/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.0-086c28d1150511609a6dd3c1595ded0f9a0fc82b.jar" />
+    </item>
+    <item
+        jar="/home/jinshui/software/android/AndroidstudioProjects/Yc_ui_fragment_tabhost/app/build/intermediates/exploded-aar/Yc_ui_fragment_tabhost/library/unspecified/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="6e37d0bd9162731a662253d5b58b82a4f002446f">
+        <dex dex="/home/jinshui/software/android/AndroidstudioProjects/Yc_ui_fragment_tabhost/app/build/intermediates/pre-dexed/debug/classes-70232766b6853e6711f6000886c620d4badec3c7.jar" />
+    </item>
+    <item
+        jar="/home/jinshui/software/android/sdk/extras/android/m2repository/com/android/support/support-annotations/21.0.0/support-annotations-21.0.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="1a578b9607b36266c63d43a4fa0ab5664dbe911e">
+        <dex dex="/home/jinshui/software/android/AndroidstudioProjects/Yc_ui_fragment_tabhost/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.0-fb71d996d7a211fe702ff081df432a0d720ce2f1.jar" />
+    </item>
+    <item
+        jar="/home/jinshui/software/android/AndroidstudioProjects/Yc_ui_fragment_tabhost/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="686344a780033e4ba22b926cd225f8d4941247e6">
+        <dex dex="/home/jinshui/software/android/AndroidstudioProjects/Yc_ui_fragment_tabhost/app/build/intermediates/pre-dexed/debug/classes-f7002c9aa0f6f863a166a1292bc71e22e4fb6057.jar" />
+    </item>
+    <item
+        jar="/home/jinshui/software/android/AndroidstudioProjects/Yc_ui_fragment_tabhost/app/libs/android-async-http-1.4.5.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="77bf7cacf9cefe19dc105e5425d2eb1bb5285881">
+        <dex dex="/home/jinshui/software/android/AndroidstudioProjects/Yc_ui_fragment_tabhost/app/build/intermediates/pre-dexed/debug/android-async-http-1.4.5-1a41ed65ab31551a9adc899405339f7a5db9cd4e.jar" />
+    </item>
+    <item
+        jar="/home/jinshui/software/android/AndroidstudioProjects/Yc_ui_fragment_tabhost/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="95fd37732ec852e99f07eeb516a3650172f1d136">
+        <dex dex="/home/jinshui/software/android/AndroidstudioProjects/Yc_ui_fragment_tabhost/app/build/intermediates/pre-dexed/debug/classes-0f42ab5a6b62926b0bdf1a0f03dcf8906328a163.jar" />
+    </item>
+
+</items>
