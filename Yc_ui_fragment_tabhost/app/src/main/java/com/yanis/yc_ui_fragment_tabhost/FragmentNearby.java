@@ -33,7 +33,7 @@ public class FragmentNearby extends Fragment {
     private TabHost mTabHost;
     private ViewPager mViewPager;
 
-    private String[] shopCategories = {"餐饮类","医疗类","娱乐类","百货类"};
+    private String[] shopCategories = {"餐饮类","医疗类","娱乐类","百货类", "出租类", "旅游类", "文化类", "AA类"};
     private TabHost.TabContentFactory mEmptyTabContentFactory = new TabHost.TabContentFactory(){
         public View createTabContent(String tag) {
             return new TextView(getActivity());
@@ -66,20 +66,21 @@ public class FragmentNearby extends Fragment {
         mViewPager.setVisibility(View.GONE);
         GetCategoryAction getCategoryAction = new GetCategoryAction(getActivity(), 1, 100);
         getCategoryAction.execute(
-            new AbstractAction.BackgroundCallBack<Pagination<String>>(){
-                public void onSuccess(Pagination<String> result) {
+                new AbstractAction.BackgroundCallBack<Pagination<String>>() {
+                    public void onSuccess(Pagination<String> result) {
 //                        mcategoryDAO.delete();
 //                        mcategoryDAO.save(result.getItems());
-                }
-            },
-            new AbstractAction.UICallBack<Pagination<String>>(){
-                public void onSuccess(Pagination<String> result) {
-                    updateUI(result.getItems());
-                }
-                public void onFailure(AbstractAction.ActionError error) {
+                    }
+                },
+                new AbstractAction.UICallBack<Pagination<String>>() {
+                    public void onSuccess(Pagination<String> result) {
+                        updateUI(result.getItems());
+                    }
+
+                    public void onFailure(AbstractAction.ActionError error) {
 //                        loadCategoryFromDB();
+                    }
                 }
-            }
         );
     }
 
@@ -99,6 +100,7 @@ public class FragmentNearby extends Fragment {
             mTabs.add(tabIndicator);
             mTabHost.addTab(mTabHost.newTabSpec(category).setIndicator(tabIndicator).setContent(mEmptyTabContentFactory));
         }
+        mTabHost.getTabWidget().setDividerDrawable(R.drawable.tab_divider);
         //点击tabhost中的tab时，要切换下面的viewPager
         mTabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
             public void onTabChanged(String tabId) {
@@ -118,21 +120,8 @@ public class FragmentNearby extends Fragment {
                 mTabHost.setCurrentTab(position);
                 int moveLeft = (int) mTabs.get(position).getLeft() - (int) mTabs.get(1).getLeft();
                 mTabScrollView.smoothScrollTo(moveLeft, 0);
-                highlightTab(position);
             }
         });
-        highlightTab(0);
-    }
-
-    private void highlightTab(int position){
-        for(int i=0; i<mTabs.size(); i++){
-            TextView tvTab = (TextView) mTabs.get(i).findViewById(R.id.tabsText);
-            if(i == position){
-                tvTab.setTextColor(Color.RED);
-            }else{
-                tvTab.setTextColor(Color.BLACK);
-            }
-        }
     }
 
     /**
