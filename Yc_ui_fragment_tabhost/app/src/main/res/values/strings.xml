@@ -24,10 +24,16 @@
     <string name="home_yuanbao">元宝</string>
     <string name="home_property">物业</string>
     <string name="home_my_cs">我的客服</string>
-
+    <string name="header_back">&#060;&#032;</string>
 
     <!--Messages-->
+    <string name="load">加载中...</string>
     <string name="load_failed">加载失败,请稍候重试!</string>
     <string name="no_more_to_load">全部加载完毕</string>
 
+
+    <string name="test_shop_title">比尔斯烤肉自助</string>
+    <string name="test_shop_discount">促销</string>
+    <string name="test_shop_address">南市区保定百货大楼(裕华西路39号北京大厦)</string>
+    <string name="test_shop_category">自助 烧烤 涮锅</string>
 </resources>

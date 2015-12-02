@@ -27,7 +27,7 @@
             android:layout_marginLeft="10dip"
             android:layout_marginRight="10dip"
             android:layout_weight="0.5"
-            android:background="@color/light_light_grey"
+            android:background="@color/header_bg"
             android:orientation="horizontal">
 
             <LinearLayout
@@ -62,7 +62,7 @@
             android:layout_marginLeft="10dip"
             android:layout_marginRight="10dip"
             android:layout_weight="0.5"
-            android:background="@color/light_light_grey"
+            android:background="@color/header_bg"
             android:orientation="horizontal">
 
             <LinearLayout

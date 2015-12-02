@@ -23,11 +23,12 @@ import com.yanis.yc_ui_fragment_tabhost.views.CustomizeImageView;
 import com.yanis.yc_ui_fragment_tabhost.views.ptr.HeaderLoadingSupportPTRListFragment;
 import com.yanis.yc_ui_fragment_tabhost.views.ptr.PTRListAdapter;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class FragmentNearbyShopList extends HeaderLoadingSupportPTRListFragment {
-	private final static String tag = "TT-MainFragment";
+	private final static String tag = "TT-FragNearbyShopList";
 
 	private String mCategory;
 	private PTRListAdapter<Shop> mShopListAdapter;
@@ -113,7 +114,18 @@ public class FragmentNearbyShopList extends HeaderLoadingSupportPTRListFragment 
 				//The pager is viewing another page now.
 				if(getActivity() == null)
 					return;
-				
+                shopList = new ArrayList<Shop>();
+                shopList.add(new Shop());
+                shopList.add(new Shop());
+                shopList.add(new Shop());
+                shopList.add(new Shop());
+                shopList.add(new Shop());
+                shopList.add(new Shop());
+                shopList.add(new Shop());
+                shopList.add(new Shop());
+                shopList.add(new Shop());
+                shopList.add(new Shop());
+                shopList.add(new Shop());
 				if(mShopListAdapter == null){
 					mShopListAdapter = new ShopArrayAdapter(getActivity(), R.layout.view_shop_list_item, shopList);
 					mGetShopAction = new GetShopAction(getActivity(), mCategory, shopList.size(), Constants.PAGE_SIZE);
@@ -206,10 +218,9 @@ public class FragmentNearbyShopList extends HeaderLoadingSupportPTRListFragment 
             if (convertView == null) {
                 convertView = mInflater.inflate( R.layout.view_shop_list_item, parent, false);
                 holder = new ViewHolder();
-                holder.newsThumbnail = (CustomizeImageView) convertView.findViewById(R.id.id_news_thumbnail);
-                holder.newsTitle = (TextView) convertView.findViewById(R.id.id_news_title);
-                holder.newsVideoSign = convertView.findViewById(R.id.id_news_video_sign);
-                holder.newsSpecialSign = convertView.findViewById(R.id.id_news_special_sign);
+                holder.newsThumbnail = (CustomizeImageView) convertView.findViewById(R.id.id_shop_thumbnail);
+                holder.newsTitle = (TextView) convertView.findViewById(R.id.id_shop_title);
+                holder.newsVideoSign = convertView.findViewById(R.id.id_nearby_item_address);
                 convertView.setTag(holder);
             } else {
                 holder = (ViewHolder) convertView.getTag();

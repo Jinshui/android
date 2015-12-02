@@ -20,6 +20,7 @@ import android.widget.Toast;
 import com.yanis.yc_ui_fragment_tabhost.actions.AbstractAction;
 import com.yanis.yc_ui_fragment_tabhost.actions.GetCategoryAction;
 import com.yanis.yc_ui_fragment_tabhost.model.Pagination;
+import com.yanis.yc_ui_fragment_tabhost.views.HeaderView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -49,6 +50,10 @@ public class FragmentNearby extends Fragment {
                              Bundle savedInstanceState) {
         Log.d(TAG, "onCreateView");
         View view = inflater.inflate(R.layout.fragment_nearby, container, false);
+        HeaderView headerView = (HeaderView)view.findViewById(R.id.header);
+        headerView.setRightImage(R.drawable.header_search_icon);
+        headerView.setTitle(R.string.main_tab_title_nearby);
+        headerView.setTitleCenter();
         mTabScrollView = (HorizontalScrollView)view.findViewById(R.id.tabs_scrollView);
         mLoadingView = view.findViewById(R.id.id_category_loading);
         mViewPager = (ViewPager) view.findViewById(R.id.nearbyViewpager);
