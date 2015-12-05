@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/content_bg"
+    android:orientation="vertical">
+
+    <com.yanis.yc_ui_fragment_tabhost.views.HeaderView
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fadingEdgeLength="0dip"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="10dip"
+            android:layout_marginTop="10dip"
+            android:layout_weight="1"
+            android:gravity="top|center_horizontal"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/id_txt_card_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:drawableLeft="@drawable/icon_recharge_card_id"
+                android:hint="@string/hint_card_id"
+                android:textSize="16sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@drawable/horizontal_divider" />
+
+            <EditText
+                android:id="@+id/id_txt_amount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:inputType="number"
+                android:drawableLeft="@drawable/icon_recharge_amount"
+                android:hint="@string/hint_amount"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:gravity="center|left"
+                android:padding="5dip"
+                android:paddingLeft="30dip"
+                android:text="@string/recharge_amount"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="top|center_horizontal"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="top|center_horizontal"
+                    android:orientation="horizontal"
+                    android:paddingBottom="0dp"
+                    android:paddingTop="10dp">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center">
+
+                        <com.yanis.yc_ui_fragment_tabhost.views.UncheckableRadioButton
+                            android:id="@+id/id_btn_amount_100"
+                            style="@style/NoCircleRadioButtonStyle"
+                            android:layout_width="100dip"
+                            android:layout_height="30dip"
+                            android:background="@drawable/bg_selector_recharge_amount_btn"
+                            android:gravity="center"
+                            android:text="@string/amount_100"
+                            android:textColor="@color/deepgray" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center">
+
+                        <com.yanis.yc_ui_fragment_tabhost.views.UncheckableRadioButton
+                            android:id="@+id/id_btn_amount_200"
+                            style="@style/NoCircleRadioButtonStyle"
+                            android:layout_width="100dip"
+                            android:layout_height="30dip"
+                            android:background="@drawable/bg_selector_recharge_amount_btn"
+                            android:gravity="center"
+                            android:text="@string/amount_200"
+                            android:textColor="@color/deepgray" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center">
+
+                        <com.yanis.yc_ui_fragment_tabhost.views.UncheckableRadioButton
+                            android:id="@+id/id_btn_amount_300"
+                            style="@style/NoCircleRadioButtonStyle"
+                            android:layout_width="100dip"
+                            android:layout_height="30dip"
+                            android:background="@drawable/bg_selector_recharge_amount_btn"
+                            android:gravity="center"
+                            android:text="@string/amount_300"
+                            android:textColor="@color/deepgray" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="top|center_horizontal"
+                    android:orientation="horizontal"
+                    android:paddingBottom="0dp"
+                    android:paddingTop="10dp">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center">
+
+                        <com.yanis.yc_ui_fragment_tabhost.views.UncheckableRadioButton
+                            android:id="@+id/id_btn_amount_500"
+                            style="@style/NoCircleRadioButtonStyle"
+                            android:layout_width="100dip"
+                            android:layout_height="30dip"
+                            android:background="@drawable/bg_selector_recharge_amount_btn"
+                            android:gravity="center"
+                            android:text="@string/amount_500"
+                            android:textColor="@color/deepgray" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center">
+
+                        <com.yanis.yc_ui_fragment_tabhost.views.UncheckableRadioButton
+                            android:id="@+id/id_btn_amount_1000"
+                            style="@style/NoCircleRadioButtonStyle"
+                            android:layout_width="100dip"
+                            android:layout_height="30dip"
+                            android:background="@drawable/bg_selector_recharge_amount_btn"
+                            android:gravity="center"
+                            android:text="@string/amount_1000"
+                            android:textColor="@color/deepgray" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center">
+
+                        <com.yanis.yc_ui_fragment_tabhost.views.UncheckableRadioButton
+                            android:id="@+id/id_btn_amount_2000"
+                            style="@style/NoCircleRadioButtonStyle"
+                            android:layout_width="100dip"
+                            android:layout_height="30dip"
+                            android:background="@drawable/bg_selector_recharge_amount_btn"
+                            android:gravity="center"
+                            android:text="@string/amount_2000"
+                            android:textColor="@color/deepgray" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="@string/hint_recharge_more" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:gravity="center|left"
+                android:padding="5dip"
+                android:paddingLeft="30dip"
+                android:text="@string/recharge_mode"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@drawable/horizontal_divider" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/icon_recharge_alipay" />
+
+                <LinearLayout
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/white"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center|left"
+                        android:paddingBottom="4dip"
+                        android:paddingLeft="10dip"
+                        android:text="@string/alipay"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center|left"
+                        android:paddingLeft="10dip"
+                        android:text="@string/hint_alipay"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <RadioButton
+                    android:id="@+id/id_btn_recharge_mode_alipay"
+                    style="@style/NoCircleRadioButtonStyle"
+                    android:layout_width="25dip"
+                    android:layout_height="25dip"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/bg_selector_recharge_mode_btn"
+                    android:checked="true" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/horizontal_divider" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/icon_recharge_weichat" />
+
+                <LinearLayout
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/white"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center|left"
+                        android:paddingBottom="4dip"
+                        android:paddingLeft="10dip"
+                        android:text="@string/weichat"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center|left"
+                        android:paddingLeft="10dip"
+                        android:singleLine="true"
+                        android:text="@string/hint_weichat"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <com.yanis.yc_ui_fragment_tabhost.views.UncheckableRadioButton
+                    android:id="@+id/id_btn_recharge_mode_weichat"
+                    style="@style/NoCircleRadioButtonStyle"
+                    android:layout_width="25dip"
+                    android:layout_height="25dip"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/bg_selector_recharge_mode_btn" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/id_btn_recharge"
+                android:layout_width="match_parent"
+                android:layout_height="35dip"
+                android:layout_marginLeft="30dip"
+                android:layout_marginRight="30dip"
+                android:layout_marginTop="20dip"
+                android:background="@drawable/search_text_view_border"
+                android:paddingLeft="20dip"
+                android:paddingRight="20dip"
+                android:text="@string/recharge"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

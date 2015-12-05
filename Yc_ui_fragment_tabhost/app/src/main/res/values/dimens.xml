@@ -9,4 +9,10 @@
     <dimen name="list_item_padding_1">15dp</dimen>
     <dimen name="list_item_padding_2">12dp</dimen>
 
+    <dimen name="input_text_height_middle">45dip</dimen>
+
+
+    <dimen name="font_large">20sp</dimen>
+
+
 </resources>

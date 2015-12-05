@@ -1,0 +1,53 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:xyk="http://schemas.android.com/apk/res/com.yanis.yc_ui_fragment_tabhost"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_horizontal"
+    android:background="@drawable/icon_guesture_pwd_bg"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/id_img_user_photo"
+        android:layout_width="62dp"
+        android:layout_height="62dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/logo"
+        android:src="@drawable/icon_gesture_pwd_user_bg" />
+
+    <TextView
+        android:id="@+id/id_text_user_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:text="159******34"
+        android:textColor="@color/white" />
+
+    <com.yanis.yc_ui_fragment_tabhost.views.GestureLockViewGroup
+        android:id="@+id/id_gestureLockViewGroup"
+        android:layout_margin="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        xyk:color_finger_on_inner_circle_border="#000000"
+        xyk:color_finger_on_inner_circle_fill="#FF1493"
+        xyk:color_finger_on_outer_circle_border="#FF1493"
+        xyk:color_finger_on_outer_circle_fill="#8C3B79"
+        xyk:color_no_finger_outer_circle_border="#FFFFFF"
+        xyk:count="3"
+        xyk:line_color="#FF1493"
+        xyk:line_width="20"
+        xyk:tryTimes="5" />
+
+    <TextView
+        android:id="@+id/id_btn_skip_gesture_pwd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/guesture_pwd_skip"
+        android:textColor="@color/floralwhite"
+        android:textSize="@dimen/font_large" />
+
+</LinearLayout>

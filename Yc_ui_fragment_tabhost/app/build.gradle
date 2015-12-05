@@ -9,7 +9,21 @@ android {
         minSdkVersion 10
         targetSdkVersion 19
     }
-
+    sourceSets {
+        main {
+            res.srcDirs =
+                [
+                    'src/main/res/layouts/nearby',
+                    'src/main/res/layouts/balance',
+                    'src/main/res/layouts/common',
+                    'src/main/res/layouts/home',
+                    'src/main/res/layouts/settings',
+                    'src/main/res/layouts/test',
+                    'src/main/res/layouts',
+                    'src/main/res'
+                ]
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false

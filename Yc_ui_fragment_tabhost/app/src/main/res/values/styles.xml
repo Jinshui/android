@@ -22,9 +22,12 @@
         <item name="colorPrimaryDark">#00838f</item>
         <item name="colorAccent">#ffff00</item>
     </style>
-
     <style name="Theme.Custom.MyActionBar" parent="Theme.AppCompat.Light">
         <item name="windowActionBarOverlay">true</item>
+    </style>
+
+    <style name="NoCircleRadioButtonStyle" parent="@android:style/Widget.CompoundButton">
+        <item name="android:button">@null</item>
     </style>
 
 </resources>

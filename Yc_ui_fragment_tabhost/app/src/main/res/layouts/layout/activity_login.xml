@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/content_bg"
+    android:orientation="vertical">
+
+    <com.yanis.yc_ui_fragment_tabhost.views.HeaderView
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="10dip"
+        android:layout_marginTop="10dip"
+        android:layout_weight="1"
+        android:gravity="top|center_horizontal"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/id_txt_card_id"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/input_text_height_middle"
+            android:background="@color/input_bg"
+            android:paddingLeft="10dip"
+            android:layout_gravity="center_horizontal"
+            android:drawableLeft="@drawable/icon_login_card_id"
+            android:hint="@string/login_card_id"
+            android:textSize="16sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@drawable/horizontal_divider" />
+
+        <EditText
+            android:id="@+id/id_txt_password"
+            android:layout_width="match_parent"
+            android:paddingLeft="10dip"
+            android:layout_height="@dimen/input_text_height_middle"
+            android:background="@color/input_bg"
+            android:layout_gravity="center_horizontal"
+            android:drawableLeft="@drawable/icon_login_pwd"
+            android:hint="@string/login_password"
+            android:inputType="textPassword"
+            android:textSize="16sp" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="45dip"
+            android:layout_marginLeft="15dip"
+            android:layout_marginRight="15dip"
+            android:layout_marginTop="13dip"
+            android:background="@drawable/search_text_view_border"
+            android:onClick="onLoginClick"
+            android:text="@string/login"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/id_btn_forget_pwd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginRight="15dip"
+            android:layout_marginTop="15dip"
+            android:gravity="left"
+            android:text="@string/login_forgot_password"
+            android:textColor="@color/darkgray"
+            android:textSize="16sp" />
+    </LinearLayout>
+</LinearLayout>

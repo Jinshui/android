@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/content_bg"
+    android:orientation="vertical">
+
+    <com.yanis.yc_ui_fragment_tabhost.views.HeaderView
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="10dip"
+        android:layout_marginTop="10dip"
+        android:layout_weight="1"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="5dip"
+            android:drawableLeft="@drawable/balance_amounts"
+            android:gravity="center"
+            android:text="@string/amount" />
+
+        <TextView
+            android:id="@+id/id_text_amount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="5dip"
+            android:layout_marginTop="5dip"
+            android:gravity="center_horizontal"
+            android:text="386.61"
+            android:textColor="@color/darkpink"
+            android:textSize="40sp" />
+
+        <Button
+            android:id="@+id/id_btn_recharge_history"
+            android:layout_width="wrap_content"
+            android:layout_height="22dip"
+            android:layout_marginBottom="20dip"
+            android:layout_marginTop="5dip"
+            android:paddingBottom="0dip"
+            android:paddingLeft="20dip"
+            android:paddingRight="20dip"
+            android:paddingTop="0dip"
+            android:textSize="14sp"
+            android:background="@drawable/btn_border"
+            android:text="@string/recharge_history" />
+
+        <Button
+            android:id="@+id/id_btn_recharge"
+            android:layout_width="match_parent"
+            android:layout_height="35dip"
+            android:layout_marginLeft="30dip"
+            android:layout_marginRight="30dip"
+            android:background="@drawable/search_text_view_border"
+            android:paddingLeft="20dip"
+            android:paddingRight="20dip"
+            android:text="@string/recharge"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dip"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:paddingBottom="20dip"
+        android:paddingTop="20dip">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:drawableLeft="@drawable/balance_my_points"
+                android:gravity="center"
+                android:text="@string/my_points" />
+
+            <TextView
+                android:id="@+id/id_text_my_points"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="3600"
+                android:textColor="@color/black"
+                android:textSize="25sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:drawableLeft="@drawable/balance_my_ingots"
+                android:gravity="center"
+                android:text="@string/my_ingots" />
+
+            <TextView
+                android:id="@+id/id_text_my_ingots"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="26000"
+                android:textColor="@color/black"
+                android:textSize="25sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="100dip"
+        android:gravity="center"
+        android:text="@string/balance_description"
+        android:textColor="@color/deepgray" />
+
+</LinearLayout>
