@@ -13,9 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
-import com.creal.nest.R;
 import com.creal.nest.actions.AbstractAction;
-import com.creal.nest.actions.GetCouponsAction;
 import com.creal.nest.actions.GetLatestActivitiesAction;
 import com.creal.nest.model.Coupon;
 import com.creal.nest.model.Pagination;
@@ -131,7 +129,10 @@ public class LatestActivitiesActivity extends ListActivity implements PullToRefr
 
     protected void onListItemClick(ListView l, View v, int position, long id){
         Toast.makeText(getBaseContext(), "clicked: " + position + ", enabled: " + v.isEnabled(), Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(this, CouponDetailActivity.class);
+        Intent intent = new Intent(this, LatestActivityDetailActivity.class);
+        com.creal.nest.model.Activity activity = new com.creal.nest.model.Activity();
+        activity.setName("潮牌运动风");
+        intent.putExtra("activity", activity);
         startActivity(intent);
     }
 

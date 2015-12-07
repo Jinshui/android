@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:background="@color/content_bg"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/content_bg_1"
     android:orientation="vertical">
 
     <com.creal.nest.views.HeaderView
@@ -11,69 +12,49 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal" />
 
-    <FrameLayout
-        android:layout_width="fill_parent"
-        android:layout_height="@dimen/my_coupons_detail_image_height">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fadingEdgeLength="0dip"
+        android:fillViewport="true"
+        android:scrollbars="none">
 
-        <com.creal.nest.views.CustomizeImageView
-            android:id="@+id/id_coupon_thumbnail"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_centerVertical="true"
-            android:contentDescription=""
-            android:src="@drawable/test_my_coupons_detail" />
-
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@color/content_bg_1"
+            android:orientation="vertical">
+
+            <com.creal.nest.views.CustomizeImageView
+                android:id="@+id/id_coupon_thumbnail"
+                android:layout_width="fill_parent"
+                android:layout_height="180dip"
+                android:background="@drawable/test_latest_activity_detail"
+                android:contentDescription="" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:background="@drawable/icon_coupon_detail_desc"
-                android:gravity="center_vertical"
-                android:orientation="vertical"
-                android:paddingLeft="10dip">
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:padding="10dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/test_coupon_name"
-                    android:textSize="@dimen/font_middle" />
+                    android:text="保定百货大楼三楼运动部"
+                    android:textColor="@color/black" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="3dip"
-                    android:text="@string/test_coupon_desc" />
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/bg_pink_cornered"
+                    android:paddingLeft="3dp"
+                    android:paddingRight="3dp"
+                    android:text="百货类"
+                    android:textColor="@color/white" />
             </LinearLayout>
-        </RelativeLayout>
-    </FrameLayout>
-
-
-    <FrameLayout
-        android:layout_width="fill_parent"
-        android:layout_height="0dip"
-        android:layout_weight="1">
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dip"
-            android:background="@color/white"
-            android:orientation="vertical"
-            android:paddingLeft="10dip">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dip"
-                android:paddingBottom="5dip"
-                android:paddingTop="10dip"
-                android:text="@string/coupon_usage_desc"
-                android:textColor="@color/black"
-                android:textSize="@dimen/font_middle" />
 
             <View
                 android:layout_width="wrap_content"
@@ -81,20 +62,16 @@
                 android:background="@drawable/horizontal_divider" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/id_txt_address"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="5dip"
-                android:paddingTop="5dip"
-                android:text="@string/coupon_provider"
-                android:textColor="@color/black"
-                android:textSize="@dimen/font_middle" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingBottom="5dip"
-                android:text="@string/test_coupon_provider"
-                android:textColor="@color/grey" />
+                android:background="@color/white"
+                android:drawableLeft="@drawable/nearby_item_address_sm"
+                android:drawablePadding="4dp"
+                android:drawableRight="@drawable/right_arrow"
+                android:padding="10dp"
+                android:text="南市区保定百货大楼(裕华西路518号)三楼(运动专营)"
+                android:textColor="@color/black" />
 
             <View
                 android:layout_width="wrap_content"
@@ -102,20 +79,29 @@
                 android:background="@drawable/horizontal_divider" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/id_txt_phone"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="5dip"
-                android:paddingTop="5dip"
-                android:text="@string/coupon_expired_date"
-                android:textColor="@color/black"
-                android:textSize="@dimen/font_middle" />
+                android:background="@color/white"
+                android:drawableLeft="@drawable/icon_latest_activity_phone"
+                android:drawablePadding="4dp"
+                android:drawableRight="@drawable/right_arrow"
+                android:padding="10dp"
+                android:text="(0312)2066888"
+                android:textColor="@color/black" />
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="10dip" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="5dip"
-                android:text="@string/test_coupon_expired_date"
-                android:textColor="@color/grey" />
+                android:background="@color/white"
+                android:padding="10dp"
+                android:text="@string/latest_activities_desc"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_small" />
 
             <View
                 android:layout_width="wrap_content"
@@ -123,37 +109,41 @@
                 android:background="@drawable/horizontal_divider" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="5dip"
-                android:paddingTop="5dip"
-                android:text="@string/coupon_rule"
-                android:textColor="@color/black"
-                android:textSize="@dimen/font_middle" />
+                android:background="@color/white"
+                android:padding="10dp"
+                android:text="活动时间: 2015年10月30日-11月30日"
+                android:textColor="@color/black" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="5dip"
-                android:text="@string/test_coupon_rule"
-                android:textColor="@color/grey"/>
+                android:background="@color/white"
+                android:paddingBottom="10dip"
+                android:paddingLeft="10dp"
+                android:paddingTop="0dp"
+                android:text="酷跑潮流-Mia mia精品店暑期夏日狂促周，保定百货大楼运动专区促销，众多的品牌狂欢大促，运动服，运动鞋全场3.4折起，想不到的优惠，就在这里"
+                android:textColor="@color/black" />
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="10dip" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:drawablePadding="4dp"
+                android:drawableRight="@drawable/right_arrow"
+                android:gravity="left"
+                android:onClick="onViewMoreClick"
+                android:padding="10dp"
+                android:text="@string/latest_activities_view_more"
+                android:textColor="@color/deeperpink"
+                android:textSize="@dimen/font_small" />
+
         </LinearLayout>
-
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <ImageView
-                android:layout_width="70dip"
-                android:layout_height="70dip"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginRight="20dip"
-                android:paddingTop="3dip"
-                android:src="@drawable/icon_coupon_return" />
-
-        </RelativeLayout>
-    </FrameLayout>
+    </ScrollView>
 
 </LinearLayout>

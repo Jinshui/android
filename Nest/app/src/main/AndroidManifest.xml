@@ -34,6 +34,7 @@
             </intent-filter>
         </activity>
         <activity android:name="com.creal.nest.LatestActivitiesActivity" />
+        <activity android:name="com.creal.nest.LatestActivityDetailActivity" />
         <activity android:name="com.creal.nest.SnapupCouponsActivity" />
         <activity android:name="com.creal.nest.SnapCouponDialogActivity" android:theme="@style/Theme.CustomDialog"/>
         <activity android:name="com.creal.nest.CouponDetailActivity" />

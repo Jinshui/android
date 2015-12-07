@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@color/snapup_coupons_list_bg"
+    android:background="@color/content_bg_1"
     android:orientation="vertical">
 
     <com.creal.nest.views.HeaderView

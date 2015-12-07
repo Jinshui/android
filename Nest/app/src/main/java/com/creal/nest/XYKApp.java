@@ -9,7 +9,7 @@ public class XYKApp extends Application {
     private String mCachePath;
     
     public void onCreate() {
-        Log.i(tag, "影视头条App is initializing");
+        Log.i(tag, "App is initializing");
         super.onCreate();
         mCachePath = getCacheDir().getAbsolutePath() + Constants.CACHE_DIR;
     }
