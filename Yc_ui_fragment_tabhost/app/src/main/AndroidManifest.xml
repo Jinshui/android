@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.yanis.yc_ui_fragment_tabhost"
+    package="com.creal.nest"
     android:versionCode="1"
     android:versionName="1.0">
 
@@ -27,23 +27,23 @@
             </intent-filter>
         </activity>
         -->
-        <activity android:name=".PhoneBinderActivity">
+        <activity android:name="com.creal.nest.PhoneBinderActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LatestActivitiesActivity" />
-        <activity android:name=".SnapupCouponsActivity" />
-        <activity android:name=".SnapCouponDialogActivity" android:theme="@style/Theme.CustomDialog"/>
-        <activity android:name=".CouponDetailActivity" />
-        <activity android:name=".GesturePwdActivity" />
-        <activity android:name=".MyCouponsActivity" />
-        <activity android:name=".BarcodeActivity" />
-        <activity android:name=".MainActivity" android:theme="@style/Theme.Custom.NoActionBar" />
-        <activity android:name=".RechargeActivity"/>
-        <activity android:name=".LoginActivity"/>
-        <activity android:name=".RegisterActivity" android:theme="@style/Theme.Custom.NoActionBar"/>
+        <activity android:name="com.creal.nest.LatestActivitiesActivity" />
+        <activity android:name="com.creal.nest.SnapupCouponsActivity" />
+        <activity android:name="com.creal.nest.SnapCouponDialogActivity" android:theme="@style/Theme.CustomDialog"/>
+        <activity android:name="com.creal.nest.CouponDetailActivity" />
+        <activity android:name="com.creal.nest.GesturePwdActivity" />
+        <activity android:name="com.creal.nest.MyCouponsActivity" />
+        <activity android:name="com.creal.nest.BarcodeActivity" />
+        <activity android:name="com.creal.nest.MainActivity" android:theme="@style/Theme.Custom.NoActionBar" />
+        <activity android:name="com.creal.nest.RechargeActivity"/>
+        <activity android:name="com.creal.nest.LoginActivity"/>
+        <activity android:name="com.creal.nest.RegisterActivity" android:theme="@style/Theme.Custom.NoActionBar"/>
     </application>
 
 </manifest>

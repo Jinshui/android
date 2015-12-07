@@ -5,7 +5,7 @@
     android:background="@color/content_bg"
     android:orientation="vertical">
 
-    <com.yanis.yc_ui_fragment_tabhost.views.HeaderView
+    <com.creal.nest.views.HeaderView
         android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
@@ -81,7 +81,7 @@
                         android:layout_weight="1"
                         android:gravity="center">
 
-                        <com.yanis.yc_ui_fragment_tabhost.views.UncheckableRadioButton
+                        <com.creal.nest.views.UncheckableRadioButton
                             android:id="@+id/id_btn_amount_100"
                             style="@style/NoCircleRadioButtonStyle"
                             android:layout_width="100dip"
@@ -98,7 +98,7 @@
                         android:layout_weight="1"
                         android:gravity="center">
 
-                        <com.yanis.yc_ui_fragment_tabhost.views.UncheckableRadioButton
+                        <com.creal.nest.views.UncheckableRadioButton
                             android:id="@+id/id_btn_amount_200"
                             style="@style/NoCircleRadioButtonStyle"
                             android:layout_width="100dip"
@@ -115,7 +115,7 @@
                         android:layout_weight="1"
                         android:gravity="center">
 
-                        <com.yanis.yc_ui_fragment_tabhost.views.UncheckableRadioButton
+                        <com.creal.nest.views.UncheckableRadioButton
                             android:id="@+id/id_btn_amount_300"
                             style="@style/NoCircleRadioButtonStyle"
                             android:layout_width="100dip"
@@ -142,7 +142,7 @@
                         android:layout_weight="1"
                         android:gravity="center">
 
-                        <com.yanis.yc_ui_fragment_tabhost.views.UncheckableRadioButton
+                        <com.creal.nest.views.UncheckableRadioButton
                             android:id="@+id/id_btn_amount_500"
                             style="@style/NoCircleRadioButtonStyle"
                             android:layout_width="100dip"
@@ -159,7 +159,7 @@
                         android:layout_weight="1"
                         android:gravity="center">
 
-                        <com.yanis.yc_ui_fragment_tabhost.views.UncheckableRadioButton
+                        <com.creal.nest.views.UncheckableRadioButton
                             android:id="@+id/id_btn_amount_1000"
                             style="@style/NoCircleRadioButtonStyle"
                             android:layout_width="100dip"
@@ -176,7 +176,7 @@
                         android:layout_weight="1"
                         android:gravity="center">
 
-                        <com.yanis.yc_ui_fragment_tabhost.views.UncheckableRadioButton
+                        <com.creal.nest.views.UncheckableRadioButton
                             android:id="@+id/id_btn_amount_2000"
                             style="@style/NoCircleRadioButtonStyle"
                             android:layout_width="100dip"
@@ -308,7 +308,7 @@
                         android:textSize="14sp" />
                 </LinearLayout>
 
-                <com.yanis.yc_ui_fragment_tabhost.views.UncheckableRadioButton
+                <com.creal.nest.views.UncheckableRadioButton
                     android:id="@+id/id_btn_recharge_mode_weichat"
                     style="@style/NoCircleRadioButtonStyle"
                     android:layout_width="25dip"

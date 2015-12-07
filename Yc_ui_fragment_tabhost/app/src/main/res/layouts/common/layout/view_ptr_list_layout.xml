@@ -17,7 +17,7 @@
             android:layout_centerInParent="true" />
     </RelativeLayout>
 
-    <com.yanis.yc_ui_fragment_tabhost.views.ptr.CustomizedPTRListView
+    <com.creal.nest.views.ptr.CustomizedPTRListView
         android:id="@+id/id_content"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"

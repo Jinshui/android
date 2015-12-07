@@ -6,7 +6,7 @@
     android:paddingRight="5dp"
     android:paddingLeft="5dp">
 
-    <com.yanis.yc_ui_fragment_tabhost.views.CustomizeImageView
+    <com.creal.nest.views.CustomizeImageView
         android:id="@+id/id_activity_thumbnail"
         android:layout_width="fill_parent"
         android:layout_height="@dimen/list_item_thumbnail_height_latest_activity"

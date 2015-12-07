@@ -13,7 +13,7 @@
         android:paddingBottom="10dp"
         android:orientation="horizontal">
 
-        <com.yanis.yc_ui_fragment_tabhost.views.CustomizeImageView
+        <com.creal.nest.views.CustomizeImageView
             android:id="@+id/id_shop_thumbnail"
             android:layout_width="@dimen/list_item_icon_width"
             android:layout_height="@dimen/list_item_icon_height"

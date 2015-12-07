@@ -1,6 +1,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:xyk="http://schemas.android.com/apk/res/com.yanis.yc_ui_fragment_tabhost"
+    xmlns:xyk="http://schemas.android.com/apk/res/com.creal.nest"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center_horizontal"
@@ -25,7 +25,7 @@
         android:text="159******34"
         android:textColor="@color/white" />
 
-    <com.yanis.yc_ui_fragment_tabhost.views.GestureLockViewGroup
+    <com.creal.nest.views.GestureLockViewGroup
         android:id="@+id/id_gestureLockViewGroup"
         android:layout_margin="30dp"
         android:layout_width="match_parent"

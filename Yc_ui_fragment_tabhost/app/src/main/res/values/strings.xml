@@ -96,6 +96,9 @@
 
     <!--最新活动-->
     <string name="latest_activities">最新活动</string>
+    <string name="latest_activities_desc">活动说明</string>
+    <string name="latest_activities_date">活动时间</string>
+    <string name="latest_activities_view_more">查看图文介绍</string>
 
     <!-- 消费 -->
     <string name="pay">消费</string>

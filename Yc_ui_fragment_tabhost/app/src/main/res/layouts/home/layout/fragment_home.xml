@@ -5,11 +5,11 @@
     android:orientation="vertical"
     android:weightSum="1">
 
-    <com.yanis.yc_ui_fragment_tabhost.views.HomeHeader
+    <com.creal.nest.views.HomeHeader
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <com.yanis.yc_ui_fragment_tabhost.views.PhotoPager
+    <com.creal.nest.views.PhotoPager
         android:id="@+id/home_photos_pager"
         android:layout_width="fill_parent"
         android:layout_height="160dip" />

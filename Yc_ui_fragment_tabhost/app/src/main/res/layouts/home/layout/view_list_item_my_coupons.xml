@@ -14,7 +14,7 @@
         android:layout_marginBottom="10dp"
         android:orientation="horizontal">
 
-        <com.yanis.yc_ui_fragment_tabhost.views.CustomizeImageView
+        <com.creal.nest.views.CustomizeImageView
             android:id="@+id/id_coupon_thumbnail"
             android:layout_width="@dimen/my_coupons_list_item_icon_width"
             android:layout_height="@dimen/my_coupons_list_item_icon_height"
