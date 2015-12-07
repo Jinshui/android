@@ -94,6 +94,9 @@
     <string name="test_coupon_provider">北国先天下，保北购物广场，东丽花行，北斗星餐厅，庆丰包子铺...</string>
     <string name="test_coupon_rule">满266元以上商品或消费方可使用5元优惠券</string>
 
+    <!--最新活动-->
+    <string name="latest_activities">最新活动</string>
+
     <!-- 消费 -->
     <string name="pay">消费</string>
     <string name="pay_description">消费说明</string>

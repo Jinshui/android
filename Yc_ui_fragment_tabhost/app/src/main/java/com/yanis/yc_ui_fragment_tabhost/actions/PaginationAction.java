@@ -23,11 +23,7 @@ public abstract class PaginationAction<Result> extends AbstractAction<Pagination
     protected int mTotalCount = -1;
     /**
      * For GET_RECOMMENDATION and GET_HOT and GET_FAVORITE actions
-     * @param mContext
-     * @param shopId
-     * @param type
-     * @param orderBy
-     * @param orderWay
+     * @param context
      * @param pageNum
      * @param itemsPerPage
      */
@@ -86,23 +82,27 @@ public abstract class PaginationAction<Result> extends AbstractAction<Pagination
     	return mTotalCount < 0 || mPageIndex * mPageSize < mTotalCount;
     }
     
-    public PaginationAction<Result> getNextPageAction(){
-        PaginationAction<Result> action = cloneCurrentPageAction();
-        action.mPageIndex += 1;
-        action.mTotalCount = mTotalCount;
+    public <T extends PaginationAction<Result>> T getNextPageAction(){
+        T action = cloneCurrentPageAction();
+        action.setPageIndex(action.getPageIndex() + 1);
+        action.setTotalCount(action.getTotalCount());
         return action;
     }
     
-    public PaginationAction<Result> getPreviousPageAction(){
-        PaginationAction<Result> action = cloneCurrentPageAction();
-        if(action.mPageIndex > 1)
-        	action.mPageIndex -= 1;
-        action.mTotalCount = mTotalCount;
+    public <T extends PaginationAction<Result>> T getPreviousPageAction(){
+        T action = cloneCurrentPageAction();
+        if(action.getPageIndex() > 1)
+        	action.setPageIndex( action.getPageIndex() - 1);
+        action.setTotalCount(action.getTotalCount());
         return action;
     }
 
     public final int getPageIndex(){
         return mPageIndex;
+    }
+
+    public void setPageIndex(int pageIndex){
+        this.mPageIndex = pageIndex;
     }
 
     public final int getPageSize(){
@@ -123,6 +123,6 @@ public abstract class PaginationAction<Result> extends AbstractAction<Pagination
      * of the next page
      * @return
      */
-    public abstract PaginationAction<Result> cloneCurrentPageAction();
+    public abstract <T extends PaginationAction<Result>> T cloneCurrentPageAction();
     protected abstract Result convertJsonToResult(JSONObject item) throws JSONException;
 }

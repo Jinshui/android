@@ -50,10 +50,10 @@ public class SnapupCouponsActivity extends ListActivity implements SwipeRefreshL
         coupons.add(new Coupon());
         coupons.add(new Coupon());
         coupons.add(new Coupon());
-        coupons.add(new Coupon(false, false));
-        coupons.add(new Coupon(false, false));
-        coupons.add(new Coupon(false, false));
-        mCouponsListAdapter = new SnapCouponsListAdapter(this, R.layout.view_my_coupons_list_item, coupons);
+        coupons.add(new Coupon(true, false));
+        coupons.add(new Coupon(true, false));
+        coupons.add(new Coupon(true, false));
+        mCouponsListAdapter = new SnapCouponsListAdapter(this, R.layout.view_list_item_my_coupons, coupons);
         setListAdapter(mCouponsListAdapter);
         getListView().setDivider(null);
     }
@@ -100,8 +100,6 @@ public class SnapupCouponsActivity extends ListActivity implements SwipeRefreshL
 
     protected void onListItemClick(ListView l, View v, int position, long id){
         Toast.makeText(getBaseContext(), "clicked: " + position + ", enabled: " + v.isEnabled(), Toast.LENGTH_SHORT).show();
-//        Intent intent = new Intent(this, CouponDetailActivity.class);
-//        startActivity(intent);
     }
 
     public class SnapCouponsListAdapter extends PTRListAdapter<Coupon> {
@@ -115,7 +113,7 @@ public class SnapupCouponsActivity extends ListActivity implements SwipeRefreshL
             final Coupon coupon = getItem(position);
             ViewHolder holder = null;
             if (convertView == null) {
-                convertView = mInflater.inflate( R.layout.view_snap_coupons_list_item, parent, false);
+                convertView = mInflater.inflate( R.layout.view_list_item_snap_coupons, parent, false);
                 holder = new ViewHolder();
                 holder.couponThumbnail = (CustomizeImageView) convertView.findViewById(R.id.id_coupon_thumbnail);
                 holder.total = (TextView) convertView.findViewById(R.id.id_txt_snapup_coupons_total);

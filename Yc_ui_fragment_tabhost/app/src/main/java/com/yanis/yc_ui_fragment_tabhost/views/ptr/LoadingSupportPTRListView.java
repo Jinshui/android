@@ -6,14 +6,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ListAdapter;
-import android.widget.ListView;
 
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.Mode;
-import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener2;
 import com.yanis.yc_ui_fragment_tabhost.R;
 
-public class LoadingSupportPTRListView extends LinearLayout implements OnRefreshListener2<ListView> {
+public class LoadingSupportPTRListView extends LinearLayout  {
 	private final static String tag = "TT-PTRListFragment";
 	private CustomizedPTRListView mListView;
 	private View mLoadingView;
@@ -24,7 +22,6 @@ public class LoadingSupportPTRListView extends LinearLayout implements OnRefresh
 		super(context, attrs);
 		LayoutInflater.from(context).inflate(R.layout.view_ptr_list_layout, this, true);
 		mListView = (CustomizedPTRListView)findViewById(R.id.id_content);
-		mListView.setOnRefreshListener(this);
         mListView.setVisibility(View.GONE);
         mListView.setMode(mRefreshMode);
 
@@ -38,7 +35,7 @@ public class LoadingSupportPTRListView extends LinearLayout implements OnRefresh
 	 */
 	public void setMode(Mode mode){
         if(mode != null)
-            mRefreshMode = mode;
+            mListView.setMode(mode);
 	}
 
 	public void setAdapter(ListAdapter adapter){
@@ -49,32 +46,22 @@ public class LoadingSupportPTRListView extends LinearLayout implements OnRefresh
 	public ListAdapter getAdapter(){
 		return mListAdapter;
 	}
-	
-	protected final void showLoadingView() {
+
+    public final void showLoadingView() {
 		mLoadingView.setVisibility(View.VISIBLE);
 		mListView.setVisibility(View.GONE);
 	}
 
-	protected final void showListView() {
+    public final void showListView() {
 		mLoadingView.setVisibility(View.GONE);
 		mListView.setVisibility(View.VISIBLE);
 	}
-	
-	protected final void refreshComplete(){
+
+    public final void refreshComplete(){
 		mListView.onRefreshComplete();
 	}
 
-	/**
-	 * Sub class should implement this to do tha actual refresh data for view
-	 * @param refreshView
-	 */
-	@Override
-	public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {}
-
-	/**
-	 * Sub class should implement this to do tha actual refresh data for view
-	 * @param refreshView
-	 */
-	@Override
-	public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {}
+    public void setOnRefreshListener(PullToRefreshBase.OnRefreshListener2 listener){
+        mListView.setOnRefreshListener(listener);
+    }
 }

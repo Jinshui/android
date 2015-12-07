@@ -33,6 +33,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".LatestActivitiesActivity" />
         <activity android:name=".SnapupCouponsActivity" />
         <activity android:name=".SnapCouponDialogActivity" android:theme="@style/Theme.CustomDialog"/>
         <activity android:name=".CouponDetailActivity" />

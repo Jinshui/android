@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingRight="5dp"
+    android:paddingLeft="5dp">
+
+    <com.yanis.yc_ui_fragment_tabhost.views.CustomizeImageView
+        android:id="@+id/id_activity_thumbnail"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/list_item_thumbnail_height_latest_activity"
+        android:contentDescription=""
+        android:background="@drawable/test_latest_activity" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center"
+        android:padding="5dip">
+
+        <TextView
+            android:id="@+id/id_txt_activity_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:text="美特斯邦威女装特卖专场"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/id_txt_activity_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/id_txt_activity_name"
+            android:text="剩余3天"
+            android:textColor="@color/darkgray" />
+
+        <TextView
+            android:id="@+id/id_txt_activity_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:gravity="center_vertical"
+            android:text="1.6折起"
+            android:textColor="@color/deeperpink"
+            android:textSize="@dimen/font_large" />
+    </RelativeLayout>
+
+
+    <View
+        android:layout_width="100dip"
+        android:layout_height="10dip"
+        android:layout_gravity="center_horizontal" />
+
+</LinearLayout>
