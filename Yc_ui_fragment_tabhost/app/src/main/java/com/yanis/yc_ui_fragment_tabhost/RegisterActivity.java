@@ -78,9 +78,9 @@ public class RegisterActivity extends Activity {
     }
 
     public void onGetVerificationCodeClick(View view){
-        Intent intent = new Intent(this, Spinner1.class);
-        startActivity(intent);
-        finish();
+//        Intent intent = new Intent(this, Spinner1.class);
+//        startActivity(intent);
+//        finish();
     }
     public void onRegisterClick(View view){
         Intent intent = new Intent(this, LoginActivity.class);

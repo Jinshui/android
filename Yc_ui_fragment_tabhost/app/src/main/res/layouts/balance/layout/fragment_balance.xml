@@ -65,6 +65,7 @@
             android:background="@drawable/search_text_view_border"
             android:paddingLeft="20dip"
             android:paddingRight="20dip"
+            android:onClick="onRechargeClick"
             android:text="@string/recharge"
             android:textColor="@color/white"
             android:textSize="18sp" />

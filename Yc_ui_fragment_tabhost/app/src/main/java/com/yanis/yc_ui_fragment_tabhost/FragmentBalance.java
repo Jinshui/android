@@ -1,5 +1,6 @@
 package com.yanis.yc_ui_fragment_tabhost;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -18,7 +19,6 @@ public class FragmentBalance extends Fragment {
 
     private TextView mAmounts;
     private Button mRechargeHistory;
-    private Button mRecharge;
     private TextView mMyPoints;
     private TextView mMyIngots;
 
@@ -39,7 +39,6 @@ public class FragmentBalance extends Fragment {
 
         mAmounts = (TextView)view.findViewById(R.id.id_text_amount);
         mRechargeHistory = (Button)view.findViewById(R.id.id_btn_recharge_history);
-        mRecharge = (Button)view.findViewById(R.id.id_btn_recharge);
         mMyPoints = (TextView)view.findViewById(R.id.id_text_my_points);
         mMyIngots = (TextView)view.findViewById(R.id.id_text_my_ingots);
         addListeners();
@@ -48,11 +47,6 @@ public class FragmentBalance extends Fragment {
 
     private void addListeners(){
         mRechargeHistory.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Toast.makeText(getActivity(), "Not implemented yet!", Toast.LENGTH_SHORT).show();
-            }
-        });
-        mRecharge.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Toast.makeText(getActivity(), "Not implemented yet!", Toast.LENGTH_SHORT).show();
             }
@@ -67,6 +61,11 @@ public class FragmentBalance extends Fragment {
                 Toast.makeText(getActivity(), "Not implemented yet!", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    public void onRechargeClick(View view){
+        Intent intent = new Intent(getActivity(), RechargeActivity.class);
+        startActivity(intent);
     }
 
     private void updateUI() {

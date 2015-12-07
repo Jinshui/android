@@ -33,7 +33,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".SnapupCouponsActivity" />
+        <activity android:name=".SnapCouponDialogActivity" android:theme="@style/Theme.CustomDialog"/>
+        <activity android:name=".CouponDetailActivity" />
         <activity android:name=".GesturePwdActivity" />
+        <activity android:name=".MyCouponsActivity" />
         <activity android:name=".BarcodeActivity" />
         <activity android:name=".MainActivity" android:theme="@style/Theme.Custom.NoActionBar" />
         <activity android:name=".RechargeActivity"/>

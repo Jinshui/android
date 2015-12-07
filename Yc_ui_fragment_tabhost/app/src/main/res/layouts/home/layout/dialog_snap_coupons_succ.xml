@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal|center_vertical"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="300dip"
+        android:layout_height="150dip"
+        android:gravity="center"
+        android:background="@drawable/bg_purplish_red_top_cornered"
+        android:text="@string/snapup_coupons_dlg_congratu"
+        android:textSize="@dimen/font_xxx_larger"
+        android:textColor="@color/snapup_coupons_dlg_font_color" />
+
+    <TextView
+        android:layout_width="300dip"
+        android:layout_height="75dip"
+        android:gravity="center"
+        android:background="@color/white"
+        android:text="获得了10元优惠券"
+        android:textSize="@dimen/font_large"
+        android:textColor="@color/black" />
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:background="@drawable/horizontal_divider" />
+
+    <Button
+        android:layout_width="300dip"
+        android:layout_height="75dip"
+        android:gravity="center"
+        android:onClick="onOkClick"
+        android:background="@drawable/bg_white_bottom_cornered"
+        android:text="@string/snapup_coupons_dlg_btn"
+        android:textSize="@dimen/font_xxx_larger"
+        android:textColor="@color/black" />
+</LinearLayout>

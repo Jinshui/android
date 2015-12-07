@@ -35,9 +35,9 @@ public class FragmentHome extends Fragment{
 
 
     private void addListener(View homeView){
-        homeView.findViewById(R.id.id_btn_my_ingots).setOnClickListener(new View.OnClickListener() {
+        homeView.findViewById(R.id.id_btn_my_coupons).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), RechargeActivity.class);
+                Intent intent = new Intent(getActivity(), MyCouponsActivity.class);
                 startActivity(intent);
             }
         });
@@ -55,6 +55,8 @@ public class FragmentHome extends Fragment{
         });
         homeView.findViewById(R.id.id_btn_get_coupon).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), SnapupCouponsActivity.class);
+                startActivity(intent);
             }
         });
         homeView.findViewById(R.id.id_btn_activity).setOnClickListener(new View.OnClickListener() {

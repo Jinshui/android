@@ -21,7 +21,7 @@
         android:orientation="horizontal">
 
         <LinearLayout
-            android:id="@+id/id_btn_my_ingots"
+            android:id="@+id/id_btn_my_coupons"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
