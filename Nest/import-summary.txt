@@ -9,7 +9,7 @@ so manually move them:
 
 * .idea/
 * .idea/.name
-* .idea/Yc_ui_fragment_tabhost.iml
+* .idea/Nest.iml
 * .idea/compiler.xml
 * .idea/copyright/
 * .idea/copyright/profiles_settings.xml
