@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/content_bg"
+    android:orientation="vertical">
+
+    <com.creal.nest.views.HeaderView
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fadingEdgeLength="0dip"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+            <EditText
+                android:id="@+id/id_txt_user_name"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/input_text_height_middle"
+                android:layout_gravity="center_horizontal"
+                android:background="@color/input_bg"
+                android:drawableLeft="@drawable/icon_register_user_name"
+                android:hint="@string/exchange_hint_input_recipient_name"
+                android:paddingLeft="5dp"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/id_txt_phone"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/input_text_height_middle"
+                android:layout_gravity="center_horizontal"
+                android:background="@color/input_bg"
+                android:drawableLeft="@drawable/icon_register_phone"
+                android:hint="@string/exchange_hint_phone"
+                android:paddingLeft="5dp"
+                android:textSize="16sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/input_text_height_middle"
+                android:layout_marginTop="10dip"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/icon_register_province" />
+
+                <Spinner
+                    android:id="@+id/id_spinner_provinces"
+                    android:layout_width="100dip"
+                    android:layout_height="35dip"
+                    android:background="@drawable/spinner_bg"
+                    android:drawSelectorOnTop="true"
+                    android:prompt="@string/register_hint_select_province" />
+
+                <View
+                    android:layout_width="1dip"
+                    android:layout_height="25dip"
+                    android:background="@drawable/tab_divider" />
+
+                <Spinner
+                    android:id="@+id/id_spinner_cities"
+                    android:layout_width="100dip"
+                    android:layout_height="35dip"
+                    android:background="@drawable/spinner_bg"
+                    android:drawSelectorOnTop="true"
+                    android:paddingTop="0dip"
+                    android:prompt="@string/register_hint_select_city" />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/id_txt_detail_addr"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/input_text_height_middle"
+                android:layout_gravity="center_horizontal"
+                android:background="@color/input_bg"
+                android:drawableLeft="@drawable/icon_register_addr"
+                android:hint="@string/exchange_hint_address"
+                android:paddingLeft="5dp"
+                android:textSize="16sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+            <EditText
+                android:id="@+id/id_txt_verification_code"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/input_text_height_middle"
+                android:layout_gravity="center_horizontal"
+                android:background="@color/input_bg"
+                android:drawableLeft="@drawable/icon_register_pwd"
+                android:hint="@string/register_hint_input_verification_code"
+                android:inputType="number"
+                android:paddingLeft="5dp"
+                android:textSize="16sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingLeft="5dp">
+
+                <com.creal.nest.views.CustomizeImageView
+                    android:id="@+id/id_coupon_thumbnail"
+                    android:layout_width="@dimen/verification_code_icon_width"
+                    android:layout_height="@dimen/verification_code_icon_height"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/test_verification_code"
+                    android:contentDescription="" />
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dip"
+                    android:layout_marginRight="15dip"
+                    android:background="@color/content_bg"
+                    android:gravity="left"
+                    android:onClick="onChangeVerificatoinCodeClick"
+                    android:text="@string/change_verification_code"
+                    android:textColor="@color/darkpink"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/input_text_height_middle"
+                android:layout_marginLeft="15dip"
+                android:layout_marginRight="15dip"
+                android:background="@drawable/search_text_view_border"
+                android:onClick="onSubmitClick"
+                android:text="@string/exchange_submit"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

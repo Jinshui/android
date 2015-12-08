@@ -1,0 +1,74 @@
+package com.creal.nest;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+import android.widget.Toast;
+
+import com.creal.nest.views.HeaderView;
+
+public class CommodityExchangeActivity extends Activity {
+
+    private static final String TAG = "XYK-MyCouponsActivity";
+    private Spinner mProvince;
+    private Spinner mCity;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_commodity_exchange);
+        HeaderView headerView = (HeaderView) findViewById(R.id.header);
+        headerView.hideRightImage();
+        headerView.setTitle(R.string.exchange_commit_title);
+
+        mProvince = (Spinner) findViewById(R.id.id_spinner_provinces);
+        ArrayAdapter<CharSequence> provinceAdapter = ArrayAdapter.createFromResource( this, R.array.provinces, android.R.layout.simple_spinner_item);
+        provinceAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mProvince.setAdapter(provinceAdapter);
+        mProvince.setOnItemSelectedListener(
+                new AdapterView.OnItemSelectedListener() {
+                    public void onItemSelected(
+                            AdapterView<?> parent, View view, int position, long id) {
+                        showToast("Spinner1: position=" + position + " id=" + id);
+                    }
+
+                    public void onNothingSelected(AdapterView<?> parent) {
+                        showToast("Spinner1: unselected");
+                    }
+                });
+
+        mCity = (Spinner) findViewById(R.id.id_spinner_cities);
+        ArrayAdapter<CharSequence> cityAdapter = ArrayAdapter.createFromResource(this, R.array.cities, android.R.layout.simple_spinner_item);
+        cityAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mCity.setAdapter(cityAdapter);
+        mCity.setOnItemSelectedListener(
+                new AdapterView.OnItemSelectedListener() {
+                    public void onItemSelected(
+                            AdapterView<?> parent, View view, int position, long id) {
+                        showToast("Spinner1: position=" + position + " id=" + id);
+                    }
+
+                    public void onNothingSelected(AdapterView<?> parent) {
+                        showToast("Spinner1: unselected");
+                    }
+                });
+    }
+
+    public void onChangeVerificatoinCodeClick(View view) {
+
+    }
+
+    public void onSubmitClick(View view) {
+        Intent intent = new Intent(this, CommodityExchangeSuccDialog.class);
+        startActivity(intent);
+        finish();
+    }
+
+    void showToast(CharSequence msg) {
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+    }
+}

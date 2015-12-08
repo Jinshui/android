@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_white_big_cornered"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/icon_recharge_select"
+        android:gravity="center" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="@string/exchange_succ"
+        android:textColor="@color/black"
+        android:textSize="@dimen/font_large" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@color/white"
+        android:gravity="center|left"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:text="@string/exchange_succ_desc"
+        android:textColor="@color/darkgray"
+        android:textSize="@dimen/font_small" />
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/input_text_height_middle"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="15dip"
+        android:layout_marginRight="15dip"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/search_text_view_border"
+        android:onClick="onViewHistoryClick"
+        android:text="@string/exchange_view_history"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
+</LinearLayout>

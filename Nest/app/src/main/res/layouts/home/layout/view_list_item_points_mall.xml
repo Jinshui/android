@@ -7,6 +7,7 @@
     android:orientation="horizontal">
 
     <LinearLayout
+        android:id="@+id/id_item1"
         android:layout_width="0dip"
         android:layout_height="wrap_content"
         android:layout_marginRight="3dp"

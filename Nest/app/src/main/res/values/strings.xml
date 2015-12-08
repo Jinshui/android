@@ -106,9 +106,28 @@
 
     <!--积分商城-->
     <string name="points_mall">积分商城</string>
+    <string name="points_mall_help">什么是积分？</string>
     <string name="points_mall_my_points">我的积分：</string>
     <string name="my_shopping_history">我的购买历史</string>
     <string name="points_exchange">积分兑换</string>
+    <!--兑换商品-->
+    <string name="commodity_detail">商品详情</string>
+    <string name="exchange">兑换</string>
+    <string name="commodity_characteristic">商品特点</string>
+    <string name="commodity_desc">商品说明</string>
+    <string name="exchange_desc">兑换说明</string>
+    <string name="exchange_commit_title">兑换信息</string>
+    <string name="exchange_hint_input_recipient_name">请输入收件人姓名</string>
+    <string name="exchange_hint_phone">请输入手机号/座机号</string>
+    <string name="exchange_hint_address">请输入详细地址以方便投递</string>
+    <string name="change_verification_code">看不清，换一张</string>
+    <string name="exchange_submit">提交</string>
+    <string name="exchange_succ">兑换成功</string>
+    <string name="exchange_succ_desc">您兑换的双头狮男士内裤中腰已经兑换成功，将在近几日通过快递方式邮寄给您。</string>
+    <string name="exchange_view_history">查看兑换记录</string>
+
+    <!--兑换优惠券-->
+
 
 
     <!-- 消费 -->

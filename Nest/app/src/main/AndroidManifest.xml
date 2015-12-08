@@ -34,6 +34,9 @@
             </intent-filter>
         </activity>
         <activity android:name="com.creal.nest.PointsMallActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.creal.nest.CommodityDetailActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.creal.nest.CommodityExchangeActivity" android:theme="@style/Theme.Custom.NoActionBar" android:screenOrientation="portrait"/>
+        <activity android:name="com.creal.nest.CommodityExchangeSuccDialog" android:theme="@style/Theme.CustomDialog" android:screenOrientation="portrait"/>
         <activity android:name="com.creal.nest.TryLuckyActivity" android:screenOrientation="portrait"/>
         <activity android:name="com.creal.nest.LatestActivitiesActivity" android:screenOrientation="portrait"/>
         <activity android:name="com.creal.nest.LatestActivityDetailActivity" android:screenOrientation="portrait"/>

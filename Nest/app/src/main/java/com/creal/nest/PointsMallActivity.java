@@ -45,6 +45,12 @@ public class PointsMallActivity extends ListActivity implements PullToRefreshBas
         HeaderView headerView = (HeaderView) findViewById(R.id.header);
         headerView.hideRightImage();
         headerView.setTitle(R.string.points_mall);
+        headerView.setRightText(R.string.points_mall_help);
+        headerView.setRightTextListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                //TODO: what is points mall
+            }
+        });
 
         mLoadingSupportPTRListView = (LoadingSupportPTRListView) findViewById(R.id.refresh_widget);
         mLoadingSupportPTRListView.setPadding(10, 0, 10, 0);
@@ -147,15 +153,6 @@ public class PointsMallActivity extends ListActivity implements PullToRefreshBas
         );
     }
 
-    protected void onListItemClick(ListView l, View v, int position, long id) {
-        Toast.makeText(getBaseContext(), "clicked: " + position + ", enabled: " + v.isEnabled(), Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(this, LatestActivityDetailActivity.class);
-        com.creal.nest.model.Activity activity = new com.creal.nest.model.Activity();
-        activity.setName("潮牌运动风");
-        intent.putExtra("activity", activity);
-        startActivity(intent);
-    }
-
     @Override
     public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
         loadFirstPage(false);
@@ -180,6 +177,7 @@ public class PointsMallActivity extends ListActivity implements PullToRefreshBas
             if (convertView == null) {
                 convertView = mInflater.inflate(R.layout.view_list_item_points_mall, parent, false);
                 holder = new ViewHolder();
+                holder.item1 = (LinearLayout)convertView.findViewById(R.id.id_item1);
                 holder.itemThumbnail1 = (CustomizeImageView) convertView.findViewById(R.id.id_item_thumbnail1);
                 holder.name1 = (TextView) convertView.findViewById(R.id.id_item_name1);
                 holder.desc1 = (TextView) convertView.findViewById(R.id.id_item_desc1);
@@ -191,6 +189,18 @@ public class PointsMallActivity extends ListActivity implements PullToRefreshBas
             } else {
                 holder = (ViewHolder) convertView.getTag();
             }
+            holder.item1.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    Intent intent = new Intent(PointsMallActivity.this, CommodityDetailActivity.class);
+                    startActivity(intent);
+                }
+            });
+            holder.item2.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    Intent intent = new Intent(PointsMallActivity.this, CommodityDetailActivity.class);
+                    startActivity(intent);
+                }
+            });
             return convertView;
         }
 
@@ -201,6 +211,7 @@ public class PointsMallActivity extends ListActivity implements PullToRefreshBas
         }
 
         class ViewHolder {
+            LinearLayout item1;
             CustomizeImageView itemThumbnail1;
             TextView name1;
             TextView desc1;
