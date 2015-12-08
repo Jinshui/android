@@ -30,7 +30,7 @@
         android:layout_margin="30dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
+        android:gravity="center_horizontal"
         xyk:color_finger_on_inner_circle_border="#000000"
         xyk:color_finger_on_inner_circle_fill="#FF1493"
         xyk:color_finger_on_outer_circle_border="#FF1493"

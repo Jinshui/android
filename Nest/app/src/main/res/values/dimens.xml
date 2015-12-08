@@ -20,6 +20,10 @@
 
     <dimen name="list_item_thumbnail_height_latest_activity">100dp</dimen>
 
+    <dimen name="lucky_coupons_list_item_icon_width">100dp</dimen>
+    <dimen name="lucky_coupons_list_item_icon_height">80dp</dimen>
+
+
     <dimen name="font_xxx_larger">30sp</dimen>
     <dimen name="font_xx_larger">28sp</dimen>
     <dimen name="font_extra_larger">24sp</dimen>

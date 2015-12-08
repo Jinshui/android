@@ -33,6 +33,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.creal.nest.TryLuckyActivity" />
         <activity android:name="com.creal.nest.LatestActivitiesActivity" />
         <activity android:name="com.creal.nest.LatestActivityDetailActivity" />
         <activity android:name="com.creal.nest.SnapupCouponsActivity" />

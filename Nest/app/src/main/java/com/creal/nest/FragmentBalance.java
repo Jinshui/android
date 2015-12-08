@@ -20,6 +20,7 @@ public class FragmentBalance extends Fragment {
 
     private TextView mAmounts;
     private Button mRechargeHistory;
+    private Button mRecharge;
     private TextView mMyPoints;
     private TextView mMyIngots;
 
@@ -40,6 +41,7 @@ public class FragmentBalance extends Fragment {
 
         mAmounts = (TextView)view.findViewById(R.id.id_text_amount);
         mRechargeHistory = (Button)view.findViewById(R.id.id_btn_recharge_history);
+        mRecharge = (Button)view.findViewById(R.id.id_btn_recharge);
         mMyPoints = (TextView)view.findViewById(R.id.id_text_my_points);
         mMyIngots = (TextView)view.findViewById(R.id.id_text_my_ingots);
         addListeners();
@@ -52,6 +54,12 @@ public class FragmentBalance extends Fragment {
                 Toast.makeText(getActivity(), "Not implemented yet!", Toast.LENGTH_SHORT).show();
             }
         });
+        mRecharge.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), RechargeActivity.class);
+                startActivity(intent);
+            }
+        });
         mMyPoints.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Toast.makeText(getActivity(), "Not implemented yet!", Toast.LENGTH_SHORT).show();
@@ -62,14 +70,5 @@ public class FragmentBalance extends Fragment {
                 Toast.makeText(getActivity(), "Not implemented yet!", Toast.LENGTH_SHORT).show();
             }
         });
-    }
-
-    public void onRechargeClick(View view){
-        Intent intent = new Intent(getActivity(), RechargeActivity.class);
-        startActivity(intent);
-    }
-
-    private void updateUI() {
-        Log.d(TAG, "updateUI");
     }
 }
