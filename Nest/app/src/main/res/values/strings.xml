@@ -104,6 +104,13 @@
     <string name="latest_activities_date">活动时间</string>
     <string name="latest_activities_view_more">查看图文介绍</string>
 
+    <!--积分商城-->
+    <string name="points_mall">积分商城</string>
+    <string name="points_mall_my_points">我的积分：</string>
+    <string name="my_shopping_history">我的购买历史</string>
+    <string name="points_exchange">积分兑换</string>
+
+
     <!-- 消费 -->
     <string name="pay">消费</string>
     <string name="pay_description">消费说明</string>

@@ -72,6 +72,8 @@ public class FragmentHome extends Fragment{
         });
         homeView.findViewById(R.id.id_btn_try_points_mall).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), PointsMallActivity.class);
+                startActivity(intent);
             }
         });
         homeView.findViewById(R.id.id_btn_ingots).setOnClickListener(new View.OnClickListener() {

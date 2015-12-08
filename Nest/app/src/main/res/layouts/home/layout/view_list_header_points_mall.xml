@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/content_bg"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/points_mall_header_icon_height"
+        android:background="@drawable/ic_points_mall_header_bg"
+        android:paddingLeft="15dp">
+
+        <TextView
+            android:id="@+id/id_txt_my_points_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/id_txt_my_points_desc"
+            android:layout_alignParentLeft="true"
+            android:paddingBottom="5dp"
+            android:text="@string/points_mall_my_points"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_small" />
+
+        <TextView
+            android:id="@+id/id_txt_my_points"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/id_txt_my_points_desc"
+            android:layout_toRightOf="@+id/id_txt_my_points_title"
+            android:padding="0dp"
+            android:text="3600"
+            android:textColor="#FFDD7A"
+            android:textSize="@dimen/font_xx_larger" />
+
+        <TextView
+            android:id="@+id/id_txt_my_points_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginBottom="15dip"
+            android:text="100积分将在2015年12月31日过期"
+            android:textColor="#FFD4EC"
+            android:textSize="@dimen/font_smaller" />
+
+    </RelativeLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:drawableRight="@drawable/right_arrow"
+        android:gravity="left"
+        android:onClick="onShoppingHistoryClick"
+        android:paddingBottom="5dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="10dp"
+        android:paddingTop="5dp"
+        android:text="@string/my_shopping_history"
+        android:textColor="#6B6D73"
+        android:textSize="@dimen/font_small" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dip" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingBottom="5dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="5dp"
+        android:text="@string/points_exchange"
+        android:textColor="@color/black"
+        android:textSize="@dimen/font_small" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dip"
+        android:background="@drawable/horizontal_divider" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dip"
+        android:background="@color/white" />
+
+</LinearLayout>
