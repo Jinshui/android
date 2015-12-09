@@ -132,7 +132,10 @@
     <string name="expired_date">有效期</string>
     <string name="coupons_rule">使用规则</string>
 
-    <!--兑换优惠券-->
+    <!--元宝商城-->
+    <string name="ingots_mall_title">元宝商城</string>
+    <string name="ingots_mall_help">什么是元宝？</string>
+    <string name="ingots_mall_my_points">我的元宝：</string>
 
 
 

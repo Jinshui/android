@@ -63,7 +63,7 @@ public class ExchangeCommodityRecipientActivity extends Activity {
     }
 
     public void onSubmitClick(View view) {
-        Intent intent = new Intent(this, ExchangeCommoditySuccDialog.class);
+        Intent intent = new Intent(this, ExchangeSuccDialog.class);
         startActivity(intent);
         finish();
     }

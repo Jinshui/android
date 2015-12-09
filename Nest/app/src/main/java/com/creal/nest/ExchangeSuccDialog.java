@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-public class ExchangeCommoditySuccDialog extends Activity {
+public class ExchangeSuccDialog extends Activity {
 
     private static final String TAG = "XYK-SnapCouponDialog";
 
