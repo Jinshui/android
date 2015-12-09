@@ -66,6 +66,6 @@ public class CustomizedPTRListView extends PullToRefreshListView {
 	}
 
 	public void addViewToListHeader(View view, int height){
-		mListViewHeader.addView(view, LayoutParams.FILL_PARENT, height);
+		mListViewHeader.addView(view, LayoutParams.MATCH_PARENT, height);
 	}
 }

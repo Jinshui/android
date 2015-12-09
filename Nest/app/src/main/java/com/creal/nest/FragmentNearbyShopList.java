@@ -13,7 +13,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
-import com.creal.nest.R;
 import com.creal.nest.actions.AbstractAction;
 import com.creal.nest.actions.GetShopAction;
 import com.creal.nest.actions.ParallelTask;
@@ -82,7 +81,7 @@ public class FragmentNearbyShopList extends HeaderLoadingSupportPTRListFragment 
                         if (isDetached() || getActivity() == null) //DO NOT update the view if this fragment is detached from the activity.
                             return;
                         if (mShopListAdapter == null) {
-                            mShopListAdapter = new ShopArrayAdapter(getActivity(), R.layout.view_shop_list_item, newsList.getItems());
+                            mShopListAdapter = new ShopArrayAdapter(getActivity(), R.layout.view_list_item_shop, newsList.getItems());
                             setAdapter(mShopListAdapter);
                         } else {
                             if (newsList.getItems().isEmpty()) {
@@ -127,7 +126,7 @@ public class FragmentNearbyShopList extends HeaderLoadingSupportPTRListFragment 
                 shopList.add(new Shop());
                 shopList.add(new Shop());
 				if(mShopListAdapter == null){
-					mShopListAdapter = new ShopArrayAdapter(getActivity(), R.layout.view_shop_list_item, shopList);
+					mShopListAdapter = new ShopArrayAdapter(getActivity(), R.layout.view_list_item_shop, shopList);
 					mGetShopAction = new GetShopAction(getActivity(), mCategory, shopList.size(), Constants.PAGE_SIZE);
 					setAdapter(mShopListAdapter);
 				}else{
@@ -157,7 +156,7 @@ public class FragmentNearbyShopList extends HeaderLoadingSupportPTRListFragment 
 						if (isDetached() || getActivity() == null) //DO NOT update the view if this fragment is detached from the activity.
 							return;
 						if (mShopListAdapter == null) {
-							mShopListAdapter = new ShopArrayAdapter(getActivity(), R.layout.view_shop_list_item, shopList.getItems());
+							mShopListAdapter = new ShopArrayAdapter(getActivity(), R.layout.view_list_item_shop, shopList.getItems());
 							setAdapter(mShopListAdapter);
 						} else {
 							if (shopList.getItems().isEmpty()) {
@@ -216,7 +215,7 @@ public class FragmentNearbyShopList extends HeaderLoadingSupportPTRListFragment 
         	final Shop shop = getItem(position);
             ViewHolder holder = null;
             if (convertView == null) {
-                convertView = mInflater.inflate( R.layout.view_shop_list_item, parent, false);
+                convertView = mInflater.inflate( R.layout.view_list_item_shop, parent, false);
                 holder = new ViewHolder();
                 holder.newsThumbnail = (CustomizeImageView) convertView.findViewById(R.id.id_shop_thumbnail);
                 holder.newsTitle = (TextView) convertView.findViewById(R.id.id_shop_title);

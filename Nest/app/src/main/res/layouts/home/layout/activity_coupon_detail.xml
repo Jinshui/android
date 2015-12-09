@@ -31,7 +31,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
-                android:background="@drawable/icon_coupon_detail_desc"
+                android:background="@color/translucence"
                 android:gravity="center_vertical"
                 android:orientation="vertical"
                 android:paddingLeft="10dip">

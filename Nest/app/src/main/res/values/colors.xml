@@ -159,4 +159,5 @@
 <color name="input_bg">#ffffff</color>
 <color name="barcode_bg">#F3F3F3</color>
 <color name="my_coupons_list_item_bg">#F3F6EF</color>
+    <color name="translucence">#88000000</color>
 </resources>

@@ -15,6 +15,10 @@
     <dimen name="my_coupons_list_item_icon_height">100dp</dimen>
     <dimen name="my_coupons_detail_image_height">210dp</dimen>
 
+    <dimen name="points_mall_header_icon_height">80dp</dimen>
+    <dimen name="points_mall_item_icon_width">150dp</dimen>
+    <dimen name="points_mall_item_icon_height">100dp</dimen>
+
     <dimen name="snapup_coupons_list_item_icon_width">100dp</dimen>
     <dimen name="snapup_coupons_list_item_icon_height">70dp</dimen>
 
@@ -22,6 +26,12 @@
 
     <dimen name="lucky_coupons_list_item_icon_width">100dp</dimen>
     <dimen name="lucky_coupons_list_item_icon_height">80dp</dimen>
+
+    <dimen name="verification_code_icon_width">80dp</dimen>
+    <dimen name="verification_code_icon_height">40dp</dimen>
+
+    <dimen name="ingot_mall_list_item_icon_width">80dp</dimen>
+    <dimen name="ingot_mall_list_item_icon_height">65dp</dimen>
 
 
     <dimen name="font_xxx_larger">30sp</dimen>
@@ -32,6 +42,7 @@
     <dimen name="font_middle">18sp</dimen>
     <dimen name="font_small">16sp</dimen>
     <dimen name="font_smaller">14sp</dimen>
+    <dimen name="font_extra_smaller">12sp</dimen>
 
 
 </resources>

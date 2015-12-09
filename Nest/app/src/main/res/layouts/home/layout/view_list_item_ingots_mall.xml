@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:padding="5dp">
+
+    <LinearLayout
+        android:id="@+id/id_content"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
+
+        <com.creal.nest.views.CustomizeImageView
+            android:id="@+id/id_ingot_thumbnail"
+            android:layout_width="@dimen/ingot_mall_list_item_icon_width"
+            android:layout_height="@dimen/ingot_mall_list_item_icon_height"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:background="@drawable/test_ingots_mall_item"
+            android:contentDescription="" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/ingot_mall_list_item_icon_height">
+
+            <TextView
+                android:id="@+id/id_ingot_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingLeft="5dp"
+                android:singleLine="true"
+                android:text="30元充值卡"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/id_ingot_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/id_ingot_info"
+                android:layout_marginBottom="2dp"
+                android:drawableLeft="@drawable/ic_ingots_small"
+                android:drawablePadding="5dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:singleLine="true"
+                android:text="3000元宝"
+                android:textColor="@color/grey"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/id_ingot_exchange"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/id_ingot_amount"
+                android:layout_alignParentRight="true"
+                android:layout_toRightOf="@+id/id_ingot_amount"
+                android:drawablePadding="5dp"
+                android:drawableRight="@drawable/right_arrow"
+                android:gravity="right"
+                android:paddingRight="5dp"
+                android:text="@string/exchange"
+                android:textColor="@color/grey"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/id_ingot_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:drawableLeft="@drawable/ic_info_small"
+                android:drawablePadding="5dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:text="兑换50元充值卡，可充值使用"
+                android:textColor="@color/grey"
+                android:textSize="14sp" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="1dip"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/horizontal_divider" />
+</RelativeLayout>
+

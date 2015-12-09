@@ -12,7 +12,7 @@ import com.handmark.pulltorefresh.library.PullToRefreshBase.Mode;
 import com.creal.nest.R;
 
 public class LoadingSupportPTRListView extends LinearLayout  {
-	private final static String tag = "TT-PTRListFragment";
+	private final static String tag = "TT-LoadingSupportPTR";
 	private CustomizedPTRListView mListView;
 	private View mLoadingView;
 	private ListAdapter mListAdapter;
@@ -38,13 +38,8 @@ public class LoadingSupportPTRListView extends LinearLayout  {
             mListView.setMode(mode);
 	}
 
-	public void setAdapter(ListAdapter adapter){
-		mListAdapter = adapter;
-		mListView.setAdapter(adapter);
-	}
-
-	public ListAdapter getAdapter(){
-		return mListAdapter;
+	public void addViewToListHeader(View view, int height){
+		mListView.addViewToListHeader(view, height);
 	}
 
     public final void showLoadingView() {
