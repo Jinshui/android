@@ -7,21 +7,21 @@ import android.view.View;
 
 import com.creal.nest.views.HeaderView;
 
-public class CommodityDetailActivity extends Activity {
+public class ExchangeCommodityDetailActivity extends Activity {
 
     private static final String TAG = "XYK-MyCouponsActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_commodity_detail);
+        setContentView(R.layout.activity_points_exchange_commodity_detail);
         HeaderView headerView = (HeaderView) findViewById(R.id.header);
         headerView.hideRightImage();
         headerView.setTitle(R.string.commodity_detail);
     }
 
     public void onExchangeClick(View view){
-        Intent intent = new Intent(this, CommodityExchangeActivity.class);
+        Intent intent = new Intent(this, ExchangeCommodityRecipientActivity.class);
         startActivity(intent);
     }
 

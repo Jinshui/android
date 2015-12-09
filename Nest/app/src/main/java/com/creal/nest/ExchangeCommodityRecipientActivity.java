@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import com.creal.nest.views.HeaderView;
 
-public class CommodityExchangeActivity extends Activity {
+public class ExchangeCommodityRecipientActivity extends Activity {
 
     private static final String TAG = "XYK-MyCouponsActivity";
     private Spinner mProvince;
@@ -20,7 +20,7 @@ public class CommodityExchangeActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_commodity_exchange);
+        setContentView(R.layout.activity_points_exchange_commodity_recipient_info);
         HeaderView headerView = (HeaderView) findViewById(R.id.header);
         headerView.hideRightImage();
         headerView.setTitle(R.string.exchange_commit_title);
@@ -63,7 +63,7 @@ public class CommodityExchangeActivity extends Activity {
     }
 
     public void onSubmitClick(View view) {
-        Intent intent = new Intent(this, CommodityExchangeSuccDialog.class);
+        Intent intent = new Intent(this, ExchangeCommoditySuccDialog.class);
         startActivity(intent);
         finish();
     }

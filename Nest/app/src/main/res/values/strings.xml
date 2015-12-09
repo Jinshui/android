@@ -125,6 +125,12 @@
     <string name="exchange_succ">兑换成功</string>
     <string name="exchange_succ_desc">您兑换的双头狮男士内裤中腰已经兑换成功，将在近几日通过快递方式邮寄给您。</string>
     <string name="exchange_view_history">查看兑换记录</string>
+    <!--兑换优惠券-->
+    <string name="coupons_detail">商品详情</string>
+    <string name="coupons_usage_desc">优惠券使用说明</string>
+    <string name="available_shop">使用商铺</string>
+    <string name="expired_date">有效期</string>
+    <string name="coupons_rule">使用规则</string>
 
     <!--兑换优惠券-->
 

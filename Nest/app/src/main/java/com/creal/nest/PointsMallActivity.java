@@ -15,9 +15,7 @@ import android.widget.Toast;
 
 import com.creal.nest.actions.AbstractAction;
 import com.creal.nest.actions.GetCommoditiesAction;
-import com.creal.nest.actions.GetLatestActivitiesAction;
 import com.creal.nest.model.Commodity;
-import com.creal.nest.model.Coupon;
 import com.creal.nest.model.Pagination;
 import com.creal.nest.views.CustomizeImageView;
 import com.creal.nest.views.HeaderView;
@@ -191,13 +189,13 @@ public class PointsMallActivity extends ListActivity implements PullToRefreshBas
             }
             holder.item1.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
-                    Intent intent = new Intent(PointsMallActivity.this, CommodityDetailActivity.class);
+                    Intent intent = new Intent(PointsMallActivity.this, ExchangeCouponDetailActivity.class);
                     startActivity(intent);
                 }
             });
             holder.item2.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
-                    Intent intent = new Intent(PointsMallActivity.this, CommodityDetailActivity.class);
+                    Intent intent = new Intent(PointsMallActivity.this, ExchangeCommodityDetailActivity.class);
                     startActivity(intent);
                 }
             });

@@ -23,6 +23,7 @@
         android:textSize="@dimen/font_large" />
 
     <TextView
+        android:id="@+id/id_text_message"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"

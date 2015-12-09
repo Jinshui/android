@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/content_bg"
+    android:orientation="vertical">
+
+    <com.creal.nest.views.HeaderView
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fadingEdgeLength="0dip"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/my_coupons_detail_image_height">
+
+                <com.creal.nest.views.CustomizeImageView
+                    android:id="@+id/id_coupon_thumbnail"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_centerVertical="true"
+                    android:contentDescription=""
+                    android:src="@drawable/test_my_coupons_detail" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:background="@color/translucence"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical"
+                        android:paddingLeft="10dip">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:singleLine="true"
+                            android:text="5元优惠券"
+                            android:textSize="@dimen/font_middle" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="3dip"
+                            android:singleLine="true"
+                            android:text="满266元可使用" />
+                    </LinearLayout>
+                </RelativeLayout>
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:text="1000积分"
+                    android:textColor="@color/darkpink"
+                    android:textSize="@dimen/font_larger" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/bg_pink_cornered"
+                    android:onClick="onExchangeClick"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:paddingTop="5dp"
+                    android:text="@string/exchange"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/font_large" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:background="@color/white"
+                android:padding="5dp"
+                android:text="@string/coupons_usage_desc"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_large" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@drawable/horizontal_divider" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:background="@color/white"
+                android:padding="5dp"
+                android:text="@string/available_shop"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_middle" />
+
+            <TextView
+                android:id="@+id/id_txt_commodity_charact"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:background="@color/white"
+                android:paddingLeft="5dp"
+                android:text="优惠券可用商铺：北国先天下，保北购物广场，东丽花行，北斗星餐厅"
+                android:textColor="@color/darkgray"
+                android:textSize="@dimen/font_middle" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:background="@color/white"
+                android:padding="5dp"
+                android:text="@string/expired_date"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_middle" />
+
+            <TextView
+                android:id="@+id/id_txt_exechange_desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:background="@color/white"
+                android:paddingLeft="5dp"
+                android:text="2015年10月28日至2016年11月26日"
+                android:textColor="@color/darkgray"
+                android:textSize="@dimen/font_middle" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:background="@color/white"
+                android:padding="5dp"
+                android:text="@string/coupons_rule"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_middle" />
+
+            <TextView
+                android:id="@+id/id_txt_coupons_rule"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:background="@color/white"
+                android:paddingLeft="5dp"
+                android:text="满266元以上商品或消费方可使用5元优惠券"
+                android:textColor="@color/darkgray"
+                android:textSize="@dimen/font_middle" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
