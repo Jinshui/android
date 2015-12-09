@@ -21,7 +21,7 @@
         <option name="ALLOW_USER_CONFIGURATION" value="false" />
         <option name="MANIFEST_FILE_RELATIVE_PATH" value="/src/main/AndroidManifest.xml" />
         <option name="RES_FOLDER_RELATIVE_PATH" value="/src/main/res/layouts/nearby" />
-        <option name="RES_FOLDERS_RELATIVE_PATH" value="file://$MODULE_DIR$/src/main/res/layouts;file://$MODULE_DIR$/src/main/res;file://$MODULE_DIR$/src/main/res/layouts/settings;file://$MODULE_DIR$/src/main/res/layouts/test;file://$MODULE_DIR$/src/main/res/layouts/common;file://$MODULE_DIR$/src/main/res/layouts/home;file://$MODULE_DIR$/src/main/res/layouts/balance;file://$MODULE_DIR$/src/main/res/layouts/nearby" />
+        <option name="RES_FOLDERS_RELATIVE_PATH" value="file://$MODULE_DIR$/src/main/res;file://$MODULE_DIR$/src/main/res/layouts/home;file://$MODULE_DIR$/src/main/res/layouts/settings;file://$MODULE_DIR$/src/main/res/layouts/test;file://$MODULE_DIR$/src/main/res/layouts;file://$MODULE_DIR$/src/main/res/layouts/nearby;file://$MODULE_DIR$/src/main/res/layouts/balance;file://$MODULE_DIR$/src/main/res/layouts/common" />
         <option name="ASSETS_FOLDER_RELATIVE_PATH" value="/src/main/assets" />
       </configuration>
     </facet>
