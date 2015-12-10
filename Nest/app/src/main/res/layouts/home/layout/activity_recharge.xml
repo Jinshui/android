@@ -38,7 +38,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1px"
-                android:background="@drawable/horizontal_divider" />
+                android:background="@drawable/divider_horizontal" />
 
             <EditText
                 android:id="@+id/id_txt_amount"
@@ -210,7 +210,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1px"
-                android:background="@drawable/horizontal_divider" />
+                android:background="@drawable/divider_horizontal" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -266,7 +266,7 @@
                 android:layout_height="1px"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:background="@drawable/horizontal_divider" />
+                android:background="@drawable/divider_horizontal" />
 
             <LinearLayout
                 android:layout_width="match_parent"

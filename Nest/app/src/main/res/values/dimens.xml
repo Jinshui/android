@@ -30,6 +30,7 @@
     <dimen name="verification_code_icon_width">80dp</dimen>
     <dimen name="verification_code_icon_height">40dp</dimen>
 
+    <!--元宝商城-->
     <dimen name="ingot_mall_list_item_icon_width">80dp</dimen>
     <dimen name="ingot_mall_list_item_icon_height">65dp</dimen>
 

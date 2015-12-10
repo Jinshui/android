@@ -78,7 +78,7 @@
             <View
                 android:layout_width="wrap_content"
                 android:layout_height="1dip"
-                android:background="@drawable/horizontal_divider" />
+                android:background="@drawable/divider_horizontal" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -99,7 +99,7 @@
             <View
                 android:layout_width="wrap_content"
                 android:layout_height="1dip"
-                android:background="@drawable/horizontal_divider" />
+                android:background="@drawable/divider_horizontal" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -120,7 +120,7 @@
             <View
                 android:layout_width="wrap_content"
                 android:layout_height="1dip"
-                android:background="@drawable/horizontal_divider" />
+                android:background="@drawable/divider_horizontal" />
 
             <TextView
                 android:layout_width="wrap_content"

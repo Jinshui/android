@@ -138,6 +138,30 @@
     <string name="ingots_mall_my_points">我的元宝：</string>
 
 
+    <!--物业-->
+    <string name="property_management">物业管理</string>
+    <string name="recharge_fee">缴费</string>
+    <string name="recharge_property_fee">缴纳物业费</string>
+    <string name="report_maintenance">报修</string>
+    <string name="report_maintenance_service">报修服务</string>
+    <string name="query_remaining_balance">查询账户余额</string>
+    <string name="recharge_property_hint">缴纳物业费请保证余额大于缴纳的资金</string>
+    <string name="pay_history">缴费记录</string>
+    <string name="repair_history">维修记录</string>
+    <string name="property_pay_desc">缴费说明</string>
+    <string name="property_pay_desc_text">点击确定将从您的小燕卡账户中扣除并进行缴费，请保持余额大于缴费金额。</string>
+    <string name="property_pay">缴费</string>
+    <string name="property_repair">报修</string>
+    <string name="property_repair_common">公共部分</string>
+    <string name="property_repair_personal">个人部分</string>
+    <string name="property_repair_name">请输入标题 如：水管维修</string>
+    <string name="property_repair_uname">请输入联系人姓名</string>
+    <string name="property_repair_phone">请输入联系电话</string>
+    <string name="property_repair_summary">请输入需要维修的简要介绍</string>
+    <string name="property_repair_vecode">请输入验证码</string>
+    <string name="property_repair_report_list">报修列表</string>
+    <string name="property_repair_report_time">报修时间:</string>
+    <string name="property_repair_finish_time">完成时间:</string>
 
     <!-- 消费 -->
     <string name="pay">消费</string>

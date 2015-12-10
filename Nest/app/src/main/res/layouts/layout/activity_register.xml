@@ -70,7 +70,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1px"
-                android:background="@drawable/horizontal_divider" />
+                android:background="@drawable/divider_horizontal" />
 
             <EditText
                 android:id="@+id/id_txt_verification_code"
@@ -86,7 +86,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1px"
-                android:background="@drawable/horizontal_divider" />
+                android:background="@drawable/divider_horizontal" />
 
             <EditText
                 android:id="@+id/id_txt_password"
@@ -121,7 +121,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1px"
-                android:background="@drawable/horizontal_divider" />
+                android:background="@drawable/divider_horizontal" />
 
             <EditText
                 android:id="@+id/id_txt_user_id"
@@ -174,7 +174,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1px"
-                android:background="@drawable/horizontal_divider" />
+                android:background="@drawable/divider_horizontal" />
 
             <EditText
                 android:id="@+id/id_txt_detail_addr"

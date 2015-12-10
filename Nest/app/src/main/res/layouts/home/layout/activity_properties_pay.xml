@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/content_bg"
+    android:orientation="vertical">
+
+    <com.creal.nest.views.HeaderView
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fadingEdgeLength="0dip"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:background="@drawable/ic_property_recharge_bg"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_property_recharge_hint"
+                    android:drawablePadding="5dp"
+                    android:gravity="center"
+                    android:paddingTop="10dp"
+                    android:text="您目前需要缴纳物业费"
+                    android:textColor="#676767"
+                    android:textSize="@dimen/font_small" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="300元"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/font_extra_larger" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginTop="5dp"
+                    android:drawablePadding="5dp"
+                    android:drawableRight="@drawable/right_arrow"
+                    android:text="@string/query_remaining_balance"
+                    android:textColor="#484B52"
+                    android:textSize="@dimen/font_middle" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/bg_pink_cornered"
+                    android:onClick="onRechargeClick"
+                    android:paddingBottom="3dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:paddingTop="3dp"
+                    android:text="@string/recharge"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/font_large" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@drawable/divider_horizontal" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:background="@color/white"
+                android:padding="10dp"
+                android:text="@string/recharge_property_hint"
+                android:textColor="#C4C6C5"
+                android:textSize="@dimen/font_small" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:background="@color/white"
+                android:drawableLeft="@drawable/ic_clock"
+                android:drawablePadding="5dp"
+                android:padding="10dp"
+                android:text="物业缴费到期时间 2015年10月30日"
+                android:textColor="#56585D"
+                android:textSize="@dimen/font_small" />
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:background="@color/white"
+                android:padding="10dp"
+                android:text="@string/property_pay_desc"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_small" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@drawable/divider_horizontal" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:background="@color/white"
+                android:padding="10dp"
+                android:text="@string/property_pay_desc_text"
+                android:textColor="#56585D"
+                android:textSize="@dimen/font_smaller" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+            <EditText
+                android:id="@+id/id_txt_password"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/input_text_height_middle"
+                android:layout_gravity="center_horizontal"
+                android:background="@color/white"
+                android:drawableLeft="@drawable/icon_binding_input_verificatoin_code"
+                android:hint="@string/binding_hint_input_verification_code"
+                android:inputType="number"
+                android:textSize="16sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="5dp">
+
+                <com.creal.nest.views.CustomizeImageView
+                    android:id="@+id/id_coupon_thumbnail"
+                    android:layout_width="@dimen/verification_code_icon_width"
+                    android:layout_height="@dimen/verification_code_icon_height"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/test_verification_code"
+                    android:contentDescription="" />
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dip"
+                    android:layout_marginRight="15dip"
+                    android:background="@color/content_bg"
+                    android:gravity="left"
+                    android:onClick="onChangeVerificatoinCodeClick"
+                    android:text="@string/change_verification_code"
+                    android:textColor="@color/darkpink"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/input_text_height_middle"
+                android:layout_marginLeft="15dip"
+                android:layout_marginRight="15dip"
+                android:background="@drawable/search_text_view_border"
+                android:onClick="onPayClick"
+                android:text="@string/property_pay"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

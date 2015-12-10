@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/content_bg"
+    android:orientation="vertical">
+
+    <com.creal.nest.views.HeaderView
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fadingEdgeLength="0dip"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp">
+
+                <RadioButton
+                    android:id="@+id/id_btn_common"
+                    style="@style/NoCircleRadioButtonStyle"
+                    android:layout_width="0dip"
+                    android:layout_height="30dip"
+                    android:layout_weight="1"
+                    android:checked="true"
+                    android:gravity="center"
+                    android:text="@string/property_repair_common"
+                    android:textColor="@drawable/color_selector_pink_black"
+                    android:textSize="@dimen/font_middle" />
+
+
+                <View
+                    android:layout_width="1dp"
+                    android:background="@drawable/divider_vertical"
+                    android:layout_height="match_parent" />
+
+                <RadioButton
+                    android:id="@+id/id_btn_personal"
+                    style="@style/NoCircleRadioButtonStyle"
+                    android:layout_width="0dip"
+                    android:layout_height="30dip"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/property_repair_personal"
+                    android:textColor="@drawable/color_selector_pink_black"
+                    android:textSize="@dimen/font_middle" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+            <EditText
+                android:id="@+id/id_txt_repair_name"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/input_text_height_middle"
+                android:layout_gravity="center_horizontal"
+                android:background="@color/white"
+                android:drawableLeft="@drawable/ic_property_repair_name"
+                android:hint="@string/property_repair_name"
+                android:paddingLeft="10dp"
+                android:textSize="16sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+            <EditText
+                android:id="@+id/id_txt_repair_uname"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/input_text_height_middle"
+                android:layout_gravity="center_horizontal"
+                android:background="@color/white"
+                android:drawableLeft="@drawable/ic_property_repair_uname"
+                android:hint="@string/property_repair_uname"
+                android:paddingLeft="10dp"
+                android:textSize="16sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@drawable/divider_horizontal" />
+
+            <EditText
+                android:id="@+id/id_txt_repair_phone"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/input_text_height_middle"
+                android:layout_gravity="center_horizontal"
+                android:background="@color/white"
+                android:drawableLeft="@drawable/ic_property_repair_phone"
+                android:hint="@string/property_repair_phone"
+                android:inputType="number"
+                android:paddingLeft="10dp"
+                android:textSize="16sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="22dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/ic_property_repair_info"
+                    android:layout_height="18dp"/>
+
+                <EditText
+                    android:id="@+id/id_txt_repair_summary"
+                    android:layout_width="0dip"
+                    android:layout_weight="1"
+                    android:layout_height="120dp"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="top"
+                    android:hint="@string/property_repair_summary"
+                    android:inputType="number"
+                    android:paddingTop="10dp"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+            <EditText
+                android:id="@+id/id_txt_repair_vecode"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/input_text_height_middle"
+                android:layout_gravity="center_horizontal"
+                android:background="@color/white"
+                android:drawableLeft="@drawable/ic_property_repair_vecode"
+                android:hint="@string/property_repair_vecode"
+                android:inputType="number"
+                android:paddingLeft="10dp"
+                android:textSize="16sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="5dp">
+
+                <com.creal.nest.views.CustomizeImageView
+                    android:id="@+id/id_coupon_thumbnail"
+                    android:layout_width="@dimen/verification_code_icon_width"
+                    android:layout_height="@dimen/verification_code_icon_height"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/test_verification_code"
+                    android:contentDescription="" />
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dip"
+                    android:layout_marginRight="15dip"
+                    android:background="@color/content_bg"
+                    android:gravity="left"
+                    android:onClick="onChangeVerificatoinCodeClick"
+                    android:text="@string/change_verification_code"
+                    android:textColor="@color/darkpink"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/input_text_height_middle"
+                android:layout_marginLeft="15dip"
+                android:layout_marginRight="15dip"
+                android:background="@drawable/search_text_view_border"
+                android:onClick="onSubmitClick"
+                android:text="@string/exchange_submit"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -20,6 +20,7 @@ import android.widget.ImageView;
 
 import com.creal.nest.Constants;
 import com.creal.nest.actions.ParallelTask;
+import com.creal.nest.util.ImageUtil;
 
 import java.io.File;
 import java.io.InputStream;
@@ -147,7 +148,7 @@ public class CustomizeImageView extends ImageView {
     		return;
         new ParallelTask<Drawable>(){
             protected Drawable doInBackground(Void... params) {
-            	return com.creal.nest.util.PhotoUtil.bytes2Drawable(data);
+            	return ImageUtil.bytes2Drawable(data);
             }
             @SuppressWarnings("deprecation")
 			protected void onPostExecute(Drawable drawable){

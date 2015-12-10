@@ -84,6 +84,8 @@ public class FragmentHome extends Fragment{
         });
         homeView.findViewById(R.id.id_btn_property).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), PropertiesActivity.class);
+                startActivity(intent);
             }
         });
         homeView.findViewById(R.id.id_btn_my_custom_service).setOnClickListener(new View.OnClickListener() {

@@ -26,7 +26,7 @@
     <View
         android:layout_width="wrap_content"
         android:layout_height="1dp"
-        android:background="@drawable/horizontal_divider" />
+        android:background="@drawable/divider_horizontal" />
 
     <Button
         android:layout_width="300dip"

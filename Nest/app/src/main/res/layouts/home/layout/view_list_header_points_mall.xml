@@ -80,7 +80,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dip"
-        android:background="@drawable/horizontal_divider" />
+        android:background="@drawable/divider_horizontal" />
 
     <View
         android:layout_width="match_parent"
