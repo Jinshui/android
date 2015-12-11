@@ -1,15 +1,15 @@
-package com.creal.nest;
+package com.creal.nest.property;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.RadioButton;
 
+import com.creal.nest.R;
 import com.creal.nest.views.HeaderView;
 
-public class PropertiesRepairActivity extends Activity {
+public class PropertyRepairActivity extends Activity {
 
     private static final String TAG = "XYK-LatestActivities";
 
@@ -19,7 +19,7 @@ public class PropertiesRepairActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_properties_repair);
+        setContentView(R.layout.activity_property_repair);
         HeaderView headerView = (HeaderView) findViewById(R.id.header);
         headerView.hideRightImage();
         headerView.setTitle(R.string.property_repair);

@@ -131,10 +131,16 @@ public class RepairsActivity extends ListActivity implements PullToRefreshBase.O
 
     protected void onListItemClick(ListView l, View v, int position, long id){
         Toast.makeText(getBaseContext(), "clicked: " + position + ", enabled: " + v.isEnabled(), Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(this, LatestActivityDetailActivity.class);
-        com.creal.nest.model.Activity activity = new com.creal.nest.model.Activity();
-        activity.setName("潮牌运动风");
-        intent.putExtra("activity", activity);
+        Intent intent = new Intent(this, RepairDetailActivity.class);
+        Repair repair = new Repair();
+        repair.setName("潮牌运动风");
+
+        repair.getStepList().add(new Repair.Step("维修中...", "2015.6.11 16:20"));
+        repair.getStepList().add(new Repair.Step("维修师傅返回准备所需物料", "2015.6.11 16:10"));
+        repair.getStepList().add(new Repair.Step("已经安排物业维修师傅上门检查损坏情况", "2015.6.11 15:40"));
+        repair.getStepList().add(new Repair.Step("您的报修信息已经开始.", "2015.6.11 15:36"));
+
+        intent.putExtra("repair", repair);
         startActivity(intent);
     }
 

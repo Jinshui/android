@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.creal.nest.R;
+import com.creal.nest.property.PropertyManagementActivity;
 import com.creal.nest.views.PhotoPager;
 
 import java.util.Arrays;
@@ -84,7 +84,7 @@ public class FragmentHome extends Fragment{
         });
         homeView.findViewById(R.id.id_btn_property).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), PropertiesActivity.class);
+                Intent intent = new Intent(getActivity(), PropertyManagementActivity.class);
                 startActivity(intent);
             }
         });

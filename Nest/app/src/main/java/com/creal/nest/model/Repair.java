@@ -1,9 +1,14 @@
 package com.creal.nest.model;
 
 import android.os.Parcel;
+import android.os.Parcelable;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Repair extends BaseModel {
 
@@ -18,9 +23,48 @@ public class Repair extends BaseModel {
         }
     };
 
+    public static class Step implements Parcelable {
+
+        public static final Creator<Step> CREATOR = new Creator<Step>() {
+            public Step createFromParcel(Parcel in) {
+                return new Step(in);
+            }
+            public Step[] newArray(int size) {
+                return new Step[size];
+            }
+        };
+
+        public String desc;
+        public String date;
+
+        public Step(Parcel in){
+            desc = in.readString();
+            date = in.readString();
+        }
+
+        public Step(String desc, String date){
+            this.date = date;
+            this.desc = desc;
+        }
+
+        @Override
+        public int describeContents() {
+            return 0;
+        }
+
+        @Override
+        public void writeToParcel(Parcel dest, int flags) {
+            dest.writeString(desc);
+            dest.writeString(date);
+        }
+    }
+
     private String name;
 
     private boolean done;
+
+    private List<Step> stepList;
+
 
     public Repair(){
     }
@@ -32,12 +76,23 @@ public class Repair extends BaseModel {
     public Repair(Parcel in){
         super(in);
         name = in.readString();
+        in.readTypedList( getStepList(), Step.CREATOR);
     }
 
     public void writeToParcel(Parcel dest, int flags) {
         super.writeToParcel(dest, flags);
         dest.writeString(name);
+        dest.writeTypedList(getStepList());
+    }
 
+    public List<Step> getStepList() {
+        if(stepList == null)
+            stepList = new ArrayList<>();
+        return stepList;
+    }
+
+    public void setStepList(List<Step> stepList) {
+        this.stepList = stepList;
     }
 
     public String getName() {

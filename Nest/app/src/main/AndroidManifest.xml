@@ -38,10 +38,11 @@
         <activity android:name=".ExchangeCouponDetailActivity" android:screenOrientation="portrait"/>
         <activity android:name=".ExchangeCommodityRecipientActivity" android:theme="@style/Theme.Custom.NoActionBar" android:screenOrientation="portrait"/>
         <activity android:name=".ExchangeSuccDialog" android:theme="@style/Theme.CustomDialog" android:screenOrientation="portrait"/>
-        <activity android:name=".PropertiesActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".PropertiesPayActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".PropertiesRepairActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".property.PropertyManagementActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".property.PropertyPayActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".property.PropertyRepairActivity" android:screenOrientation="portrait"/>
         <activity android:name=".property.RepairsActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".property.RepairDetailActivity" android:screenOrientation="portrait"/>
         <activity android:name="com.creal.nest.IngotsMallActivity" android:screenOrientation="portrait"/>
         <activity android:name="com.creal.nest.TryLuckyActivity" android:screenOrientation="portrait"/>
         <activity android:name="com.creal.nest.LatestActivitiesActivity" android:screenOrientation="portrait"/>

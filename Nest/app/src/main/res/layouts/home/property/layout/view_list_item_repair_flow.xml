@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:paddingLeft="10dp"
+    android:paddingTop="10dp">
+
+    <TextView
+        android:id="@+id/id_txt_repair_step_desc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/triangle_pink"
+        android:text="维修中..."
+        android:textColor="#FF62B5"
+        android:textSize="@dimen/font_middle" />
+
+    <TextView
+        android:id="@+id/id_txt_repair_step_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:text="2015年6月11日 16:20"
+        android:textColor="#FF62B5"
+        android:textSize="@dimen/font_middle" />
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dip" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dip"
+        android:background="@drawable/divider_horizontal" />
+</LinearLayout>

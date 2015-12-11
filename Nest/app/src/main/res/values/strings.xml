@@ -162,6 +162,7 @@
     <string name="property_repair_report_list">报修列表</string>
     <string name="property_repair_report_time">报修时间:</string>
     <string name="property_repair_finish_time">完成时间:</string>
+    <string name="property_repair_detail">维修详情</string>
 
     <!-- 消费 -->
     <string name="pay">消费</string>

@@ -15,3 +15,6 @@ Nest/library/build
 Nest/app/build
 Nest/build
 Nest/.gradle/
+*.iml
+.idea
+local.properties
