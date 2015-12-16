@@ -10,6 +10,8 @@
     <string name="main_tab_title_settings">设置</string>
     <string name="scan_text">将二维码放入框内, 即可自动扫描</string>
     <string name="scan">扫描二维码</string>
+    <string name="search">搜索</string>
+    <string name="search_history">搜索记录</string>
     <!--登录相关-->
     <string name="login_account_login">账号登录</string>
     <string name="login_card_id">卡号/手机号/邮箱</string>
@@ -80,7 +82,7 @@
     <string name="snapup_coupons_total">总数</string>
     <string name="snapup_coupons_remaining">剩余</string>
     <string name="snapup_coupons_dlg_congratu">恭喜您</string>
-    <string name="snapup_coupons_dlg_btn">我知道了</string>
+    <string name="snapup_coupons_dlg_btn">知道了</string>
     <string name="test_snapup_coupons_name">十元优惠券</string>
     <string name="test_snapup_coupons_total">总数: 200张</string>
     <string name="test_snapup_coupons_remaining">剩余: 100张</string>
@@ -91,6 +93,7 @@
     <string name="coupon_provider">使用商铺:</string>
     <string name="coupon_expired_date">有效期:</string>
     <string name="coupon_rule">使用规则:</string>
+    <string name="coupon_snap_now">马上抢</string>
     <string name="test_coupon_name">5元优惠券</string>
     <string name="test_coupon_desc">满266元使用立减5元</string>
     <string name="test_coupon_expired_date">2015-10-26 23:00 至 2015-11-10 23:00</string>

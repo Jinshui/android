@@ -1,5 +1,6 @@
 package com.creal.nest;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -53,6 +54,12 @@ public class FragmentNearby extends Fragment {
         headerView.setRightImage(R.drawable.header_search_icon);
         headerView.setTitle(R.string.main_tab_title_nearby);
         headerView.setTitleCenter();
+        headerView.setRightBtnListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), SearchActivity.class);
+                getActivity().startActivity(intent);
+            }
+        });
         mTabScrollView = (HorizontalScrollView)view.findViewById(R.id.tabs_scrollView);
         mLoadingView = view.findViewById(R.id.id_category_loading);
         mViewPager = (ViewPager) view.findViewById(R.id.nearbyViewpager);

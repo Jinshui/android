@@ -40,6 +40,7 @@
         </activity>
         <activity android:name=".test.TestActivity" android:screenOrientation="portrait"/>
         <activity android:name=".MipcaActivityCapture" android:screenOrientation="portrait"/>
+        <activity android:name=".SearchActivity" android:screenOrientation="portrait"/>
         <activity android:name=".ShopDetailActivity" android:screenOrientation="portrait"/>
         <activity android:name=".PointsMallActivity" android:screenOrientation="portrait"/>
         <activity android:name=".ExchangeCommodityDetailActivity" android:screenOrientation="portrait"/>
@@ -57,6 +58,7 @@
         <activity android:name=".LatestActivitiesActivity" android:screenOrientation="portrait"/>
         <activity android:name=".LatestActivityDetailActivity" android:screenOrientation="portrait"/>
         <activity android:name=".SnapupCouponsActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".SnapCouponDetailActivity" android:screenOrientation="portrait"/>
         <activity android:name=".SnapCouponDialogActivity" android:theme="@style/Theme.CustomDialog" android:screenOrientation="portrait"/>
         <activity android:name=".CouponDetailActivity" android:screenOrientation="portrait"/>
         <activity android:name=".GesturePwdActivity" android:screenOrientation="portrait" />

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#393939"
+    android:orientation="vertical">
+
+    <com.creal.nest.views.HeaderView
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:layout_marginLeft="15dip"
+        android:layout_marginRight="15dip"
+        android:layout_marginTop="30dip"
+        android:background="@drawable/bg_coupons_detail">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_alignTop="@+id/id_txt_amount"
+            android:layout_toLeftOf="@+id/id_txt_amount"
+            android:text="￥"
+            android:textSize="@dimen/font_middle"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/id_txt_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/id_txt_coupons"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="200"
+            android:textColor="@color/white"
+            android:textSize="55sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/id_txt_coupons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/id_txt_amount_desc"
+            android:layout_marginBottom="25dip"
+            android:gravity="center"
+            android:text="优惠券"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_extra_larger" />
+
+        <TextView
+            android:id="@+id/id_txt_amount_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/id_panel_remaing"
+            android:layout_marginBottom="15dip"
+            android:gravity="center"
+            android:text="21:0优惠券面值200元，总数2000张"
+            android:textColor="#FFA415" />
+
+        <LinearLayout
+            android:id="@+id/id_panel_remaing"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/bg_yellow_big_cornered"
+            android:orientation="vertical"
+            android:textSize="@dimen/font_extra_larger">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dip"
+                android:text="还剩购物券"
+                android:textColor="#80221A"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="5dip"
+                    android:background="@drawable/bg_darkgray_big_cornered"
+                    android:paddingBottom="3dp"
+                    android:paddingLeft="40dp"
+                    android:paddingRight="40dp"
+                    android:paddingTop="3dp"
+                    android:text="1600"
+                    android:textColor="#EE0A3B"
+                    android:textSize="@dimen/font_extra_larger"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:paddingLeft="3dp"
+                    android:paddingTop="15dip"
+                    android:text="张"
+                    android:textColor="#80221A"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/id_btn_recharge"
+        android:layout_width="match_parent"
+        android:layout_height="35dip"
+        android:layout_marginLeft="15dip"
+        android:layout_marginRight="15dip"
+        android:layout_marginTop="20dip"
+        android:background="@drawable/bg_red_big_cornered"
+        android:paddingLeft="20dip"
+        android:paddingRight="20dip"
+        android:onClick="onSnapClick"
+        android:text="@string/coupon_snap_now"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dip"
+        android:gravity="center"
+        android:text="本场优惠券总数2000张"
+        android:textColor="#646464" />
+
+</LinearLayout>

@@ -99,7 +99,8 @@ public class SnapupCouponsActivity extends ListActivity implements SwipeRefreshL
     }
 
     protected void onListItemClick(ListView l, View v, int position, long id){
-        Toast.makeText(getBaseContext(), "clicked: " + position + ", enabled: " + v.isEnabled(), Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, SnapCouponDetailActivity.class);
+        startActivity(intent);
     }
 
     public class SnapCouponsListAdapter extends PTRListAdapter<Coupon> {

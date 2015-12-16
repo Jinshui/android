@@ -10,6 +10,7 @@
     android:paddingTop="5dip">
 
     <EditText
+        android:id="@+id/id_txt_search"
         android:layout_width="0dip"
         android:layout_height="27dip"
         android:layout_marginTop="5dip"
