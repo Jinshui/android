@@ -51,17 +51,20 @@ public class FragmentSetting extends Fragment {
     private void addListeners(){
         mGeneralInfo.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "Not implemented yet!", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getActivity(), UserInfoActivity.class);
+                startActivity(intent);
             }
         });
         mChangePwd.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "Not implemented yet!", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getActivity(), ChangePwdActivity.class);
+                startActivity(intent);
             }
         });
         mShoppingHistory.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "Not implemented yet!", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getActivity(), ShoppingHistoryActivity.class);
+                startActivity(intent);
             }
         });
         mPointsHistory.setOnClickListener(new View.OnClickListener() {

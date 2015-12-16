@@ -56,10 +56,13 @@ public class MainActivity extends FragmentActivity {
             e.printStackTrace();
         }
         MenuInflater inflater = popup.getMenuInflater();
-        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener(){
+        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             public boolean onMenuItemClick(MenuItem item) {
-                if(item.getItemId() == R.id.action_scan){
+                if (item.getItemId() == R.id.action_scan) {
                     Intent intent = new Intent(MainActivity.this, MipcaActivityCapture.class);
+                    startActivity(intent);
+                } else if (item.getItemId() == R.id.action_pay) {
+                    Intent intent = new Intent(MainActivity.this, BarcodeActivity.class);
                     startActivity(intent);
                 }
                 return true;

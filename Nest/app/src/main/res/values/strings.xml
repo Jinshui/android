@@ -230,5 +230,16 @@
     <string name="help">帮助</string>
     <string name="about">关于我们</string>
     <string name="exchange_history">兑换记录</string>
+    <!-- 个人信息 -->
+    <string name="user_info">个人信息</string>
+    <string name="user_name">姓名</string>
+    <string name="user_sex">性别</string>
+    <string name="user_card">卡号</string>
+    <string name="user_phone">绑定手机</string>
+    <!-- 修必密码 -->
+    <string name="old_pwd">输入原密码</string>
+    <string name="new_pwd">请输入新密码</string>
+    <string name="new_pwd_again">确认新密码</string>
+    <string name="save_changes">保存修改</string>
 
 </resources>
