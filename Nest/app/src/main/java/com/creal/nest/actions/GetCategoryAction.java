@@ -9,10 +9,11 @@ public class GetCategoryAction extends PaginationAction<String>{
     public GetCategoryAction(Context context, int pageIndex, int pageSize) {
         super(context, pageIndex, pageSize);
         mServiceId = SERVICE_ID_CATEGORY;
+        mURL = "";
     }
 
-    public void addRequestParameters(JSONObject parameters) throws JSONException {
-        super.addRequestParameters(parameters);
+    protected void addRequestParameters(JSONObject parameters, String timeStr) throws JSONException {
+        super.addRequestParameters(parameters, timeStr);
     }
 
     @Override

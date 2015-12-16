@@ -25,6 +25,8 @@ import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -32,9 +34,32 @@ import java.util.Date;
 import java.util.Properties;
 
 public class Utils {
-    private final static String tag = "TT-Utils";
+    private final static String tag = "N-Utils";
     private static SimpleDateFormat sdf = null;
-    
+
+    public static String md5(String in) {
+        Log.d(tag, "before md5: " + in);
+        MessageDigest digest;
+        try {
+            digest = MessageDigest.getInstance("MD5");
+            digest.reset();
+            digest.update(in.getBytes());
+            byte[] a = digest.digest();
+            int len = a.length;
+            StringBuilder sb = new StringBuilder(len << 1);
+            for (int i = 0; i < len; i++) {
+                sb.append(Character.forDigit((a[i] & 0xf0) >> 4, 16));
+                sb.append(Character.forDigit(a[i] & 0x0f, 16));
+            }
+            String result = sb.toString();
+            Log.d(tag, "after md5: " + result);
+            return result;
+        } catch (NoSuchAlgorithmException e) {
+            Log.e(tag, "Failed create md5 hash", e);
+            return null;
+        }
+    }
+
     public static String formatDate(String format, long date) {
     	return formatDate(format, new Date(date));
     }

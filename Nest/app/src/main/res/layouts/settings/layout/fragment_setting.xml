@@ -33,7 +33,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dip"
                 android:background="@color/white"
-                android:drawableLeft="@drawable/icon_set_persion"
+                android:drawableLeft="@drawable/ic_settings_general_info"
+                android:drawablePadding="5dp"
                 android:drawableRight="@drawable/right_arrow"
                 android:gravity="center|left"
                 android:padding="10dip"
@@ -45,14 +46,15 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1px"
-                android:background="@color/gray" />
+                android:background="@drawable/divider_horizontal" />
 
             <TextView
                 android:id="@+id/id_text_change_pwd"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
-                android:drawableLeft="@drawable/icon_set_change_pwd"
+                android:drawableLeft="@drawable/ic_settings_change_pwd"
+                android:drawablePadding="5dp"
                 android:drawableRight="@drawable/right_arrow"
                 android:gravity="center|left"
                 android:padding="10dip"
@@ -68,7 +70,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dip"
                 android:background="@color/white"
-                android:drawableLeft="@drawable/icon_set_history"
+                android:drawableLeft="@drawable/ic_settings_shop_history"
+                android:drawablePadding="5dp"
                 android:drawableRight="@drawable/right_arrow"
                 android:gravity="center|left"
                 android:padding="10dip"
@@ -84,7 +87,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dip"
                 android:background="@color/white"
-                android:drawableLeft="@drawable/icon_set_point"
+                android:drawableLeft="@drawable/ic_settings_exchanges"
+                android:drawablePadding="5dp"
                 android:drawableRight="@drawable/right_arrow"
                 android:gravity="center|left"
                 android:padding="10dip"
@@ -96,14 +100,15 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1px"
-                android:background="@color/gray" />
+                android:background="@drawable/divider_horizontal" />
 
             <TextView
                 android:id="@+id/id_text_ingots_exchange_history"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
-                android:drawableLeft="@drawable/icon_set_ingots"
+                android:drawableLeft="@drawable/ic_settings_exch_ingots"
+                android:drawablePadding="5dp"
                 android:drawableRight="@drawable/right_arrow"
                 android:gravity="center|left"
                 android:padding="10dip"
@@ -119,7 +124,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dip"
                 android:background="@color/white"
-                android:drawableLeft="@drawable/icon_set_set"
+                android:drawableLeft="@drawable/ic_settings_app_set"
+                android:drawablePadding="5dp"
                 android:drawableRight="@drawable/right_arrow"
                 android:gravity="center|left"
                 android:padding="10dip"
@@ -131,14 +137,15 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1px"
-                android:background="@color/gray" />
+                android:background="@drawable/divider_horizontal" />
 
             <TextView
                 android:id="@+id/id_text_check_updates"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
-                android:drawableLeft="@drawable/icon_set_update"
+                android:drawableLeft="@drawable/ic_settings_updates"
+                android:drawablePadding="5dp"
                 android:drawableRight="@drawable/right_arrow"
                 android:gravity="center|left"
                 android:padding="10dip"
@@ -150,14 +157,15 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1px"
-                android:background="@color/gray" />
+                android:background="@drawable/divider_horizontal" />
 
             <TextView
                 android:id="@+id/id_text_help"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
-                android:drawableLeft="@drawable/icon_set_help"
+                android:drawableLeft="@drawable/ic_settings_help"
+                android:drawablePadding="5dp"
                 android:drawableRight="@drawable/right_arrow"
                 android:gravity="center|left"
                 android:padding="10dip"
@@ -169,14 +177,15 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1px"
-                android:background="@color/gray" />
+                android:background="@drawable/divider_horizontal" />
 
             <TextView
                 android:id="@+id/id_text_about"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
-                android:drawableLeft="@drawable/icon_set_about"
+                android:drawableLeft="@drawable/ic_settings_about"
+                android:drawablePadding="5dp"
                 android:drawableRight="@drawable/right_arrow"
                 android:gravity="center|left"
                 android:padding="10dip"

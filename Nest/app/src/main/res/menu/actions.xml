@@ -17,5 +17,10 @@
         android:id="@+id/action_add"
         android:icon="@drawable/home_actionbar_menu_pay"
         android:title="@string/home_actionbar_menu_pay"
-        app:showAsAction="always"></item>
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/action_scan"
+        android:icon="@drawable/home_actionbar_menu_scan"
+        android:title="@string/home_actionbar_menu_scan"
+        app:showAsAction="always"/>
 </menu>

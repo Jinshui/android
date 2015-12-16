@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.creal.nest.R;
+import com.creal.nest.test.TestActivity;
 import com.creal.nest.views.HeaderView;
 
 public class PhoneBinderActivity extends Activity {
@@ -46,6 +47,13 @@ public class PhoneBinderActivity extends Activity {
         startActivity(intent);
         finish();
     }
+
+    public void onTestClick(View view){
+        Intent intent = new Intent(this, TestActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
 
     public void onSendVerificationCodeClick(View view){
 

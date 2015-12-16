@@ -1,5 +1,8 @@
 package com.creal.nest.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -8,10 +11,34 @@ import org.json.JSONObject;
  */
 public class Coupon extends BaseModel {
 
+    public static final Parcelable.Creator<Coupon> CREATOR
+            = new Parcelable.Creator<Coupon>() {
+        public Coupon createFromParcel(Parcel in) {
+            return new Coupon(in);
+        }
+
+        public Coupon[] newArray(int size) {
+            return new Coupon[size];
+        }
+    };
+
     private boolean isExpired = false;
     private boolean started = true;
 
     public Coupon(){
+    }
+
+    public Coupon(Parcel in){
+        super(in);
+        boolean[] booleans = new boolean[2];
+        in.readBooleanArray(booleans);
+        isExpired = booleans[0];
+        started = booleans[1];
+    }
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        boolean[] booleans = new boolean[]{isExpired, started};
+        dest.writeBooleanArray(booleans);
     }
 
     public Coupon(boolean isExpired){

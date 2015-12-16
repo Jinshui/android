@@ -199,7 +199,7 @@ public class FragmentNearbyShopList extends HeaderLoadingSupportPTRListFragment 
 	}
 
 	private static void showShop(Context context, Shop shop){
-		Intent showNewsDetailIntent = new Intent();
+		Intent showNewsDetailIntent = new Intent(context, ShopDetailActivity.class);
 		context.startActivity(showNewsDetailIntent);
 	}
 	

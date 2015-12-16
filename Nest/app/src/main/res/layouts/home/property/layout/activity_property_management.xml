@@ -221,49 +221,39 @@
                 android:layout_width="match_parent"
                 android:layout_height="10dp" />
 
-            <LinearLayout
+            <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <Button
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:background="@color/white"
-                    android:paddingBottom="5dp"
-                    android:onClick="onPayHistoryClick"
-                    android:paddingLeft="10dp"
-                    android:paddingTop="5dp"
-                    android:text="@string/pay_history"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/font_small" />
-
-                <View
-                    android:layout_width="1dp"
-                    android:background="@drawable/divider_vertical"
-                    android:layout_height="wrap_content"/>
-
-                <Button
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:background="@color/white"
-                    android:paddingBottom="5dp"
-                    android:paddingLeft="10dp"
-                    android:onClick="onRepairHistoryClick"
-                    android:paddingTop="5dp"
-                    android:text="@string/repair_history"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/font_small" />
-            </LinearLayout>
+                android:layout_alignParentLeft="true"
+                android:background="@color/white"
+                android:drawableRight="@drawable/right_arrow"
+                android:gravity="left"
+                android:onClick="onPayHistoryClick"
+                android:padding="10dip"
+                android:text="@string/pay_history"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_small" />
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@drawable/divider_horizontal" />
+                android:layout_height="10dp" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:background="@color/white"
+                android:drawableRight="@drawable/right_arrow"
+                android:gravity="left"
+                android:onClick="onRepairHistoryClick"
+                android:padding="10dip"
+                android:text="@string/repair_history"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_small" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
 
             <TextView
                 android:layout_width="match_parent"

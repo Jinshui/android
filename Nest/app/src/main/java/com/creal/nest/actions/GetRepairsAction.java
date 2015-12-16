@@ -17,11 +17,12 @@ public class GetRepairsAction extends PaginationAction<Repair> {
     public GetRepairsAction(Context context, int pageIndex, int pageSize){
         super(context, pageIndex, pageSize);
         mServiceId = SERVICE_ID_NEWS;
+        mURL = "";
     }
 
     @Override
-    public void addRequestParameters(JSONObject parameters) throws JSONException {
-        super.addRequestParameters(parameters);
+    protected void addRequestParameters(JSONObject parameters, String timeStr) throws JSONException {
+        super.addRequestParameters(parameters, timeStr);
         try{
 //            parameters.put(NAME, URLEncoder.encode(mCategory, "UTF-8"));
         }catch(Exception e){

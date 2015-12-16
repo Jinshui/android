@@ -1,17 +1,17 @@
 package com.creal.nest;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTabHost;
 import android.support.v7.widget.PopupMenu;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TabHost.TabSpec;
 import android.widget.TextView;
-
-import com.creal.nest.R;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -46,10 +46,8 @@ public class MainActivity extends FragmentActivity {
                 if ("mPopup".equals(field.getName())) {
                     field.setAccessible(true);
                     Object menuPopupHelper = field.get(popup);
-                    Class<?> classPopupHelper = Class.forName(menuPopupHelper
-                            .getClass().getName());
-                    Method setForceIcons = classPopupHelper.getMethod(
-                            "setForceShowIcon", boolean.class);
+                    Class<?> classPopupHelper = Class.forName(menuPopupHelper.getClass().getName());
+                    Method setForceIcons = classPopupHelper.getMethod("setForceShowIcon", boolean.class);
                     setForceIcons.invoke(menuPopupHelper, true);
                     break;
                 }
@@ -58,9 +56,19 @@ public class MainActivity extends FragmentActivity {
             e.printStackTrace();
         }
         MenuInflater inflater = popup.getMenuInflater();
+        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener(){
+            public boolean onMenuItemClick(MenuItem item) {
+                if(item.getItemId() == R.id.action_scan){
+                    Intent intent = new Intent(MainActivity.this, MipcaActivityCapture.class);
+                    startActivity(intent);
+                }
+                return true;
+            }
+        });
         inflater.inflate(R.menu.actions, popup.getMenu());
         popup.show();
     }
+
 
     /**
      * 初始化组件

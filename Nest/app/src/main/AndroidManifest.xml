@@ -9,6 +9,10 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
 
     <application
         android:allowBackup="true"
@@ -27,36 +31,42 @@
             </intent-filter>
         </activity>
         -->
-        <activity android:name="com.creal.nest.PhoneBinderActivity" android:screenOrientation="portrait">
+        <activity android:name=".PhoneBinderActivity" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.creal.nest.PointsMallActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".test.TestActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".MipcaActivityCapture" android:screenOrientation="portrait"/>
+        <activity android:name=".ShopDetailActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".PointsMallActivity" android:screenOrientation="portrait"/>
         <activity android:name=".ExchangeCommodityDetailActivity" android:screenOrientation="portrait"/>
         <activity android:name=".ExchangeCouponDetailActivity" android:screenOrientation="portrait"/>
         <activity android:name=".ExchangeCommodityRecipientActivity" android:theme="@style/Theme.Custom.NoActionBar" android:screenOrientation="portrait"/>
+        <activity android:name=".ExchangePointHistoryActivity" android:screenOrientation="portrait"/>
         <activity android:name=".ExchangeSuccDialog" android:theme="@style/Theme.CustomDialog" android:screenOrientation="portrait"/>
         <activity android:name=".property.PropertyManagementActivity" android:screenOrientation="portrait"/>
         <activity android:name=".property.PropertyPayActivity" android:screenOrientation="portrait"/>
         <activity android:name=".property.PropertyRepairActivity" android:screenOrientation="portrait"/>
         <activity android:name=".property.RepairsActivity" android:screenOrientation="portrait"/>
         <activity android:name=".property.RepairDetailActivity" android:screenOrientation="portrait"/>
-        <activity android:name="com.creal.nest.IngotsMallActivity" android:screenOrientation="portrait"/>
-        <activity android:name="com.creal.nest.TryLuckyActivity" android:screenOrientation="portrait"/>
-        <activity android:name="com.creal.nest.LatestActivitiesActivity" android:screenOrientation="portrait"/>
-        <activity android:name="com.creal.nest.LatestActivityDetailActivity" android:screenOrientation="portrait"/>
-        <activity android:name="com.creal.nest.SnapupCouponsActivity" android:screenOrientation="portrait"/>
-        <activity android:name="com.creal.nest.SnapCouponDialogActivity" android:theme="@style/Theme.CustomDialog" android:screenOrientation="portrait"/>
-        <activity android:name="com.creal.nest.CouponDetailActivity" android:screenOrientation="portrait"/>
-        <activity android:name="com.creal.nest.GesturePwdActivity" android:screenOrientation="portrait" />
-        <activity android:name="com.creal.nest.MyCouponsActivity" android:screenOrientation="portrait"/>
-        <activity android:name="com.creal.nest.BarcodeActivity" android:screenOrientation="portrait" />
-        <activity android:name="com.creal.nest.MainActivity" android:theme="@style/Theme.Custom.NoActionBar" android:screenOrientation="portrait"/>
-        <activity android:name="com.creal.nest.RechargeActivity" android:screenOrientation="portrait"/>
-        <activity android:name="com.creal.nest.LoginActivity" android:screenOrientation="portrait"/>
-        <activity android:name="com.creal.nest.RegisterActivity" android:theme="@style/Theme.Custom.NoActionBar" android:screenOrientation="portrait"/>
+        <activity android:name=".IngotsMallActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".TryLuckyActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".LatestActivitiesActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".LatestActivityDetailActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".SnapupCouponsActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".SnapCouponDialogActivity" android:theme="@style/Theme.CustomDialog" android:screenOrientation="portrait"/>
+        <activity android:name=".CouponDetailActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".GesturePwdActivity" android:screenOrientation="portrait" />
+        <activity android:name=".MyCouponsActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".BarcodeActivity" android:screenOrientation="portrait" />
+        <activity android:name=".MainActivity" android:theme="@style/Theme.Custom.NoActionBar" android:screenOrientation="portrait"/>
+        <activity android:name=".RechargeActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".RechargeHistoryActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".IngotsExchangeHistoryActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".LoginActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".RegisterActivity" android:theme="@style/Theme.Custom.NoActionBar" android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

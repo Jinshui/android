@@ -7,6 +7,7 @@ import android.view.View;
 
 import com.creal.nest.R;
 import com.creal.nest.RechargeActivity;
+import com.creal.nest.RechargeHistoryActivity;
 import com.creal.nest.views.HeaderView;
 
 public class PropertyManagementActivity extends Activity {
@@ -43,7 +44,8 @@ public class PropertyManagementActivity extends Activity {
     }
 
     public void onPayHistoryClick(View view) {
-
+        Intent intent = new Intent(this, RechargeHistoryActivity.class);
+        startActivity(intent);
     }
 
     public void onRepairHistoryClick(View view) {

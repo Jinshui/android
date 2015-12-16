@@ -11,7 +11,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.creal.nest.R;
 import com.creal.nest.views.HeaderView;
 
 
@@ -51,7 +50,8 @@ public class FragmentBalance extends Fragment {
     private void addListeners(){
         mRechargeHistory.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "Not implemented yet!", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getActivity(), RechargeHistoryActivity.class);
+                startActivity(intent);
             }
         });
         mRecharge.setOnClickListener(new View.OnClickListener() {

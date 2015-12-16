@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="45dip"
-    android:background="@color/deeperpink"
+    android:background="@color/content_bg"
     android:orientation="horizontal"
     android:paddingBottom="5dip"
     android:paddingLeft="10dip"
@@ -10,29 +10,25 @@
     android:paddingTop="5dip">
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="0dip"
         android:layout_height="27dip"
+        android:layout_marginTop="5dip"
+        android:layout_weight="1"
+        android:background="@drawable/bg_white_big_cornered"
         android:drawableLeft="@drawable/home_header_search_icon"
+        android:drawablePadding="10dp"
+        android:gravity="center_vertical"
         android:hint="@string/search_hint"
         android:singleLine="true"
-        android:gravity="center_vertical"
-        android:layout_marginTop="5dip"
-        android:textSize="17sp"
-        android:background="@drawable/search_text_view_border"
-        android:layout_weight="1" />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="30dip"
-        android:layout_weight="0"
-        android:visibility="gone"
-        android:text="@string/home_actionbar_btn_search" />
+        android:textSize="17sp" />
 
     <ImageButton
-        android:layout_width="35dip"
-        android:layout_height="35dip"
-        android:layout_marginLeft="1dip"
-        android:layout_weight="0"
-        android:background="@android:drawable/ic_menu_add"
+        android:layout_width="25dip"
+        android:layout_height="25dip"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/ic_menu_add"
         android:onClick="showPopup" />
 
 </LinearLayout>

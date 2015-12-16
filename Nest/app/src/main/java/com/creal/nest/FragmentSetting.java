@@ -1,5 +1,6 @@
 package com.creal.nest;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -65,12 +66,14 @@ public class FragmentSetting extends Fragment {
         });
         mPointsHistory.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "Not implemented yet!", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getActivity(), ExchangePointHistoryActivity.class);
+                startActivity(intent);
             }
         });
         mIngotsHistory.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "Not implemented yet!", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getActivity(), IngotsExchangeHistoryActivity.class);
+                startActivity(intent);
             }
         });
         mAppSettings.setOnClickListener(new View.OnClickListener() {

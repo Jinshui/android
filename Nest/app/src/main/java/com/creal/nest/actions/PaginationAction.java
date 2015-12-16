@@ -34,7 +34,7 @@ public abstract class PaginationAction<Result> extends AbstractAction<Pagination
     }
 
     @Override
-    public void addRequestParameters(JSONObject parameters) throws JSONException {
+    protected void addRequestParameters(JSONObject parameters, String timeStr) throws JSONException {
         parameters.put(PAGE_INDEX, String.valueOf(mPageIndex));
         parameters.put(PAGE_SIZE, String.valueOf(mPageSize));
     }

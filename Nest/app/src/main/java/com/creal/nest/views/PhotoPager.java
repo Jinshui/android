@@ -91,7 +91,7 @@ public class PhotoPager extends LinearLayout implements ViewPager.OnPageChangeLi
             Bundle bundle = new Bundle();
             //TODO: uncomment this line
 //            bundle.putString("fileUrl", photoUrls.get(position));
-            bundle.putInt("resId", R.drawable.home_ad1);
+            bundle.putInt("resId", R.drawable.test_home_ad1);
             fragment.setArguments(bundle);
             return fragment;
         }

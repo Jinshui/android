@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
+    <string name="select_an_api">选择一个接口</string>
+    <string name="gototest">测试</string>
     <string name="app_name">燕巢</string>
     <string name="hello_world">Hello world!</string>
     <string name="main_tab_title_home">首页</string>
     <string name="main_tab_title_nearby">附近商家</string>
     <string name="main_tab_title_balance">最新余额</string>
     <string name="main_tab_title_settings">设置</string>
-
+    <string name="scan_text">将二维码放入框内, 即可自动扫描</string>
+    <string name="scan">扫描二维码</string>
     <!--登录相关-->
     <string name="login_account_login">账号登录</string>
     <string name="login_card_id">卡号/手机号/邮箱</string>
@@ -46,11 +48,12 @@
     <!-- 首页 -->
     <string name="home_actionbar_btn_search">搜索</string>
     <string name="home_actionbar_menu_pay">付款</string>
+    <string name="home_actionbar_menu_scan">扫二维码</string>
     <string name="search_hint">搜索商户/功能/地区</string>
     <string name="home_my_cards">我的券</string>
     <string name="home_own_cards">拥有的卡券</string>
     <string name="home_my_consumption">消费</string>
-    <string name="home_recent_discount">近期优惠</string>
+    <string name="home_go_to_pay">我要付款</string>
     <string name="home_charge">充值</string>
     <string name="home_qiangquan">今日抢券</string>
     <string name="home_activity">活动</string>
@@ -193,11 +196,16 @@
     <string name="load_failed">加载失败,请稍候重试!</string>
     <string name="no_more_to_load">全部加载完毕</string>
 
-    <!--Nearby-->
+    <!--附近商户-->
     <string name="test_shop_title">比尔斯烤肉自助</string>
     <string name="test_shop_discount">促销</string>
     <string name="test_shop_address">南市区保定百货大楼(裕华西路39号北京大厦)</string>
     <string name="test_shop_category">自助 烧烤 涮锅</string>
+    <!--商户详情-->
+    <string name="shop_detail_title">商户详情</string>
+    <string name="shop_desc">商户介绍</string>
+    <string name="shop_view_more">查看图文介绍</string>
+
 
     <!--Balance-->
     <string name="balance">账户余额</string>
@@ -207,6 +215,8 @@
     <string name="my_points">我的积分</string>
     <string name="my_ingots">我的元宝</string>
     <string name="balance_description">使用积分和元宝可兑换优惠券和商品</string>
+    <string name="balance_recharge_amount">充值金额:</string>
+    <string name="balance_recharge_time">充值时间:</string>
 
     <!-- Settings -->
     <string name="settings">设置</string>
@@ -219,4 +229,6 @@
     <string name="check_updates">更新</string>
     <string name="help">帮助</string>
     <string name="about">关于我们</string>
+    <string name="exchange_history">兑换记录</string>
+
 </resources>

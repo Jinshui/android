@@ -6,23 +6,39 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.util.Log;
 
+import com.creal.nest.util.Utils;
+import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestHandle;
 import com.loopj.android.http.RequestParams;
 import com.loopj.android.http.SyncHttpClient;
-import com.creal.nest.Constants;
 
 import org.apache.http.Header;
+import org.apache.http.HttpEntity;
 import org.apache.http.HttpStatus;
+import org.apache.http.entity.StringEntity;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.text.DateFormat;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.concurrent.Executor;
 
 public abstract class AbstractAction<Result> extends ParallelTask<AbstractAction.ActionResult<Result>> implements JSONConstants{
     private static final String tag = "TT-AbstractRequest";
-    private static final String URL = Constants.SERVER_ADDRESS;
+    //For Test only START
+    private Object mOriginalRequest;
+    public Object getOriginalRequest(){return mOriginalRequest;}
+    private Object mOriginalResponse;
+    public Object getOriginalResponse(){return mOriginalResponse;}
+    private Throwable mOriginalError;
+    public Object getOriginalError(){return mOriginalError;}
+    //For Test only END
+    protected String mURL;
     protected String mServiceId;
     protected Context mAppContext;
     private UICallBack<Result> mUICallback;
@@ -101,20 +117,28 @@ public abstract class AbstractAction<Result> extends ParallelTask<AbstractAction
 	        String response = null;
 	        try{
 	            JSONObject jsonReq = createJSONRequest();
-	            Log.d(tag, "Sending JSON request : " + jsonReq.toString(4));
+                mOriginalRequest = jsonReq;
+	            Log.d(tag, "Sending JSON request to " + getUrl() + "\n" + jsonReq.toString(4));
 
 	            SyncHttpClient httpClient = new SyncHttpClient();
-	            RequestParams params=new RequestParams();
-	            @SuppressWarnings("rawtypes")
-                Iterator keys = jsonReq.keys();
-	            while(keys.hasNext()){
-	            	String key = keys.next().toString();
-	            	params.put(key, jsonReq.get(key));
-	            }
-	            httpClient.post(URL, params, new JsonHttpResponseHandler(){
+//	            RequestParams params=new RequestParams();
+//	            @SuppressWarnings("rawtypes")
+//                Iterator keys = jsonReq.keys();
+//	            while(keys.hasNext()){
+//	            	String key = keys.next().toString();
+//	            	params.put(key, jsonReq.get(key));
+//	            }
+                HttpEntity entity = new StringEntity(jsonReq.toString(), AsyncHttpResponseHandler.DEFAULT_CHARSET);
+                httpClient.post(mAppContext, getUrl(), entity, RequestParams.APPLICATION_JSON, new JsonHttpResponseHandler(){
 	    			@Override
 	    			public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
 	    				try {
+                            Header[] header = getRequestHeaders();
+                            if(header != null)
+                            for(int i=0; i<header.length; i++){
+                                Log.d(tag, header[i].getName() + ": " +header[i].getValue());
+                            }
+                            mOriginalResponse = response;
 	    	                Log.d(tag, "Received JSON response : " + response.toString(4));
 		    				super.onSuccess(statusCode, headers, response);
 							mResult = new ActionResult<Result>(createRespObject(response));
@@ -124,19 +148,27 @@ public abstract class AbstractAction<Result> extends ParallelTask<AbstractAction
 						} 
 	    			}
 	    			public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
+                        mOriginalResponse = response;
 	    				super.onSuccess(statusCode, headers, response);
 	    			}
 	    			public void onSuccess(int statusCode, Header[] headers, String response) {
+                        mOriginalResponse = response;
 	    				super.onSuccess(statusCode, headers, response);
 	    			}
 	    			public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse){
+                        mOriginalResponse = errorResponse;
+                        mOriginalError = throwable;
 	    				onFailure(statusCode, headers, errorResponse == null? "" : errorResponse.toString(), throwable);
 	    			}
 	    			public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONArray errorResponse){
+                        mOriginalResponse = errorResponse;
+                        mOriginalError = throwable;
 	    				onFailure(statusCode, headers, errorResponse == null? "" : errorResponse.toString(), throwable);
 	    			}
 	    			@Override
 	    			public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                        mOriginalResponse = responseString;
+                        mOriginalError = throwable;
 	    				super.onFailure(statusCode, headers, responseString, throwable);
     	                Log.e(tag, "Received Error response : StatusCode: " + statusCode + ", Received response : " + responseString);
 	    				try {
@@ -156,6 +188,7 @@ public abstract class AbstractAction<Result> extends ParallelTask<AbstractAction
 	    		});
 	        } catch(Exception e) {
 	            Log.e(tag, "Failed to process action : " + mServiceId + "\n" + response, e);
+                mOriginalError = e;
 	            mResult = new ActionResult<Result>(new ActionError(ErrorCode.NETWORK_ERROR, e.getMessage()));
 	        }
 	        if(mBackgroundCallBack != null){
@@ -250,12 +283,27 @@ public abstract class AbstractAction<Result> extends ParallelTask<AbstractAction
 
     private JSONObject createJSONRequest() throws JSONException {
         JSONObject request = new JSONObject();
-        request.put(SERVICE_ID, mServiceId);
-        addRequestParameters(request);
-        return request;
+        String timeStr = Utils.formatDate("yyyy-MM-dd HH:mm:ss", new Date());
+
+        JSONObject requestBody = new JSONObject();
+        addRequestParameters(requestBody, timeStr);
+        request.putOpt("body", requestBody);
+
+        String key = "123456789";
+        String hash = requestBody.toString() + timeStr + key;
+        String signature = Utils.md5(hash);
+        request.put("signature", signature);
+        request.put("timestr", timeStr);
+
+        JSONObject wrapper = new JSONObject();
+        wrapper.put("request", request);
+        return wrapper;
     }
 
-    protected abstract void addRequestParameters(JSONObject params) throws JSONException;
+    public String getUrl(){ return mURL; }
+    public void setUrl(String url) { this.mURL = url;}
+
+    protected abstract void addRequestParameters(JSONObject params, String timeStr) throws JSONException;
 
     protected abstract Result createRespObject(JSONObject response) throws JSONException;
 }
