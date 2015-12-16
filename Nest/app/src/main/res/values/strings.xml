@@ -115,13 +115,17 @@
     <string name="points_mall_help">什么是积分？</string>
     <string name="points_mall_my_points">我的积分：</string>
     <string name="my_shopping_history">我的购买历史</string>
-    <string name="points_exchange">积分兑换</string>
+    <string name="commodity_exchange">商品兑换</string>
+    <string name="coupons_exchange">优惠券兑换</string>
+    <string name="commodity_exchange_section">商品兑换区</string>
+    <string name="coupons_exchange_section">优惠券兑换区</string>
     <!--兑换商品-->
     <string name="commodity_detail">商品详情</string>
     <string name="exchange">兑换</string>
     <string name="commodity_characteristic">商品特点</string>
     <string name="commodity_desc">商品说明</string>
     <string name="exchange_desc">兑换说明</string>
+    <string name="photo_desc_detail">图文详情</string>
     <string name="exchange_commit_title">兑换信息</string>
     <string name="exchange_hint_input_recipient_name">请输入收件人姓名</string>
     <string name="exchange_hint_phone">请输入手机号/座机号</string>
@@ -137,6 +141,8 @@
     <string name="available_shop">使用商铺</string>
     <string name="expired_date">有效期</string>
     <string name="coupons_rule">使用规则</string>
+    <string name="exchange_confirm">确认兑换</string>
+    <string name="back_to_ingots_mall">返回元宝商城</string>
 
     <!--元宝商城-->
     <string name="ingots_mall_title">元宝商城</string>

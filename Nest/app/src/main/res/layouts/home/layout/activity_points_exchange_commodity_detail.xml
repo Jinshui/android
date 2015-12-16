@@ -157,22 +157,29 @@
                 android:textColor="@color/darkgray"
                 android:textSize="@dimen/font_middle" />
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:background="@color/white"
+                android:padding="5dp"
+                android:text="@string/photo_desc_detail"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_middle" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:background="@color/white"
+                android:paddingLeft="5dp"
+                android:text="天然蓝色 视网膜屏 2048 x 1536 分辨率\nWin10英特尔Z83000处理器+正版Win10操作系统\n4GB + 64Gb: 4G运行内存+64G超大存储 + HDMI + 蓝牙"
+                android:textColor="@color/darkgray"
+                android:textSize="@dimen/font_middle" />
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="10dp" />
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:drawablePadding="4dp"
-                android:drawableRight="@drawable/right_arrow"
-                android:gravity="left"
-                android:onClick="onViewMoreClick"
-                android:padding="10dp"
-                android:text="@string/latest_activities_view_more"
-                android:textColor="@color/deeperpink"
-                android:textSize="@dimen/font_middle" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

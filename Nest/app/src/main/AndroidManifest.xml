@@ -47,6 +47,7 @@
         <activity android:name=".ExchangeCouponDetailActivity" android:screenOrientation="portrait"/>
         <activity android:name=".ExchangeCommodityRecipientActivity" android:theme="@style/Theme.Custom.NoActionBar" android:screenOrientation="portrait"/>
         <activity android:name=".ExchangePointHistoryActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ExchangeIngotsConfirmDialog" android:theme="@style/Theme.CustomDialog" android:screenOrientation="portrait"/>
         <activity android:name=".ExchangeSuccDialog" android:theme="@style/Theme.CustomDialog" android:screenOrientation="portrait"/>
         <activity android:name=".property.PropertyManagementActivity" android:screenOrientation="portrait"/>
         <activity android:name=".property.PropertyPayActivity" android:screenOrientation="portrait"/>

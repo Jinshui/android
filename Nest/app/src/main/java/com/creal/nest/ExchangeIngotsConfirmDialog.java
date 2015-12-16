@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-public class ExchangeSuccDialog extends Activity {
+public class ExchangeIngotsConfirmDialog extends Activity {
 
     private static final String TAG = "XYK-SnapCouponDialog";
 
@@ -15,15 +15,16 @@ public class ExchangeSuccDialog extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.dialog_echange_commodity_succ);
+        setContentView(R.layout.dialog_echange_ingots_confirm);
         mMsgView = (TextView)findViewById(R.id.id_text_message);
         String message = getIntent().getStringExtra("message");
         if(message != null)
             mMsgView.setText(message);
     }
 
-    public void onViewHistoryClick(View view){
-        Intent intent = new Intent(this, IngotsExchangeHistoryActivity.class);
+    public void onConfirmExchange(View view){
+        Intent intent = new Intent(this, ExchangeSuccDialog.class);
+        intent.putExtra("message", "您兑换的1000元宝已经兑换成功。");
         startActivity(intent);
         finish();
     }
@@ -31,7 +32,5 @@ public class ExchangeSuccDialog extends Activity {
     public void onBackClick(View view){
         finish();
     }
-
-
 
 }

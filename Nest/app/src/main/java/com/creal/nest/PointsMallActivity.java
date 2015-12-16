@@ -35,6 +35,8 @@ public class PointsMallActivity extends ListActivity implements PullToRefreshBas
     private GetCommoditiesAction mGetCommoditiesAction;
     private TextView mPointTxt;
     private TextView mDescTxt;
+    private TextView mExchangeTitle;
+    private boolean mIsCommodity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +62,20 @@ public class PointsMallActivity extends ListActivity implements PullToRefreshBas
         mLoadingSupportPTRListView.addViewToListHeader(listHeaderView, LinearLayout.LayoutParams.WRAP_CONTENT);
         mPointTxt = (TextView) listHeaderView.findViewById(R.id.id_txt_my_points);
         mDescTxt = (TextView) listHeaderView.findViewById(R.id.id_txt_my_points_desc);
+        mExchangeTitle = (TextView) listHeaderView.findViewById(R.id.id_txt_exechange_title);
+        mIsCommodity = true;
+        loadFirstPage(true);
+    }
+
+    public void onCommoditySectionClick(View view){
+        mExchangeTitle.setText(R.string.commodity_exchange_section);
+        mIsCommodity = true;
+        loadFirstPage(true);
+    }
+
+    public void onCouponsSectionClick(View view){
+        mExchangeTitle.setText(R.string.coupons_exchange_section);
+        mIsCommodity = false;
         loadFirstPage(true);
     }
 
@@ -80,28 +96,29 @@ public class PointsMallActivity extends ListActivity implements PullToRefreshBas
             },
             new AbstractAction.UICallBack<Pagination<Commodity>>() {
                 public void onSuccess(Pagination<Commodity> result) {
-                    testLoadFirstPage();
+                    testLoadFirstPage(mIsCommodity);
                 }
 
                 public void onFailure(AbstractAction.ActionError error) {
                     mGetCommoditiesAction = mGetCommoditiesAction.cloneCurrentPageAction();
-                    testLoadFirstPage();
+                    testLoadFirstPage(mIsCommodity);
                 }
             }
         );
     }
 
     public void onShoppingHistoryClick(View view) {
-
+        Intent intent = new Intent(this, ShoppingHistoryActivity.class);
+        startActivity(intent);
     }
 
-    private void testLoadFirstPage() {
+    private void testLoadFirstPage(boolean commodity) {
         List<Commodity> coupons = new ArrayList<>();
         coupons.add(new Commodity());
         coupons.add(new Commodity());
         coupons.add(new Commodity());
         coupons.add(new Commodity());
-        mActivityListAdapter = new CommodityListAdapter(getBaseContext(), R.layout.view_list_item_my_coupons, coupons);
+        mActivityListAdapter = new CommodityListAdapter(getBaseContext(), R.layout.view_list_item_my_coupons, coupons, commodity);
         setListAdapter(mActivityListAdapter);
         getListView().setDivider(null);
         mLoadingSupportPTRListView.showListView();
@@ -163,10 +180,12 @@ public class PointsMallActivity extends ListActivity implements PullToRefreshBas
 
     public class CommodityListAdapter extends PTRListAdapter<Commodity> {
         private LayoutInflater mInflater;
+        private boolean isCommodity;
 
-        public CommodityListAdapter(Context context, int resource, List<Commodity> objects) {
+        public CommodityListAdapter(Context context, int resource, List<Commodity> objects, boolean commodity) {
             super(context, resource, objects);
             mInflater = LayoutInflater.from(context);
+            this.isCommodity = commodity;
         }
 
         public View getView(final int position, View convertView, ViewGroup parent) {
@@ -187,18 +206,39 @@ public class PointsMallActivity extends ListActivity implements PullToRefreshBas
             } else {
                 holder = (ViewHolder) convertView.getTag();
             }
-            holder.item1.setOnClickListener(new View.OnClickListener() {
-                public void onClick(View v) {
-                    Intent intent = new Intent(PointsMallActivity.this, ExchangeCouponDetailActivity.class);
-                    startActivity(intent);
-                }
-            });
-            holder.item2.setOnClickListener(new View.OnClickListener() {
-                public void onClick(View v) {
-                    Intent intent = new Intent(PointsMallActivity.this, ExchangeCommodityDetailActivity.class);
-                    startActivity(intent);
-                }
-            });
+
+            if(isCommodity){
+                holder.itemThumbnail1.setBackgroundResource(R.drawable.test_point_mall_item_pic2);
+                holder.itemThumbnail2.setBackgroundResource(R.drawable.test_point_mall_item_pic2);
+                holder.item1.setOnClickListener(new View.OnClickListener() {
+                    public void onClick(View v) {
+                        Intent intent = new Intent(PointsMallActivity.this, ExchangeCommodityDetailActivity.class);
+                        startActivity(intent);
+                    }
+                });
+                holder.item2.setOnClickListener(new View.OnClickListener() {
+                    public void onClick(View v) {
+                        Intent intent = new Intent(PointsMallActivity.this, ExchangeCommodityDetailActivity.class);
+                        startActivity(intent);
+                    }
+                });
+            }else {
+                holder.itemThumbnail1.setBackgroundResource(R.drawable.test_point_mall_item_pic1);
+                holder.itemThumbnail2.setBackgroundResource(R.drawable.test_point_mall_item_pic1);
+                holder.item1.setOnClickListener(new View.OnClickListener() {
+                    public void onClick(View v) {
+                        Intent intent = new Intent(PointsMallActivity.this, ExchangeCouponDetailActivity.class);
+                        startActivity(intent);
+                    }
+                });
+
+                holder.item2.setOnClickListener(new View.OnClickListener() {
+                    public void onClick(View v) {
+                        Intent intent = new Intent(PointsMallActivity.this, ExchangeCouponDetailActivity.class);
+                        startActivity(intent);
+                    }
+                });
+            }
             return convertView;
         }
 

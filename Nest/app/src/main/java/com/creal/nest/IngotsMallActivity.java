@@ -197,7 +197,7 @@ public class IngotsMallActivity extends ListActivity implements PullToRefreshBas
             }
             holder.exechange.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
-                    Intent intent = new Intent(IngotsMallActivity.this, ExchangeSuccDialog.class);
+                    Intent intent = new Intent(IngotsMallActivity.this, ExchangeIngotsConfirmDialog.class);
                     intent.putExtra("message", "您兑换的1000元宝已经兑换成功。");
                     startActivity(intent);
                 }

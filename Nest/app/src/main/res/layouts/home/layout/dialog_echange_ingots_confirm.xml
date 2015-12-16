@@ -7,20 +7,11 @@
     android:orientation="vertical">
 
     <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:layout_marginTop="20dp"
-        android:background="@drawable/icon_recharge_select"
+        android:background="@drawable/ic_ingots_exchange_confirm"
         android:gravity="center" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:gravity="center"
-        android:text="@string/exchange_succ"
-        android:textColor="@color/black"
-        android:textSize="@dimen/font_large" />
 
     <TextView
         android:id="@+id/id_text_message"
@@ -31,15 +22,30 @@
         android:gravity="center|left"
         android:paddingLeft="30dp"
         android:paddingRight="30dp"
-        android:text="@string/exchange_succ_desc"
+        android:text="您兑换1000元宝成余额10元，兑换成功后不可兑回，您确定要兑换吗？"
         android:textColor="@color/darkgray"
         android:textSize="@dimen/font_small" />
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/input_text_height_middle"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/search_text_view_border"
+        android:onClick="onConfirmExchange"
+        android:paddingBottom="10dp"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:paddingTop="10dp"
+        android:text="@string/exchange_confirm"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/border_grey_cornered"
         android:gravity="center"
         android:onClick="onBackClick"
@@ -50,17 +56,4 @@
         android:text="@string/back_to_ingots_mall"
         android:textColor="@color/darkgray"
         android:textSize="@dimen/font_small" />
-
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/input_text_height_middle"
-        android:layout_marginBottom="20dp"
-        android:layout_marginLeft="15dip"
-        android:layout_marginRight="15dip"
-        android:background="@drawable/search_text_view_border"
-        android:onClick="onViewHistoryClick"
-        android:text="@string/exchange_view_history"
-        android:textColor="@color/white"
-        android:textSize="18sp" />
 </LinearLayout>
