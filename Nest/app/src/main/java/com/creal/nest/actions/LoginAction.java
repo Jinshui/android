@@ -20,7 +20,7 @@ public class LoginAction extends AbstractAction {
         this.mCardNum = cardNum;
         this.mPassword = pwd;
         this.mServiceId = "LOGIN";
-        mURL = "http://manager.go.wuxian114.com/lmk_interface/login.php";
+        mURL = "http://manager.go.wuxian114.com/lmk_interface/login/index.php";
     }
 
     @Override

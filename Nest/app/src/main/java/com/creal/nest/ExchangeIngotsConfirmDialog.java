@@ -17,14 +17,13 @@ public class ExchangeIngotsConfirmDialog extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dialog_echange_ingots_confirm);
         mMsgView = (TextView)findViewById(R.id.id_text_message);
-        String message = getIntent().getStringExtra("message");
-        if(message != null)
-            mMsgView.setText(message);
     }
 
     public void onConfirmExchange(View view){
         Intent intent = new Intent(this, ExchangeSuccDialog.class);
-        intent.putExtra("message", "您兑换的1000元宝已经兑换成功。");
+        intent.putExtra("from", "ingots_mall");
+        intent.putExtra("btnText", getString(R.string.back_to_ingots_mall));
+        intent.putExtra("message", getString(R.string.exchange_ingots_succ_desc));
         startActivity(intent);
         finish();
     }

@@ -37,7 +37,7 @@ public class IngotsExchangeHistoryActivity extends ListActivity implements PullT
         setContentView(R.layout.activity_simple_ptr_list);
         HeaderView headerView = (HeaderView) findViewById(R.id.header);
         headerView.hideRightImage();
-        headerView.setTitle(R.string.recharge_history);
+        headerView.setTitle(R.string.ingots_exchange_history);
         mLoadingSupportPTRListView = (LoadingSupportPTRListView)findViewById(R.id.refresh_widget);
         mLoadingSupportPTRListView.setOnRefreshListener(this);
         mLoadingSupportPTRListView.setMode(PullToRefreshBase.Mode.PULL_FROM_END);

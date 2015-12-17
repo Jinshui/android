@@ -41,7 +41,7 @@ public class FragmentSetting extends Fragment {
         mIngotsHistory = (TextView) view.findViewById(R.id.id_text_ingots_exchange_history);
         mAppSettings = (TextView) view.findViewById(R.id.id_text_app_settings);
         mCheckUpdates = (TextView) view.findViewById(R.id.id_text_check_updates);
-        mHelp = (TextView) view.findViewById(R.id.id_text_help);
+        mHelp = (TextView) view.findViewById(R.id.id_text_settings_help);
         mAboutUs = (TextView) view.findViewById(R.id.id_text_about);
 
         addListeners();
@@ -91,7 +91,8 @@ public class FragmentSetting extends Fragment {
         });
         mHelp.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "Not implemented yet!", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getActivity(), HelpActivity.class);
+                startActivity(intent);
             }
         });
         mAboutUs.setOnClickListener(new View.OnClickListener() {

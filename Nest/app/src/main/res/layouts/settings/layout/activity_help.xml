@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/content_bg"
+    android:orientation="vertical">
+
+    <com.creal.nest.views.HeaderView
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fadingEdgeLength="0dip"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:gravity="top|center_horizontal"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="15dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/input_bg"
+                android:drawableLeft="@drawable/ic_help_account"
+                android:drawablePadding="5dp"
+                android:padding="15dp"
+                android:text="@string/help_account"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_small"
+                android:textStyle="bold" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@drawable/divider_horizontal" />
+
+            <Button
+                android:id="@+id/id_help_avoid_treat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/input_bg"
+                android:drawableLeft="@drawable/ic_help_item"
+                android:drawablePadding="5dp"
+                android:drawableRight="@drawable/right_arrow"
+                android:gravity="left"
+                android:hint="@string/help_avoid_treat"
+                android:onClick="onHelpClick"
+                android:paddingBottom="10dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="10dp"
+                android:textSize="@dimen/font_small" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@drawable/divider_horizontal" />
+
+            <Button
+                android:id="@+id/id_help_change_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/input_bg"
+                android:drawableLeft="@drawable/ic_help_item"
+                android:drawablePadding="5dp"
+                android:drawableRight="@drawable/right_arrow"
+                android:gravity="left"
+                android:hint="@string/help_change_phone"
+                android:onClick="onHelpClick"
+                android:paddingBottom="10dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="10dp"
+                android:textSize="@dimen/font_small" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="15dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/input_bg"
+                android:drawableLeft="@drawable/ic_help_card"
+                android:drawablePadding="5dp"
+                android:padding="15dp"
+                android:text="@string/help_money"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_small"
+                android:textStyle="bold" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@drawable/divider_horizontal" />
+
+            <Button
+                android:id="@+id/id_help_alipay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/input_bg"
+                android:drawableLeft="@drawable/ic_help_item"
+                android:drawablePadding="5dp"
+                android:drawableRight="@drawable/right_arrow"
+                android:gravity="left"
+                android:hint="@string/help_alipay"
+                android:onClick="onHelpClick"
+                android:paddingBottom="10dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="10dp"
+                android:textSize="@dimen/font_small" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="15dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/input_bg"
+                android:drawableLeft="@drawable/ic_help_car"
+                android:drawablePadding="5dp"
+                android:padding="15dp"
+                android:text="@string/help_cancel"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_small" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@drawable/divider_horizontal" />
+
+            <Button
+                android:id="@+id/id_return_commodity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/input_bg"
+                android:drawableLeft="@drawable/ic_help_item"
+                android:drawablePadding="5dp"
+                android:drawableRight="@drawable/right_arrow"
+                android:gravity="left"
+                android:hint="@string/help_return_commodity"
+                android:onClick="onHelpClick"
+                android:paddingBottom="10dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="10dp"
+                android:textSize="@dimen/font_small" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@drawable/divider_horizontal" />
+
+            <Button
+                android:id="@+id/id_return_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/input_bg"
+                android:drawableLeft="@drawable/ic_help_item"
+                android:drawablePadding="5dp"
+                android:drawableRight="@drawable/right_arrow"
+                android:gravity="left"
+                android:hint="@string/help_return_time"
+                android:onClick="onHelpClick"
+                android:paddingBottom="10dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="10dp"
+                android:textSize="@dimen/font_small" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

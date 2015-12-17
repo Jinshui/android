@@ -22,7 +22,9 @@ public class ExchangeCouponDetailActivity extends Activity {
 
     public void onExchangeClick(View view){
         Intent intent = new Intent(this, ExchangeSuccDialog.class);
-        intent.putExtra("message", "您兑换的优惠券已经发送至您的账户，点击查看交换记录按钮可查看兑换结果");
+        intent.putExtra("from", "points_mall");
+        intent.putExtra("btnText", getString(R.string.back_to_points_mall));
+        intent.putExtra("message", getString(R.string.exchange_coupons_succ_desc));
         startActivity(intent);
     }
 }

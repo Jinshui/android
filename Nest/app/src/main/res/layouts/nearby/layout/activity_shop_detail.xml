@@ -163,20 +163,30 @@
                 android:textColor="@color/grey"
                 android:textSize="@dimen/font_middle" />
 
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="10dip" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:padding="10dip"
+                android:text="@string/photo_desc_detail"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/font_middle" />
+
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
-                android:drawableRight="@drawable/right_arrow"
-                android:padding="10dip"
-                android:text="@string/shop_view_more"
-                android:textColor="@color/darkpink"
+                android:paddingBottom="10dip"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="咖啡之巽-咖啡厅，是香港国际巽咖啡美食传播有限公司旗下的连锁咖啡餐厅，中国领先的咖啡餐厅连锁品牌，国内咖啡厅概念的首创者和领跑者，咖啡美食。"
+                android:textColor="@color/grey"
                 android:textSize="@dimen/font_middle" />
 
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="10dip" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

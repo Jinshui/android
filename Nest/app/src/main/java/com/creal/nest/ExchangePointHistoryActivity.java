@@ -38,7 +38,7 @@ public class ExchangePointHistoryActivity extends ListActivity implements PullTo
         setContentView(R.layout.activity_simple_ptr_list);
         HeaderView headerView = (HeaderView) findViewById(R.id.header);
         headerView.hideRightImage();
-        headerView.setTitle(R.string.exchange_history);
+        headerView.setTitle(R.string.points_exchange_history);
 
         mLoadingSupportPTRListView = (LoadingSupportPTRListView) findViewById(R.id.refresh_widget);
         mLoadingSupportPTRListView.setOnRefreshListener(this);

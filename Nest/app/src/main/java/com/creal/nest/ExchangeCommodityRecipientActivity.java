@@ -64,6 +64,9 @@ public class ExchangeCommodityRecipientActivity extends Activity {
 
     public void onSubmitClick(View view) {
         Intent intent = new Intent(this, ExchangeSuccDialog.class);
+        intent.putExtra("from", "points_mall");
+        intent.putExtra("btnText", getString(R.string.back_to_points_mall));
+        intent.putExtra("message", getString(R.string.exchange_commodity_succ_desc));
         startActivity(intent);
         finish();
     }
