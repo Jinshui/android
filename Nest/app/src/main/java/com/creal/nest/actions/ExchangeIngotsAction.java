@@ -9,9 +9,9 @@ public class ExchangeIngotsAction extends AbstractAction<Boolean> {
 
     private String mCardId;
     private String mRechargeCardId;
-    private int mNum;
+    private String mNum;
 
-    public ExchangeIngotsAction(Context context, String cardId, String rechargeCardId, int num) {
+    public ExchangeIngotsAction(Context context, String cardId, String rechargeCardId, String num) {
         super(context);
         this.mCardId = cardId;
         mRechargeCardId = rechargeCardId;

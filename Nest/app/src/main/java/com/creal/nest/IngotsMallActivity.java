@@ -15,21 +15,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.creal.nest.actions.AbstractAction;
-import com.creal.nest.actions.GetCommoditiesAction;
-import com.creal.nest.actions.GetIngotsAction;
+import com.creal.nest.actions.GetRechargeCardsAction;
 import com.creal.nest.actions.GetMyIngotsAction;
 import com.creal.nest.actions.JSONConstants;
-import com.creal.nest.model.Coupon;
-import com.creal.nest.model.Ingot;
+import com.creal.nest.model.RechargeCard;
 import com.creal.nest.model.Pagination;
 import com.creal.nest.util.PreferenceUtil;
-import com.creal.nest.views.CustomizeImageView;
 import com.creal.nest.views.HeaderView;
 import com.creal.nest.views.ptr.LoadingSupportPTRListView;
 import com.creal.nest.views.ptr.PTRListAdapter;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class IngotsMallActivity extends ListActivity implements PullToRefreshBase.OnRefreshListener2<ListView> {
@@ -38,7 +34,7 @@ public class IngotsMallActivity extends ListActivity implements PullToRefreshBas
 
     private LoadingSupportPTRListView mLoadingSupportPTRListView;
     private IngotListAdapter mActivityListAdapter;
-    private GetIngotsAction mGetIngotsAction;
+    private GetRechargeCardsAction mGetRechargeCardsAction;
     private TextView mIngotsTxt;
 
     @Override
@@ -74,10 +70,10 @@ public class IngotsMallActivity extends ListActivity implements PullToRefreshBas
         Log.d(TAG, "loadFirstPage");
         if (isInitialLoad)
             mLoadingSupportPTRListView.showLoadingView();
-        mGetIngotsAction = new GetIngotsAction(this, 1, 10);
-        mGetIngotsAction.execute(
-                new AbstractAction.UICallBack<Pagination<Ingot>>() {
-                    public void onSuccess(Pagination<Ingot> result) {
+        mGetRechargeCardsAction = new GetRechargeCardsAction(this, 1, 10);
+        mGetRechargeCardsAction.execute(
+                new AbstractAction.UICallBack<Pagination<RechargeCard>>() {
+                    public void onSuccess(Pagination<RechargeCard> result) {
                         mActivityListAdapter = new IngotListAdapter(getBaseContext(), R.layout.view_list_item_my_coupons, result.getItems());
                         setListAdapter(mActivityListAdapter);
                         getListView().setDivider(null);
@@ -87,7 +83,7 @@ public class IngotsMallActivity extends ListActivity implements PullToRefreshBas
                     }
 
                     public void onFailure(AbstractAction.ActionError error) {
-                        mGetIngotsAction = mGetIngotsAction.cloneCurrentPageAction();
+                        mGetRechargeCardsAction = mGetRechargeCardsAction.cloneCurrentPageAction();
                         setListAdapter(new ErrorAdapter(getBaseContext(), R.layout.view_list_item_error));
                         getListView().setDivider(null);
                         mLoadingSupportPTRListView.showListView();
@@ -123,10 +119,10 @@ public class IngotsMallActivity extends ListActivity implements PullToRefreshBas
 
     private void loadNextPage() {
         Log.d(TAG, "loadNextPage");
-        mGetIngotsAction = mGetIngotsAction.getNextPageAction();
-        mGetIngotsAction.execute(
-                new AbstractAction.UICallBack<Pagination<Ingot>>() {
-                    public void onSuccess(Pagination<Ingot> result) {
+        mGetRechargeCardsAction = mGetRechargeCardsAction.getNextPageAction();
+        mGetRechargeCardsAction.execute(
+                new AbstractAction.UICallBack<Pagination<RechargeCard>>() {
+                    public void onSuccess(Pagination<RechargeCard> result) {
                         if(result.getItems().isEmpty()){
                             Toast.makeText(getBaseContext(), R.string.load_done, Toast.LENGTH_SHORT).show();
                         }else {
@@ -137,7 +133,7 @@ public class IngotsMallActivity extends ListActivity implements PullToRefreshBas
 
                     public void onFailure(AbstractAction.ActionError error) {
                         Toast.makeText(getBaseContext(), R.string.load_failed, Toast.LENGTH_SHORT).show();
-                        mGetIngotsAction = mGetIngotsAction.getPreviousPageAction();
+                        mGetRechargeCardsAction = mGetRechargeCardsAction.getPreviousPageAction();
                         mLoadingSupportPTRListView.refreshComplete();
                     }
                 }
@@ -164,16 +160,16 @@ public class IngotsMallActivity extends ListActivity implements PullToRefreshBas
         }
     }
 
-    public class IngotListAdapter extends PTRListAdapter<Ingot> {
+    public class IngotListAdapter extends PTRListAdapter<RechargeCard> {
         private LayoutInflater mInflater;
 
-        public IngotListAdapter(Context context, int resource, List<Ingot> objects) {
+        public IngotListAdapter(Context context, int resource, List<RechargeCard> objects) {
             super(context, resource, objects);
             mInflater = LayoutInflater.from(context);
         }
 
         public View getView(final int position, View convertView, ViewGroup parent) {
-            final Ingot ingot = getItem(position);
+            final RechargeCard rechargeCard = getItem(position);
             ViewHolder holder = null;
             if (convertView == null) {
                 convertView = mInflater.inflate(R.layout.view_list_item_ingots_mall, parent, false);
@@ -182,22 +178,23 @@ public class IngotsMallActivity extends ListActivity implements PullToRefreshBas
                 holder.name = (TextView) convertView.findViewById(R.id.id_ingot_title);
                 holder.amount = (TextView) convertView.findViewById(R.id.id_ingot_amount);
                 holder.info = (TextView)convertView.findViewById(R.id.id_ingot_info);
-                holder.exechange = (TextView)convertView.findViewById(R.id.id_ingot_exchange);
+                holder.exchange = (TextView)convertView.findViewById(R.id.id_ingot_exchange);
                 convertView.setTag(holder);
             } else {
                 holder = (ViewHolder) convertView.getTag();
             }
 
-            holder.exechange.setOnClickListener(new View.OnClickListener() {
+            holder.exchange.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     Intent intent = new Intent(IngotsMallActivity.this, ExchangeIngotsConfirmDialog.class);
+                    intent.putExtra(ExchangeIngotsConfirmDialog.INTENT_EXTRA_RECHARGE_CARD, rechargeCard);
                     startActivity(intent);
                 }
             });
-            holder.img.setText(String.valueOf(ingot.getAmount()));
-            holder.name.setText(ingot.getName());
-            holder.amount.setText(String.format(getString(R.string.ingots_num), ingot.getNum()));
-            holder.info.setText(ingot.getDesc());
+            holder.img.setText(String.valueOf(rechargeCard.getAmount()));
+            holder.name.setText(rechargeCard.getName());
+            holder.amount.setText(String.format(getString(R.string.ingots_num), rechargeCard.getNum()));
+            holder.info.setText(rechargeCard.getDesc());
             return convertView;
         }
 
@@ -207,7 +204,7 @@ public class IngotsMallActivity extends ListActivity implements PullToRefreshBas
             TextView name;
             TextView amount;
             TextView info;
-            TextView exechange;
+            TextView exchange;
         }
     }
 }

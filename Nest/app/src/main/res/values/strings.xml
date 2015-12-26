@@ -140,9 +140,10 @@
     <string name="change_verification_code">看不清，换一张</string>
     <string name="exchange_submit">提交</string>
     <string name="exchange_succ">兑换成功</string>
+    <string name="exchange_recharge_card_hint" formatted="false">您兑换%s元宝成余额%d元，兑换成功后不可兑回，您确定要兑换吗？</string>
     <string name="exchange_commodity_succ_desc">您兑换的双头狮男士内裤中腰已经兑换成功，将在近几日通过快递方式邮寄给您。</string>
     <string name="exchange_coupons_succ_desc">您兑换的优惠券已经发送至您的账户，点击查看交换记录按钮可查看兑换结果</string>
-    <string name="exchange_ingots_succ_desc">您兑换的1000元宝已经兑换成功。</string>
+    <string name="exchange_ingots_succ_desc" formatted="false">您兑换的%s元宝已经兑换成功。</string>
     <string name="exchange_view_history">查看兑换记录</string>
     <!--兑换优惠券-->
     <string name="coupons_detail">商品详情</string>
@@ -158,7 +159,7 @@
     <string name="ingots_mall_help">什么是元宝？</string>
     <string name="ingots_mall_my_points">我的元宝：</string>
     <string name="back_to_ingots_mall">返回元宝商城</string>
-    <string name="ingots_num" formatted="falst">%s元宝</string>
+    <string name="ingots_num" formatted="false">%s元宝</string>
 
 
     <!--物业-->

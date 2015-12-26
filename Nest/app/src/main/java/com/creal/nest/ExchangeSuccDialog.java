@@ -11,6 +11,16 @@ public class ExchangeSuccDialog extends Activity {
 
     private static final String TAG = "XYK-ExchangeSuccDialog";
 
+    public static final String INTENT_EXTRA_TITLE = "title";
+    public static final String INTENT_EXTRA_FROM = "from";
+    public static final String INTENT_EXTRA_FROM_INGOT_MALL = "from_ingots_mall";
+    public static final String INTENT_EXTRA_FROM_POINTS_MALL = "from_points_mall";
+    public static final String INTENT_EXTRA_FROM_PROPERTY_PAY = "from_property_pay";
+    public static final String INTENT_EXTRA_MSG = "message";
+    public static final String INTENT_EXTRA_BTN1_TXT = "btnText";
+    public static final String INTENT_EXTRA_BTN2_TXT = "viewBtnText";
+
+
     private TextView mTitleView;
     private TextView mMsgView;
     private Button mBtnViewHistory;
@@ -24,11 +34,11 @@ public class ExchangeSuccDialog extends Activity {
         mMsgView = (TextView)findViewById(R.id.id_text_message);
         mButton = (Button)findViewById(R.id.id_btn_back_to_mall);
         mBtnViewHistory = (Button)findViewById(R.id.id_btn_view_history);
-        from = getIntent().getStringExtra("from");
-        String btnText = getIntent().getStringExtra("btnText");
-        String viewBtnText = getIntent().getStringExtra("viewBtnText");
-        String message = getIntent().getStringExtra("message");
-        String title = getIntent().getStringExtra("title");
+        from = getIntent().getStringExtra(INTENT_EXTRA_FROM);
+        String btnText = getIntent().getStringExtra(INTENT_EXTRA_BTN1_TXT);
+        String viewBtnText = getIntent().getStringExtra(INTENT_EXTRA_BTN2_TXT);
+        String message = getIntent().getStringExtra(INTENT_EXTRA_MSG);
+        String title = getIntent().getStringExtra(INTENT_EXTRA_TITLE);
         if(btnText != null)
             mButton.setText(btnText);
         if(viewBtnText != null)
@@ -40,13 +50,13 @@ public class ExchangeSuccDialog extends Activity {
     }
 
     public void onViewHistoryClick(View view){
-        if("ingots_mall".equals(from)){
+        if(INTENT_EXTRA_FROM_INGOT_MALL.equals(from)){
             Intent intent = new Intent(this, IngotsExchangeHistoryActivity.class);
             startActivity(intent);
-        }else if("points_mall".equals(from)){
+        }else if(INTENT_EXTRA_FROM_POINTS_MALL.equals(from)){
             Intent intent = new Intent(this, ExchangePointHistoryActivity.class);
             startActivity(intent);
-        }else if("property_pay".equals(from)){
+        }else if(INTENT_EXTRA_FROM_PROPERTY_PAY.equals(from)){
 //            Intent intent = new Intent(this, History.class);
 //            startActivity(intent);
         }

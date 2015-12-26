@@ -17,7 +17,7 @@ public interface JSONConstants {
     public static final String URL_GET_COUPON_DETAIL          = "http://" + SERVER_HOST + "/lmk_interface/coupondetail/index.php";
     public static final String URL_GET_MY_COUPON_DETAIL       = "http://" + SERVER_HOST + "/lmk_interface/mycouponsdetail/index.php";
     public static final String URL_GET_MY_INGOTS              = "http://" + SERVER_HOST + "/lmk_interface/yuanbao/index.php";
-    public static final String URL_GET_INGOTS                 = "http://" + SERVER_HOST + "/lmk_interface/rechargeablecard/index.php";
+    public static final String URL_GET_RECHARGE_CARD          = "http://" + SERVER_HOST + "/lmk_interface/rechargeablecard/index.php";
     public static final String URL_EXCHANGE_INGOTS            = "http://" + SERVER_HOST + "/lmk_interface/exchange/index.php";
 
     public final static String KEY_CARD_ID = "card_id";

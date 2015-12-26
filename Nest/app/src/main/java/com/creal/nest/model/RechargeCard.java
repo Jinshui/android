@@ -5,15 +5,15 @@ import android.os.Parcel;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class Ingot extends BaseModel {
+public class RechargeCard extends BaseModel {
 
-    public static final Creator<Ingot> CREATOR = new Creator<Ingot>() {
-        public Ingot createFromParcel(Parcel in) {
-            return new Ingot(in);
+    public static final Creator<RechargeCard> CREATOR = new Creator<RechargeCard>() {
+        public RechargeCard createFromParcel(Parcel in) {
+            return new RechargeCard(in);
         }
 
-        public Ingot[] newArray(int size) {
-            return new Ingot[size];
+        public RechargeCard[] newArray(int size) {
+            return new RechargeCard[size];
         }
     };
 
@@ -22,11 +22,11 @@ public class Ingot extends BaseModel {
     private String num;
     private int amount;
 
-    public Ingot() {
+    public RechargeCard() {
         super();
     }
 
-    public Ingot(Parcel in) {
+    public RechargeCard(Parcel in) {
         super(in);
         name = in.readString();
         desc = in.readString();
@@ -76,25 +76,25 @@ public class Ingot extends BaseModel {
 
 
 
-    public static Ingot fromJSON(JSONObject json) throws JSONException {
+    public static RechargeCard fromJSON(JSONObject json) throws JSONException {
         if (json == null)
             throw new IllegalArgumentException("JSONObject is null");
-        Ingot ingot = new Ingot();
+        RechargeCard rechargeCard = new RechargeCard();
         if(json.has("id")){
-            ingot.setId(json.getString("id"));
+            rechargeCard.setId(json.getString("id"));
         }
         if(json.has("name")){
-            ingot.setName(json.getString("name"));
+            rechargeCard.setName(json.getString("name"));
         }
         if(json.has("amount")){
-            ingot.setAmount(json.getInt("amount"));
+            rechargeCard.setAmount(json.getInt("amount"));
         }
         if(json.has("description")){
-            ingot.setDesc(json.getString("description"));
+            rechargeCard.setDesc(json.getString("description"));
         }
         if(json.has("num")){
-            ingot.setNum(json.getString("num"));
+            rechargeCard.setNum(json.getString("num"));
         }
-        return ingot;
+        return rechargeCard;
     }
 }
