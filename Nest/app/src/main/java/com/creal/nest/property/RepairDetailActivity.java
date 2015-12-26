@@ -2,7 +2,6 @@ package com.creal.nest.property;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -16,6 +15,7 @@ import android.widget.Toast;
 import com.creal.nest.LatestActivityDetailActivity;
 import com.creal.nest.R;
 import com.creal.nest.model.Repair;
+import com.creal.nest.model.SalesActivity;
 import com.creal.nest.views.HeaderView;
 
 import java.util.List;
@@ -64,9 +64,9 @@ public class RepairDetailActivity extends Activity {
     protected void onListItemClick(ListView l, View v, int position, long id){
         Toast.makeText(getBaseContext(), "clicked: " + position + ", enabled: " + v.isEnabled(), Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, LatestActivityDetailActivity.class);
-        com.creal.nest.model.Activity activity = new com.creal.nest.model.Activity();
-        activity.setName("潮牌运动风");
-        intent.putExtra("activity", activity);
+        SalesActivity salesActivity = new SalesActivity();
+//        salesActivity.setName("潮牌运动风");
+        intent.putExtra("salesActivity", salesActivity);
         startActivity(intent);
     }
 

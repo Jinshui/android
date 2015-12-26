@@ -96,13 +96,15 @@
                 android:layout_height="1dip"
                 android:background="@drawable/divider_horizontal" />
 
-            <TextView
+            <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
                 android:drawableLeft="@drawable/icon_register_addr"
                 android:drawableRight="@drawable/right_arrow"
+                android:onClick="onGoToMapClick"
                 android:padding="10dip"
+                android:gravity="left"
                 android:text="南市区保定百货大楼（裕华西路518号）东北角（保百大楼咖啡之巽-咖啡厅）"
                 android:textColor="@color/gray"
                 android:textSize="@dimen/font_middle" />
@@ -113,13 +115,16 @@
                 android:layout_height="1dip"
                 android:background="@drawable/divider_horizontal" />
 
-            <TextView
+            <Button
+                android:id="@+id/id_txt_phone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
                 android:drawableLeft="@drawable/icon_register_phone"
                 android:drawableRight="@drawable/right_arrow"
                 android:padding="10dip"
+                android:gravity="left"
+                android:onClick="onDialPhoneClick"
                 android:text="0312 2066668"
                 android:textColor="@color/gray"
                 android:textSize="@dimen/font_middle" />

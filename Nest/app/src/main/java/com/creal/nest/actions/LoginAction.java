@@ -3,6 +3,7 @@ package com.creal.nest.actions;
 import android.content.Context;
 import android.util.Log;
 
+import com.creal.nest.util.PreferenceUtil;
 import com.creal.nest.util.Utils;
 
 import org.json.JSONException;
@@ -20,17 +21,20 @@ public class LoginAction extends AbstractAction {
         this.mCardNum = cardNum;
         this.mPassword = pwd;
         this.mServiceId = "LOGIN";
-        mURL = "http://manager.go.wuxian114.com/lmk_interface/login/index.php";
+        mURL = URL_LOGIN;
     }
 
     @Override
     protected void addRequestParameters(JSONObject params, String timeStr) throws JSONException {
         params.put("card_num", mCardNum);
-        params.put("password", Utils.md5(Utils.md5(mPassword) + "123456789" + timeStr));
+        String key = PreferenceUtil.getString(mAppContext, KEY_KEY, null);
+        params.put("password", Utils.md5(Utils.md5(mPassword) + key + timeStr));
     }
 
     @Override
     protected Object createRespObject(JSONObject response) throws JSONException {
+        PreferenceUtil.saveString(mAppContext, "card_id", response.getString("card_id"));
+        PreferenceUtil.saveString(mAppContext, "card_num", response.getString("card_num"));
         return null;
     }
 }

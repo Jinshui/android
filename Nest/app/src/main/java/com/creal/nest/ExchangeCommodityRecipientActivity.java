@@ -14,8 +14,6 @@ import com.creal.nest.views.HeaderView;
 public class ExchangeCommodityRecipientActivity extends Activity {
 
     private static final String TAG = "XYK-MyCouponsActivity";
-    private Spinner mProvince;
-    private Spinner mCity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,38 +22,6 @@ public class ExchangeCommodityRecipientActivity extends Activity {
         HeaderView headerView = (HeaderView) findViewById(R.id.header);
         headerView.hideRightImage();
         headerView.setTitle(R.string.exchange_commit_title);
-
-        mProvince = (Spinner) findViewById(R.id.id_spinner_provinces);
-        ArrayAdapter<CharSequence> provinceAdapter = ArrayAdapter.createFromResource( this, R.array.provinces, android.R.layout.simple_spinner_item);
-        provinceAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        mProvince.setAdapter(provinceAdapter);
-        mProvince.setOnItemSelectedListener(
-                new AdapterView.OnItemSelectedListener() {
-                    public void onItemSelected(
-                            AdapterView<?> parent, View view, int position, long id) {
-                        showToast("Spinner1: position=" + position + " id=" + id);
-                    }
-
-                    public void onNothingSelected(AdapterView<?> parent) {
-                        showToast("Spinner1: unselected");
-                    }
-                });
-
-        mCity = (Spinner) findViewById(R.id.id_spinner_cities);
-        ArrayAdapter<CharSequence> cityAdapter = ArrayAdapter.createFromResource(this, R.array.cities, android.R.layout.simple_spinner_item);
-        cityAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        mCity.setAdapter(cityAdapter);
-        mCity.setOnItemSelectedListener(
-                new AdapterView.OnItemSelectedListener() {
-                    public void onItemSelected(
-                            AdapterView<?> parent, View view, int position, long id) {
-                        showToast("Spinner1: position=" + position + " id=" + id);
-                    }
-
-                    public void onNothingSelected(AdapterView<?> parent) {
-                        showToast("Spinner1: unselected");
-                    }
-                });
     }
 
     public void onChangeVerificatoinCodeClick(View view) {

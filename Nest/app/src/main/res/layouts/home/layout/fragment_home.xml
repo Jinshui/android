@@ -31,11 +31,11 @@
             android:orientation="horizontal">
 
             <LinearLayout
-                android:paddingLeft="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingLeft="10dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -52,8 +52,8 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="5dip"
                 android:layout_gravity="center_vertical"
+                android:layout_marginRight="5dip"
                 android:src="@drawable/home_my_cards" />
         </LinearLayout>
 
@@ -68,11 +68,11 @@
             android:orientation="horizontal">
 
             <LinearLayout
-                android:paddingLeft="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingLeft="10dp">
 
                 <TextView
                     android:layout_width="wrap_content"

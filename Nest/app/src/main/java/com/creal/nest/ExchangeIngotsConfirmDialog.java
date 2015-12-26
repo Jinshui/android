@@ -9,6 +9,7 @@ import android.widget.TextView;
 public class ExchangeIngotsConfirmDialog extends Activity {
 
     private static final String TAG = "XYK-SnapCouponDialog";
+    public static final String INTENT_EXTRA_RECHARGE_CARD = "recharge_card";
 
     private TextView mMsgView;
 

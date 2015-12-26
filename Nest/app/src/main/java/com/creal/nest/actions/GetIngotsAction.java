@@ -11,36 +11,29 @@ import org.json.JSONObject;
 
 
 public class GetIngotsAction extends PaginationAction<Ingot> {
-    private static final String tag = "TT-GetLatestActivities";
-    //request keys
-    private static final String NAME = "name";
+    private static final String tag = "TT-GetIngotsAction";
 
     public GetIngotsAction(Context context, int pageIndex, int pageSize){
         super(context, pageIndex, pageSize);
-        mServiceId = SERVICE_ID_NEWS;
-        mURL = "";
+        mServiceId = "GET_INGOTS";
+        mURL = URL_GET_INGOTS;
     }
 
     @Override
     protected void addRequestParameters(JSONObject parameters, String timeStr) throws JSONException {
         super.addRequestParameters(parameters, timeStr);
-        try{
-//            parameters.put(NAME, URLEncoder.encode(mCategory, "UTF-8"));
-        }catch(Exception e){
-            Log.d(tag, "failed to add parameters", e);
-        }
     }
 
     public GetIngotsAction cloneCurrentPageAction(){
-        GetIngotsAction action = new GetIngotsAction(
-                mAppContext,
-                getPageIndex(),
-                getPageSize()
-        );
+        GetIngotsAction action = new GetIngotsAction( mAppContext, getPageIndex(), getPageSize());
         return action;
     }
 
     public Ingot convertJsonToResult(JSONObject item) throws JSONException{
         return Ingot.fromJSON(item);
+    }
+
+    protected String getContentsKey(){
+        return "rechargecard";
     }
 }

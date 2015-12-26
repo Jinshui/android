@@ -12,10 +12,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.creal.nest.model.SalesActivity;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.creal.nest.actions.AbstractAction;
 import com.creal.nest.actions.GetLatestActivitiesAction;
-import com.creal.nest.model.Coupon;
 import com.creal.nest.model.Pagination;
 import com.creal.nest.views.CustomizeImageView;
 import com.creal.nest.views.HeaderView;
@@ -53,8 +53,8 @@ public class LatestActivitiesActivity extends ListActivity implements PullToRefr
             mLoadingSupportPTRListView.showLoadingView();
         mGetLatestActivitiesAction = new GetLatestActivitiesAction(this, 1, 10);
         mGetLatestActivitiesAction.execute(
-                new AbstractAction.BackgroundCallBack<Pagination<Coupon>>() {
-                    public void onSuccess(Pagination<Coupon> result) {
+                new AbstractAction.BackgroundCallBack<Pagination<SalesActivity>>() {
+                    public void onSuccess(Pagination<SalesActivity> result) {
                         try { Thread.sleep(2000); } catch (InterruptedException e) { }
                     }
 
@@ -62,8 +62,8 @@ public class LatestActivitiesActivity extends ListActivity implements PullToRefr
                         try { Thread.sleep(2000); } catch (InterruptedException e) {  }
                     }
                 },
-                new AbstractAction.UICallBack<Pagination<Coupon>>() {
-                    public void onSuccess(Pagination<Coupon> result) {
+                new AbstractAction.UICallBack<Pagination<SalesActivity>>() {
+                    public void onSuccess(Pagination<SalesActivity> result) {
                         testLoadFirstPage();
                     }
 
@@ -77,13 +77,13 @@ public class LatestActivitiesActivity extends ListActivity implements PullToRefr
 
 
     private void testLoadFirstPage(){
-        List<Coupon> coupons = new ArrayList<>();
-        coupons.add(new Coupon());
-        coupons.add(new Coupon());
-        coupons.add(new Coupon());
-        coupons.add(new Coupon(true));
-        coupons.add(new Coupon(true));
-        coupons.add(new Coupon(true));
+        List<SalesActivity> coupons = new ArrayList<>();
+        coupons.add(new SalesActivity());
+        coupons.add(new SalesActivity());
+        coupons.add(new SalesActivity());
+        coupons.add(new SalesActivity());
+        coupons.add(new SalesActivity());
+        coupons.add(new SalesActivity());
         mActivityListAdapter = new ActivityListAdapter(getBaseContext(), R.layout.view_list_item_my_coupons, coupons);
         setListAdapter(mActivityListAdapter);
         getListView().setDivider(null);
@@ -95,19 +95,19 @@ public class LatestActivitiesActivity extends ListActivity implements PullToRefr
         Log.d(TAG, "loadNextPage");
         mGetLatestActivitiesAction = mGetLatestActivitiesAction.getNextPageAction();
         mGetLatestActivitiesAction.execute(
-            new AbstractAction.BackgroundCallBack<Pagination<Coupon>>() {
-                public void onSuccess(Pagination<Coupon> result) {
+            new AbstractAction.BackgroundCallBack<Pagination<SalesActivity>>() {
+                public void onSuccess(Pagination<SalesActivity> result) {
                     try { Thread.sleep(2000); } catch (InterruptedException e) { }
                 }
                 public void onFailure(AbstractAction.ActionError error){
                     try { Thread.sleep(2000); } catch (InterruptedException e) { }
                 }
             },
-            new AbstractAction.UICallBack<Pagination<Coupon>>() {
-                public void onSuccess(Pagination<Coupon> result) {
-                    List<Coupon> coupons = new ArrayList<>();
-                    coupons.add(new Coupon());
-                    coupons.add(new Coupon());
+            new AbstractAction.UICallBack<Pagination<SalesActivity>>() {
+                public void onSuccess(Pagination<SalesActivity> result) {
+                    List<SalesActivity> coupons = new ArrayList<>();
+                    coupons.add(new SalesActivity());
+                    coupons.add(new SalesActivity());
                     mActivityListAdapter.addMore(coupons);
                     mLoadingSupportPTRListView.refreshComplete();
                 }
@@ -117,9 +117,9 @@ public class LatestActivitiesActivity extends ListActivity implements PullToRefr
                     mGetLatestActivitiesAction = mGetLatestActivitiesAction.getPreviousPageAction();
                     Toast.makeText(getBaseContext(), "成功加载两条最新活动", Toast.LENGTH_SHORT).show();
                     //TODO: TEST CODE
-                    List<Coupon> coupons = new ArrayList<>();
-                    coupons.add(new Coupon());
-                    coupons.add(new Coupon());
+                    List<SalesActivity> coupons = new ArrayList<>();
+                    coupons.add(new SalesActivity());
+                    coupons.add(new SalesActivity());
                     mActivityListAdapter.addMore(coupons);
                     mLoadingSupportPTRListView.refreshComplete();
                 }
@@ -130,9 +130,9 @@ public class LatestActivitiesActivity extends ListActivity implements PullToRefr
     protected void onListItemClick(ListView l, View v, int position, long id){
         Toast.makeText(getBaseContext(), "clicked: " + position + ", enabled: " + v.isEnabled(), Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, LatestActivityDetailActivity.class);
-        com.creal.nest.model.Activity activity = new com.creal.nest.model.Activity();
-        activity.setName("潮牌运动风");
-        intent.putExtra("activity", activity);
+        SalesActivity salesActivity = new SalesActivity();
+//        salesActivity.setName("潮牌运动风");
+        intent.putExtra("salesActivity", salesActivity);
         startActivity(intent);
     }
 
@@ -144,15 +144,15 @@ public class LatestActivitiesActivity extends ListActivity implements PullToRefr
         loadNextPage();
     }
 
-    public class ActivityListAdapter extends PTRListAdapter<Coupon> {
+    public class ActivityListAdapter extends PTRListAdapter<SalesActivity> {
         private LayoutInflater mInflater;
-        public ActivityListAdapter(Context context, int resource, List<Coupon> objects) {
+        public ActivityListAdapter(Context context, int resource, List<SalesActivity> objects) {
             super(context, resource, objects);
             mInflater = LayoutInflater.from(context);
         }
 
         public View getView(final int position, View convertView, ViewGroup parent) {
-            final Coupon coupon = getItem(position);
+            final SalesActivity coupon = getItem(position);
             ViewHolder holder = null;
             if (convertView == null) {
                 convertView = mInflater.inflate( R.layout.view_list_item_latest_activities, parent, false);

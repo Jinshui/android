@@ -4,12 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.creal.nest.views.HeaderView;
@@ -35,8 +30,9 @@ public class HelpActivity extends Activity {
     }
 
     public void onHelpClick(View view){
-        Intent intent = new Intent(this, HelpDetailActivity.class);
+        Intent intent = new Intent(this, WebpageActivity.class);
         intent.putExtra("title", ((Button)view).getHint());
+        intent.putExtra("url", "http://www.baidu.com");
         startActivity(intent);
     }
 

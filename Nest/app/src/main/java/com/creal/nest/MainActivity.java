@@ -62,7 +62,7 @@ public class MainActivity extends FragmentActivity {
                     Intent intent = new Intent(MainActivity.this, MipcaActivityCapture.class);
                     startActivity(intent);
                 } else if (item.getItemId() == R.id.action_pay) {
-                    Intent intent = new Intent(MainActivity.this, BarcodeActivity.class);
+                    Intent intent = new Intent(MainActivity.this, QRCodeActivity.class);
                     startActivity(intent);
                 }
                 return true;

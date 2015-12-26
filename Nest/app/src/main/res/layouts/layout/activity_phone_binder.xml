@@ -56,11 +56,13 @@
                 android:background="@color/white"
                 android:drawableLeft="@drawable/icon_binding_phone_num"
                 android:hint="@string/binding_hint_phone_num"
+                android:text="18821002312"
                 android:inputType="phone"
                 android:textSize="16sp" />
 
             <Button
-                android:layout_width="wrap_content"
+                android:id="@+id/id_btn_get_code"
+                android:layout_width="130dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginRight="10dip"
@@ -85,6 +87,7 @@
             android:background="@color/white"
             android:drawableLeft="@drawable/icon_binding_card_id"
             android:hint="@string/binding_hint_card_id"
+            android:inputType="number"
             android:textSize="16sp" />
 
         <View
@@ -94,6 +97,22 @@
 
         <EditText
             android:id="@+id/id_txt_password"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/input_text_height_middle"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/white"
+            android:drawableLeft="@drawable/icon_binding_input_verificatoin_code"
+            android:hint="@string/binding_hint_input_password"
+            android:inputType="number"
+            android:textSize="16sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@drawable/divider_horizontal" />
+
+        <EditText
+            android:id="@+id/id_txt_verification_code"
             android:layout_width="match_parent"
             android:layout_height="@dimen/input_text_height_middle"
             android:layout_gravity="center_horizontal"
@@ -116,12 +135,13 @@
             android:textColor="@color/white"
             android:textSize="18sp" />
 
-        <TextView
+        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:layout_marginRight="15dip"
             android:layout_marginTop="15dip"
+            android:background="@color/white"
             android:gravity="left"
             android:onClick="onCanntGetVerificationCodeClick"
             android:text="@string/binding_cannot_get_verification_code"

@@ -45,6 +45,7 @@
                 android:background="@color/input_bg"
                 android:drawableLeft="@drawable/icon_register_phone"
                 android:hint="@string/exchange_hint_phone"
+                android:inputType="phone"
                 android:paddingLeft="5dp"
                 android:textSize="16sp" />
 
@@ -54,52 +55,31 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/input_text_height_middle"
-                android:layout_marginTop="10dip"
+                android:layout_height="wrap_content"
+                android:paddingLeft="5dp"
                 android:background="@color/white"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:paddingLeft="5dp">
+                android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="wrap_content"
+                    android:layout_width="23dp"
+                    android:layout_height="13dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/icon_register_addr" />
+
+                <EditText
+                    android:id="@+id/id_txt_detail_addr"
+                    android:layout_width="0dip"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:src="@drawable/icon_register_province" />
-
-                <Spinner
-                    android:id="@+id/id_spinner_provinces"
-                    android:layout_width="100dip"
-                    android:layout_height="35dip"
-                    android:background="@drawable/spinner_bg"
-                    android:drawSelectorOnTop="true"
-                    android:prompt="@string/register_hint_select_province" />
-
-                <View
-                    android:layout_width="1dip"
-                    android:layout_height="25dip"
-                    android:background="@drawable/tab_divider" />
-
-                <Spinner
-                    android:id="@+id/id_spinner_cities"
-                    android:layout_width="100dip"
-                    android:layout_height="35dip"
-                    android:background="@drawable/spinner_bg"
-                    android:drawSelectorOnTop="true"
-                    android:paddingTop="0dip"
-                    android:prompt="@string/register_hint_select_city" />
+                    android:lines="4"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:background="@color/input_bg"
+                    android:gravity="top"
+                    android:hint="@string/exchange_hint_address"
+                    android:paddingTop="5dp"
+                    android:textSize="16sp" />
             </LinearLayout>
 
-            <EditText
-                android:id="@+id/id_txt_detail_addr"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/input_text_height_middle"
-                android:layout_gravity="center_horizontal"
-                android:background="@color/input_bg"
-                android:drawableLeft="@drawable/icon_register_addr"
-                android:hint="@string/exchange_hint_address"
-                android:paddingLeft="5dp"
-                android:textSize="16sp" />
 
             <View
                 android:layout_width="match_parent"

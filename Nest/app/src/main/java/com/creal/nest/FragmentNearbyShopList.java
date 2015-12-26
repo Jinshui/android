@@ -32,10 +32,7 @@ public class FragmentNearbyShopList extends HeaderLoadingSupportPTRListFragment 
 	private String mCategory;
 	private PTRListAdapter<Shop> mShopListAdapter;
 	private List<Shop> mShopList;
-	private boolean mShopLoadedFromServer = false;
 	private GetShopAction mGetShopAction;
-
-	private int mAsyncTaskCount = 0;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -44,153 +41,121 @@ public class FragmentNearbyShopList extends HeaderLoadingSupportPTRListFragment 
         mCategory = getArguments().getString("category");
 		if (savedInstanceState != null) {
 			mCategory = savedInstanceState.getString("mCategory");
-			mShopLoadedFromServer = savedInstanceState.getBoolean("mShopLoaded");
 		}
 		setMode(PullToRefreshBase.Mode.PULL_FROM_END);
-//		mNewsDAO = ((TouTiaoApp)getActivity().getApplication()).getNewsDAO();
-//		mHeadNewsDAO = ((TouTiaoApp)getActivity().getApplication()).getHeadNewsDAO();
 	}
 	
 	public void onActivityCreated(Bundle savedInstanceState){
 		super.onActivityCreated(savedInstanceState);
 		Log.d(tag, mCategory + " onActivityCreated()");
-		mAsyncTaskCount = 0;
-		showLoadingView();
         setMode(PullToRefreshBase.Mode.PULL_FROM_END);
-		if( !mShopLoadedFromServer )
-			loadShopFromServer();
-		else
-			loadShopFromDB();
+        loadFirstPage();
 	}
 	
-	private void loadShopFromServer(){
-		mAsyncTaskCount ++;
-		Log.d(tag, mCategory +" loadShopFromServer(): tasks: " + mAsyncTaskCount);
-		mGetShopAction = new GetShopAction(getActivity(), mCategory, 1, Constants.PAGE_SIZE);
+	private void loadFirstPage(){
+		Log.d(tag, mCategory + " loadFirstPage()");
+        showLoadingView();
+        mGetShopAction = new GetShopAction(getActivity(), mCategory, 1, Constants.PAGE_SIZE);
 		mGetShopAction.execute(
                 new AbstractAction.BackgroundCallBack<Pagination<Shop>>() {
                     public void onSuccess(Pagination<Shop> newsPage) {
+                        try {
+                            Thread.sleep(1000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
                     }
 
                     public void onFailure(AbstractAction.ActionError error) {
+                        try {
+                            Thread.sleep(1000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
                     }
                 },
                 new AbstractAction.UICallBack<Pagination<Shop>>() {
-                    public void onSuccess(Pagination<Shop> newsList) {
-                        mShopLoadedFromServer = true;
+                    public void onSuccess(Pagination<Shop> shopList) {
                         if (isDetached() || getActivity() == null) //DO NOT update the view if this fragment is detached from the activity.
                             return;
-                        if (mShopListAdapter == null) {
-                            mShopListAdapter = new ShopArrayAdapter(getActivity(), R.layout.view_list_item_shop, newsList.getItems());
-                            setAdapter(mShopListAdapter);
-                        } else {
-                            if (newsList.getItems().isEmpty()) {
-                                Toast.makeText(getActivity(), R.string.no_more_to_load, Toast.LENGTH_SHORT).show();
-                            } else {
-                                mShopListAdapter.clear();
-                                mShopListAdapter.addMore(newsList.getItems());
-                            }
-                        }
-                        afterLoadReturned();
+                        testLoadFirstPage();
                     }
 
                     public void onFailure(AbstractAction.ActionError error) {
-                        loadShopFromDB();
-                        afterLoadReturned();
+                        testLoadFirstPage();
                     }
                 }
         );
 	}
 	
-	private void loadShopFromDB(){
-		mAsyncTaskCount ++;
-		Log.d(tag, mCategory +" loadShopFromDB(): tasks: " + mAsyncTaskCount);
-		new ParallelTask<List<Shop>>() {
-			protected List<Shop> doInBackground(Void... params) {
-                return Collections.emptyList();
-			}
-			public void onPostExecute(List<Shop> shopList){
-				//The pager is viewing another page now.
-				if(getActivity() == null)
-					return;
-                shopList = new ArrayList<Shop>();
-                shopList.add(new Shop());
-                shopList.add(new Shop());
-                shopList.add(new Shop());
-                shopList.add(new Shop());
-                shopList.add(new Shop());
-                shopList.add(new Shop());
-                shopList.add(new Shop());
-                shopList.add(new Shop());
-                shopList.add(new Shop());
-                shopList.add(new Shop());
-                shopList.add(new Shop());
-				if(mShopListAdapter == null){
-					mShopListAdapter = new ShopArrayAdapter(getActivity(), R.layout.view_list_item_shop, shopList);
-					mGetShopAction = new GetShopAction(getActivity(), mCategory, shopList.size(), Constants.PAGE_SIZE);
-					setAdapter(mShopListAdapter);
-				}else{
-					mShopListAdapter.clear();
-					mShopListAdapter.addMore(shopList);
-				}
-				afterLoadReturned();
-			}
-		}.execute();
+	private void testLoadFirstPage(){
+		Log.d(tag, mCategory + " testLoadFirstPage(): ");
+        ArrayList<Shop> shopList = new ArrayList<Shop>();
+        shopList.add(new Shop());
+        shopList.add(new Shop());
+        shopList.add(new Shop());
+        shopList.add(new Shop());
+        shopList.add(new Shop());
+        shopList.add(new Shop());
+        shopList.add(new Shop());
+        mShopListAdapter = new ShopArrayAdapter(getActivity(), R.layout.view_list_item_shop, shopList);
+        setAdapter(mShopListAdapter);
+        showListView();
+        refreshComplete();
 	}
 
 	@Override
 	public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
-		mAsyncTaskCount ++;
-		Log.d(tag, mCategory +" onPullUpToRefresh(): tasks: " + mAsyncTaskCount);
-		mGetShopAction = (GetShopAction)mGetShopAction.getNextPageAction();
+		Log.d(tag, mCategory + " onPullUpToRefresh()");
+		mGetShopAction = mGetShopAction.getNextPageAction();
 		mGetShopAction.execute(
-				new AbstractAction.BackgroundCallBack<Pagination<Shop>>() {
-					public void onSuccess(Pagination<Shop> newsPage) {
-					}
+                new AbstractAction.BackgroundCallBack<Pagination<Shop>>() {
+                    public void onSuccess(Pagination<Shop> newsPage) {
+                        try {
+                            Thread.sleep(1000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
 
-					public void onFailure(AbstractAction.ActionError error) {
-					}
-				},
-				new AbstractAction.UICallBack<Pagination<Shop>>() {
-					public void onSuccess(Pagination<Shop> shopList) {
-						if (isDetached() || getActivity() == null) //DO NOT update the view if this fragment is detached from the activity.
-							return;
-						if (mShopListAdapter == null) {
-							mShopListAdapter = new ShopArrayAdapter(getActivity(), R.layout.view_list_item_shop, shopList.getItems());
-							setAdapter(mShopListAdapter);
-						} else {
-							if (shopList.getItems().isEmpty()) {
-								Toast.makeText(getActivity(), R.string.no_more_to_load, Toast.LENGTH_SHORT).show();
-							} else {
-								mShopListAdapter.addMore(shopList.getItems());
-							}
-						}
-						afterLoadReturned();
-					}
+                    public void onFailure(AbstractAction.ActionError error) {
+                        try {
+                            Thread.sleep(1000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new AbstractAction.UICallBack<Pagination<Shop>>() {
+                    public void onSuccess(Pagination<Shop> shopList) {
+                        if (isDetached() || getActivity() == null) //DO NOT update the view if this fragment is detached from the activity.
+                            return;
+                        testLoadNextPage();
+                    }
 
-					public void onFailure(AbstractAction.ActionError error) {
-						Toast.makeText(getActivity(), R.string.load_failed, Toast.LENGTH_SHORT).show();
-						mGetShopAction = (GetShopAction) mGetShopAction.getPreviousPageAction();
-						afterLoadReturned();
-					}
-				}
-		);
+                    public void onFailure(AbstractAction.ActionError error) {
+//                        Toast.makeText(getActivity(), R.string.load_failed, Toast.LENGTH_SHORT).show();
+                        mGetShopAction =  mGetShopAction.getPreviousPageAction();
+                        testLoadNextPage();
+                    }
+                }
+        );
 	}
-	
-	private void afterLoadReturned(){
-		mAsyncTaskCount --;
-		Log.d(tag, mCategory + " afterLoadReturned(): tasks: " + mAsyncTaskCount);
-		if(mAsyncTaskCount == 0){
-			showListView();
-		}
-		refreshComplete();
-	}
+
+    private void testLoadNextPage(){
+        Log.d(tag, mCategory + " testLoadNextPage(): ");
+        ArrayList<Shop> shopList = new ArrayList<Shop>();
+        shopList.add(new Shop());
+        shopList.add(new Shop());
+        Toast.makeText(getActivity(), "成功加载两条", Toast.LENGTH_SHORT).show();
+        mShopListAdapter.addMore(shopList);
+        refreshComplete();
+    }
 	
 	public void onSaveInstanceState(Bundle outState) {
 		super.onSaveInstanceState(outState);
-		Log.d(tag, mCategory + " onSaveInstanceState");
-		outState.putString("mCategory", mCategory);
-		outState.putBoolean("mShopLoaded", mShopLoadedFromServer);
+        Log.d(tag, mCategory + " onSaveInstanceState");
+        outState.putString("mCategory", mCategory);
 	}
 
 	public ViewHolder createHeaderView(LayoutInflater inflater){
@@ -201,9 +166,9 @@ public class FragmentNearbyShopList extends HeaderLoadingSupportPTRListFragment 
 	private static void showShop(Context context, Shop shop){
 		Intent showNewsDetailIntent = new Intent(context, ShopDetailActivity.class);
 		context.startActivity(showNewsDetailIntent);
-	}
-	
-	public static class ShopArrayAdapter extends PTRListAdapter<Shop> {
+    }
+
+    public static class ShopArrayAdapter extends PTRListAdapter<Shop> {
         private LayoutInflater mInflater;
         public ShopArrayAdapter(Context context, int res, List<Shop> items) {
             super(context, res, items);

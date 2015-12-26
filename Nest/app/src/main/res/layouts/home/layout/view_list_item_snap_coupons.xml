@@ -2,6 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp"
     android:orientation="vertical">
 
     <LinearLayout
@@ -19,8 +21,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_marginLeft="4dip"
+            android:drawablePadding="5dp"
             android:drawableLeft="@drawable/ic_snap_coupon_time"
-            android:text=" 10:00"
             android:textColor="@color/white"/>
 
         <TextView
@@ -61,7 +63,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
-                android:text="@string/test_snapup_coupons_name"
+                android:text="十元优惠券"
                 android:textColor="@color/black"
                 android:textSize="@dimen/font_middle" />
 
@@ -79,7 +81,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
-                android:text="@string/test_snapup_coupons_total"
+                android:text="@string/snapup_coupons_total"
                 android:textColor="@color/black"
                 android:textSize="@dimen/font_small" />
 
@@ -90,7 +92,7 @@
                 android:layout_alignParentBottom="true"
                 android:layout_marginLeft="10dip"
                 android:layout_toRightOf="@+id/id_txt_snapup_coupons_total"
-                android:text="@string/test_snapup_coupons_remaining"
+                android:text="@string/snapup_coupons_remaining"
                 android:textColor="@color/black"
                 android:textSize="@dimen/font_small" />
         </RelativeLayout>

@@ -8,28 +8,61 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.creal.nest.actions.AbstractAction;
+import com.creal.nest.actions.GetAdAction;
+import com.creal.nest.model.Ad;
 import com.creal.nest.property.PropertyManagementActivity;
 import com.creal.nest.views.PhotoPager;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class FragmentHome extends Fragment{
     private static final String TAG = "XYK-FragmentHome";
 	private PhotoPager mViewPager;
+    private boolean mInitialized = false;
+    private ArrayList<Ad> mAds;
+
+
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if(savedInstanceState != null)
+            mAds = savedInstanceState.getParcelable("ads");
+    }
 
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-		View homeView =  inflater.inflate(R.layout.fragment_home, container, false);
-        mViewPager = (PhotoPager)homeView.findViewById(R.id.home_photos_pager);
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        Log.d(TAG, "onCreateView");
+        View mHomeView = inflater.inflate(R.layout.fragment_home, container, false);
+        mViewPager = (PhotoPager) mHomeView.findViewById(R.id.home_photos_pager);
         initAdPhotos();
-        addListener(homeView);
-        return homeView;
+        addListener(mHomeView);
+        return mHomeView;
 	}
 
     private void initAdPhotos(){
-        mViewPager.addPhotos(getChildFragmentManager(), Arrays.asList(new String[]{"", "", "", ""}));
+        if(mAds != null) {
+            mViewPager.addPhotos(getChildFragmentManager(), mAds);
+            return;
+        }
+        GetAdAction getAdAction = new GetAdAction(getActivity());
+        getAdAction.execute(new AbstractAction.UICallBack<List<Ad>>() {
+            public void onSuccess(List<Ad> result) {
+                Log.d(TAG, "onSuccess: " + result.size());
+                mAds = (ArrayList)result;
+                mViewPager.addPhotos(getChildFragmentManager(), mAds);
+            }
+
+            public void onFailure(AbstractAction.ActionError error) {
+
+            }
+        });
+    }
+
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putParcelableArrayList("ads", mAds);
     }
 
 
@@ -42,7 +75,7 @@ public class FragmentHome extends Fragment{
         });
         homeView.findViewById(R.id.id_btn_pay).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), BarcodeActivity.class);
+                Intent intent = new Intent(getActivity(), QRCodeActivity.class);
                 startActivity(intent);
             }
         });
@@ -99,6 +132,6 @@ public class FragmentHome extends Fragment{
 
     public void onResume() {
         super.onResume();
-        Log.d(TAG, "onAttach(Activity)");
+        Log.d(TAG, "onResume()");
     }
 }

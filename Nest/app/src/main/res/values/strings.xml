@@ -26,6 +26,7 @@
     <string name="binding_hint_card_id">卡号</string>
     <string name="binding_send_verification_code">发送验证码</string>
     <string name="binding_hint_input_verification_code">请输入验证码</string>
+    <string name="binding_hint_input_password">请输入密码</string>
     <string name="binding">绑定</string>
     <string name="binding_cannot_get_verification_code">收不到短信验证码？</string>
     <!--注册相关-->
@@ -35,15 +36,19 @@
     <string name="register_hint_phone_num">手机号</string>
     <string name="register_get_verification_code">获取验证码</string>
     <string name="register_hint_input_verification_code">请输入验证码</string>
-    <string name="register_hint_pwd">请输入6-32位数字字母组合作为密码</string>
+    <string name="register_hint_pwd">请输入6-12位数字字母组合作为密码</string>
     <string name="register_optional">选填项</string>
     <string name="register_hint_user_name">请输入您的姓名</string>
     <string name="register_hint_user_id">请输入您的身份证号</string>
     <string name="register_hint_user_addr">请输入详细地址</string>
+    <string name="register_hint_neet_post">是否需要邮寄卡片</string>
     <string name="register_hint_select_province">选择省</string>
     <string name="register_hint_select_city">选择市</string>
-    <string name="register_accept_terms">我已阅读并同意相关协议</string>
+    <string name="register_accept_terms">我已阅读并同意燕巢《用户使用协议》</string>
     <string name="register_terms">&#060;&#060;用户许可协议&#062;&#062;</string>
+    <string name="dlg_msg_registering">正在注册...</string>
+    <string name="hint_msg_input_address">请输入邮寄地址</string>
+    <string name="hint_msg_check_items">您尚未接受《用户使用协议》</string>
     <!--手势密码-->
     <string name="guesture_pwd_skip">跳过</string>
 
@@ -65,27 +70,29 @@
     <string name="home_property">物业</string>
     <string name="home_my_cs">我的客服</string>
     <string name="spaces">&#032;&#032;</string>
+    <string name="dlg_msg_loading_qr_code">正在更新二维码...</string>
 
     <!-- 我的券 -->
     <string name="my_coupons">我的优惠券</string>
     <string name="usage_help">使用说明:</string>
     <string name="view_detail">查看详情</string>
     <string name="test_description">优惠券可用商铺：北国先天下，保北购物广场，东丽花行，北斗星餐厅，庆丰包子铺...</string>
-    <string name="test_expire_date">有效期 2015-10-26 23:00 至 2015-11-10 23:00</string>
+    <string name="my_coupons_expire_date" formatted="false">有效期 %s 至\n\t\t\t\t\t\t\t%s</string>
 
     <!--今日抢券-->
     <string name="snapup_coupons">今日抢券</string>
+    <string name="snapup_coupons_title">优惠券</string>
     <string name="snapup_coupons_now">立刻抢券</string>
     <string name="snapup_coupons_emtpy">抢完</string>
     <string name="snapup_coupons_unstarted">未开始</string>
     <string name="snapup_coupons_amount">数量</string>
-    <string name="snapup_coupons_total">总数</string>
-    <string name="snapup_coupons_remaining">剩余</string>
     <string name="snapup_coupons_dlg_congratu">恭喜您</string>
     <string name="snapup_coupons_dlg_btn">知道了</string>
-    <string name="test_snapup_coupons_name">十元优惠券</string>
-    <string name="test_snapup_coupons_total">总数: 200张</string>
-    <string name="test_snapup_coupons_remaining">剩余: 100张</string>
+    <string name="snapup_coupons_total" formatted="false">总数: %d张</string>
+    <string name="snapup_coupons_remaining" formatted="false">剩余: %d张</string>
+    <string name="snapup_coupons_desc" formatted="false">%s优惠券面值%d元，总数%d张</string>
+    <string name="snapup_coupons_desc_bottom" formatted="false">本场优惠券总数%d张</string>
+
 
     <!--优惠券详情 -->
     <string name="coupon_detail">优惠券详情</string>
@@ -96,7 +103,7 @@
     <string name="coupon_snap_now">马上抢</string>
     <string name="test_coupon_name">5元优惠券</string>
     <string name="test_coupon_desc">满266元使用立减5元</string>
-    <string name="test_coupon_expired_date">2015-10-26 23:00 至 2015-11-10 23:00</string>
+    <string name="coupon_date_range" formatted="false">%s 至 %s</string>
     <string name="test_coupon_provider">北国先天下，保北购物广场，东丽花行，北斗星餐厅，庆丰包子铺...</string>
     <string name="test_coupon_rule">满266元以上商品或消费方可使用5元优惠券</string>
 
@@ -151,6 +158,7 @@
     <string name="ingots_mall_help">什么是元宝？</string>
     <string name="ingots_mall_my_points">我的元宝：</string>
     <string name="back_to_ingots_mall">返回元宝商城</string>
+    <string name="ingots_num" formatted="falst">%s元宝</string>
 
 
     <!--物业-->
@@ -166,6 +174,10 @@
     <string name="property_pay_desc">缴费说明</string>
     <string name="property_pay_desc_text">点击确定将从您的小燕卡账户中扣除并进行缴费，请保持余额大于缴费金额。</string>
     <string name="property_pay">缴费</string>
+    <string name="property_pay_succ">缴费成功</string>
+    <string name="property_pay_succ_msg">您缴纳的300元物业费已经缴纳成功</string>
+    <string name="property_back_to_property">返回物业页面</string>
+    <string name="property_view_pay_history">查看缴费记录</string>
     <string name="property_repair">报修</string>
     <string name="property_repair_common">公共部分</string>
     <string name="property_repair_personal">个人部分</string>
@@ -229,6 +241,8 @@
     <string name="balance_description">使用积分和元宝可兑换优惠券和商品</string>
     <string name="balance_recharge_amount">充值金额:</string>
     <string name="balance_recharge_time">充值时间:</string>
+    <string name="points_accumulation_history">积分记录明细</string>
+    <string name="ingots_accumulation_history">元宝记录明细</string>
 
     <!-- Settings -->
     <string name="settings">设置</string>
@@ -263,7 +277,15 @@
     <string name="help_cancel">退货/换货</string>
     <string name="help_return_commodity">我要退货/换货</string>
     <string name="help_return_time">申请退货/换货后，多久办理</string>
-    <string name="test_help_content"><html><head><meta http-equiv="Content-type" content="text/html; charset=utf-8" /></head><body>如何预防诈骗<br/>近期骗子异常活跃，现提供一点防骗小招，请大家在购物时谨防诈骗</body></html></string>
 
+
+    <!--消息类-->
+    <string name="send_succ">短信已发送成功</string>
+    <string name="loading">加载中...</string>
+    <string name="signing">正在登录中...</string>
+    <string name="load_done">数据已全部加载完毕。</string>
+    <string name="load_error">加载失几，请稍候重试</string>
+    <string name="network_error">网络出错，请稍候重试</string>
+    <string name="unknown_error">出错啦，请稍候重试</string>
 
 </resources>

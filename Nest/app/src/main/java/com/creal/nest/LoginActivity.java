@@ -1,9 +1,14 @@
 package com.creal.nest;
 
+import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.app.Activity;
+import android.text.TextUtils;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -12,6 +17,8 @@ import android.widget.Toast;
 import com.creal.nest.R;
 import com.creal.nest.actions.AbstractAction;
 import com.creal.nest.actions.LoginAction;
+import com.creal.nest.util.PreferenceUtil;
+import com.creal.nest.util.UIUtil;
 import com.creal.nest.views.HeaderView;
 
 public class LoginActivity extends Activity {
@@ -20,6 +27,8 @@ public class LoginActivity extends Activity {
     private EditText mPassword;
     private Button mBtnLogin;
     private TextView mBtnForgotPwd;
+//    private ProgressDialog mProgressDialog;
+    private Dialog mProgressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,22 +44,43 @@ public class LoginActivity extends Activity {
         mPassword = (EditText)findViewById(R.id.id_txt_password);
         mBtnLogin = (Button)findViewById(R.id.id_btn_login);
         mBtnForgotPwd = (TextView)findViewById(R.id.id_btn_forget_pwd);
+
+        mCardId.setText(PreferenceUtil.getString(this, "card_num", ""));
+        mPassword.setText(PreferenceUtil.getString(this, "login_password", ""));
     }
 
     public void onLoginClick(View view){
-        final LoginAction loginAction = new LoginAction(this, "9999900030", "8000");
+        CharSequence cardId = mCardId.getText();
+        if(TextUtils.isEmpty(cardId)){
+            Animation shake = AnimationUtils.loadAnimation(this, R.anim.shake);
+            mCardId.startAnimation(shake);
+            return;
+        }
+        CharSequence password = mPassword.getText();
+        if(TextUtils.isEmpty(password)){
+            Animation shake = AnimationUtils.loadAnimation(this, R.anim.shake);
+            mPassword.startAnimation(shake);
+            return;
+        }
+
+        PreferenceUtil.saveString(this, "card_num", cardId.toString());
+        PreferenceUtil.saveString(this, "login_password", password.toString());
+        final LoginAction loginAction = new LoginAction(this, cardId.toString(), password.toString());
+//        mProgressDialog = ProgressDialog.show(this, null, "正在登录中...", true, false);
+        mProgressDialog = UIUtil.createLoadingDialog(this, getString(R.string.signing), false);
+        mProgressDialog.show();
         loginAction.execute(new AbstractAction.UICallBack() {
             public void onSuccess(Object result) {
-                Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
+                mProgressDialog.dismiss();
+                Intent intent = new Intent(LoginActivity.this, GesturePwdActivity.class);
+                startActivity(intent);
+                finish();
             }
 
             public void onFailure(AbstractAction.ActionError error) {
-                Toast.makeText(LoginActivity.this, "failed", Toast.LENGTH_SHORT).show();
+                mProgressDialog.dismiss();
+                Toast.makeText(LoginActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-        Intent intent = new Intent(this, GesturePwdActivity.class);
-        startActivity(intent);
-        finish();
     }
-
 }

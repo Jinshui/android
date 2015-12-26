@@ -14,6 +14,7 @@
         android:gravity="center" />
 
     <TextView
+        android:id="@+id/id_text_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -53,12 +54,13 @@
 
 
     <Button
+        android:id="@+id/id_btn_view_history"
         android:layout_width="match_parent"
         android:layout_height="@dimen/input_text_height_middle"
         android:layout_marginBottom="20dp"
         android:layout_marginLeft="15dip"
         android:layout_marginRight="15dip"
-        android:background="@drawable/search_text_view_border"
+        android:background="@drawable/bg_darkred_big_cornered"
         android:onClick="onViewHistoryClick"
         android:text="@string/exchange_view_history"
         android:textColor="@color/white"

@@ -61,7 +61,7 @@
                 android:background="#F3F6EF"
                 android:layout_height="wrap_content"
                 android:textColor="#646462"
-                android:text="@string/test_expire_date"/>
+                android:text="@string/my_coupons_expire_date"/>
         </RelativeLayout>
     </LinearLayout>
 

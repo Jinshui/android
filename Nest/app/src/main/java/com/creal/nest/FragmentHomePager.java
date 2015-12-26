@@ -10,50 +10,55 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 
 import com.creal.nest.R;
+import com.creal.nest.model.Ad;
 import com.creal.nest.views.CustomizeImageView;
 
 public class FragmentHomePager extends Fragment {
 	private static final String tag = "XYK-FragmentHomePager";
 	private CustomizeImageView mImageView;
 	private int mResId;//TODO: test resource Id, can be removed after test
-	private String mFileUrl;
+	private Ad ad;
 
 	public FragmentHomePager(){
+		Log.d(tag, "FragmentHomePager");
 	}
 
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		mFileUrl = getArguments().getString("fileUrl");
+        ad = getArguments().getParcelable("ad");
 		mResId = getArguments().getInt("resId");
 	}
 
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        Log.d(tag, "onCreateView");
 		mImageView = (CustomizeImageView) inflater.inflate(R.layout.view_custom_image, container, false);
 		return mImageView;
 	}
 	
 	public void onActivityCreated(Bundle savedInstanceState){
+        Log.d(tag, "onActivityCreated");
 		super.onActivityCreated(savedInstanceState);
 		if (savedInstanceState != null) {
-			mFileUrl = savedInstanceState.getString("fileUrl");
+            ad = savedInstanceState.getParcelable("ad");
 			mResId = savedInstanceState.getInt("resId");
 		}
 		updateUI();
 	}
 	
 	private  void updateUI(){
-		Log.d(tag, "updateUI() with url " + (mFileUrl != null ? mFileUrl : ""));
-		if(mFileUrl == null) {
+		Log.d(tag, "updateUI() with url " + (ad != null ? ad.getImageUrl() : ""));
+		if(ad == null) {
 			if(mResId != 0){
 				mImageView.setBackgroundResource(mResId);
 			}
 			return;
 		}else {
-			mImageView.loadImage(mFileUrl);
+			mImageView.loadImage(ad.getImageUrl());
 		}
 		mImageView.setOnClickListener(new OnClickListener(){
 			public void onClick(View v) {
-				Intent showAdDetailIntent = new Intent();
+				Intent showAdDetailIntent = new Intent(getActivity(), WebpageActivity.class);
+                showAdDetailIntent.putExtra("url", ad.getUrl());
 				getActivity().startActivity(showAdDetailIntent);
 			}
 		});
@@ -61,7 +66,7 @@ public class FragmentHomePager extends Fragment {
 	
 	public void onSaveInstanceState(Bundle outState) {
 		super.onSaveInstanceState(outState);
-		outState.putString("fileUrl", mFileUrl);
+		outState.putParcelable("ad", ad);
 		outState.putInt("resId", mResId);
 	}
 }

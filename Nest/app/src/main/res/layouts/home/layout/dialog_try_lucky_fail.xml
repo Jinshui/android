@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="300dp"
+        android:layout_height="350dp"
+        android:layout_marginLeft="15dip"
+        android:layout_marginRight="15dip"
+        android:layout_marginTop="30dip"
+        android:background="@drawable/bg_coupons_lucky_fail">
+
+        <LinearLayout
+            android:id="@+id/id_panel_remaing"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/bg_yellow_big_cornered"
+            android:orientation="vertical"
+            android:textSize="@dimen/font_extra_larger">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dip"
+                android:text="这次没有获得优惠券。。。"
+                android:textColor="#80221A"
+                android:textStyle="bold" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dip"
+                android:background="@drawable/bg_darkgray_big_cornered"
+                android:paddingBottom="2dp"
+                android:paddingLeft="20dp"
+                android:onClick="onTryAgainClick"
+                android:paddingRight="20dp"
+                android:paddingTop="2dp"
+                android:text="再来一次"
+                android:textColor="#EE0A3B"
+                android:textSize="@dimen/font_larger"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

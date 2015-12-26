@@ -23,23 +23,25 @@
         android:layout_marginLeft="20dip"
         android:layout_marginRight="20dip"
         android:paddingTop="30dip"
-        android:paddingBottom="30dip"
+        android:paddingBottom="20dip"
         android:gravity="center_horizontal"
         android:layout_width="match_parent"
         android:background="@drawable/border_white_top_cornered"
         android:layout_height="wrap_content">
 
         <ImageView
+            android:id="@+id/id_img_bar_code"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/test_barcode"/>
 
+        <!--android:background="@drawable/test_barcode"-->
     </LinearLayout>
 
     <LinearLayout
         android:layout_marginLeft="20dip"
         android:layout_marginRight="20dip"
-        android:paddingTop="30dip"
+        android:paddingTop="20dip"
         android:paddingBottom="30dip"
         android:gravity="center_horizontal"
         android:orientation="vertical"
@@ -48,6 +50,7 @@
         android:layout_height="wrap_content">
 
         <ImageView
+            android:id="@+id/id_img_qr_code"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/test_barcode_bottom"/>
@@ -64,13 +67,14 @@
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/id_btn_cancel"
-        android:layout_marginTop="30dip"
+    <Button
+        android:layout_marginTop="20dip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:layout_gravity="center"
+        android:onClick="onCancelClick"
+        android:background="@android:color/transparent"
         android:textSize="@dimen/font_large"
         android:text="@string/pay_cancel"
         android:textColor="@color/white" />

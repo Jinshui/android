@@ -17,19 +17,84 @@ public class Ingot extends BaseModel {
         }
     };
 
+    private String name;
+    private String desc;
+    private String num;
+    private int amount;
+
     public Ingot() {
         super();
     }
 
     public Ingot(Parcel in) {
         super(in);
+        name = in.readString();
+        desc = in.readString();
+        num = in.readString();
+        amount = in.readInt();
     }
+
+    public void writeToParcel(Parcel dest, int flags) {
+        super.writeToParcel(dest, flags);
+        dest.writeString(name);
+        dest.writeString(desc);
+        dest.writeString(num);
+        dest.writeInt(amount);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
+
+    public String getNum() {
+        return num;
+    }
+
+    public void setNum(String num) {
+        this.num = num;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+
 
 
     public static Ingot fromJSON(JSONObject json) throws JSONException {
         if (json == null)
             throw new IllegalArgumentException("JSONObject is null");
-        Ingot commodity = new Ingot();
-        return commodity;
+        Ingot ingot = new Ingot();
+        if(json.has("id")){
+            ingot.setId(json.getString("id"));
+        }
+        if(json.has("name")){
+            ingot.setName(json.getString("name"));
+        }
+        if(json.has("amount")){
+            ingot.setAmount(json.getInt("amount"));
+        }
+        if(json.has("description")){
+            ingot.setDesc(json.getString("description"));
+        }
+        if(json.has("num")){
+            ingot.setNum(json.getString("num"));
+        }
+        return ingot;
     }
 }

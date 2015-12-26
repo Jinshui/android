@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
+    android:background="@color/content_bg"
     android:orientation="vertical">
 
     <LinearLayout
@@ -16,7 +17,7 @@
             android:id="@+id/id_coupon_thumbnail"
             android:layout_width="@dimen/lucky_coupons_list_item_icon_width"
             android:layout_height="@dimen/lucky_coupons_list_item_icon_height"
-            android:background="@drawable/test_snap_coupon"
+            android:background="@drawable/default_icon"
             android:contentDescription="" />
 
         <LinearLayout
@@ -62,15 +63,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="4dip"
+        android:layout_marginRight="4dp"
         android:padding="4dip"
         android:background="@drawable/icon_try_lucky_btn_bg"
         android:gravity="center"
         android:text="@string/try_lucky"
-        android:textColor="@color/white"
         android:textSize="@dimen/font_middle" />
 
     <View
-        android:layout_width="100dip"
+        android:layout_width="fill_parent"
         android:layout_height="10dip"
         android:layout_gravity="center_horizontal" />
 

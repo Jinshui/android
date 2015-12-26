@@ -49,7 +49,7 @@
             android:layout_above="@+id/id_txt_amount_desc"
             android:layout_marginBottom="25dip"
             android:gravity="center"
-            android:text="优惠券"
+            android:text="@string/snapup_coupons_title"
             android:textColor="@color/white"
             android:textSize="@dimen/font_extra_larger" />
 
@@ -57,14 +57,14 @@
             android:id="@+id/id_txt_amount_desc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/id_panel_remaing"
+            android:layout_above="@+id/id_panel_remaining"
             android:layout_marginBottom="15dip"
             android:gravity="center"
-            android:text="21:0优惠券面值200元，总数2000张"
+            android:text="@string/snapup_coupons_desc"
             android:textColor="#FFA415" />
 
         <LinearLayout
-            android:id="@+id/id_panel_remaing"
+            android:id="@+id/id_panel_remaining"
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_alignParentBottom="true"
@@ -91,6 +91,7 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:id="@+id/id_txt_remaining"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
@@ -120,7 +121,6 @@
     </RelativeLayout>
 
     <Button
-        android:id="@+id/id_btn_recharge"
         android:layout_width="match_parent"
         android:layout_height="35dip"
         android:layout_marginLeft="15dip"
@@ -135,11 +135,12 @@
         android:textSize="18sp" />
 
     <TextView
+        android:id="@+id/id_txt_desc_bottom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dip"
         android:gravity="center"
-        android:text="本场优惠券总数2000张"
+        android:text="@string/snapup_coupons_desc_bottom"
         android:textColor="#646464" />
 
 </LinearLayout>

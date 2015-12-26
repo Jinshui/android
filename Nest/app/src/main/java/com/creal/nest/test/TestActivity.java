@@ -76,7 +76,7 @@ public class TestActivity extends Activity {
     private void initAction(){
         switch(mSelectedInterface){
             case "获取验证码":
-                mAction = new GetVerificationCodeAction(this, "9999900030", "13866668888");
+                mAction = new GetVerificationCodeAction(this, "13910735971");
                 mUrl.setText(mAction.getUrl());
                 break;
             case "登录":

@@ -21,7 +21,6 @@
         android:label="@string/app_name"
         android:logo="@drawable/logo"
         android:theme="@android:style/Theme.NoTitleBar">
-        <!--
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
@@ -31,13 +30,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        -->
-        <activity android:name=".PhoneBinderActivity" android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <!--<activity android:name=".MainActivity" android:theme="@style/Theme.Custom.NoActionBar" android:screenOrientation="portrait"/>-->
+        <!--<activity android:name=".PhoneBinderActivity" android:screenOrientation="portrait">-->
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
+        <!--</activity>-->
+        <activity android:name=".LoginActivity" android:screenOrientation="portrait"/>
         <activity android:name=".test.TestActivity" android:screenOrientation="portrait"/>
         <activity android:name=".MipcaActivityCapture" android:screenOrientation="portrait"/>
         <activity android:name=".SearchActivity" android:screenOrientation="portrait"/>
@@ -56,6 +56,7 @@
         <activity android:name=".property.RepairDetailActivity" android:screenOrientation="portrait"/>
         <activity android:name=".IngotsMallActivity" android:screenOrientation="portrait"/>
         <activity android:name=".TryLuckyActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".TryLuckyFailDialogActivity" android:theme="@style/Theme.CustomDialog" android:screenOrientation="portrait"/>
         <activity android:name=".LatestActivitiesActivity" android:screenOrientation="portrait"/>
         <activity android:name=".LatestActivityDetailActivity" android:screenOrientation="portrait"/>
         <activity android:name=".SnapupCouponsActivity" android:screenOrientation="portrait"/>
@@ -64,19 +65,21 @@
         <activity android:name=".CouponDetailActivity" android:screenOrientation="portrait"/>
         <activity android:name=".GesturePwdActivity" android:screenOrientation="portrait" />
         <activity android:name=".MyCouponsActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".BarcodeActivity" android:screenOrientation="portrait" />
-        <activity android:name=".MainActivity" android:theme="@style/Theme.Custom.NoActionBar" android:screenOrientation="portrait"/>
+        <activity android:name=".QRCodeActivity" android:screenOrientation="portrait" />
         <activity android:name=".RechargeActivity" android:screenOrientation="portrait"/>
         <activity android:name=".RechargeHistoryActivity" android:screenOrientation="portrait"/>
         <activity android:name=".IngotsExchangeHistoryActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".LoginActivity" android:screenOrientation="portrait"/>
         <activity android:name=".RegisterActivity" android:theme="@style/Theme.Custom.NoActionBar" android:screenOrientation="portrait"/>
+
+
+        <activity android:name=".balance.AccumulationHistoryActivity" android:screenOrientation="portrait"/>
+
 
         <activity android:name=".UserInfoActivity" android:screenOrientation="portrait"/>
         <activity android:name=".ChangePwdActivity" android:screenOrientation="portrait"/>
         <activity android:name=".ShoppingHistoryActivity" android:screenOrientation="portrait"/>
         <activity android:name=".HelpActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".HelpDetailActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".WebpageActivity" android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

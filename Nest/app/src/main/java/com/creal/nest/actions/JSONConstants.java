@@ -1,23 +1,41 @@
 package com.creal.nest.actions;
 
 public interface JSONConstants {
-    public final static String REQUEST="request";
-    public final static String SERVICE_ID="ServiceId";
-    public final static String SERVICE_ID_CATEGORY="S1112";
-    public final static String SERVICE_ID_FOCUS="S1115";
-    public final static String SERVICE_ID_NEWS="S1116";
-    public final static String SERVICE_ID_COMMENTS="S1105";
-    public final static String SERVICE_ID_SPECIAL_HEAD="S1117";
-    public final static String SERVICE_ID_SPECIAL_NEWS="S1118";
-    public final static String SERVICE_ID_SEARCH="S1119";
-    
-    
-    public final static String RESP_STATUS="Status";
-    public final static String RESP_MSG="Msg";
-    public final static String RESP_LIST="MessageList";
-    
-    
-    public final static String RESP_STATUS_OK="1";
-    
-    
+    public static final String SERVER_HOST = "manager.go.wuxian114.com";
+    public static final String URL_GET_VERIFICATION_CODE      = "http://" + SERVER_HOST + "/lmk_interface/vcode/index.php";
+    public static final String URL_LOGIN                      = "http://" + SERVER_HOST + "/lmk_interface/login/index.php";
+    public static final String URL_BIND_PHONE_CARD            = "http://" + SERVER_HOST + "/lmk_interface/bding/index.php";
+    public static final String URL_GET_QR_CODE                = "http://" + SERVER_HOST + "/lmk_interface/qr/index.php";
+    public static final String URL_CHANGE_PWD                 = "http://" + SERVER_HOST + "/lmk_interface/cpwd/index.php";
+    public static final String URL_REGISTER                   = "http://" + SERVER_HOST + "/lmk_interface/register/index.php";
+    public static final String URL_GET_ADS                    = "http://" + SERVER_HOST + "/lmk_interface/ads/index.php";
+    public static final String URL_GET_LATEST_ACTIVITIES      = "http://" + SERVER_HOST + "/lmk_interface/activity/index.php";
+    public static final String URL_GET_COUPONS                = "http://" + SERVER_HOST + "/lmk_interface/coupons/index.php";
+    public static final String URL_GET_LUCKY_COUPONS          = "http://" + SERVER_HOST + "/lmk_interface/try/index.php";
+    public static final String URL_GET_MY_COUPONS             = "http://" + SERVER_HOST + "/lmk_interface/mycoupons/index.php";
+    public static final String URL_RECEIVE_COUPONS            = "http://" + SERVER_HOST + "/lmk_interface/receivecoupons/index.php";
+    public static final String URL_GET_COUPON_DETAIL          = "http://" + SERVER_HOST + "/lmk_interface/coupondetail/index.php";
+    public static final String URL_GET_MY_COUPON_DETAIL       = "http://" + SERVER_HOST + "/lmk_interface/mycouponsdetail/index.php";
+    public static final String URL_GET_MY_INGOTS              = "http://" + SERVER_HOST + "/lmk_interface/yuanbao/index.php";
+    public static final String URL_GET_INGOTS                 = "http://" + SERVER_HOST + "/lmk_interface/rechargeablecard/index.php";
+    public static final String URL_EXCHANGE_INGOTS            = "http://" + SERVER_HOST + "/lmk_interface/exchange/index.php";
+
+    public final static String KEY_CARD_ID = "card_id";
+    public final static String KEY_CARD_NUM = "card_num";
+    public final static String KEY_MOBILE = "mobile";
+    public final static String KEY_VERIFICATION_CODE = "vcode";
+    public final static String KEY_INTEGRAL = "integral";
+    public final static String KEY_MONEY = "money";
+    public final static String KEY_KEY = "key";
+    public final static String KEY_PASSWORD = "password";
+    public final static String KEY_QR_CODE = "qr_code";
+
+    public final static String SERVICE_ID_CATEGORY = "S1112";
+    public final static String SERVICE_ID_NEWS = "S1116";
+
+
+
+
+    public static final String DEFAULT_KEY = "123456789";
+
 }

@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import com.creal.nest.R;
+import com.creal.nest.model.SalesActivity;
 import com.creal.nest.views.HeaderView;
 
 public class LatestActivityDetailActivity extends Activity {
@@ -19,8 +19,8 @@ public class LatestActivityDetailActivity extends Activity {
         HeaderView headerView = (HeaderView) findViewById(R.id.header);
         headerView.hideRightImage();
 
-        com.creal.nest.model.Activity activity = getIntent().getParcelableExtra("activity");
-        headerView.setTitle(activity.getName());
+        SalesActivity salesActivity = getIntent().getParcelableExtra("salesActivity");
+//        headerView.setTitle(salesActivity.getName());
     }
 
     public void onViewMoreClick(View view){

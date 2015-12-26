@@ -20,6 +20,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="40dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:gravity="top|center_horizontal"
@@ -44,14 +45,16 @@
                     android:id="@+id/id_txt_phone"
                     android:layout_width="0dip"
                     android:layout_height="@dimen/input_text_height_middle"
-                    android:background="@color/input_bg"
                     android:layout_gravity="center_horizontal"
                     android:layout_weight="1"
+                    android:background="@color/input_bg"
                     android:drawableLeft="@drawable/icon_register_phone"
                     android:hint="@string/binding_hint_phone_num"
+                    android:inputType="phone"
                     android:textSize="16sp" />
 
                 <Button
+                    android:id="@+id/id_btn_get_code"
                     android:layout_width="wrap_content"
                     android:layout_height="24dip"
                     android:layout_gravity="center_vertical"
@@ -62,8 +65,8 @@
                     android:padding="2dip"
                     android:paddingLeft="5dip"
                     android:paddingRight="5dip"
-                    android:textSize="14sp"
-                    android:text="@string/binding_send_verification_code" />
+                    android:text="@string/binding_send_verification_code"
+                    android:textSize="14sp" />
 
             </LinearLayout>
 
@@ -96,7 +99,7 @@
                 android:background="@color/input_bg"
                 android:drawableLeft="@drawable/icon_register_pwd"
                 android:hint="@string/register_hint_pwd"
-                android:inputType="textPassword"
+                android:inputType="numberPassword"
                 android:textSize="16sp" />
 
             <TextView
@@ -146,29 +149,58 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:src="@drawable/icon_register_province" />
+                    android:src="@drawable/icon_register_post" />
 
-                <Spinner
+                <TextView
                     android:id="@+id/id_spinner_provinces"
-                    android:layout_width="100dip"
-                    android:layout_height="35dip"
-                    android:background="@drawable/spinner_bg"
-                    android:drawSelectorOnTop="true"
-                    android:prompt="@string/register_hint_select_province" />
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="@string/register_hint_neet_post"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
 
-                <View
-                    android:layout_width="1dip"
-                    android:layout_height="25dip"
-                    android:background="@drawable/tab_divider" />
+                <RadioGroup
+                    android:id="@+id/id_radio_post"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:divider="@color/black"
+                    android:orientation="horizontal"
+                    android:showDividers="beginning|middle">
 
-                <Spinner
-                    android:id="@+id/id_spinner_cities"
-                    android:layout_width="100dip"
-                    android:layout_height="35dip"
-                    android:paddingTop="0dip"
-                    android:background="@drawable/spinner_bg"
-                    android:drawSelectorOnTop="true"
-                    android:prompt="@string/register_hint_select_city" />
+                    <View
+                        android:layout_width="1dip"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/divider_vertical_gray" />
+
+                    <RadioButton
+                        android:id="@+id/id_radio_yes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="5dp"
+                        android:checked="true"
+                        android:text="是" />
+
+                    <View
+                        android:layout_width="1dip"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/divider_vertical_gray" />
+
+                    <RadioButton
+                        android:id="@+id/id_radio_no"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="5dp"
+                        android:text="否" />
+                </RadioGroup>
             </LinearLayout>
 
             <View
@@ -176,17 +208,35 @@
                 android:layout_height="1px"
                 android:background="@drawable/divider_horizontal" />
 
-            <EditText
-                android:id="@+id/id_txt_detail_addr"
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/input_text_height_middle"
-                android:layout_gravity="center_horizontal"
-                android:background="@color/input_bg"
-                android:drawableLeft="@drawable/icon_register_addr"
-                android:hint="@string/register_hint_user_addr"
-                android:textSize="16sp" />
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="23dp"
+                    android:layout_height="13dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/icon_register_addr" />
+
+                <EditText
+                    android:id="@+id/id_txt_detail_addr"
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:lines="3"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:background="@color/input_bg"
+                    android:gravity="top"
+                    android:hint="@string/register_hint_user_addr"
+                    android:paddingTop="5dp"
+                    android:textSize="16sp" />
+            </LinearLayout>
 
             <Button
+                android:id="@+id/id_btn_register"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/input_text_height_middle"
                 android:layout_marginLeft="15dip"
@@ -198,30 +248,18 @@
                 android:textColor="@color/white"
                 android:textSize="18sp" />
 
-            <LinearLayout
+
+            <CheckBox
+                android:id="@+id/id_checkbox_accept_terms"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="6dip"
                 android:layout_marginTop="5dip"
-                android:orientation="vertical"
-                android:padding="10dip"
-                android:paddingBottom="50dip">
-
-                <CheckBox
-                    android:id="@+id/id_checkbox_accept_terms"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/register_accept_terms"
-                    android:textColor="@color/black" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="onViewTermsClick"
-                    android:paddingLeft="5dp"
-                    android:text="@string/register_terms"
-                    android:textColor="@color/darkgray"
-                    android:textSize="16sp" />
-            </LinearLayout>
+                android:paddingBottom="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="10dip"
+                android:text="@string/register_accept_terms"
+                android:textColor="@color/black" />
 
         </LinearLayout>
     </ScrollView>

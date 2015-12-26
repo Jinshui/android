@@ -13,10 +13,11 @@ import org.json.JSONObject;
 public abstract class PaginationAction<Result> extends AbstractAction<Pagination<Result>> {
     private static final String tag = "TT-PaginationAction";
     //request keys
-    private static final String PAGE_INDEX = "page";
-    private static final String PAGE_SIZE = "num";
+    private static final String PAGE_FROM   = "list_num";
+    private static final String PAGE_SIZE   = "list_len";
     //response keys
-    private static final String COUNT = "Count";
+    private static final String TOTAL_COUNT = "totalItem";
+    private static final String CONTENTS    = "contents";
 
     private int mPageIndex;
     private int mPageSize;
@@ -35,7 +36,7 @@ public abstract class PaginationAction<Result> extends AbstractAction<Pagination
 
     @Override
     protected void addRequestParameters(JSONObject parameters, String timeStr) throws JSONException {
-        parameters.put(PAGE_INDEX, String.valueOf(mPageIndex));
+        parameters.put(PAGE_FROM, String.valueOf((mPageIndex - 1) * mPageSize + 1));
         parameters.put(PAGE_SIZE, String.valueOf(mPageSize));
     }
 
@@ -43,22 +44,22 @@ public abstract class PaginationAction<Result> extends AbstractAction<Pagination
     public final Pagination<Result> createRespObject(JSONObject response) throws JSONException {
         Pagination<Result> pagination = new Pagination<Result>();
         pagination.setPageSize(mPageSize);
-        if(response.has(COUNT)){
+        if(response.has(TOTAL_COUNT)){
             try{
-            	pagination.setTotalCounts(response.getInt(COUNT));
+            	pagination.setTotalCounts(response.getInt(TOTAL_COUNT));
             }catch(Exception e){
-            	Log.e(tag, "Failed to parse " + COUNT + ": " + e.getMessage());
+            	Log.e(tag, "Failed to parse " + TOTAL_COUNT + ": " + e.getMessage());
             }
         }
-        if(response.has(RESP_LIST)){
+        if(response.has(getContentsKey())){
         	try{
-	            JSONArray items = response.getJSONArray(RESP_LIST);
+	            JSONArray items = response.getJSONArray(getContentsKey());
 	            for(int i=0; i<items.length(); i++){
 	                JSONObject item = items.getJSONObject(i);
 	                pagination.getItems().add(convertJsonToResult(item));
 	            }
         	}catch(Exception e){
-            	Log.e(tag, "Failed to parse " + RESP_LIST + ": " + e.getMessage());
+            	Log.e(tag, "Failed to parse " + getContentsKey() + ": " + e.getMessage());
         	}
         }
         mTotalCount = pagination.getTotalCounts();
@@ -95,6 +96,10 @@ public abstract class PaginationAction<Result> extends AbstractAction<Pagination
         	action.setPageIndex( action.getPageIndex() - 1);
         action.setTotalCount(action.getTotalCount());
         return action;
+    }
+
+    protected String getContentsKey(){
+        return CONTENTS;
     }
 
     public final int getPageIndex(){

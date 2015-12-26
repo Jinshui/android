@@ -5,26 +5,23 @@ import android.content.Context;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class GetVerificationCodeAction extends AbstractAction {
+public class GetVerificationCodeAction extends AbstractAction<String> {
 
-    private String mCardNum;
     private String mMobile;
 
-    public GetVerificationCodeAction(Context context, String cardNum, String mobile) {
+    public GetVerificationCodeAction(Context context, String mobile) {
         super(context);
-        this.mCardNum = cardNum;
         this.mMobile = mobile;
         this.mServiceId = "GET_VERIFICATION_CODE";
-        mURL = "http://manager.go.wuxian114.com/lmk_interface/login.php";
+        mURL = URL_GET_VERIFICATION_CODE;
     }
 
     protected void addRequestParameters(JSONObject parameters, String timeStr) throws JSONException {
-        parameters.put("card_num", mCardNum);
         parameters.put("mobile", mMobile);
     }
 
     @Override
-    protected Object createRespObject(JSONObject response) throws JSONException {
-        return null;
+    protected String createRespObject(JSONObject response) throws JSONException {
+        return response.getString("code");
     }
 }

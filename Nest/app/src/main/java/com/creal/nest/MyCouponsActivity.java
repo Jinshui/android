@@ -13,6 +13,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.creal.nest.actions.JSONConstants;
+import com.creal.nest.util.PreferenceUtil;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.creal.nest.actions.AbstractAction;
 import com.creal.nest.actions.GetCouponsAction;
@@ -48,29 +50,15 @@ public class MyCouponsActivity extends ListActivity implements PullToRefreshBase
     }
 
     private void loadFirstPage(boolean isInitialLoad){
-        Log.d(TAG, "loadCoupons");
+        Log.d(TAG, "loadFirstPage");
         if(isInitialLoad)
             mLoadingSupportPTRListView.showLoadingView();
-        mGetCouponsAction = new GetCouponsAction(this, 1, 10);
+        String cardId = PreferenceUtil.getString(this, JSONConstants.KEY_CARD_ID, null);
+        mGetCouponsAction = new GetCouponsAction(this, 1, 10, cardId, GetCouponsAction.Type.MY_COUPONS);
         mGetCouponsAction.execute(
-            new AbstractAction.BackgroundCallBack<Pagination<Coupon>>() {
-                public void onSuccess(Pagination<Coupon> result) {
-                    try { Thread.sleep(2000); } catch (InterruptedException e) { }
-                }
-                public void onFailure(AbstractAction.ActionError error){
-                    try { Thread.sleep(2000); } catch (InterruptedException e) { }
-                }
-            },
             new AbstractAction.UICallBack<Pagination<Coupon>>() {
                 public void onSuccess(Pagination<Coupon> result) {
-                    List<Coupon> coupons = new ArrayList<>();
-                    coupons.add(new Coupon());
-                    coupons.add(new Coupon());
-                    coupons.add(new Coupon());
-                    coupons.add(new Coupon(true));
-                    coupons.add(new Coupon(true));
-                    coupons.add(new Coupon(true));
-                    mCouponsListAdapter = new MyCouponsListAdapter(getBaseContext(), R.layout.view_list_item_my_coupons, coupons);
+                    mCouponsListAdapter = new MyCouponsListAdapter(getBaseContext(), R.layout.view_list_item_my_coupons, result.getItems());
                     setListAdapter(mCouponsListAdapter);
                     getListView().setDivider(null);
                     mLoadingSupportPTRListView.showListView();
@@ -78,19 +66,10 @@ public class MyCouponsActivity extends ListActivity implements PullToRefreshBase
                 }
 
                 public void onFailure(AbstractAction.ActionError error) {
-                    mGetCouponsAction = (GetCouponsAction)mGetCouponsAction.cloneCurrentPageAction();
-                    List<Coupon> coupons = new ArrayList<>();
-                    coupons.add(new Coupon());
-                    coupons.add(new Coupon());
-                    coupons.add(new Coupon());
-                    coupons.add(new Coupon(true));
-                    coupons.add(new Coupon(true));
-                    coupons.add(new Coupon(true));
-                    mCouponsListAdapter = new MyCouponsListAdapter(getBaseContext(), R.layout.view_list_item_my_coupons, coupons);
-                    setListAdapter(mCouponsListAdapter);
-                    getListView().setDivider(null);
+                    mGetCouponsAction = mGetCouponsAction.cloneCurrentPageAction();
                     mLoadingSupportPTRListView.showListView();
                     mLoadingSupportPTRListView.refreshComplete();
+                    Toast.makeText(getBaseContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
         );
@@ -100,41 +79,29 @@ public class MyCouponsActivity extends ListActivity implements PullToRefreshBase
         Log.d(TAG, "loadNextPage");
         mGetCouponsAction = mGetCouponsAction.getNextPageAction();
         mGetCouponsAction.execute(
-            new AbstractAction.BackgroundCallBack<Pagination<Coupon>>() {
-                public void onSuccess(Pagination<Coupon> result) {
-                    try { Thread.sleep(2000); } catch (InterruptedException e) { }
-                }
-                public void onFailure(AbstractAction.ActionError error){
-                    try { Thread.sleep(2000); } catch (InterruptedException e) { }
-                }
-            },
-            new AbstractAction.UICallBack<Pagination<Coupon>>() {
-                public void onSuccess(Pagination<Coupon> result) {
-                    List<Coupon> coupons = new ArrayList<>();
-                    coupons.add(new Coupon());
-                    coupons.add(new Coupon());
-                    mCouponsListAdapter.addMore(coupons);
-                    mLoadingSupportPTRListView.refreshComplete();
-                }
+                new AbstractAction.UICallBack<Pagination<Coupon>>() {
+                    public void onSuccess(Pagination<Coupon> result) {
+                        if(result.getItems().isEmpty()){
+                            Toast.makeText(getBaseContext(), R.string.load_done, Toast.LENGTH_SHORT).show();
+                        }else {
+                            mCouponsListAdapter.addMore(result.getItems());
+                        }
+                        mLoadingSupportPTRListView.refreshComplete();
+                    }
 
-                public void onFailure(AbstractAction.ActionError error) {
-//                        Toast.makeText(getBaseContext(), R.string.load_failed, Toast.LENGTH_SHORT).show();
-                    mGetCouponsAction = mGetCouponsAction.getPreviousPageAction();
-                    Toast.makeText(getBaseContext(), "成功加载两条新优惠券。", Toast.LENGTH_SHORT).show();
-                    //TODO: TEST CODE
-                    List<Coupon> coupons = new ArrayList<>();
-                    coupons.add(new Coupon());
-                    coupons.add(new Coupon());
-                    mCouponsListAdapter.addMore(coupons);
-                    mLoadingSupportPTRListView.refreshComplete();
+                    public void onFailure(AbstractAction.ActionError error) {
+                        Toast.makeText(getBaseContext(), R.string.load_failed, Toast.LENGTH_SHORT).show();
+                        mGetCouponsAction = mGetCouponsAction.getPreviousPageAction();
+                        mLoadingSupportPTRListView.refreshComplete();
+                    }
                 }
-            }
         );
     }
 
     protected void onListItemClick(ListView l, View v, int position, long id){
-        Toast.makeText(getBaseContext(), "clicked: " + position + ", enabled: " + v.isEnabled(), Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, CouponDetailActivity.class);
+        intent.putExtra(CouponDetailActivity.INTENT_EXTRA_CARD_ID, PreferenceUtil.getString(this, JSONConstants.KEY_CARD_ID, null));
+        intent.putExtra(CouponDetailActivity.INTENT_EXTRA_COUPON_ID, ((Coupon)getListView().getItemAtPosition(position)).getId());
         startActivity(intent);
     }
 
@@ -169,9 +136,13 @@ public class MyCouponsActivity extends ListActivity implements PullToRefreshBase
                 holder = (ViewHolder) convertView.getTag();
             }
 
+            holder.couponThumbnail.loadImage(coupon.getImageUrl());
+            holder.description.setText(coupon.getDesc());
+            holder.expireDate.setText(String.format(getString(R.string.my_coupons_expire_date), coupon.getStartTime(), coupon.getEndTime()));
+
             if(Build.VERSION.SDK_INT > 10) {
                 convertView.findViewById(R.id.id_content).setAlpha(1f);
-                if (coupon.isExpired()) {
+                if (coupon.getUseCount() > 0) {
                     convertView.findViewById(R.id.id_content).setAlpha(0.3f);
                 }
             }

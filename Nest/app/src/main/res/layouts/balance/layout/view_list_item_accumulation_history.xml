@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:paddingTop="10dp">
+
+    <TextView
+        android:id="@+id/id_txt_item_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="充值500元"
+        android:textColor="#666666"
+        android:textSize="@dimen/font_middle" />
+
+    <TextView
+        android:id="@+id/id_txt_item_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:drawableLeft="@drawable/balance_my_points"
+        android:drawablePadding="5dp"
+        android:text="+160"
+        android:textColor="@color/important_color"
+        android:textSize="@dimen/font_middle"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/id_txt_item_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/id_txt_item_title"
+        android:layout_marginBottom="10dp"
+        android:drawableLeft="@drawable/icon_clock"
+        android:drawablePadding="5dp"
+        android:text="2015.6.11 16:10"
+        android:textColor="#666666"
+        android:textSize="@dimen/font_middle" />
+
+    <TextView
+        android:id="@+id/id_txt_item_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/id_txt_item_amount"
+        android:layout_marginBottom="10dp"
+        android:text="消费获得"
+        android:textColor="#666666"
+        android:textSize="@dimen/font_middle" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/divider_horizontal" />
+</RelativeLayout>

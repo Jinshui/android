@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 import com.creal.nest.views.HeaderView;
 
-public class HelpDetailActivity extends Activity {
+public class WebpageActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,9 +22,10 @@ public class HelpDetailActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_help_detail);
 
-        HeaderView headerView = (HeaderView) findViewById(R.id.header);
+        final HeaderView headerView = (HeaderView) findViewById(R.id.header);
         headerView.hideRightImage();
-        headerView.setTitle(getIntent().getStringExtra("title"));
+        final String title = getIntent().getStringExtra("title");
+        headerView.setTitle(title);
         WebView webview = (WebView) findViewById(R.id.id_help_webview);
         webview.clearCache(true);
         webview.clearHistory();
@@ -42,8 +43,18 @@ public class HelpDetailActivity extends Activity {
             public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
                 Toast.makeText(activity, "Oh no! " + description, Toast.LENGTH_SHORT).show();
             }
+            public void onPageFinished(WebView view, String url) {
+                if(title == null || title.isEmpty()) {
+                    headerView.setTitle(view.getTitle());
+                }
+            }
         });
-        webview.loadUrl("http://www.baidu.com");
+
+        String url = getIntent().getStringExtra("url");
+        if(url == null){
+            url = "http://www.baidu.com";
+        }
+        webview.loadUrl(url);
     }
 
     void showToast(CharSequence msg) {

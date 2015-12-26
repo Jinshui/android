@@ -129,11 +129,12 @@
                     android:id="@+id/id_txt_repair_summary"
                     android:layout_width="0dip"
                     android:layout_weight="1"
-                    android:layout_height="120dp"
+                    android:lines="5"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
+                    android:background="@color/white"
                     android:gravity="top"
                     android:hint="@string/property_repair_summary"
-                    android:inputType="number"
                     android:paddingTop="10dp"
                     android:textSize="16sp" />
             </LinearLayout>
