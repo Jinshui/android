@@ -20,16 +20,6 @@ public class GetLatestActivitiesAction extends PaginationAction<SalesActivity> {
         mURL = URL_GET_LATEST_ACTIVITIES;
     }
 
-    @Override
-    protected void addRequestParameters(JSONObject parameters, String timeStr) throws JSONException {
-        super.addRequestParameters(parameters, timeStr);
-        try{
-//            parameters.put(NAME, URLEncoder.encode(mCategory, "UTF-8"));
-        }catch(Exception e){
-            Log.d(tag, "failed to add parameters", e);
-        }
-    }
-
     public GetLatestActivitiesAction cloneCurrentPageAction(){
         GetLatestActivitiesAction action = new GetLatestActivitiesAction(
                 mAppContext,

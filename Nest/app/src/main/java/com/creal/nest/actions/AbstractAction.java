@@ -195,6 +195,7 @@ public abstract class AbstractAction<Result> extends ParallelTask<AbstractAction
                         //trim the string to prevent start with blank, and test if the string is valid JSON, because the parser don't do this :(. If JSON is not valid this will return null
                         String jsonString = getResponseString(responseBody, getCharset());
                         if (jsonString != null) {
+                            Log.d(tag, "Original jsonString: " + jsonString);
                             jsonString = jsonString.trim();
                             if (jsonString.startsWith("{") || jsonString.startsWith("[")) {
                                 result = new JSONTokener(jsonString).nextValue();
@@ -318,7 +319,7 @@ public abstract class AbstractAction<Result> extends ParallelTask<AbstractAction
                 return new ActionResult(error);
             }
             if(!response.has("body")){
-                ActionError error = new ActionError(ErrorCode.APPLICATOIN_ERROR, "服务器未返回结果内容");
+                ActionError error = new ActionError(ErrorCode.APPLICATOIN_ERROR, "获取信息失败，请稍候重试！");
                 return new ActionResult(error);
             }
             JSONObject body = response.getJSONObject("body");
@@ -363,8 +364,7 @@ public abstract class AbstractAction<Result> extends ParallelTask<AbstractAction
     private JSONObject createJSONRequest() throws JSONException {
         JSONObject request = new JSONObject();
         String timeStr = Utils.formatDate("yyyy-MM-dd HH:mm:ss", new Date());
-        JSONObject requestBody = new JSONObject();
-        addRequestParameters(requestBody, timeStr);
+        JSONObject requestBody = getRequestBody(timeStr);
         request.putOpt("body", requestBody);
         request.put("timestr", timeStr);
         String key = PreferenceUtil.getString(mAppContext, KEY_KEY, DEFAULT_KEY);
@@ -380,7 +380,7 @@ public abstract class AbstractAction<Result> extends ParallelTask<AbstractAction
     public String getUrl(){ return mURL; }
     public void setUrl(String url) { this.mURL = url;}
 
-    protected abstract void addRequestParameters(JSONObject params, String timeStr) throws JSONException;
+    protected abstract JSONObject getRequestBody(String timeStr) throws JSONException;
 
     protected abstract Result createRespObject(JSONObject response) throws JSONException;
 }

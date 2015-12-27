@@ -32,7 +32,8 @@ public class RegisterAction extends AbstractAction<String> {
         mURL = URL_REGISTER;
     }
 
-    protected void addRequestParameters(JSONObject parameters, String timeStr) throws JSONException {
+    protected JSONObject getRequestBody(String timeStr) throws JSONException{
+        JSONObject parameters = new JSONObject();
         parameters.put(KEY_MOBILE, mMobile);
         parameters.put(KEY_VERIFICATION_CODE, mVerificationCode);
         parameters.put(KEY_PASSWORD, Utils.md5(mPassword));
@@ -43,6 +44,7 @@ public class RegisterAction extends AbstractAction<String> {
         if(mAddress != null)
             parameters.put("address", mAddress);
         parameters.put("is_mail", mSendViaPost);
+        return parameters;
     }
 
     @Override

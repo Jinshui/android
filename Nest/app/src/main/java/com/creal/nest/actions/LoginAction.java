@@ -24,11 +24,12 @@ public class LoginAction extends AbstractAction {
         mURL = URL_LOGIN;
     }
 
-    @Override
-    protected void addRequestParameters(JSONObject params, String timeStr) throws JSONException {
-        params.put("card_num", mCardNum);
+    protected JSONObject getRequestBody(String timeStr) throws JSONException{
+        JSONObject parameters = new JSONObject();
+        parameters.put("card_num", mCardNum);
         String key = PreferenceUtil.getString(mAppContext, KEY_KEY, null);
-        params.put("password", Utils.md5(Utils.md5(mPassword) + key + timeStr));
+        parameters.put("password", Utils.md5(Utils.md5(mPassword) + key + timeStr));
+        return parameters;
     }
 
     @Override

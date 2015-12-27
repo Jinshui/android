@@ -16,8 +16,10 @@ public class GetMyIngotsAction extends AbstractAction<String> {
         mURL = URL_GET_MY_INGOTS;
     }
 
-    protected void addRequestParameters(JSONObject parameters, String timeStr) throws JSONException {
+    protected JSONObject getRequestBody(String timeStr) throws JSONException{
+        JSONObject parameters = new JSONObject();
         parameters.put(KEY_CARD_ID, mCardId);
+        return parameters;
     }
 
     @Override

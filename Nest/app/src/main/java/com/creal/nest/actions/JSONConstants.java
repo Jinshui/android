@@ -19,6 +19,13 @@ public interface JSONConstants {
     public static final String URL_GET_MY_INGOTS              = "http://" + SERVER_HOST + "/lmk_interface/yuanbao/index.php";
     public static final String URL_GET_RECHARGE_CARD          = "http://" + SERVER_HOST + "/lmk_interface/rechargeablecard/index.php";
     public static final String URL_EXCHANGE_INGOTS            = "http://" + SERVER_HOST + "/lmk_interface/exchange/index.php";
+    public static final String URL_BIND_PROPERTY              = "http://" + SERVER_HOST + "/lmk_interface/bdhousing/index.php";
+    public static final String URL_REPORT_REPAIR              = "http://" + SERVER_HOST + "/lmk_interface/repair/index.php";
+    public static final String URL_REPORT_REPAIR_LIST         = "http://" + SERVER_HOST + "/lmk_interface/repairlist/index.php";
+    public static final String URL_REPORT_REPAIR_DETAIL       = "http://" + SERVER_HOST + "/lmk_interface/repairdetail/index.php";
+    public static final String URL_GET_SHOP_CATEGORY          = "http://" + SERVER_HOST + "/lmk_interface/comclass/index.php";
+    public static final String URL_GET_SHOPS                  = "http://" + SERVER_HOST + "/lmk_interface/comlist/index.php";
+    public static final String URL_GET_SHOP_DETAIL            = "http://" + SERVER_HOST + "/lmk_interface/comdetail/index.php";
 
     public final static String KEY_CARD_ID = "card_id";
     public final static String KEY_CARD_NUM = "card_num";

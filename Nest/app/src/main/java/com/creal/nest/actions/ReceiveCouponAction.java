@@ -21,9 +21,11 @@ public class ReceiveCouponAction extends AbstractAction<ReceiveCouponResult> {
         mURL = URL_RECEIVE_COUPONS;
     }
 
-    protected void addRequestParameters(JSONObject parameters, String cardId) throws JSONException {
+    protected JSONObject getRequestBody(String timeStr) throws JSONException{
+        JSONObject parameters = new JSONObject();
         parameters.put(KEY_CARD_ID, mCardId);
         parameters.put("coupons_id", mCouponId);
+        return parameters;
     }
 
     @Override

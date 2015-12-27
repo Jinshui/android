@@ -20,6 +20,7 @@ import com.creal.nest.actions.GetMyIngotsAction;
 import com.creal.nest.actions.JSONConstants;
 import com.creal.nest.model.RechargeCard;
 import com.creal.nest.model.Pagination;
+import com.creal.nest.util.ErrorAdapter;
 import com.creal.nest.util.PreferenceUtil;
 import com.creal.nest.views.HeaderView;
 import com.creal.nest.views.ptr.LoadingSupportPTRListView;
@@ -148,16 +149,6 @@ public class IngotsMallActivity extends ListActivity implements PullToRefreshBas
     @Override
     public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
         loadNextPage();
-    }
-
-    public class ErrorAdapter extends ArrayAdapter<String>{
-        public ErrorAdapter(Context context, int resource) {
-            super(context, resource, new String[]{"nothing"});
-        }
-
-        public View getView(final int position, View convertView, ViewGroup parent) {
-            return LayoutInflater.from(getBaseContext()).inflate(R.layout.view_list_item_error, parent, false);
-        }
     }
 
     public class IngotListAdapter extends PTRListAdapter<RechargeCard> {

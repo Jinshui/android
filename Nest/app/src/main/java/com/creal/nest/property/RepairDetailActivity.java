@@ -1,21 +1,23 @@
 package com.creal.nest.property;
 
 import android.app.Activity;
-import android.content.Intent;
+import android.app.Dialog;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.creal.nest.LatestActivityDetailActivity;
 import com.creal.nest.R;
+import com.creal.nest.actions.AbstractAction;
+import com.creal.nest.actions.GetRepairDetailAction;
+import com.creal.nest.actions.JSONConstants;
 import com.creal.nest.model.Repair;
-import com.creal.nest.model.SalesActivity;
+import com.creal.nest.util.PreferenceUtil;
+import com.creal.nest.util.UIUtil;
 import com.creal.nest.views.HeaderView;
 
 import java.util.List;
@@ -24,7 +26,15 @@ public class RepairDetailActivity extends Activity {
 
 
     private static final String TAG = "XYK-LatestActivities";
+    public static final String INTENT_EXTRA_REPAIR_ID = "repair_id";
+
+    private TextView mTitle;
+    private TextView mState;
+    private TextView mTime;
+    private TextView mDesc;
+
     private LinearLayout mStepsPanel;
+    private String mRepairId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +44,43 @@ public class RepairDetailActivity extends Activity {
         headerView.hideRightImage();
         headerView.setTitle(R.string.property_repair_detail);
         mStepsPanel = (LinearLayout)findViewById(R.id.id_panel_repair_steps);
+        mTitle = (TextView)findViewById(R.id.id_txt_repair_name);
+        mState = (TextView)findViewById(R.id.id_txt_repair_state);
+        mTime = (TextView)findViewById(R.id.id_txt_repair_time);
+        mDesc = (TextView)findViewById(R.id.id_txt_repair_desc);
 
-        Repair repair = getIntent().getParcelableExtra("repair");
+        mRepairId = getIntent().getStringExtra(INTENT_EXTRA_REPAIR_ID);
+
+
+    }
+
+    private void init(){
+        final Dialog dialog = UIUtil.showLoadingDialog(this, getString(R.string.loading), true);
+        GetRepairDetailAction repairDetailAction = new GetRepairDetailAction(this, PreferenceUtil.getString(this, JSONConstants.KEY_CARD_ID, null), mRepairId);
+        repairDetailAction.execute(new AbstractAction.UICallBack<Repair>() {
+            public void onSuccess(Repair repair) {
+                initSteps(repair);
+                dialog.dismiss();
+            }
+
+            public void onFailure(AbstractAction.ActionError error) {
+                Toast.makeText(RepairDetailActivity.this, error.getMessage(), Toast.LENGTH_LONG).show();
+                dialog.dismiss();
+            }
+        });
+    }
+
+    private void initSteps(Repair repair){
+
+        mTitle.setText(repair.getTitle());
+        mState.setText(Repair.State.toString(repair.getState()));
+        mTime.setText(repair.getTime());
+        mDesc.setText(repair.getSummary());
+
+        repair.getStepList().add(new Repair.Step("维修中...", "2015.6.11 16:20"));
+        repair.getStepList().add(new Repair.Step("维修师傅返回准备所需物料", "2015.6.11 16:10"));
+        repair.getStepList().add(new Repair.Step("已经安排物业维修师傅上门检查损坏情况", "2015.6.11 15:40"));
+        repair.getStepList().add(new Repair.Step("您的报修信息已经开始.", "2015.6.11 15:36"));
         List<Repair.Step> stepList = repair.getStepList();
         for(int i=0;  i<stepList.size(); i++){
             Repair.Step step = stepList.get(i);
@@ -60,14 +105,4 @@ public class RepairDetailActivity extends Activity {
             mStepsPanel.addView(item);
         }
     }
-
-    protected void onListItemClick(ListView l, View v, int position, long id){
-        Toast.makeText(getBaseContext(), "clicked: " + position + ", enabled: " + v.isEnabled(), Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(this, LatestActivityDetailActivity.class);
-        SalesActivity salesActivity = new SalesActivity();
-//        salesActivity.setName("潮牌运动风");
-        intent.putExtra("salesActivity", salesActivity);
-        startActivity(intent);
-    }
-
 }

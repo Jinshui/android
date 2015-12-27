@@ -14,7 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.creal.nest.actions.AbstractAction;
-import com.creal.nest.actions.GetShopAction;
+import com.creal.nest.actions.GetShopListAction;
 import com.creal.nest.actions.ParallelTask;
 import com.creal.nest.model.Pagination;
 import com.creal.nest.model.Shop;
@@ -31,7 +31,7 @@ public class FragmentTestShopList extends ListFragment implements SwipeRefreshLa
     private PTRListAdapter<Shop> mShopListAdapter;
     private List<Shop> mShopList;
     private boolean mShopLoadedFromServer = false;
-    private GetShopAction mGetShopAction;
+    private GetShopListAction mGetShopListAction;
     private SwipeRefreshLayout mSwipeRefreshWidget;
 
     private int mAsyncTaskCount = 0;
@@ -77,8 +77,8 @@ public class FragmentTestShopList extends ListFragment implements SwipeRefreshLa
         mSwipeRefreshWidget.setRefreshing(true);
         mAsyncTaskCount++;
         Log.d(tag, mCategory + " loadShopFromServer(): tasks: " + mAsyncTaskCount);
-        mGetShopAction = new GetShopAction(getActivity(), mCategory, 1, Constants.PAGE_SIZE);
-        mGetShopAction.execute(
+        mGetShopListAction = new GetShopListAction(getActivity(), mCategory, 0, 0, 1, Constants.PAGE_SIZE);
+        mGetShopListAction.execute(
                 new AbstractAction.BackgroundCallBack<Pagination<Shop>>() {
                     public void onSuccess(Pagination<Shop> newsPage) {
                         try {
@@ -141,7 +141,7 @@ public class FragmentTestShopList extends ListFragment implements SwipeRefreshLa
 
                 if (mShopListAdapter == null) {
                     mShopListAdapter = new ShopArrayAdapter(getActivity(), R.layout.view_list_item_shop, shopList);
-                    mGetShopAction = new GetShopAction(getActivity(), mCategory, shopList.size(), Constants.PAGE_SIZE);
+                    mGetShopListAction = new GetShopListAction(getActivity(), mCategory, 0, 0, shopList.size(), Constants.PAGE_SIZE);
                     setListAdapter(mShopListAdapter);
                 } else {
                     mShopListAdapter.clear();
@@ -162,8 +162,8 @@ public class FragmentTestShopList extends ListFragment implements SwipeRefreshLa
         mSwipeRefreshWidget.setRefreshing(true);
         mAsyncTaskCount++;
         Log.d(tag, mCategory + " onPullUpToRefresh(): tasks: " + mAsyncTaskCount);
-        mGetShopAction = (GetShopAction) mGetShopAction.getNextPageAction();
-        mGetShopAction.execute(
+        mGetShopListAction = (GetShopListAction) mGetShopListAction.getNextPageAction();
+        mGetShopListAction.execute(
                 new AbstractAction.BackgroundCallBack<Pagination<Shop>>() {
                     public void onSuccess(Pagination<Shop> newsPage) {
                         try {
@@ -201,7 +201,7 @@ public class FragmentTestShopList extends ListFragment implements SwipeRefreshLa
                         } else {
                             Toast.makeText(getActivity(), R.string.load_failed, Toast.LENGTH_SHORT).show();
                         }
-                        mGetShopAction = (GetShopAction) mGetShopAction.getPreviousPageAction();
+                        mGetShopListAction = (GetShopListAction) mGetShopListAction.getPreviousPageAction();
                         afterLoadReturned();
                     }
                 }

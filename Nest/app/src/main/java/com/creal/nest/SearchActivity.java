@@ -8,14 +8,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.creal.nest.actions.AbstractAction;
-import com.creal.nest.actions.GetShopAction;
-import com.creal.nest.model.Recharge;
+import com.creal.nest.actions.GetShopListAction;
 import com.creal.nest.model.Shop;
 import com.creal.nest.model.Pagination;
 import com.creal.nest.views.CustomizeImageView;
@@ -33,7 +31,7 @@ public class SearchActivity extends ListActivity implements PullToRefreshBase.On
     private View mSearchHistoryPanel;
     private LoadingSupportPTRListView mLoadingSupportPTRListView;
     private ShopArrayAdapter mShopListAdapter;
-    private GetShopAction mGetShopAction;
+    private GetShopListAction mGetShopListAction;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,8 +48,8 @@ public class SearchActivity extends ListActivity implements PullToRefreshBase.On
         mSearchHistoryPanel.setVisibility(View.INVISIBLE);
         mLoadingSupportPTRListView.setVisibility(View.VISIBLE);
         mLoadingSupportPTRListView.showLoadingView();
-        mGetShopAction = new GetShopAction(this, "", 1, Constants.PAGE_SIZE);
-        mGetShopAction.execute(
+        mGetShopListAction = new GetShopListAction(this, "", 0, 0, 1, Constants.PAGE_SIZE);
+        mGetShopListAction.execute(
             new AbstractAction.BackgroundCallBack<Pagination<Shop>>() {
                 public void onSuccess(Pagination<Shop> result) {
                     try { Thread.sleep(1000); } catch (InterruptedException e) { }
@@ -79,7 +77,7 @@ public class SearchActivity extends ListActivity implements PullToRefreshBase.On
                 }
 
                 public void onFailure(AbstractAction.ActionError error) {
-                    mGetShopAction = mGetShopAction.cloneCurrentPageAction();
+                    mGetShopListAction = mGetShopListAction.cloneCurrentPageAction();
                     List<Shop> coupons = new ArrayList<>();
                     coupons.add(new Shop());
                     coupons.add(new Shop());
@@ -96,8 +94,8 @@ public class SearchActivity extends ListActivity implements PullToRefreshBase.On
 
     private void loadNextPage(){
         Log.d(TAG, "loadNextPage");
-        mGetShopAction = mGetShopAction.getNextPageAction();
-        mGetShopAction.execute(
+        mGetShopListAction = mGetShopListAction.getNextPageAction();
+        mGetShopListAction.execute(
                 new AbstractAction.BackgroundCallBack<Pagination<Shop>>() {
                     public void onSuccess(Pagination<Shop> result) {
                         try {
@@ -124,8 +122,8 @@ public class SearchActivity extends ListActivity implements PullToRefreshBase.On
 
                     public void onFailure(AbstractAction.ActionError error) {
                         Toast.makeText(SearchActivity.this, R.string.load_failed, Toast.LENGTH_SHORT).show();
-                        mGetShopAction = (GetShopAction) mGetShopAction.getPreviousPageAction();
-                        mGetShopAction = mGetShopAction.getPreviousPageAction();
+                        mGetShopListAction = mGetShopListAction.getPreviousPageAction();
+                        mGetShopListAction = mGetShopListAction.getPreviousPageAction();
                         Toast.makeText(getBaseContext(), "成功加载两条新优惠券。", Toast.LENGTH_SHORT).show();
                         //TODO: TEST CODE
                         List<Shop> coupons = new ArrayList<>();

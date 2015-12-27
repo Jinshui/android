@@ -3,6 +3,18 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
 
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center">
+        <ProgressBar
+            android:id="@+id/id_pager_loading"
+            style="@android:style/Widget.ProgressBar.Inverse"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_centerInParent="true" />
+    </RelativeLayout>
+
     <android.support.v4.view.ViewPager
         android:id="@+id/id_photos_pager"
         android:layout_width="fill_parent"

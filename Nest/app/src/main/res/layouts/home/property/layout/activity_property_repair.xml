@@ -66,7 +66,7 @@
                 android:layout_height="10dp" />
 
             <EditText
-                android:id="@+id/id_txt_repair_name"
+                android:id="@+id/id_txt_repair_title"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/input_text_height_middle"
                 android:layout_gravity="center_horizontal"
@@ -183,7 +183,7 @@
                     android:layout_marginRight="15dip"
                     android:background="@color/content_bg"
                     android:gravity="left"
-                    android:onClick="onChangeVerificatoinCodeClick"
+                    android:onClick="onChangeVerificationCodeClick"
                     android:text="@string/change_verification_code"
                     android:textColor="@color/darkpink"
                     android:textSize="18sp" />

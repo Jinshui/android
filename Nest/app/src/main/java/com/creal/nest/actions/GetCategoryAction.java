@@ -2,27 +2,30 @@ package com.creal.nest.actions;
 
 import android.content.Context;
 
+import com.creal.nest.model.ShopCategory;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class GetCategoryAction extends PaginationAction<String>{
+public class GetCategoryAction extends PaginationAction<ShopCategory>{
+
     public GetCategoryAction(Context context, int pageIndex, int pageSize) {
         super(context, pageIndex, pageSize);
-        mServiceId = SERVICE_ID_CATEGORY;
-        mURL = "";
-    }
-
-    protected void addRequestParameters(JSONObject parameters, String timeStr) throws JSONException {
-        super.addRequestParameters(parameters, timeStr);
+        mServiceId = "GET_SHOP_CATEGORY";
+        mURL = URL_GET_SHOP_CATEGORY;
     }
 
     @Override
-    public PaginationAction<String> cloneCurrentPageAction() {
+    public PaginationAction<ShopCategory> cloneCurrentPageAction() {
         return new GetCategoryAction(mAppContext, getPageIndex(), getPageSize());
     }
 
     @Override
-    public String convertJsonToResult(JSONObject item) throws JSONException {
-        return item.toString();
+    public ShopCategory convertJsonToResult(JSONObject json) throws JSONException {
+        return ShopCategory.fromJSON(json);
+    }
+
+    protected String getContentsKey(){
+        return "return_data";
     }
 }

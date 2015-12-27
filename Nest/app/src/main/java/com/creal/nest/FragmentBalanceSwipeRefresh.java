@@ -56,29 +56,6 @@ public class FragmentBalanceSwipeRefresh extends Fragment {
         return view;
     }
 
-
-    private void loadCategoryFromServer(){
-        Log.d(TAG, "loadCategoryFromServer");
-        GetCategoryAction getCategoryAction = new GetCategoryAction(getActivity(), 1, 100);
-        getCategoryAction.execute(
-                new AbstractAction.BackgroundCallBack<Pagination<String>>() {
-                    public void onSuccess(Pagination<String> result) {
-//                        mcategoryDAO.delete();
-//                        mcategoryDAO.save(result.getItems());
-                    }
-                },
-                new AbstractAction.UICallBack<Pagination<String>>() {
-                    public void onSuccess(Pagination<String> result) {
-                        updateUI(result.getItems());
-                    }
-
-                    public void onFailure(AbstractAction.ActionError error) {
-//                        loadCategoryFromDB();
-                    }
-                }
-        );
-    }
-
     private void updateUI(final List<String> categories){
         Log.d(TAG, "updateUI");
         if(categories == null || categories.isEmpty()){
@@ -118,7 +95,7 @@ public class FragmentBalanceSwipeRefresh extends Fragment {
     }
 
     /**
-     * A simple pager adapter that represents 5 {@link SlidePageFragment}
+     * A simple pager adapter that represents 5
      * objects, in sequence.
      */
     private class ShopPagerAdapter extends FragmentStatePagerAdapter {

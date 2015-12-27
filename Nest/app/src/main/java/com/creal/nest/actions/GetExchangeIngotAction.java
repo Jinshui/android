@@ -21,16 +21,6 @@ public class GetExchangeIngotAction extends PaginationAction<ExchangeIngot> {
         mURL = "";
     }
 
-    @Override
-    protected void addRequestParameters(JSONObject parameters, String timeStr) throws JSONException {
-        super.addRequestParameters(parameters, timeStr);
-        try{
-//            parameters.put(NAME, URLEncoder.encode(mCategory, "UTF-8"));
-        }catch(Exception e){
-            Log.d(tag, "failed to add parameters", e);
-        }
-    }
-
     public GetExchangeIngotAction cloneCurrentPageAction(){
         GetExchangeIngotAction action = new GetExchangeIngotAction(
                 mAppContext,

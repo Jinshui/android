@@ -20,16 +20,6 @@ public class GetCommoditiesAction extends PaginationAction<Commodity> {
         mURL = "";
     }
 
-    @Override
-    protected void addRequestParameters(JSONObject parameters, String timeStr) throws JSONException {
-        super.addRequestParameters(parameters, timeStr);
-        try{
-//            parameters.put(NAME, URLEncoder.encode(mCategory, "UTF-8"));
-        }catch(Exception e){
-            Log.d(tag, "failed to add parameters", e);
-        }
-    }
-
     public GetCommoditiesAction cloneCurrentPageAction(){
         GetCommoditiesAction action = new GetCommoditiesAction(
                 mAppContext,

@@ -17,11 +17,6 @@ public class GetRechargeCardsAction extends PaginationAction<RechargeCard> {
         mURL = URL_GET_RECHARGE_CARD;
     }
 
-    @Override
-    protected void addRequestParameters(JSONObject parameters, String timeStr) throws JSONException {
-        super.addRequestParameters(parameters, timeStr);
-    }
-
     public GetRechargeCardsAction cloneCurrentPageAction(){
         GetRechargeCardsAction action = new GetRechargeCardsAction( mAppContext, getPageIndex(), getPageSize());
         return action;

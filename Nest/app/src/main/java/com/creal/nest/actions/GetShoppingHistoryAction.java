@@ -20,16 +20,6 @@ public class GetShoppingHistoryAction extends PaginationAction<Shopping> {
         mURL = "";
     }
 
-    @Override
-    protected void addRequestParameters(JSONObject parameters, String timeStr) throws JSONException {
-        super.addRequestParameters(parameters, timeStr);
-        try{
-//            parameters.put(NAME, URLEncoder.encode(mCategory, "UTF-8"));
-        }catch(Exception e){
-            Log.d(tag, "failed to add parameters", e);
-        }
-    }
-
     public GetShoppingHistoryAction cloneCurrentPageAction(){
         GetShoppingHistoryAction action = new GetShoppingHistoryAction(
                 mAppContext,

@@ -35,9 +35,11 @@ public abstract class PaginationAction<Result> extends AbstractAction<Pagination
     }
 
     @Override
-    protected void addRequestParameters(JSONObject parameters, String timeStr) throws JSONException {
+    protected JSONObject getRequestBody(String timeStr) throws JSONException{
+        JSONObject parameters = new JSONObject();
         parameters.put(PAGE_FROM, String.valueOf((mPageIndex - 1) * mPageSize + 1));
         parameters.put(PAGE_SIZE, String.valueOf(mPageSize));
+        return parameters;
     }
 
     @Override
@@ -78,7 +80,7 @@ public abstract class PaginationAction<Result> extends AbstractAction<Pagination
     		return new ActionResult<Pagination<Result>>(pagination);
     	}
     }
-    
+
     public boolean hasMore(){
     	return mTotalCount < 0 || mPageIndex * mPageSize < mTotalCount;
     }

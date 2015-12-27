@@ -19,7 +19,8 @@ public class GetAdAction extends AbstractAction<List<Ad>> {
         mURL = URL_GET_ADS;
     }
 
-    protected void addRequestParameters(JSONObject parameters, String cardId) throws JSONException {
+    protected JSONObject getRequestBody(String timeStr) throws JSONException {
+        return new JSONObject();
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.creal.nest.property;
 
+import android.app.Dialog;
 import android.app.ListActivity;
 import android.content.Context;
 import android.content.Intent;
@@ -16,8 +17,13 @@ import com.creal.nest.LatestActivityDetailActivity;
 import com.creal.nest.R;
 import com.creal.nest.actions.AbstractAction;
 import com.creal.nest.actions.GetRepairsAction;
+import com.creal.nest.actions.JSONConstants;
+import com.creal.nest.model.RechargeCard;
 import com.creal.nest.model.Repair;
 import com.creal.nest.model.Pagination;
+import com.creal.nest.util.ErrorAdapter;
+import com.creal.nest.util.PreferenceUtil;
+import com.creal.nest.util.UIUtil;
 import com.creal.nest.views.CustomizeImageView;
 import com.creal.nest.views.HeaderView;
 import com.creal.nest.views.ptr.LoadingSupportPTRListView;
@@ -53,76 +59,50 @@ public class RepairsActivity extends ListActivity implements PullToRefreshBase.O
         Log.d(TAG, "loadCoupons");
         if(isInitialLoad)
             mLoadingSupportPTRListView.showLoadingView();
-        mGetRepairsAction = new GetRepairsAction(this, 1, 10);
+        String cardId = PreferenceUtil.getString(this, JSONConstants.KEY_CARD_ID, null);
+        final Dialog dialog = UIUtil.showLoadingDialog(this, getString(R.string.loading), true);
+        mGetRepairsAction = new GetRepairsAction(this, 1, 10, cardId);
         mGetRepairsAction.execute(
-                new AbstractAction.BackgroundCallBack<Pagination<Repair>>() {
-                    public void onSuccess(Pagination<Repair> result) {
-                        try { Thread.sleep(2000); } catch (InterruptedException e) { }
-                    }
-
-                    public void onFailure(AbstractAction.ActionError error) {
-                        try { Thread.sleep(2000); } catch (InterruptedException e) {  }
-                    }
-                },
                 new AbstractAction.UICallBack<Pagination<Repair>>() {
                     public void onSuccess(Pagination<Repair> result) {
-                        testLoadFirstPage();
+                        mActivityListAdapter = new RepairsListAdapter(getBaseContext(), R.layout.view_list_item_repair_report, result.getItems());
+                        setListAdapter(mActivityListAdapter);
+                        getListView().setDivider(null);
+                        mLoadingSupportPTRListView.showListView();
+                        mLoadingSupportPTRListView.refreshComplete();
+                        dialog.dismiss();
                     }
 
                     public void onFailure(AbstractAction.ActionError error) {
                         mGetRepairsAction = mGetRepairsAction.cloneCurrentPageAction();
-                        testLoadFirstPage();
+                        setListAdapter(new ErrorAdapter(getBaseContext(), R.layout.view_list_item_error));
+                        getListView().setDivider(null);
+                        mLoadingSupportPTRListView.showListView();
+                        mLoadingSupportPTRListView.refreshComplete();
+                        Toast.makeText(getBaseContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+                        dialog.dismiss();
                     }
                 }
         );
-    }
-
-
-    private void testLoadFirstPage(){
-        List<Repair> repairs = new ArrayList<>();
-        repairs.add(new Repair());
-        repairs.add(new Repair());
-        repairs.add(new Repair());
-        repairs.add(new Repair(true));
-        repairs.add(new Repair(true));
-        repairs.add(new Repair(true));
-        mActivityListAdapter = new RepairsListAdapter(getBaseContext(), R.layout.view_list_item_repair_report, repairs);
-        setListAdapter(mActivityListAdapter);
-        getListView().setDivider(null);
-        mLoadingSupportPTRListView.showListView();
-        mLoadingSupportPTRListView.refreshComplete();
     }
 
     private void loadNextPage(){
         Log.d(TAG, "loadNextPage");
         mGetRepairsAction = mGetRepairsAction.getNextPageAction();
         mGetRepairsAction.execute(
-            new AbstractAction.BackgroundCallBack<Pagination<Repair>>() {
-                public void onSuccess(Pagination<Repair> result) {
-                    try { Thread.sleep(2000); } catch (InterruptedException e) { }
-                }
-                public void onFailure(AbstractAction.ActionError error){
-                    try { Thread.sleep(2000); } catch (InterruptedException e) { }
-                }
-            },
             new AbstractAction.UICallBack<Pagination<Repair>>() {
                 public void onSuccess(Pagination<Repair> result) {
-                    List<Repair> coupons = new ArrayList<>();
-                    coupons.add(new Repair());
-                    coupons.add(new Repair());
-                    mActivityListAdapter.addMore(coupons);
+                    if(result.getItems().isEmpty()){
+                        Toast.makeText(getBaseContext(), R.string.load_done, Toast.LENGTH_SHORT).show();
+                    }else {
+                        mActivityListAdapter.addMore(result.getItems());
+                    }
                     mLoadingSupportPTRListView.refreshComplete();
                 }
 
                 public void onFailure(AbstractAction.ActionError error) {
-//                        Toast.makeText(getBaseContext(), R.string.load_failed, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getBaseContext(), R.string.load_failed, Toast.LENGTH_SHORT).show();
                     mGetRepairsAction = mGetRepairsAction.getPreviousPageAction();
-                    Toast.makeText(getBaseContext(), "成功加载两条最新活动", Toast.LENGTH_SHORT).show();
-                    //TODO: TEST CODE
-                    List<Repair> coupons = new ArrayList<>();
-                    coupons.add(new Repair());
-                    coupons.add(new Repair());
-                    mActivityListAdapter.addMore(coupons);
                     mLoadingSupportPTRListView.refreshComplete();
                 }
             }
@@ -132,15 +112,6 @@ public class RepairsActivity extends ListActivity implements PullToRefreshBase.O
     protected void onListItemClick(ListView l, View v, int position, long id){
         Toast.makeText(getBaseContext(), "clicked: " + position + ", enabled: " + v.isEnabled(), Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, RepairDetailActivity.class);
-        Repair repair = new Repair();
-        repair.setName("潮牌运动风");
-
-        repair.getStepList().add(new Repair.Step("维修中...", "2015.6.11 16:20"));
-        repair.getStepList().add(new Repair.Step("维修师傅返回准备所需物料", "2015.6.11 16:10"));
-        repair.getStepList().add(new Repair.Step("已经安排物业维修师傅上门检查损坏情况", "2015.6.11 15:40"));
-        repair.getStepList().add(new Repair.Step("您的报修信息已经开始.", "2015.6.11 15:36"));
-
-        intent.putExtra("repair", repair);
         startActivity(intent);
     }
 
@@ -166,6 +137,7 @@ public class RepairsActivity extends ListActivity implements PullToRefreshBase.O
                 convertView = mInflater.inflate( R.layout.view_list_item_repair_report, parent, false);
                 holder = new ViewHolder();
                 holder.repairThumbnail = (CustomizeImageView) convertView.findViewById(R.id.id_report_thumbnail);
+                holder.name = (TextView)convertView.findViewById(R.id.id_txt_repair_name);
                 holder.finishedTime = (TextView) convertView.findViewById(R.id.id_txt_repair_finish_time);
                 holder.reportTime = (TextView) convertView.findViewById(R.id.id_txt_repair_report_time);
                 convertView.setTag(holder);
@@ -181,13 +153,17 @@ public class RepairsActivity extends ListActivity implements PullToRefreshBase.O
                 convertView.findViewById(R.id.id_finish_section).setVisibility(View.INVISIBLE);
             }
 
+            holder.name.setText(repair.getTitle());
+            holder.reportTime.setText(repair.getTime());
+            holder.finishedTime.setText(repair.getTime());
             return convertView;
         }
 
         class ViewHolder {
             CustomizeImageView repairThumbnail;
-            TextView  finishedTime;
-            TextView  reportTime;
+            TextView name;
+            TextView finishedTime;
+            TextView reportTime;
         }
     }
 }

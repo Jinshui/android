@@ -25,10 +25,12 @@ public class ChangePwdAction extends AbstractAction<Boolean> {
         mURL = URL_CHANGE_PWD;
     }
 
-    protected void addRequestParameters(JSONObject parameters, String timeStr) throws JSONException {
+    protected JSONObject getRequestBody(String timeStr) throws JSONException{
+        JSONObject parameters = new JSONObject();
         parameters.put(KEY_CARD_ID, mCardId);
         parameters.put(KEY_OLD_PWD, mOldPassword);
         parameters.put(KEY_NEW_PWD, mPassword);
+        return parameters;
     }
 
     @Override

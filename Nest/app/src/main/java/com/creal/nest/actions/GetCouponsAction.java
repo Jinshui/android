@@ -42,10 +42,11 @@ public class GetCouponsAction extends PaginationAction<Coupon> {
     }
 
     @Override
-    protected void addRequestParameters(JSONObject parameters, String timeStr) throws JSONException {
-        super.addRequestParameters(parameters, timeStr);
+    protected JSONObject getRequestBody(String timeStr) throws JSONException{
+        JSONObject parameters = super.getRequestBody(timeStr);
         if(mCardId != null)
             parameters.put(KEY_CARD_ID, mCardId);
+        return parameters;
     }
 
     public GetCouponsAction cloneCurrentPageAction(){

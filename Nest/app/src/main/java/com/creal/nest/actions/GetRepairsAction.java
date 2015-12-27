@@ -10,31 +10,22 @@ import org.json.JSONObject;
 
 
 public class GetRepairsAction extends PaginationAction<Repair> {
-    private static final String tag = "TT-GetLatestActivities";
-    //request keys
-    private static final String NAME = "name";
+    private static final String tag = "TT-GetRepairsAction";
+    private String mCardId;
 
-    public GetRepairsAction(Context context, int pageIndex, int pageSize){
+    public GetRepairsAction(Context context, int pageIndex, int pageSize, String cardId){
         super(context, pageIndex, pageSize);
-        mServiceId = SERVICE_ID_NEWS;
-        mURL = "";
-    }
-
-    @Override
-    protected void addRequestParameters(JSONObject parameters, String timeStr) throws JSONException {
-        super.addRequestParameters(parameters, timeStr);
-        try{
-//            parameters.put(NAME, URLEncoder.encode(mCategory, "UTF-8"));
-        }catch(Exception e){
-            Log.d(tag, "failed to add parameters", e);
-        }
+        mCardId = cardId;
+        mServiceId = "REPORT_REPAIR_LIST";
+        mURL = URL_REPORT_REPAIR_LIST;
     }
 
     public GetRepairsAction cloneCurrentPageAction(){
         GetRepairsAction action = new GetRepairsAction(
                 mAppContext,
                 getPageIndex(),
-                getPageSize()
+                getPageSize(),
+                mCardId
         );
         return action;
     }

@@ -25,10 +25,12 @@ public class BindPhoneCardAction extends AbstractAction<String> {
         mURL = URL_BIND_PHONE_CARD;
     }
 
-    protected void addRequestParameters(JSONObject parameters, String timeStr) throws JSONException {
+    protected JSONObject getRequestBody(String timeStr) throws JSONException {
+        JSONObject parameters = new JSONObject();
         parameters.put(KEY_CARD_NUM, mCardNum);
         parameters.put(KEY_MOBILE, mMobile);
         parameters.put(KEY_PASSWORD, Utils.md5(Utils.md5(mPassword) + mVerificationCode + timeStr));
+        return parameters;
     }
 
     @Override

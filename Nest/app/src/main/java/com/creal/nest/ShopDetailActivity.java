@@ -1,14 +1,21 @@
 package com.creal.nest;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
+import com.creal.nest.actions.AbstractAction;
+import com.creal.nest.actions.GetShopDetailAction;
+import com.creal.nest.model.Shop;
+import com.creal.nest.util.UIUtil;
 import com.creal.nest.views.HeaderView;
+import com.creal.nest.views.ptr.HeaderLoadingSupportPTRListFragment;
 
 import java.io.File;
 import java.net.URISyntaxException;
@@ -16,7 +23,9 @@ import java.net.URISyntaxException;
 public class ShopDetailActivity extends Activity {
 
     private static final String TAG = "XYK-MyCouponsActivity";
+    public static final String INTENT_EXTRA_SHOP_ID = "shop_id";
     private Button mBtnPhone;
+    private Shop mShop;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,15 +35,24 @@ public class ShopDetailActivity extends Activity {
         headerView.setTitle("咖啡之巽-咖啡厅");
 
         mBtnPhone = (Button)findViewById(R.id.id_txt_phone);
+        String shopId = getIntent().getStringExtra(INTENT_EXTRA_SHOP_ID);
+        init(shopId);
     }
 
+    private void init(String shopId){
+        GetShopDetailAction getShopDetailAction = new GetShopDetailAction(this, shopId);
+        final Dialog dialog = UIUtil.showLoadingDialog(this, getString(R.string.loading), true);
+        getShopDetailAction.execute(new AbstractAction.UICallBack<Shop>() {
+            public void onSuccess(Shop result) {
+                dialog.dismiss();
+            }
+            public void onFailure(AbstractAction.ActionError error) {
+                dialog.dismiss();
+                Toast.makeText(ShopDetailActivity.this, R.string.load_failed, Toast.LENGTH_LONG).show();
+            }
+        });
 
-    private boolean isInstallByread(String packageName)
-    {
-        return new File("/data/data/" + packageName).exists();
     }
-
-
 
     public void onGoToMapClick(View view){
         String label = "比尔斯烤肉";

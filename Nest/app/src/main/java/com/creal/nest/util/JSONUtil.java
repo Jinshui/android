@@ -22,12 +22,21 @@ public class JSONUtil {
     private static final String tag = "XYK-JSONUtil";
 
 
+    public static String getString(JSONObject object, String key, String defaultValue){
+        try {
+            return object.getString(key);
+        } catch (JSONException e) {
+            Log.e(tag, e.getMessage(), e);
+            return defaultValue;
+        }
+    }
+
+
     public static JSONObject toJSONObject(String jsonString) throws JSONException {
         JsonParser parser = new JsonParser();
         JsonObject object = new JsonParser().parse(jsonString).getAsJsonObject();
         return toJSONObject(object);
     }
-
 
     public static JSONObject toJSONObject(JsonObject object) throws JSONException {
         Iterator<Map.Entry<String, JsonElement>> entryIterator = object.entrySet().iterator();

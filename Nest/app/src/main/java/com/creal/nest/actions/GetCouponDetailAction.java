@@ -37,11 +37,13 @@ public class GetCouponDetailAction extends AbstractAction<Coupon> {
     }
 
     @Override
-    protected void addRequestParameters(JSONObject parameters, String timeStr) throws JSONException {
+    protected JSONObject getRequestBody(String timeStr) throws JSONException{
+        JSONObject parameters = new JSONObject();
         if(mCardId != null)
             parameters.put(KEY_CARD_ID, mCardId);
         if(mCouponId != null)
             parameters.put("coupons_id", mCouponId);
+        return parameters;
     }
 
     protected Coupon createRespObject(JSONObject response) throws JSONException {

@@ -16,8 +16,10 @@ public class GetVerificationCodeAction extends AbstractAction<String> {
         mURL = URL_GET_VERIFICATION_CODE;
     }
 
-    protected void addRequestParameters(JSONObject parameters, String timeStr) throws JSONException {
+    protected JSONObject getRequestBody(String timeStr) throws JSONException{
+        JSONObject parameters = new JSONObject();
         parameters.put("mobile", mMobile);
+        return parameters;
     }
 
     @Override

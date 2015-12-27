@@ -39,7 +39,7 @@
                     android:paddingLeft="5dp"
                     android:singleLine="true"
                     android:layout_weight="1"
-                    android:text="@string/test_shop_title"
+                    android:text="比尔斯烤肉自助"
                     android:textColor="@android:color/black"
                     android:textSize="16sp" />
 
@@ -53,7 +53,7 @@
                     android:padding="0dp"
                     android:paddingLeft="5dp"
                     android:paddingRight="5dp"
-                    android:text="@string/test_shop_discount"
+                    android:text="@string/shop_discount"
                     android:textColor="@android:color/white"
                     android:textSize="15sp" />
             </LinearLayout>
@@ -79,18 +79,18 @@
                         android:gravity="center_vertical"
                         android:paddingLeft="5dp"
                         android:singleLine="true"
-                        android:text="@string/test_shop_address"
+                        android:text="南市区保定百货大楼(裕华西路39号北京大厦)"
                         android:textColor="@color/grey"
                         android:textSize="14sp" />
 
                     <TextView
-                        android:id="@+id/id_nearby_item_category"
+                        android:id="@+id/id_nearby_item_keywords"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:drawableLeft="@drawable/nearby_item_category_sm"
                         android:gravity="center_vertical"
                         android:paddingLeft="5dp"
-                        android:text="@string/test_shop_category"
+                        android:text="自助 烧烤 涮锅"
                         android:textColor="@color/grey"
                         android:textSize="14sp" />
 
@@ -98,7 +98,7 @@
 
 
                 <TextView
-                    android:id="@+id/id_nearby_item_navigate"
+                    android:id="@+id/id_nearby_item_distance"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginTop="5dp"

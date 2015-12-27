@@ -16,25 +16,26 @@ import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.creal.nest.R;
 import com.creal.nest.actions.AbstractAction;
 import com.creal.nest.actions.GetCategoryAction;
 import com.creal.nest.model.Pagination;
+import com.creal.nest.model.ShopCategory;
 import com.creal.nest.views.HeaderView;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class FragmentNearby extends Fragment {
     private static final String TAG = "XYK-FragmentNearby";
     private HorizontalScrollView mTabScrollView;
     private List<LinearLayout> mTabs;
+    private View mContentView;
     private View mLoadingView;
     private TabHost mTabHost;
     private ViewPager mViewPager;
 
-    private String[] shopCategories = {"餐饮类","医疗类","娱乐类","百货类", "出租类", "旅游类", "文化类", "AA类"};
+//    private String[] shopCategories = {"餐饮类","医疗类","娱乐类","百货类", "出租类", "旅游类", "文化类", "AA类"};
+    List<ShopCategory> mShopCategories;
     private TabHost.TabContentFactory mEmptyTabContentFactory = new TabHost.TabContentFactory(){
         public View createTabContent(String tag) {
             return new TextView(getActivity());
@@ -46,45 +47,43 @@ public class FragmentNearby extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Log.d(TAG, "onCreateView");
-        View view = inflater.inflate(R.layout.fragment_nearby, container, false);
-        HeaderView headerView = (HeaderView)view.findViewById(R.id.header);
-        headerView.setRightImage(R.drawable.header_search_icon);
-        headerView.setTitle(R.string.main_tab_title_nearby);
-        headerView.setTitleCenter();
-        headerView.setRightBtnListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), SearchActivity.class);
-                getActivity().startActivity(intent);
-            }
-        });
-        mTabScrollView = (HorizontalScrollView)view.findViewById(R.id.tabs_scrollView);
-        mLoadingView = view.findViewById(R.id.id_category_loading);
-        mViewPager = (ViewPager) view.findViewById(R.id.nearbyViewpager);
-        mTabs = new ArrayList<LinearLayout>();
-        mTabHost = (TabHost) view.findViewById(android.R.id.tabhost);
-        mTabHost.setup();
-        updateUI(Arrays.asList(shopCategories));
-        return view;
+        if (mContentView == null){
+            mContentView = inflater.inflate(R.layout.fragment_nearby, container, false);
+            HeaderView headerView = (HeaderView)mContentView.findViewById(R.id.header);
+            headerView.setRightImage(R.drawable.header_search_icon);
+            headerView.setTitle(R.string.main_tab_title_nearby);
+            headerView.setTitleCenter();
+            headerView.setRightBtnListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    Intent intent = new Intent(getActivity(), SearchActivity.class);
+                    getActivity().startActivity(intent);
+                }
+            });
+            mTabScrollView = (HorizontalScrollView)mContentView.findViewById(R.id.tabs_scrollView);
+            mLoadingView = mContentView.findViewById(R.id.id_category_loading);
+            mViewPager = (ViewPager) mContentView.findViewById(R.id.nearbyViewpager);
+            mViewPager.setOffscreenPageLimit(4);
+            mTabs = new ArrayList<>();
+            mTabHost = (TabHost) mContentView.findViewById(android.R.id.tabhost);
+            mTabHost.setup();
+            loadCategories();
+        }else{
+            ((ViewGroup)mContentView.getParent()).removeView(mContentView);
+        }
+        return mContentView;
     }
 
 
-    private void loadCategoryFromServer(){
-        Log.d(TAG, "loadCategoryFromServer");
+    private void loadCategories(){
+        Log.d(TAG, "loadCategories");
         mLoadingView.setVisibility(View.VISIBLE);
         mViewPager.setVisibility(View.GONE);
         GetCategoryAction getCategoryAction = new GetCategoryAction(getActivity(), 1, 100);
         getCategoryAction.execute(
-                new AbstractAction.BackgroundCallBack<Pagination<String>>() {
-                    public void onSuccess(Pagination<String> result) {
-//                        mcategoryDAO.delete();
-//                        mcategoryDAO.save(result.getItems());
-                    }
-                },
-                new AbstractAction.UICallBack<Pagination<String>>() {
-                    public void onSuccess(Pagination<String> result) {
+                new AbstractAction.UICallBack<Pagination<ShopCategory>>() {
+                    public void onSuccess(Pagination<ShopCategory> result) {
                         updateUI(result.getItems());
                     }
 
@@ -95,8 +94,9 @@ public class FragmentNearby extends Fragment {
         );
     }
 
-    private void updateUI(final List<String> categories){
+    private void updateUI(final List<ShopCategory> categories){
         Log.d(TAG, "updateUI");
+        mShopCategories = categories;
         mLoadingView.setVisibility(View.GONE);
         mViewPager.setVisibility(View.VISIBLE);
         if(categories == null || categories.isEmpty()){
@@ -104,19 +104,19 @@ public class FragmentNearby extends Fragment {
             return;
         }
 
-        for (String category : categories) {
+        for (ShopCategory category : categories) {
             LinearLayout tabIndicator = (LinearLayout) LayoutInflater.from(getActivity()).inflate(R.layout.nearby_tab_view, null);
             TextView tvTab = (TextView) tabIndicator.findViewById(R.id.tabsText);
-            tvTab.setText(category);
+            tvTab.setText(category.getName());
             mTabs.add(tabIndicator);
-            mTabHost.addTab(mTabHost.newTabSpec(category).setIndicator(tabIndicator).setContent(mEmptyTabContentFactory));
+            mTabHost.addTab(mTabHost.newTabSpec(category.getName()).setIndicator(tabIndicator).setContent(mEmptyTabContentFactory));
         }
         mTabHost.getTabWidget().setDividerDrawable(R.drawable.tab_divider);
         //点击tabhost中的tab时，要切换下面的viewPager
         mTabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
             public void onTabChanged(String tabId) {
                 for (int i = 0; i < categories.size(); i++) {
-                    if (categories.get(i).equals(tabId)) {
+                    if (categories.get(i).getName().equals(tabId)) {
                         mViewPager.setCurrentItem(i);
                     }
                 }
@@ -136,13 +136,13 @@ public class FragmentNearby extends Fragment {
     }
 
     /**
-     * A simple pager adapter that represents 5 {@link SlidePageFragment}
+     * A simple pager adapter that represents 5
      * objects, in sequence.
      */
     private class ShopPagerAdapter extends FragmentStatePagerAdapter {
         public static final String tag = "XYK-ShopPagerAdapter";
-        List<String> mCategories;
-        public ShopPagerAdapter(FragmentManager fm, List<String> categories) {
+        List<ShopCategory> mCategories;
+        public ShopPagerAdapter(FragmentManager fm, List<ShopCategory> categories) {
             super(fm);
             mCategories = categories;
         }
@@ -152,7 +152,7 @@ public class FragmentNearby extends Fragment {
             Log.d(tag, ": getItem: " + position);
             FragmentNearbyShopList fragment = new FragmentNearbyShopList();
             Bundle bundle = new Bundle();
-            bundle.putString("category", mCategories.get(position));
+            bundle.putParcelable(FragmentNearbyShopList.INTENT_EXTRA_CATEGORY, mCategories.get(position));
             fragment.setArguments(bundle);
             return fragment;
         }
@@ -167,7 +167,10 @@ public class FragmentNearby extends Fragment {
         Log.d(TAG, " onResume()");
         super.onResume();
     }
-
+    public void onSaveInstanceState(Bundle outState) {
+        Log.d(TAG, " onSaveInstanceState()");
+        super.onSaveInstanceState(outState);
+    }
     public void onViewStateRestored (Bundle savedInstanceState){
         Log.d(TAG, " onViewStateRestored()");
         super.onViewStateRestored(savedInstanceState);
