@@ -47,7 +47,7 @@ public class PhoneBinderActivity extends Activity {
         });
 
         mPhone = (EditText)findViewById(R.id.id_txt_phone);
-        mCardNum = (EditText)findViewById(R.id.id_txt_card_id);
+        mCardNum = (EditText)findViewById(R.id.id_txt_card_num);
         mPassword = (EditText)findViewById(R.id.id_txt_password);
         mVerificationCode = (EditText)findViewById(R.id.id_txt_verification_code);
         mBtnGetCode = (Button)findViewById(R.id.id_btn_get_code);
@@ -129,5 +129,4 @@ public class PhoneBinderActivity extends Activity {
     public void onCanntGetVerificationCodeClick(View view){
 
     }
-
 }

@@ -26,6 +26,8 @@ public interface JSONConstants {
     public static final String URL_GET_SHOP_CATEGORY          = "http://" + SERVER_HOST + "/lmk_interface/comclass/index.php";
     public static final String URL_GET_SHOPS                  = "http://" + SERVER_HOST + "/lmk_interface/comlist/index.php";
     public static final String URL_GET_SHOP_DETAIL            = "http://" + SERVER_HOST + "/lmk_interface/comdetail/index.php";
+    public static final String URL_GET_SHOP_HISTORY            = "http://" + SERVER_HOST + "/lmk_interface/transactionlist/index.php";
+    public static final String URL_GET_RECHARGE_HISTORY            = "http://" + SERVER_HOST + "/lmk_interface/rechargelist/index.php";
 
     public final static String KEY_CARD_ID = "card_id";
     public final static String KEY_CARD_NUM = "card_num";

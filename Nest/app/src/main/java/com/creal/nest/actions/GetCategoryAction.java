@@ -26,6 +26,6 @@ public class GetCategoryAction extends PaginationAction<ShopCategory>{
     }
 
     protected String getContentsKey(){
-        return "return_data";
+        return "comclass";
     }
 }

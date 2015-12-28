@@ -10,20 +10,30 @@ import org.json.JSONObject;
 
 public class GetRechargeAction extends PaginationAction<Recharge> {
     private static final String tag = "TT-GetRechargeAction";
-    //request keys
-    private static final String NAME = "name";
+    private String mCardId;
 
-    public GetRechargeAction(Context context, int pageIndex, int pageSize){
+    public GetRechargeAction(Context context, int pageIndex, int pageSize, String cardId){
         super(context, pageIndex, pageSize);
-        mServiceId = SERVICE_ID_NEWS;
-        mURL = "";
+        mServiceId = "GET_RECHARGE_HISTORY";
+        mURL = URL_GET_RECHARGE_HISTORY;
+        mCardId = cardId;
+    }
+
+    protected JSONObject getRequestBody(String timeStr) throws JSONException{
+        JSONObject parameters = super.getRequestBody(timeStr);
+        parameters.put(KEY_CARD_ID, mCardId);
+        parameters.put("state", "");
+        parameters.put("start_time", "");
+        parameters.put("end_time", "");
+        return parameters;
     }
 
     public GetRechargeAction cloneCurrentPageAction(){
         GetRechargeAction action = new GetRechargeAction(
                 mAppContext,
                 getPageIndex(),
-                getPageSize()
+                getPageSize(),
+                mCardId
         );
         return action;
     }

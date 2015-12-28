@@ -13,6 +13,8 @@ public class Constants {//159357
     public static final String APP_USER_POINTS        = "app_user_points";
     public static final String APP_USER_AMOUNT        = "app_user_amount";
 
+
+
 	public static final String CACHE_DIR = "/nest";
 	
 	//Preference keys
@@ -26,5 +28,5 @@ public class Constants {//159357
 	public static final String PUSH_STATUS = "push.status";
 	
 	//Pagination
-	public static final int PAGE_SIZE = 20;
+	public static final int PAGE_SIZE = 10;
 }

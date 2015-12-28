@@ -37,7 +37,7 @@
                 android:layout_height="wrap_content"
                 android:text="交易成功"
                 android:textColor="@color/deeperpink"
-                android:textSize="@dimen/font_middle" />
+                android:textSize="@dimen/font_smaller" />
         </LinearLayout>
 
         <View
@@ -58,13 +58,13 @@
                 android:layout_weight="1"
                 android:drawableLeft="@drawable/icon_clock"
                 android:drawablePadding="5dp"
-                android:text="消息时间: 2015年10月30日"
+                android:text="@string/shop_history"
                 android:textColor="@color/grey"
                 android:textSize="@dimen/font_small"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/id_txt_shopping_point"
+                android:id="@+id/id_txt_shopping_cost"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="-150积分"

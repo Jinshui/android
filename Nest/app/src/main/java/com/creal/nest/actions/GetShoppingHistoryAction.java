@@ -10,22 +10,31 @@ import org.json.JSONObject;
 
 public class GetShoppingHistoryAction extends PaginationAction<Shopping> {
     private static final String tag = "TT-GetRechargeAction";
-    //request keys
-    private static final String NAME = "name";
-
-    public GetShoppingHistoryAction(Context context, int pageIndex, int pageSize){
+    private String mCardId;
+    public GetShoppingHistoryAction(Context context, int pageIndex, int pageSize, String cardId){
         super(context, pageIndex, pageSize);
-        mServiceId = SERVICE_ID_NEWS;
-        mURL = "";
+        mServiceId = "GET_SHOP_HISTORY";
+        mURL = URL_GET_SHOP_HISTORY;
+        mCardId = cardId;
     }
 
     public GetShoppingHistoryAction cloneCurrentPageAction(){
         GetShoppingHistoryAction action = new GetShoppingHistoryAction(
                 mAppContext,
                 getPageIndex(),
-                getPageSize()
+                getPageSize(),
+                mCardId
         );
         return action;
+    }
+
+    protected JSONObject getRequestBody(String timeStr) throws JSONException{
+        JSONObject parameters = super.getRequestBody(timeStr);
+        parameters.put(KEY_CARD_ID, mCardId);
+        parameters.put("state", "");
+        parameters.put("start_time", "");
+        parameters.put("end_time", "");
+        return parameters;
     }
 
     public Shopping convertJsonToResult(JSONObject item) throws JSONException{

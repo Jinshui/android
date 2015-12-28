@@ -13,155 +13,54 @@ import android.widget.Toast;
 
 import com.creal.nest.actions.AbstractAction;
 import com.creal.nest.actions.GetRechargeAction;
+import com.creal.nest.actions.GetShoppingHistoryAction;
+import com.creal.nest.actions.PaginationAction;
 import com.creal.nest.model.Pagination;
 import com.creal.nest.model.Recharge;
+import com.creal.nest.model.Shopping;
+import com.creal.nest.util.PreferenceUtil;
 import com.creal.nest.views.HeaderView;
 import com.creal.nest.views.ptr.LoadingSupportPTRListView;
+import com.creal.nest.views.ptr.PTRListActivity;
 import com.creal.nest.views.ptr.PTRListAdapter;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class RechargeHistoryActivity extends ListActivity implements PullToRefreshBase.OnRefreshListener2<ListView> {
+public class RechargeHistoryActivity extends PTRListActivity<Recharge> {
 
-    private static final String TAG = "XYK-MyCouponsActivity";
-
-    private LoadingSupportPTRListView mLoadingSupportPTRListView;
-    private RechargeListAdapter mCouponsListAdapter;
-    private GetRechargeAction mGetRechargeAction;
+    private static final String TAG = "XYK-RechargeHistoryActivity";
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_simple_ptr_list);
-        HeaderView headerView = (HeaderView) findViewById(R.id.header);
-        headerView.hideRightImage();
-        headerView.setTitle(R.string.recharge_history);
-        mLoadingSupportPTRListView = (LoadingSupportPTRListView)findViewById(R.id.refresh_widget);
-        mLoadingSupportPTRListView.setOnRefreshListener(this);
-        mLoadingSupportPTRListView.setMode(PullToRefreshBase.Mode.PULL_FROM_END);
-        loadFirstPage(true);
-    }
-
-    private void loadFirstPage(boolean isInitialLoad){
-        Log.d(TAG, "loadCoupons");
-        if(isInitialLoad)
-            mLoadingSupportPTRListView.showLoadingView();
-        mGetRechargeAction = new GetRechargeAction(this, 1, 10);
-        mGetRechargeAction.execute(
-            new AbstractAction.BackgroundCallBack<Pagination<Recharge>>() {
-                public void onSuccess(Pagination<Recharge> result) {
-                    try { Thread.sleep(1000); } catch (InterruptedException e) { }
-                }
-                public void onFailure(AbstractAction.ActionError error){
-                    try { Thread.sleep(1000); } catch (InterruptedException e) { }
-                }
-            },
-            new AbstractAction.UICallBack<Pagination<Recharge>>() {
-                public void onSuccess(Pagination<Recharge> result) {
-                    List<Recharge> coupons = new ArrayList<>();
-                    coupons.add(new Recharge());
-                    coupons.add(new Recharge());
-                    coupons.add(new Recharge());
-                    mCouponsListAdapter = new RechargeListAdapter(getBaseContext(), R.layout.view_list_item_recharge_history, coupons);
-                    setListAdapter(mCouponsListAdapter);
-                    getListView().setDivider(null);
-                    mLoadingSupportPTRListView.showListView();
-                    mLoadingSupportPTRListView.refreshComplete();
-                }
-
-                public void onFailure(AbstractAction.ActionError error) {
-                    mGetRechargeAction = mGetRechargeAction.cloneCurrentPageAction();
-                    List<Recharge> coupons = new ArrayList<>();
-                    coupons.add(new Recharge());
-                    coupons.add(new Recharge());
-                    coupons.add(new Recharge());
-                    mCouponsListAdapter = new RechargeListAdapter(getBaseContext(), R.layout.view_list_item_recharge_history, coupons);
-                    setListAdapter(mCouponsListAdapter);
-                    getListView().setDivider(null);
-                    mLoadingSupportPTRListView.showListView();
-                    mLoadingSupportPTRListView.refreshComplete();
-                }
-            }
-        );
-    }
-
-    private void loadNextPage(){
-        Log.d(TAG, "loadNextPage");
-        mGetRechargeAction = mGetRechargeAction.getNextPageAction();
-        mGetRechargeAction.execute(
-            new AbstractAction.BackgroundCallBack<Pagination<Recharge>>() {
-                public void onSuccess(Pagination<Recharge> result) {
-                    try { Thread.sleep(1000); } catch (InterruptedException e) { }
-                }
-                public void onFailure(AbstractAction.ActionError error){
-                    try { Thread.sleep(1000); } catch (InterruptedException e) { }
-                }
-            },
-            new AbstractAction.UICallBack<Pagination<Recharge>>() {
-                public void onSuccess(Pagination<Recharge> result) {
-                    List<Recharge> coupons = new ArrayList<>();
-                    coupons.add(new Recharge());
-                    coupons.add(new Recharge());
-                    mCouponsListAdapter.addMore(coupons);
-                    mLoadingSupportPTRListView.refreshComplete();
-                }
-
-                public void onFailure(AbstractAction.ActionError error) {
-//                        Toast.makeText(getBaseContext(), R.string.load_failed, Toast.LENGTH_SHORT).show();
-                    mGetRechargeAction = mGetRechargeAction.getPreviousPageAction();
-                    Toast.makeText(getBaseContext(), "成功加载两条新优惠券。", Toast.LENGTH_SHORT).show();
-                    //TODO: TEST CODE
-                    List<Recharge> coupons = new ArrayList<>();
-                    coupons.add(new Recharge());
-                    coupons.add(new Recharge());
-                    mCouponsListAdapter.addMore(coupons);
-                    mLoadingSupportPTRListView.refreshComplete();
-                }
-            }
-        );
-    }
-
-    protected void onListItemClick(ListView l, View v, int position, long id){
+    public int getTitleResId() {
+        return R.string.recharge_history;
     }
 
     @Override
-    public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
-        loadFirstPage(false);
+    public PaginationAction<Recharge> getPaginationAction() {
+        String cardId = PreferenceUtil.getString(this, Constants.APP_USER_CARD_ID, null);
+        return new GetRechargeAction(this, 1, 10, cardId);
     }
 
-    @Override
-    public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
-        loadNextPage();
+    public View getListItemView(Recharge item, View convertView, ViewGroup parent, LayoutInflater inflater) {
+        ViewHolder holder = null;
+        if (convertView == null) {
+            convertView = inflater.inflate(R.layout.view_list_item_recharge_history, parent, false);
+            holder = new ViewHolder();
+            holder.amount = (TextView) convertView.findViewById(R.id.id_banlance_recharge_amount);
+            holder.time = (TextView) convertView.findViewById(R.id.id_banlance_recharge_time);
+            convertView.setTag(holder);
+        } else {
+            holder = (ViewHolder) convertView.getTag();
+        }
+        holder.amount.setText(String.valueOf(item.getAmount()));
+        holder.time.setText(item.getOrderTime());
+        return convertView;
     }
 
-    public class RechargeListAdapter extends PTRListAdapter<Recharge> {
-        private LayoutInflater mInflater;
-        public RechargeListAdapter(Context context, int resource, List<Recharge> objects) {
-            super(context, resource, objects);
-            mInflater = LayoutInflater.from(context);
-        }
-
-        public View getView(final int position, View convertView, ViewGroup parent) {
-            final Recharge coupon = getItem(position);
-            ViewHolder holder = null;
-            if (convertView == null) {
-                convertView = mInflater.inflate( R.layout.view_list_item_recharge_history, parent, false);
-                holder = new ViewHolder();
-                holder.amount = (TextView) convertView.findViewById(R.id.id_banlance_recharge_amount);
-                holder.time = (TextView) convertView.findViewById(R.id.id_banlance_recharge_time);
-                convertView.setTag(holder);
-            } else {
-                holder = (ViewHolder) convertView.getTag();
-            }
-
-            return convertView;
-        }
-
-        class ViewHolder {
-            TextView  amount;
-            TextView  time;
-        }
+    class ViewHolder {
+        TextView amount;
+        TextView time;
     }
 }

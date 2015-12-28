@@ -200,6 +200,7 @@
     <string name="pay_auto_refresh">每分钟自动更新</string>
     <string name="pay_cancel">取消</string>
 
+
     <!--充值-->
     <string name="hint_card_id">卡号</string>
     <string name="hint_amount">金额(输入100的整数倍)</string>
@@ -256,6 +257,11 @@
     <string name="help">帮助</string>
     <string name="about">关于我们</string>
     <string name="exchange_history">兑换记录</string>
+    <!--消费记录-->
+    <string name="shop_time" formatted="false">消费时间: %s</string>
+
+
+
     <!-- 个人信息 -->
     <string name="user_info">个人信息</string>
     <string name="user_name">姓名</string>

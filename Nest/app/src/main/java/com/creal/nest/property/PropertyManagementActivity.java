@@ -77,6 +77,7 @@ public class PropertyManagementActivity extends Activity {
         action.execute(new AbstractAction.UICallBack<JSONObject>() {
             public void onSuccess(JSONObject info) {
                 mSex.setText(String.format(getString(R.string.property_user_sex), JSONUtil.getString(info, "gender", "")));
+                mCommunityName.setText(JSONUtil.getString(info, "residential_quarter", ""));
                 mName.setText(JSONUtil.getString(info, "name", ""));
                 mAddress.setText(JSONUtil.getString(info, "address", ""));
                 mBill.setText(JSONUtil.getString(info, "arrear", ""));

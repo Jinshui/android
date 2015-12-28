@@ -327,6 +327,7 @@ public abstract class AbstractAction<Result> extends ParallelTask<AbstractAction
 //            if(body.has(KEY_KEY))
 //                key = body.getString(KEY_KEY);
             if(mSecurity && response.has("signature") && response.has("timestr")){
+                Log.e(tag, "Verifying the data...");
                 String signature = response.getString("signature");
                 String timestr = response.getString("timestr");
                 String bodyStr = mGsonObject.get("response").getAsJsonObject().get("body").toString();
@@ -334,7 +335,7 @@ public abstract class AbstractAction<Result> extends ParallelTask<AbstractAction
                     key = PreferenceUtil.getString(mAppContext, Constants.APP_BINDING_KEY, Constants.APP_DEFAULT_KEY);
                 String clientSignature = Utils.md5(flag+bodyStr+timestr+key);
                 if(!clientSignature.equals(signature)){
-                    Log.e(tag, "数据校验未通过！！！");
+                    Log.e(tag, "Verification failed, the data might be modified！！！");
                     ActionError error = new ActionError(ErrorCode.SECURITY_ERROR, "数据校验未通过！！！");
                     return new ActionResult(error);
                 }
