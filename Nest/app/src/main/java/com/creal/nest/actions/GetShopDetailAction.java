@@ -2,6 +2,7 @@ package com.creal.nest.actions;
 
 import android.content.Context;
 
+import com.creal.nest.Constants;
 import com.creal.nest.model.Shop;
 
 import org.json.JSONException;
@@ -16,7 +17,7 @@ public class GetShopDetailAction extends AbstractAction<Shop> {
         super(context);
         mShopId = shopId;
         mServiceId = "GET_SHOP_DETAIL";
-        mURL = URL_GET_SHOP_DETAIL;
+        mURL = Constants.URL_GET_SHOP_DETAIL;
     }
 
     protected JSONObject getRequestBody(String timeStr) throws JSONException {

@@ -29,14 +29,14 @@ public class RegisterAction extends AbstractAction<String> {
         this.mAddress = address;
         this.mSendViaPost = sendViaPost;
         this.mServiceId = "URL_REGISTER";
-        mURL = URL_REGISTER;
+        mURL = Constants.URL_REGISTER;
     }
 
     protected JSONObject getRequestBody(String timeStr) throws JSONException{
         JSONObject parameters = new JSONObject();
-        parameters.put(KEY_MOBILE, mMobile);
-        parameters.put(KEY_VERIFICATION_CODE, mVerificationCode);
-        parameters.put(KEY_PASSWORD, Utils.md5(mPassword));
+        parameters.put(Constants.KEY_MOBILE, mMobile);
+        parameters.put(Constants.KEY_VERIFICATION_CODE, mVerificationCode);
+        parameters.put(Constants.KEY_PASSWORD, Utils.md5(mPassword));
         if(mName != null)
             parameters.put("name", mName);
         if(mIDCard != null)
@@ -49,12 +49,12 @@ public class RegisterAction extends AbstractAction<String> {
 
     @Override
     protected String createRespObject(JSONObject response) throws JSONException {
-        if(response.has(KEY_CARD_ID))
-            PreferenceUtil.saveString(mAppContext, Constants.APP_USER_CARD_ID, response.getString(KEY_CARD_ID));
-        if(response.has(KEY_CARD_NUM))
-            PreferenceUtil.saveString(mAppContext, Constants.APP_USER_CARD_NUM, response.getString(KEY_CARD_NUM));
-        if(response.has(KEY_KEY))
-            PreferenceUtil.saveString(mAppContext, Constants.APP_BINDING_KEY, response.getString(KEY_KEY));
-        return response.getString(KEY_KEY);
+        if(response.has(Constants.KEY_CARD_ID))
+            PreferenceUtil.saveString(mAppContext, Constants.APP_USER_CARD_ID, response.getString(Constants.KEY_CARD_ID));
+        if(response.has(Constants.KEY_CARD_NUM))
+            PreferenceUtil.saveString(mAppContext, Constants.APP_USER_CARD_NUM, response.getString(Constants.KEY_CARD_NUM));
+        if(response.has(Constants.KEY_KEY))
+            PreferenceUtil.saveString(mAppContext, Constants.APP_BINDING_KEY, response.getString(Constants.KEY_KEY));
+        return response.getString(Constants.KEY_KEY);
     }
 }

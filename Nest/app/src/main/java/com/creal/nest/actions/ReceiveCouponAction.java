@@ -2,6 +2,7 @@ package com.creal.nest.actions;
 
 import android.content.Context;
 
+import com.creal.nest.Constants;
 import com.creal.nest.model.ReceiveCouponResult;
 
 import org.json.JSONException;
@@ -17,12 +18,12 @@ public class ReceiveCouponAction extends AbstractAction<ReceiveCouponResult> {
         this.mCardId = cardId;
         this.mCouponId = couponId;
         this.mServiceId = "RECEIVE_COUPONS";
-        mURL = URL_RECEIVE_COUPONS;
+        mURL = Constants.URL_RECEIVE_COUPONS;
     }
 
     protected JSONObject getRequestBody(String timeStr) throws JSONException{
         JSONObject parameters = new JSONObject();
-        parameters.put(KEY_CARD_ID, mCardId);
+        parameters.put(Constants.KEY_CARD_ID, mCardId);
         parameters.put("coupons_id", mCouponId);
         return parameters;
     }

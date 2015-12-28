@@ -29,7 +29,7 @@ import org.json.JSONTokener;
 import java.util.Date;
 import java.util.concurrent.Executor;
 
-public abstract class AbstractAction<Result> extends ParallelTask<AbstractAction.ActionResult<Result>> implements JSONConstants{
+public abstract class AbstractAction<Result> extends ParallelTask<AbstractAction.ActionResult<Result>> {
     private static final String tag = "TT-AbstractRequest";
     //For Test only START
     private Object mOriginalRequest;

@@ -2,6 +2,7 @@ package com.creal.nest.actions;
 
 import android.content.Context;
 
+import com.creal.nest.Constants;
 import com.creal.nest.model.Shop;
 
 import org.json.JSONException;
@@ -23,7 +24,7 @@ public class GetShopListAction extends PaginationAction<Shop> {
         mLatitude = latitude;
         mLongitude = longitude;
         mServiceId = "GET_SHOPS";
-        mURL = URL_GET_SHOPS;
+        mURL = Constants.URL_GET_SHOPS;
     }
 
     @Override

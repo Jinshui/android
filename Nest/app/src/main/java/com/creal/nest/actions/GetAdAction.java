@@ -2,6 +2,7 @@ package com.creal.nest.actions;
 
 import android.content.Context;
 
+import com.creal.nest.Constants;
 import com.creal.nest.model.Ad;
 
 import org.json.JSONArray;
@@ -16,7 +17,7 @@ public class GetAdAction extends AbstractAction<List<Ad>> {
     public GetAdAction(Context context) {
         super(context);
         this.mServiceId = "URL_GET_ADS";
-        mURL = URL_GET_ADS;
+        mURL = Constants.URL_GET_ADS;
     }
 
     protected JSONObject getRequestBody(String timeStr) throws JSONException {

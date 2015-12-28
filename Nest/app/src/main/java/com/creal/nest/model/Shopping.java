@@ -5,7 +5,7 @@ import android.os.Parcel;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class Shopping extends BaseModel {
+public class Shopping extends BaseModel implements PaginationItem<Shopping>{
 
     public enum State {
         UNKNOWN("未知"),
@@ -133,5 +133,12 @@ public class Shopping extends BaseModel {
         if (json.has("state") && json.getString("state").matches("[1-4]"))
             shopping.setState(State.from(json.getInt("state")));
         return shopping;
+    }
+
+
+    public Shopping fillWithJSON(JSONObject json) throws JSONException {
+        if (json == null)
+            throw new IllegalArgumentException("JSONObject is null");
+        return fromJSON(json);
     }
 }

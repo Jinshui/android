@@ -2,6 +2,7 @@ package com.creal.nest.actions;
 
 import android.content.Context;
 
+import com.creal.nest.Constants;
 import com.creal.nest.model.Repair;
 
 import org.json.JSONException;
@@ -16,7 +17,7 @@ public class GetRepairsAction extends PaginationAction<Repair> {
         super(context, pageIndex, pageSize);
         mCardId = cardId;
         mServiceId = "REPORT_REPAIR_LIST";
-        mURL = URL_REPORT_REPAIR_LIST;
+        mURL = Constants.URL_REPORT_REPAIR_LIST;
     }
 
     public GetRepairsAction cloneCurrentPageAction(){

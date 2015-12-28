@@ -2,6 +2,7 @@ package com.creal.nest.actions;
 
 import android.content.Context;
 
+import com.creal.nest.Constants;
 import com.creal.nest.model.ShopCategory;
 
 import org.json.JSONException;
@@ -12,7 +13,7 @@ public class GetCategoryAction extends PaginationAction<ShopCategory>{
     public GetCategoryAction(Context context, int pageIndex, int pageSize) {
         super(context, pageIndex, pageSize);
         mServiceId = "GET_SHOP_CATEGORY";
-        mURL = URL_GET_SHOP_CATEGORY;
+        mURL = Constants.URL_GET_SHOP_CATEGORY;
     }
 
     @Override

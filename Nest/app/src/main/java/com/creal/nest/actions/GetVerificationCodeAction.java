@@ -2,6 +2,8 @@ package com.creal.nest.actions;
 
 import android.content.Context;
 
+import com.creal.nest.Constants;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -13,7 +15,7 @@ public class GetVerificationCodeAction extends AbstractAction<String> {
         super(context);
         this.mMobile = mobile;
         this.mServiceId = "GET_VERIFICATION_CODE";
-        mURL = URL_GET_VERIFICATION_CODE;
+        mURL = Constants.URL_GET_VERIFICATION_CODE;
     }
 
     protected JSONObject getRequestBody(String timeStr) throws JSONException{

@@ -8,7 +8,6 @@ import android.widget.Toast;
 
 import com.creal.nest.actions.AbstractAction;
 import com.creal.nest.actions.GetCouponDetailAction;
-import com.creal.nest.actions.JSONConstants;
 import com.creal.nest.model.Coupon;
 import com.creal.nest.util.UIUtil;
 import com.creal.nest.views.CustomizeImageView;
@@ -17,7 +16,7 @@ import com.creal.nest.views.HeaderView;
 public class CouponDetailActivity extends Activity {
 
     private static final String TAG = "XYK-MyCouponsActivity";
-    public static final String INTENT_EXTRA_CARD_ID = JSONConstants.KEY_CARD_ID;
+    public static final String INTENT_EXTRA_CARD_ID = Constants.KEY_CARD_ID;
     public static final String INTENT_EXTRA_COUPON_ID = "coupon_id";
 
     private CustomizeImageView mImageView;

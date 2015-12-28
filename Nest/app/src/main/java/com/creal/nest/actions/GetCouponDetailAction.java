@@ -2,6 +2,7 @@ package com.creal.nest.actions;
 
 import android.content.Context;
 
+import com.creal.nest.Constants;
 import com.creal.nest.model.Coupon;
 
 import org.json.JSONException;
@@ -19,7 +20,7 @@ public class GetCouponDetailAction extends AbstractAction<Coupon> {
         super(context);
         mCouponId = couponId;
         mServiceId = "GET_COUPON_DETAIL";
-        mURL = URL_GET_COUPON_DETAIL;
+        mURL = Constants.URL_GET_COUPON_DETAIL;
     }
 
     //获取我的优惠券详情
@@ -28,14 +29,14 @@ public class GetCouponDetailAction extends AbstractAction<Coupon> {
         mCardId = cardId;
         mCouponId = couponId;
         mServiceId = "GET_MY_COUPON_DETAIL";
-        mURL = URL_GET_MY_COUPON_DETAIL;
+        mURL = Constants.URL_GET_MY_COUPON_DETAIL;
     }
 
     @Override
     protected JSONObject getRequestBody(String timeStr) throws JSONException{
         JSONObject parameters = new JSONObject();
         if(mCardId != null)
-            parameters.put(KEY_CARD_ID, mCardId);
+            parameters.put(Constants.KEY_CARD_ID, mCardId);
         if(mCouponId != null)
             parameters.put("coupons_id", mCouponId);
         return parameters;

@@ -2,6 +2,7 @@ package com.creal.nest.actions;
 
 import android.content.Context;
 
+import com.creal.nest.Constants;
 import com.creal.nest.model.SalesActivity;
 
 import org.json.JSONException;
@@ -16,7 +17,7 @@ public class GetLatestActivitiesAction extends PaginationAction<SalesActivity> {
     public GetLatestActivitiesAction(Context context, int pageIndex, int pageSize){
         super(context, pageIndex, pageSize);
         mServiceId = "GET_LATEST_ACTIVITIES";
-        mURL = URL_GET_LATEST_ACTIVITIES;
+        mURL = Constants.URL_GET_LATEST_ACTIVITIES;
     }
 
     public GetLatestActivitiesAction cloneCurrentPageAction(){

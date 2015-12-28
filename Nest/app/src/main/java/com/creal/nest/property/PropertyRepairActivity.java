@@ -10,10 +10,9 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
-import com.creal.nest.Constants;
 import com.creal.nest.R;
 import com.creal.nest.actions.AbstractAction;
-import com.creal.nest.actions.JSONConstants;
+import com.creal.nest.Constants;
 import com.creal.nest.actions.JSONObjectAction;
 import com.creal.nest.util.PreferenceUtil;
 import com.creal.nest.util.UIUtil;
@@ -77,7 +76,7 @@ public class PropertyRepairActivity extends Activity {
     public void onSubmitClick(View view) {
         String cardId = PreferenceUtil.getString(this, Constants.APP_USER_CARD_ID, null);
         Map parameters = new HashMap<>();
-        parameters.put(JSONConstants.KEY_CARD_ID, cardId);
+        parameters.put(Constants.KEY_CARD_ID, cardId);
         parameters.put("repair_type", mBtnCommon.isChecked()? 1 : 2 );
         parameters.put("title", mTitle.getText().toString() );
         parameters.put("linkman", mUname.getText().toString() );
@@ -85,7 +84,7 @@ public class PropertyRepairActivity extends Activity {
         parameters.put("description", mSummary.getText().toString() );
         parameters.put("safecode", mVcode.getText().toString() );
         final Dialog dialog = UIUtil.showLoadingDialog(this, getString(R.string.loading), true);
-        JSONObjectAction action = new JSONObjectAction(this, JSONConstants.URL_REPORT_REPAIR, parameters);
+        JSONObjectAction action = new JSONObjectAction(this, Constants.URL_REPORT_REPAIR, parameters);
         action.execute(new AbstractAction.UICallBack<JSONObject>() {
             public void onSuccess(JSONObject info) {
                 dialog.dismiss();

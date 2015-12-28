@@ -2,6 +2,7 @@ package com.creal.nest.actions;
 
 import android.content.Context;
 
+import com.creal.nest.Constants;
 import com.creal.nest.model.AccumulationItem;
 
 import org.json.JSONException;
@@ -15,7 +16,7 @@ public class GetAccumulationsAction extends PaginationAction<AccumulationItem> {
 
     public GetAccumulationsAction(Context context, int pageIndex, int pageSize){
         super(context, pageIndex, pageSize);
-        mServiceId = SERVICE_ID_NEWS;
+        mServiceId = Constants.SERVICE_ID_NEWS;
         mURL = "";
     }
 

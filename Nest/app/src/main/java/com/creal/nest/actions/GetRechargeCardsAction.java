@@ -2,6 +2,7 @@ package com.creal.nest.actions;
 
 import android.content.Context;
 
+import com.creal.nest.Constants;
 import com.creal.nest.model.RechargeCard;
 
 import org.json.JSONException;
@@ -14,7 +15,7 @@ public class GetRechargeCardsAction extends PaginationAction<RechargeCard> {
     public GetRechargeCardsAction(Context context, int pageIndex, int pageSize){
         super(context, pageIndex, pageSize);
         mServiceId = "GET_INGOTS";
-        mURL = URL_GET_RECHARGE_CARD;
+        mURL = Constants.URL_GET_RECHARGE_CARD;
     }
 
     public GetRechargeCardsAction cloneCurrentPageAction(){

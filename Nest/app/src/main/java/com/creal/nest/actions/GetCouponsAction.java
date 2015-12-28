@@ -2,6 +2,7 @@ package com.creal.nest.actions;
 
 import android.content.Context;
 
+import com.creal.nest.Constants;
 import com.creal.nest.model.Coupon;
 
 import org.json.JSONException;
@@ -22,13 +23,13 @@ public class GetCouponsAction extends PaginationAction<Coupon> {
         mType = actionType;
         switch (mType){
             case MY_COUPONS:
-                mURL = URL_GET_MY_COUPONS;
+                mURL = Constants.URL_GET_MY_COUPONS;
                 break;
             case SNAP_COUPONS:
-                mURL = URL_GET_COUPONS;
+                mURL = Constants.URL_GET_COUPONS;
                 break;
             case LUCKY_COUPON:
-                mURL = URL_GET_LUCKY_COUPONS;
+                mURL = Constants.URL_GET_LUCKY_COUPONS;
                 break;
         }
         mServiceId = mURL;
@@ -43,7 +44,7 @@ public class GetCouponsAction extends PaginationAction<Coupon> {
     protected JSONObject getRequestBody(String timeStr) throws JSONException{
         JSONObject parameters = super.getRequestBody(timeStr);
         if(mCardId != null)
-            parameters.put(KEY_CARD_ID, mCardId);
+            parameters.put(Constants.KEY_CARD_ID, mCardId);
         return parameters;
     }
 

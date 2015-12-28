@@ -5,6 +5,7 @@ import android.content.Context;
 import android.util.Log;
 
 import com.creal.nest.model.Pagination;
+import com.creal.nest.model.PaginationItem;
 
 import org.json.JSONArray;
 import org.json.JSONException;

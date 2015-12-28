@@ -2,6 +2,7 @@ package com.creal.nest.actions;
 
 import android.content.Context;
 
+import com.creal.nest.Constants;
 import com.creal.nest.model.Repair;
 
 import org.json.JSONException;
@@ -19,12 +20,12 @@ public class GetRepairDetailAction extends AbstractAction<Repair> {
         mCardId = cardId;
         mRepairId = repairId;
         mServiceId = "URL_REPORT_REPAIR_DETAIL";
-        mURL = URL_REPORT_REPAIR_DETAIL;
+        mURL = Constants.URL_REPORT_REPAIR_DETAIL;
     }
 
     protected JSONObject getRequestBody(String timeStr) throws JSONException {
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put(KEY_CARD_ID, mCardId);
+        jsonObject.put(Constants.KEY_CARD_ID, mCardId);
         jsonObject.put("repair_id", mRepairId);
         return jsonObject;
     }

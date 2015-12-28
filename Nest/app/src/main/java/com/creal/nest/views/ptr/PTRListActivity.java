@@ -10,21 +10,16 @@ import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.creal.nest.Constants;
 import com.creal.nest.R;
 import com.creal.nest.actions.AbstractAction;
-import com.creal.nest.actions.GetShoppingHistoryAction;
 import com.creal.nest.actions.PaginationAction;
 import com.creal.nest.model.Pagination;
-import com.creal.nest.model.Shopping;
 import com.creal.nest.util.ErrorAdapter;
 import com.creal.nest.views.HeaderView;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public abstract class PTRListActivity<Result> extends ListActivity implements PullToRefreshBase.OnRefreshListener2<ListView> {

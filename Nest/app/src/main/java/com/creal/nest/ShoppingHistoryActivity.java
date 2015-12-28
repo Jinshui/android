@@ -1,30 +1,19 @@
 package com.creal.nest;
 
-import android.app.ListActivity;
-import android.content.Context;
-import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.creal.nest.actions.AbstractAction;
+import com.creal.nest.actions.CommonPaginationAction;
 import com.creal.nest.actions.GetShoppingHistoryAction;
 import com.creal.nest.actions.PaginationAction;
-import com.creal.nest.model.Pagination;
 import com.creal.nest.model.Shopping;
 import com.creal.nest.util.PreferenceUtil;
-import com.creal.nest.views.HeaderView;
-import com.creal.nest.views.ptr.LoadingSupportPTRListView;
 import com.creal.nest.views.ptr.PTRListActivity;
-import com.creal.nest.views.ptr.PTRListAdapter;
-import com.handmark.pulltorefresh.library.PullToRefreshBase;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ShoppingHistoryActivity extends PTRListActivity<Shopping> {
     private static final String TAG = "XYK-ShoppingHistoryActivity";
@@ -32,7 +21,13 @@ public class ShoppingHistoryActivity extends PTRListActivity<Shopping> {
     @Override
     public PaginationAction<Shopping> getPaginationAction() {
         String cardId = PreferenceUtil.getString(this, Constants.APP_USER_CARD_ID, null);
-        return new GetShoppingHistoryAction(this, 1, 10, cardId);
+        Map<String, String> parameters = new HashMap<>();
+        parameters.put(Constants.KEY_CARD_ID, cardId);
+        parameters.put("state", "");
+        parameters.put("start_time", "");
+        parameters.put("end_time", "");
+        return new CommonPaginationAction(this, 1, Constants.PAGE_SIZE, Constants.URL_GET_SHOP_HISTORY, parameters, Shopping.class);
+//        return new GetShoppingHistoryAction(this, 1, 10, cardId);
     }
 
     public View getListItemView(Shopping item, View convertView, ViewGroup parent, LayoutInflater inflater) {

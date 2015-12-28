@@ -2,6 +2,8 @@ package com.creal.nest.actions;
 
 import android.content.Context;
 
+import com.creal.nest.Constants;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -13,12 +15,12 @@ public class GetMyIngotsAction extends AbstractAction<String> {
         super(context);
         this.mCardId = cardId;
         this.mServiceId = "GET_MY_INGOTS";
-        mURL = URL_GET_MY_INGOTS;
+        mURL = Constants.URL_GET_MY_INGOTS;
     }
 
     protected JSONObject getRequestBody(String timeStr) throws JSONException{
         JSONObject parameters = new JSONObject();
-        parameters.put(KEY_CARD_ID, mCardId);
+        parameters.put(Constants.KEY_CARD_ID, mCardId);
         return parameters;
     }
 

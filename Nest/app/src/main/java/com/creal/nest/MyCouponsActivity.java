@@ -1,34 +1,18 @@
 package com.creal.nest;
 
-import android.app.ListActivity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
-import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.creal.nest.actions.AbstractAction;
 import com.creal.nest.actions.GetCouponsAction;
-import com.creal.nest.actions.GetShoppingHistoryAction;
 import com.creal.nest.actions.PaginationAction;
 import com.creal.nest.model.Coupon;
-import com.creal.nest.model.Pagination;
-import com.creal.nest.model.Shopping;
 import com.creal.nest.util.PreferenceUtil;
 import com.creal.nest.views.CustomizeImageView;
-import com.creal.nest.views.HeaderView;
-import com.creal.nest.views.ptr.LoadingSupportPTRListView;
 import com.creal.nest.views.ptr.PTRListActivity;
-import com.creal.nest.views.ptr.PTRListAdapter;
-import com.handmark.pulltorefresh.library.PullToRefreshBase;
-
-import java.util.List;
 
 public class MyCouponsActivity extends PTRListActivity<Coupon> {
     public int getTitleResId() {

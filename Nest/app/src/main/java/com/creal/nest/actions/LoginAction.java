@@ -19,7 +19,7 @@ public class LoginAction extends AbstractAction {
         this.mCardNum = cardNum;
         this.mPassword = pwd;
         this.mServiceId = "LOGIN";
-        mURL = URL_LOGIN;
+        mURL = Constants.URL_LOGIN;
     }
 
     protected JSONObject getRequestBody(String timeStr) throws JSONException{
