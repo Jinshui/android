@@ -9,7 +9,6 @@ import android.widget.Toast;
 
 import com.creal.nest.actions.AbstractAction;
 import com.creal.nest.actions.ExchangeIngotsAction;
-import com.creal.nest.actions.JSONConstants;
 import com.creal.nest.model.RechargeCard;
 import com.creal.nest.util.PreferenceUtil;
 
@@ -28,7 +27,7 @@ public class ExchangeIngotsConfirmDialog extends Activity {
     }
 
     public void onConfirmExchange(View view){
-        String cardId = PreferenceUtil.getString(this, JSONConstants.KEY_CARD_ID, null);
+        String cardId = PreferenceUtil.getString(this, Constants.APP_USER_CARD_ID, null);
         ExchangeIngotsAction exchangeIngotsAction = new ExchangeIngotsAction(this, cardId, mRechargeCard.getId(), mRechargeCard.getNum());
         exchangeIngotsAction.execute(new AbstractAction.UICallBack<Boolean>() {
             public void onSuccess(Boolean result) {

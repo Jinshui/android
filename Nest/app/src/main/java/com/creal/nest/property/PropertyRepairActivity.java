@@ -10,12 +10,11 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
+import com.creal.nest.Constants;
 import com.creal.nest.R;
-import com.creal.nest.RechargeHistoryActivity;
 import com.creal.nest.actions.AbstractAction;
 import com.creal.nest.actions.JSONConstants;
 import com.creal.nest.actions.JSONObjectAction;
-import com.creal.nest.util.JSONUtil;
 import com.creal.nest.util.PreferenceUtil;
 import com.creal.nest.util.UIUtil;
 import com.creal.nest.views.HeaderView;
@@ -76,7 +75,7 @@ public class PropertyRepairActivity extends Activity {
     }
 
     public void onSubmitClick(View view) {
-        String cardId = PreferenceUtil.getString(this, JSONConstants.KEY_CARD_ID, null);
+        String cardId = PreferenceUtil.getString(this, Constants.APP_USER_CARD_ID, null);
         Map parameters = new HashMap<>();
         parameters.put(JSONConstants.KEY_CARD_ID, cardId);
         parameters.put("repair_type", mBtnCommon.isChecked()? 1 : 2 );

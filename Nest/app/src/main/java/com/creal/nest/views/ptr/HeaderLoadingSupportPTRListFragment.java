@@ -9,10 +9,10 @@ import android.view.ViewGroup;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
+import com.creal.nest.R;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.Mode;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener2;
-import com.creal.nest.R;
 
 public abstract class HeaderLoadingSupportPTRListFragment extends Fragment implements OnRefreshListener2<ListView> {
 	private final static String tag = "TT-PTRListFragment";

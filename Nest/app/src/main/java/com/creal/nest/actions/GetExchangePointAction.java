@@ -1,10 +1,8 @@
 package com.creal.nest.actions;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.creal.nest.model.ExchangePoint;
-import com.creal.nest.model.Recharge;
 
 import org.json.JSONException;
 import org.json.JSONObject;

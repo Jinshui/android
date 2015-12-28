@@ -8,18 +8,16 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.creal.nest.actions.AbstractAction;
-import com.creal.nest.actions.GetRechargeCardsAction;
 import com.creal.nest.actions.GetMyIngotsAction;
-import com.creal.nest.actions.JSONConstants;
-import com.creal.nest.model.RechargeCard;
+import com.creal.nest.actions.GetRechargeCardsAction;
 import com.creal.nest.model.Pagination;
+import com.creal.nest.model.RechargeCard;
 import com.creal.nest.util.ErrorAdapter;
 import com.creal.nest.util.PreferenceUtil;
 import com.creal.nest.views.HeaderView;
@@ -97,8 +95,8 @@ public class IngotsMallActivity extends ListActivity implements PullToRefreshBas
     }
 
     private void loadMyIngots(){
-        PreferenceUtil.getString(this, JSONConstants.KEY_CARD_ID, null);
-        GetMyIngotsAction getMyIngotsAction = new GetMyIngotsAction(this, PreferenceUtil.getString(this, JSONConstants.KEY_CARD_ID, null));
+        String cardId = PreferenceUtil.getString(this, Constants.APP_USER_CARD_ID, null);
+        GetMyIngotsAction getMyIngotsAction = new GetMyIngotsAction(this, cardId);
         getMyIngotsAction.execute(new AbstractAction.UICallBack<String>() {
             public void onSuccess(String result) {
                 mIngotsTxt.setText(result);

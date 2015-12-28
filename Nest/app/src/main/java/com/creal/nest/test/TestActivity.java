@@ -1,9 +1,7 @@
 package com.creal.nest.test;
 
 import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
-import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -16,7 +14,6 @@ import com.creal.nest.R;
 import com.creal.nest.actions.AbstractAction;
 import com.creal.nest.actions.GetVerificationCodeAction;
 import com.creal.nest.actions.LoginAction;
-import com.creal.nest.views.HeaderView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -24,8 +21,6 @@ import org.json.JSONObject;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
-import java.util.List;
-import java.util.Objects;
 
 public class TestActivity extends Activity {
 

@@ -6,13 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.creal.nest.R;
-import com.creal.nest.actions.AbstractAction;
-import com.creal.nest.actions.GetCouponsAction;
 import com.creal.nest.model.Coupon;
-import com.creal.nest.model.Pagination;
-import com.creal.nest.views.CustomizeImageView;
-import com.creal.nest.views.HeaderView;
 
 public class SnapCouponDialogActivity extends Activity {
 

@@ -2,8 +2,6 @@ package com.creal.nest;
 
 import android.app.Activity;
 import android.app.Dialog;
-import android.content.Intent;
-import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -14,11 +12,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.creal.nest.R;
 import com.creal.nest.actions.AbstractAction;
 import com.creal.nest.actions.GetQRCodeAction;
-import com.creal.nest.actions.JSONConstants;
-import com.creal.nest.actions.ParallelTask;
 import com.creal.nest.util.BitmapUtil;
 import com.creal.nest.util.ImageUtil;
 import com.creal.nest.util.PreferenceUtil;
@@ -71,7 +66,8 @@ public class QRCodeActivity extends Activity {
             mProgressDialog.show();
             mFirstLoad = false;
         }
-        GetQRCodeAction qrCodeAction = new GetQRCodeAction(this, PreferenceUtil.getString(this, JSONConstants.KEY_CARD_ID, ""));
+        String cardId = PreferenceUtil.getString(this, Constants.APP_USER_CARD_ID, null);
+        GetQRCodeAction qrCodeAction = new GetQRCodeAction(this, cardId);
         qrCodeAction.execute(
                 new AbstractAction.UICallBack<String>() {
                     public void onSuccess(String result) {

@@ -15,11 +15,6 @@ import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.creal.nest.R;
-import com.creal.nest.actions.AbstractAction;
-import com.creal.nest.actions.GetCategoryAction;
-import com.creal.nest.model.Pagination;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;

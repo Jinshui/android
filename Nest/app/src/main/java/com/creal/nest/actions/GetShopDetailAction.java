@@ -2,7 +2,6 @@ package com.creal.nest.actions;
 
 import android.content.Context;
 
-import com.creal.nest.model.Repair;
 import com.creal.nest.model.Shop;
 
 import org.json.JSONException;

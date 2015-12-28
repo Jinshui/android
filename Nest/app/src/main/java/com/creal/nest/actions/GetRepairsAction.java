@@ -1,7 +1,6 @@
 package com.creal.nest.actions;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.creal.nest.model.Repair;
 

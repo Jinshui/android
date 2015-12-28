@@ -1,10 +1,9 @@
 package com.creal.nest;
 
+import android.app.Activity;
 import android.app.Dialog;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.app.Activity;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.animation.Animation;
@@ -14,7 +13,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.creal.nest.R;
 import com.creal.nest.actions.AbstractAction;
 import com.creal.nest.actions.LoginAction;
 import com.creal.nest.util.PreferenceUtil;
@@ -45,8 +43,8 @@ public class LoginActivity extends Activity {
         mBtnLogin = (Button)findViewById(R.id.id_btn_login);
         mBtnForgotPwd = (TextView)findViewById(R.id.id_btn_forget_pwd);
 
-        mCardId.setText(PreferenceUtil.getString(this, "card_num", ""));
-        mPassword.setText(PreferenceUtil.getString(this, "login_password", ""));
+        mCardId.setText(PreferenceUtil.getString(this, Constants.APP_USER_CARD_NUM, ""));
+        mPassword.setText(PreferenceUtil.getString(this, Constants.APP_USER_PWD, ""));
     }
 
     public void onLoginClick(View view){
@@ -63,8 +61,8 @@ public class LoginActivity extends Activity {
             return;
         }
 
-        PreferenceUtil.saveString(this, "card_num", cardId.toString());
-        PreferenceUtil.saveString(this, "login_password", password.toString());
+        PreferenceUtil.saveString(this, Constants.APP_USER_CARD_NUM, cardId.toString());
+        PreferenceUtil.saveString(this, Constants.APP_USER_PWD, password.toString());
         final LoginAction loginAction = new LoginAction(this, cardId.toString(), password.toString());
 //        mProgressDialog = ProgressDialog.show(this, null, "正在登录中...", true, false);
         mProgressDialog = UIUtil.createLoadingDialog(this, getString(R.string.signing), false);

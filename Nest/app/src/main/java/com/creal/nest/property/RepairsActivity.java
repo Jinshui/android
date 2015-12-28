@@ -13,14 +13,12 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.creal.nest.LatestActivityDetailActivity;
+import com.creal.nest.Constants;
 import com.creal.nest.R;
 import com.creal.nest.actions.AbstractAction;
 import com.creal.nest.actions.GetRepairsAction;
-import com.creal.nest.actions.JSONConstants;
-import com.creal.nest.model.RechargeCard;
-import com.creal.nest.model.Repair;
 import com.creal.nest.model.Pagination;
+import com.creal.nest.model.Repair;
 import com.creal.nest.util.ErrorAdapter;
 import com.creal.nest.util.PreferenceUtil;
 import com.creal.nest.util.UIUtil;
@@ -30,7 +28,6 @@ import com.creal.nest.views.ptr.LoadingSupportPTRListView;
 import com.creal.nest.views.ptr.PTRListAdapter;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class RepairsActivity extends ListActivity implements PullToRefreshBase.OnRefreshListener2<ListView> {
@@ -59,7 +56,7 @@ public class RepairsActivity extends ListActivity implements PullToRefreshBase.O
         Log.d(TAG, "loadCoupons");
         if(isInitialLoad)
             mLoadingSupportPTRListView.showLoadingView();
-        String cardId = PreferenceUtil.getString(this, JSONConstants.KEY_CARD_ID, null);
+        String cardId = PreferenceUtil.getString(this, Constants.APP_USER_CARD_ID, null);
         final Dialog dialog = UIUtil.showLoadingDialog(this, getString(R.string.loading), true);
         mGetRepairsAction = new GetRepairsAction(this, 1, 10, cardId);
         mGetRepairsAction.execute(

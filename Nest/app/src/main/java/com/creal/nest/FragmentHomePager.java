@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 
-import com.creal.nest.R;
 import com.creal.nest.model.Ad;
 import com.creal.nest.views.CustomizeImageView;
 

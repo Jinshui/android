@@ -9,8 +9,6 @@ import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
 import android.widget.Button;
 
-import com.creal.nest.R;
-
 /**
  * Created by jinshui on 15-12-17.
  */

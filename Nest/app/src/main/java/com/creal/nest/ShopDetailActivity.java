@@ -5,7 +5,6 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -15,10 +14,6 @@ import com.creal.nest.actions.GetShopDetailAction;
 import com.creal.nest.model.Shop;
 import com.creal.nest.util.UIUtil;
 import com.creal.nest.views.HeaderView;
-import com.creal.nest.views.ptr.HeaderLoadingSupportPTRListFragment;
-
-import java.io.File;
-import java.net.URISyntaxException;
 
 public class ShopDetailActivity extends Activity {
 

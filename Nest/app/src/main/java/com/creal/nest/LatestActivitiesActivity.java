@@ -12,15 +12,15 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.creal.nest.model.SalesActivity;
-import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.creal.nest.actions.AbstractAction;
 import com.creal.nest.actions.GetLatestActivitiesAction;
 import com.creal.nest.model.Pagination;
+import com.creal.nest.model.SalesActivity;
 import com.creal.nest.views.CustomizeImageView;
 import com.creal.nest.views.HeaderView;
 import com.creal.nest.views.ptr.LoadingSupportPTRListView;
 import com.creal.nest.views.ptr.PTRListAdapter;
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
 
 import java.util.ArrayList;
 import java.util.List;

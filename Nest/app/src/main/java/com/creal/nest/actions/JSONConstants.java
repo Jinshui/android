@@ -39,10 +39,4 @@ public interface JSONConstants {
 
     public final static String SERVICE_ID_CATEGORY = "S1112";
     public final static String SERVICE_ID_NEWS = "S1116";
-
-
-
-
-    public static final String DEFAULT_KEY = "123456789";
-
 }

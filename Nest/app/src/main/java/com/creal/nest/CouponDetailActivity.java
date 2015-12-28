@@ -6,13 +6,10 @@ import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.creal.nest.R;
 import com.creal.nest.actions.AbstractAction;
 import com.creal.nest.actions.GetCouponDetailAction;
-import com.creal.nest.actions.GetCouponsAction;
 import com.creal.nest.actions.JSONConstants;
 import com.creal.nest.model.Coupon;
-import com.creal.nest.model.Pagination;
 import com.creal.nest.util.UIUtil;
 import com.creal.nest.views.CustomizeImageView;
 import com.creal.nest.views.HeaderView;

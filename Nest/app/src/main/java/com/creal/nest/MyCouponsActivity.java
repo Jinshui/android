@@ -13,19 +13,17 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.creal.nest.actions.JSONConstants;
-import com.creal.nest.util.PreferenceUtil;
-import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.creal.nest.actions.AbstractAction;
 import com.creal.nest.actions.GetCouponsAction;
 import com.creal.nest.model.Coupon;
 import com.creal.nest.model.Pagination;
+import com.creal.nest.util.PreferenceUtil;
 import com.creal.nest.views.CustomizeImageView;
 import com.creal.nest.views.HeaderView;
 import com.creal.nest.views.ptr.LoadingSupportPTRListView;
 import com.creal.nest.views.ptr.PTRListAdapter;
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MyCouponsActivity extends ListActivity implements PullToRefreshBase.OnRefreshListener2<ListView> {
@@ -53,7 +51,7 @@ public class MyCouponsActivity extends ListActivity implements PullToRefreshBase
         Log.d(TAG, "loadFirstPage");
         if(isInitialLoad)
             mLoadingSupportPTRListView.showLoadingView();
-        String cardId = PreferenceUtil.getString(this, JSONConstants.KEY_CARD_ID, null);
+        String cardId = PreferenceUtil.getString(this, Constants.APP_USER_CARD_ID, null);
         mGetCouponsAction = new GetCouponsAction(this, 1, 10, cardId, GetCouponsAction.Type.MY_COUPONS);
         mGetCouponsAction.execute(
             new AbstractAction.UICallBack<Pagination<Coupon>>() {
@@ -100,7 +98,7 @@ public class MyCouponsActivity extends ListActivity implements PullToRefreshBase
 
     protected void onListItemClick(ListView l, View v, int position, long id){
         Intent intent = new Intent(this, CouponDetailActivity.class);
-        intent.putExtra(CouponDetailActivity.INTENT_EXTRA_CARD_ID, PreferenceUtil.getString(this, JSONConstants.KEY_CARD_ID, null));
+        intent.putExtra(CouponDetailActivity.INTENT_EXTRA_CARD_ID, PreferenceUtil.getString(this, Constants.APP_USER_CARD_ID, null));
         intent.putExtra(CouponDetailActivity.INTENT_EXTRA_COUPON_ID, ((Coupon)getListView().getItemAtPosition(position)).getId());
         startActivity(intent);
     }

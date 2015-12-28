@@ -2,6 +2,7 @@ package com.creal.nest.actions;
 
 import android.content.Context;
 
+import com.creal.nest.Constants;
 import com.creal.nest.util.PreferenceUtil;
 import com.creal.nest.util.Utils;
 
@@ -36,17 +37,17 @@ public class BindPhoneCardAction extends AbstractAction<String> {
     @Override
     protected String createRespObject(JSONObject response) throws JSONException {
         if(response.has(KEY_CARD_ID))
-            PreferenceUtil.saveString(mAppContext, KEY_CARD_ID, response.getString(KEY_CARD_ID));
+            PreferenceUtil.saveString(mAppContext, Constants.APP_USER_CARD_ID, response.getString(KEY_CARD_ID));
         if(response.has(KEY_CARD_NUM))
-            PreferenceUtil.saveString(mAppContext, KEY_CARD_NUM, response.getString(KEY_CARD_NUM));
+            PreferenceUtil.saveString(mAppContext, Constants.APP_USER_CARD_NUM, response.getString(KEY_CARD_NUM));
         if(response.has(KEY_MOBILE))
-            PreferenceUtil.saveString(mAppContext, KEY_MOBILE, response.getString(KEY_MOBILE));
+            PreferenceUtil.saveString(mAppContext, Constants.APP_USER_PHONE, response.getString(KEY_MOBILE));
         if(response.has(KEY_INTEGRAL))
-            PreferenceUtil.saveInt(mAppContext, KEY_INTEGRAL, response.getInt(KEY_INTEGRAL));
+            PreferenceUtil.saveInt(mAppContext, Constants.APP_USER_POINTS, response.getInt(KEY_INTEGRAL));
         if(response.has(KEY_MONEY))
-            PreferenceUtil.saveInt(mAppContext, KEY_MONEY, response.getInt(KEY_MONEY));
+            PreferenceUtil.saveInt(mAppContext, Constants.APP_USER_AMOUNT, response.getInt(KEY_MONEY));
         if(response.has(KEY_KEY))
-            PreferenceUtil.saveString(mAppContext, KEY_KEY, response.getString(KEY_KEY));
+            PreferenceUtil.saveString(mAppContext, Constants.APP_BINDING_KEY, response.getString(KEY_KEY));
         return response.getString(KEY_KEY);
     }
 }

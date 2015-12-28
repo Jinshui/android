@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.creal.nest.R;
 import com.creal.nest.views.HeaderView;
 
 public class FragmentSetting extends Fragment {

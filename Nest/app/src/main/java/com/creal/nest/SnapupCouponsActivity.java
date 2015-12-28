@@ -17,7 +17,6 @@ import android.widget.Toast;
 import com.creal.nest.actions.AbstractAction;
 import com.creal.nest.actions.GetCouponDetailAction;
 import com.creal.nest.actions.GetCouponsAction;
-import com.creal.nest.actions.JSONConstants;
 import com.creal.nest.actions.ReceiveCouponAction;
 import com.creal.nest.model.Coupon;
 import com.creal.nest.model.Pagination;
@@ -30,7 +29,6 @@ import com.creal.nest.views.ptr.LoadingSupportPTRListView;
 import com.creal.nest.views.ptr.PTRListAdapter;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class SnapupCouponsActivity extends ListActivity implements PullToRefreshBase.OnRefreshListener2<ListView> {
@@ -175,7 +173,7 @@ public class SnapupCouponsActivity extends ListActivity implements PullToRefresh
             if(coupon.isActive()) {
                 holder.snapNowBtn.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View v) {
-                        String cardId = PreferenceUtil.getString(SnapupCouponsActivity.this, JSONConstants.KEY_CARD_ID, null);
+                        String cardId = PreferenceUtil.getString(SnapupCouponsActivity.this, Constants.APP_USER_CARD_ID, null);
                         final Dialog progressDialog = UIUtil.showLoadingDialog(SnapupCouponsActivity.this, getString(R.string.loading), false);
                         ReceiveCouponAction action = new ReceiveCouponAction(SnapupCouponsActivity.this, cardId, coupon.getId());
                         action.execute(new AbstractAction.UICallBack<ReceiveCouponResult>() {

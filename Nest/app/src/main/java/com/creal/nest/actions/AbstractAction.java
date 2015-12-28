@@ -6,8 +6,8 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.util.Log;
 
+import com.creal.nest.Constants;
 import com.creal.nest.R;
-import com.creal.nest.util.JSONUtil;
 import com.creal.nest.util.PreferenceUtil;
 import com.creal.nest.util.Utils;
 import com.google.gson.JsonObject;
@@ -331,7 +331,7 @@ public abstract class AbstractAction<Result> extends ParallelTask<AbstractAction
                 String timestr = response.getString("timestr");
                 String bodyStr = mGsonObject.get("response").getAsJsonObject().get("body").toString();
                 if(key == null)
-                    key = PreferenceUtil.getString(mAppContext, KEY_KEY, DEFAULT_KEY);
+                    key = PreferenceUtil.getString(mAppContext, Constants.APP_BINDING_KEY, Constants.APP_DEFAULT_KEY);
                 String clientSignature = Utils.md5(flag+bodyStr+timestr+key);
                 if(!clientSignature.equals(signature)){
                     Log.e(tag, "数据校验未通过！！！");
@@ -367,7 +367,7 @@ public abstract class AbstractAction<Result> extends ParallelTask<AbstractAction
         JSONObject requestBody = getRequestBody(timeStr);
         request.putOpt("body", requestBody);
         request.put("timestr", timeStr);
-        String key = PreferenceUtil.getString(mAppContext, KEY_KEY, DEFAULT_KEY);
+        String key = PreferenceUtil.getString(mAppContext, Constants.APP_BINDING_KEY, Constants.APP_DEFAULT_KEY);
         String hash = requestBody.toString() + timeStr + key;
         String signature = Utils.md5(hash);
         request.put("signature", signature);

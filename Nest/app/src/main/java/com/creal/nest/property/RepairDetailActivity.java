@@ -11,10 +11,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.creal.nest.Constants;
 import com.creal.nest.R;
 import com.creal.nest.actions.AbstractAction;
 import com.creal.nest.actions.GetRepairDetailAction;
-import com.creal.nest.actions.JSONConstants;
 import com.creal.nest.model.Repair;
 import com.creal.nest.util.PreferenceUtil;
 import com.creal.nest.util.UIUtil;
@@ -56,7 +56,8 @@ public class RepairDetailActivity extends Activity {
 
     private void init(){
         final Dialog dialog = UIUtil.showLoadingDialog(this, getString(R.string.loading), true);
-        GetRepairDetailAction repairDetailAction = new GetRepairDetailAction(this, PreferenceUtil.getString(this, JSONConstants.KEY_CARD_ID, null), mRepairId);
+        String cardId = PreferenceUtil.getString(this, Constants.APP_USER_CARD_ID, null);
+        GetRepairDetailAction repairDetailAction = new GetRepairDetailAction(this, cardId, mRepairId);
         repairDetailAction.execute(new AbstractAction.UICallBack<Repair>() {
             public void onSuccess(Repair repair) {
                 initSteps(repair);

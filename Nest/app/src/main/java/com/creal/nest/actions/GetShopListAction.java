@@ -2,11 +2,10 @@ package com.creal.nest.actions;
 
 import android.content.Context;
 
+import com.creal.nest.model.Shop;
+
 import org.json.JSONException;
 import org.json.JSONObject;
-
-
-import com.creal.nest.model.Shop;
 
 
 public class GetShopListAction extends PaginationAction<Shop> {

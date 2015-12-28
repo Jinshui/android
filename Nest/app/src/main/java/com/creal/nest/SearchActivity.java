@@ -14,8 +14,8 @@ import android.widget.Toast;
 
 import com.creal.nest.actions.AbstractAction;
 import com.creal.nest.actions.GetShopListAction;
-import com.creal.nest.model.Shop;
 import com.creal.nest.model.Pagination;
+import com.creal.nest.model.Shop;
 import com.creal.nest.views.CustomizeImageView;
 import com.creal.nest.views.ptr.LoadingSupportPTRListView;
 import com.creal.nest.views.ptr.PTRListAdapter;

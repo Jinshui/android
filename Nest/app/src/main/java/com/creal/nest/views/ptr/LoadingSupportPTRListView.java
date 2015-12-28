@@ -7,9 +7,9 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 
+import com.creal.nest.R;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.Mode;
-import com.creal.nest.R;
 
 public class LoadingSupportPTRListView extends LinearLayout  {
 	private final static String tag = "TT-LoadingSupportPTR";

@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.creal.nest.Constants;
 import com.creal.nest.R;
 import com.creal.nest.RechargeActivity;
 import com.creal.nest.RechargeHistoryActivity;
@@ -68,7 +69,7 @@ public class PropertyManagementActivity extends Activity {
 
 
     private void init(){
-        String cardId = PreferenceUtil.getString(this, JSONConstants.KEY_CARD_ID, null);
+        String cardId = PreferenceUtil.getString(this, Constants.APP_USER_CARD_ID, null);
         Map parameters = new HashMap<>();
         parameters.put(JSONConstants.KEY_CARD_ID, cardId);
         final Dialog dialog = UIUtil.showLoadingDialog(this, getString(R.string.loading), true);

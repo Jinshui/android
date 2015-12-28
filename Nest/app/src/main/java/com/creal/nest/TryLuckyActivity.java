@@ -4,9 +4,7 @@ import android.app.Dialog;
 import android.app.ListActivity;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,7 +15,6 @@ import android.widget.Toast;
 
 import com.creal.nest.actions.AbstractAction;
 import com.creal.nest.actions.GetCouponsAction;
-import com.creal.nest.actions.JSONConstants;
 import com.creal.nest.actions.ReceiveCouponAction;
 import com.creal.nest.model.Coupon;
 import com.creal.nest.model.Pagination;
@@ -30,7 +27,6 @@ import com.creal.nest.views.ptr.LoadingSupportPTRListView;
 import com.creal.nest.views.ptr.PTRListAdapter;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class TryLuckyActivity extends ListActivity implements PullToRefreshBase.OnRefreshListener2<ListView>  {
@@ -63,7 +59,6 @@ public class TryLuckyActivity extends ListActivity implements PullToRefreshBase.
         Log.d(TAG, "loadFirstPage");
         if(isInitialLoad)
             mLoadingSupportPTRListView.showLoadingView();
-        String cardId = PreferenceUtil.getString(this, JSONConstants.KEY_CARD_ID, null);
         mGetCouponsAction = new GetCouponsAction(this, 1, 10, GetCouponsAction.Type.LUCKY_COUPON);
         mGetCouponsAction.execute(
                 new AbstractAction.UICallBack<Pagination<Coupon>>() {
@@ -150,7 +145,7 @@ public class TryLuckyActivity extends ListActivity implements PullToRefreshBase.
 
             convertView.findViewById(R.id.id_btn_try_lucky).setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
-                    String cardId = PreferenceUtil.getString(getBaseContext(), JSONConstants.KEY_CARD_ID, null);
+                    String cardId = PreferenceUtil.getString(getBaseContext(), Constants.APP_USER_CARD_ID, null);
                     ReceiveCouponAction action = new ReceiveCouponAction(getBaseContext(), cardId, coupon.getId());
                     final Dialog progressDialog = UIUtil.showLoadingDialog(TryLuckyActivity.this, getString(R.string.loading), false);
                     action.execute(new AbstractAction.UICallBack<ReceiveCouponResult>() {

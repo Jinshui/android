@@ -8,7 +8,6 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RadioButton;
 
-import com.creal.nest.R;
 import com.creal.nest.views.HeaderView;
 import com.creal.nest.views.UncheckableRadioButton;
 

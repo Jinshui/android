@@ -2,9 +2,6 @@ package com.creal.nest.actions;
 
 import android.content.Context;
 
-import com.creal.nest.util.PreferenceUtil;
-import com.creal.nest.util.Utils;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 

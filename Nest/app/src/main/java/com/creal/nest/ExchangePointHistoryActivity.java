@@ -13,9 +13,8 @@ import android.widget.Toast;
 
 import com.creal.nest.actions.AbstractAction;
 import com.creal.nest.actions.GetExchangePointAction;
-import com.creal.nest.actions.GetRechargeAction;
-import com.creal.nest.model.Pagination;
 import com.creal.nest.model.ExchangePoint;
+import com.creal.nest.model.Pagination;
 import com.creal.nest.views.HeaderView;
 import com.creal.nest.views.ptr.LoadingSupportPTRListView;
 import com.creal.nest.views.ptr.PTRListAdapter;

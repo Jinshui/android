@@ -3,17 +3,17 @@ package com.creal.nest;
 
 
 public class Constants {//159357
-	public static final String APP_WEIXIN_ID = "wxc0ff6c151ffb2eab";
-	public static final String APP_ALIPAY_ID = "1103289406";
-	public static final String CACHE_DIR = "/xyk";
-	
-	public static final String SERVER_ADDRESS = "http://115.28.85.247/nosession";
+    public static final String APP_DEFAULT_KEY        = "123456789";
+	public static final String APP_BINDING_KEY        = "app_user_binding_key";
+	public static final String APP_USER_AUTHORIZED    = "app_user_authorized";
+    public static final String APP_USER_PHONE         = "app_user_phone";
+    public static final String APP_USER_PWD           = "app_user_pwd";
+    public static final String APP_USER_CARD_ID       = "app_user_card_id";
+    public static final String APP_USER_CARD_NUM      = "app_user_card_num";
+    public static final String APP_USER_POINTS        = "app_user_points";
+    public static final String APP_USER_AMOUNT        = "app_user_amount";
 
-	//Intents
-	public static final String INTENT_EXTRA_NEWS = "news";
-//	public static final String INTENT_EXTRA_NEWS_ID = "news_id";
-//	public static final String INTENT_EXTRA_NEWS_CATEGORY = "news_category";
-	public static final String INTENT_ACTION_PHOTO_UPDATED = "photo_updated";
+	public static final String CACHE_DIR = "/nest";
 	
 	//Preference keys
 	public static final String USER_OPEN_ID = "user.openid";

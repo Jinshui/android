@@ -14,17 +14,17 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.creal.nest.model.ShopCategory;
-import com.creal.nest.util.ErrorAdapter;
-import com.creal.nest.util.MapDistance;
-import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.creal.nest.actions.AbstractAction;
 import com.creal.nest.actions.GetShopListAction;
 import com.creal.nest.model.Pagination;
 import com.creal.nest.model.Shop;
+import com.creal.nest.model.ShopCategory;
+import com.creal.nest.util.ErrorAdapter;
+import com.creal.nest.util.MapDistance;
 import com.creal.nest.views.CustomizeImageView;
 import com.creal.nest.views.ptr.HeaderLoadingSupportPTRListFragment;
 import com.creal.nest.views.ptr.PTRListAdapter;
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
 
 import java.util.List;
 

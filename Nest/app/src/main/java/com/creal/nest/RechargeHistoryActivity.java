@@ -2,8 +2,6 @@ package com.creal.nest;
 
 import android.app.ListActivity;
 import android.content.Context;
-import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,12 +12,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.creal.nest.actions.AbstractAction;
-import com.creal.nest.actions.GetCouponsAction;
 import com.creal.nest.actions.GetRechargeAction;
-import com.creal.nest.model.Recharge;
 import com.creal.nest.model.Pagination;
 import com.creal.nest.model.Recharge;
-import com.creal.nest.views.CustomizeImageView;
 import com.creal.nest.views.HeaderView;
 import com.creal.nest.views.ptr.LoadingSupportPTRListView;
 import com.creal.nest.views.ptr.PTRListAdapter;

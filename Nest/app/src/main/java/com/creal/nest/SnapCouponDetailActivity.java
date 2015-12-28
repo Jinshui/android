@@ -9,7 +9,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.creal.nest.actions.AbstractAction;
-import com.creal.nest.actions.JSONConstants;
 import com.creal.nest.actions.ReceiveCouponAction;
 import com.creal.nest.model.Coupon;
 import com.creal.nest.model.ReceiveCouponResult;
@@ -52,7 +51,7 @@ public class SnapCouponDetailActivity extends Activity {
     }
 
     public void onSnapClick(View view){
-        String cardId = PreferenceUtil.getString(this, JSONConstants.KEY_CARD_ID, null);
+        String cardId = PreferenceUtil.getString(this, Constants.APP_USER_CARD_ID, null);
         final Dialog progressDialog = UIUtil.createLoadingDialog(this, getString(R.string.loading), false);
         progressDialog.show();
         ReceiveCouponAction action = new ReceiveCouponAction(this, cardId, mCoupon.getId());

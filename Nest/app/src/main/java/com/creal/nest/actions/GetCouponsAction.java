@@ -1,10 +1,8 @@
 package com.creal.nest.actions;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.creal.nest.model.Coupon;
-import com.creal.nest.model.Shop;
 
 import org.json.JSONException;
 import org.json.JSONObject;

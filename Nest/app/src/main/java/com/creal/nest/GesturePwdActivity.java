@@ -8,7 +8,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.creal.nest.R;
 import com.creal.nest.views.GestureLockViewGroup;
 
 

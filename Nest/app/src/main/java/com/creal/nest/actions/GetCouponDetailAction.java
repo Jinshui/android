@@ -2,15 +2,10 @@ package com.creal.nest.actions;
 
 import android.content.Context;
 
-import com.creal.nest.model.Ad;
 import com.creal.nest.model.Coupon;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.ArrayList;
-import java.util.List;
 
 
 public class GetCouponDetailAction extends AbstractAction<Coupon> {
