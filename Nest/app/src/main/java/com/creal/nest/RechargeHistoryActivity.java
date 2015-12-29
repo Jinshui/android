@@ -5,11 +5,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.creal.nest.actions.CommonPaginationAction;
 import com.creal.nest.actions.GetRechargeAction;
 import com.creal.nest.actions.PaginationAction;
 import com.creal.nest.model.Recharge;
+import com.creal.nest.model.Shopping;
 import com.creal.nest.util.PreferenceUtil;
 import com.creal.nest.views.ptr.PTRListActivity;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class RechargeHistoryActivity extends PTRListActivity<Recharge> {
 
@@ -23,7 +28,12 @@ public class RechargeHistoryActivity extends PTRListActivity<Recharge> {
     @Override
     public PaginationAction<Recharge> getPaginationAction() {
         String cardId = PreferenceUtil.getString(this, Constants.APP_USER_CARD_ID, null);
-        return new GetRechargeAction(this, 1, 10, cardId);
+        Map<String, String> parameters = new HashMap<>();
+        parameters.put(Constants.KEY_CARD_ID, cardId);
+        parameters.put("state", "");
+        parameters.put("start_time", "");
+        parameters.put("end_time", "");
+        return new CommonPaginationAction(this, 1, Constants.PAGE_SIZE, Constants.URL_GET_RECHARGE_HISTORY, parameters, Shopping.class);
     }
 
     public View getListItemView(Recharge item, View convertView, ViewGroup parent, LayoutInflater inflater) {

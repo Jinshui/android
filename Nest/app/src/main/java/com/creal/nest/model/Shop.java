@@ -6,7 +6,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 @SuppressLint("ParcelCreator")
-public class Shop extends BaseModel{
+public class Shop extends BaseModel implements PaginationItem<Shop>{
 
     private String logo;
     private String title;
@@ -113,5 +113,10 @@ public class Shop extends BaseModel{
             shop.setRecommend("1".equals(json.getString("recommend")));
         }
         return shop;
+    }
+
+    @Override
+    public Shop fillWithJSON(JSONObject jsonObject) throws JSONException {
+        return fromJSON(jsonObject);
     }
 }

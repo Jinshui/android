@@ -13,13 +13,14 @@ import java.util.Map;
 
 
 public class CommonPaginationAction<T extends PaginationItem<T>> extends PaginationAction<T> {
-    private static final String tag = "TT-GetRechargeAction";
+    private static final String tag = "TT-ComPaginationAction";
     private Map<String, String> mParameter;
     private Class<T> mClass;
     public CommonPaginationAction(Context context, int pageIndex, int pageSize, String url, Map parameter, Class<T> tClass){
         super(context, pageIndex, pageSize);
         mServiceId = url;
         mURL = url;
+        mParameter = parameter;
         mClass = tClass;
     }
 

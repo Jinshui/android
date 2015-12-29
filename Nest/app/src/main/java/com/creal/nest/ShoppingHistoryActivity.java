@@ -6,7 +6,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.creal.nest.actions.CommonPaginationAction;
-import com.creal.nest.actions.GetShoppingHistoryAction;
 import com.creal.nest.actions.PaginationAction;
 import com.creal.nest.model.Shopping;
 import com.creal.nest.util.PreferenceUtil;
@@ -27,7 +26,6 @@ public class ShoppingHistoryActivity extends PTRListActivity<Shopping> {
         parameters.put("start_time", "");
         parameters.put("end_time", "");
         return new CommonPaginationAction(this, 1, Constants.PAGE_SIZE, Constants.URL_GET_SHOP_HISTORY, parameters, Shopping.class);
-//        return new GetShoppingHistoryAction(this, 1, 10, cardId);
     }
 
     public View getListItemView(Shopping item, View convertView, ViewGroup parent, LayoutInflater inflater) {
