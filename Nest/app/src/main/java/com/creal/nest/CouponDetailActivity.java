@@ -3,6 +3,7 @@ package com.creal.nest;
 import android.app.Activity;
 import android.app.Dialog;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +24,7 @@ public class CouponDetailActivity extends Activity {
     private TextView mNameView;
     private TextView mDescView;
     private TextView mTimeRangeView;
+    private ImageView mCouponsTypeImageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +39,7 @@ public class CouponDetailActivity extends Activity {
         mNameView = (TextView)findViewById(R.id.id_txt_coupon_name);
         mDescView = (TextView)findViewById(R.id.id_txt_coupon_desc);
         mTimeRangeView = (TextView)findViewById(R.id.id_txt_coupon_time_range);
-
+        mCouponsTypeImageView = (ImageView)findViewById(R.id.id_img_coupons_type);
         init();
     }
 
@@ -52,6 +54,21 @@ public class CouponDetailActivity extends Activity {
                 mNameView.setText(coupon.getName());
                 mDescView.setText(coupon.getDesc());
                 mTimeRangeView.setText(String.format(getString(R.string.coupon_date_range), coupon.getStartTime(), coupon.getEndTime()));
+                switch (coupon.getType()){
+                    case "1":
+                        mCouponsTypeImageView.setImageResource(R.drawable.icon_coupon_exchange);
+                    case "2":
+                        mCouponsTypeImageView.setImageResource(R.drawable.icon_coupon_return);
+                    case "3":
+                        mCouponsTypeImageView.setImageResource(R.drawable.icon_coupon_activity);
+                    case "4":
+                        mCouponsTypeImageView.setImageResource(R.drawable.icon_coupon_award);
+                    case "5":
+                        mCouponsTypeImageView.setImageResource(R.drawable.icon_coupon_award);
+                    case "6":
+                        mCouponsTypeImageView.setImageResource(R.drawable.icon_coupon_system);
+                        break;
+                }
                 dialog.dismiss();
             }
 

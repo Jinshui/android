@@ -31,6 +31,7 @@ public class FragmentHomePager extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Log.d(tag, "onCreateView");
 		mImageView = (CustomizeImageView) inflater.inflate(R.layout.view_custom_image, container, false);
+		mImageView.setBackgroundResource(R.drawable.icon_list_default_bg);
 		return mImageView;
 	}
 	

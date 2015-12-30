@@ -19,7 +19,7 @@ import com.creal.nest.views.HeaderView;
 public class SnapCouponDetailActivity extends Activity {
 
     private static final String TAG = "XYK-SnapCouponDialog";
-
+    public static final String INTENT_EXTRA_COUPON = "coupon";
     private TextView mAmount;
     private TextView mDesc;
     private TextView mDescBttom;
@@ -33,7 +33,7 @@ public class SnapCouponDetailActivity extends Activity {
         HeaderView headerView = (HeaderView) findViewById(R.id.header);
         headerView.hideRightImage();
         headerView.setTitle(R.string.snapup_coupons);
-        mCoupon = getIntent().getParcelableExtra("coupon");
+        mCoupon = getIntent().getParcelableExtra(INTENT_EXTRA_COUPON);
 
         mAmount = (TextView)findViewById(R.id.id_txt_amount);
         mDesc = (TextView)findViewById(R.id.id_txt_amount_desc);

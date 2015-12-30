@@ -21,7 +21,6 @@ import java.util.List;
 public class FragmentHome extends Fragment{
     private static final String TAG = "XYK-FragmentHome";
 	private PhotoPager mViewPager;
-    private boolean mInitialized = false;
     private ArrayList<Ad> mAds;
 
 

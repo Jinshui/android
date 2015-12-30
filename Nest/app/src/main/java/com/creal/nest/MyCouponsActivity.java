@@ -7,12 +7,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.creal.nest.actions.GetCouponsAction;
+import com.creal.nest.actions.CommonPaginationAction;
 import com.creal.nest.actions.PaginationAction;
 import com.creal.nest.model.Coupon;
 import com.creal.nest.util.PreferenceUtil;
 import com.creal.nest.views.CustomizeImageView;
 import com.creal.nest.views.ptr.PTRListActivity;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class MyCouponsActivity extends PTRListActivity<Coupon> {
     public int getTitleResId() {
@@ -20,8 +23,9 @@ public class MyCouponsActivity extends PTRListActivity<Coupon> {
     }
 
     public PaginationAction<Coupon> getPaginationAction() {
-        String cardId = PreferenceUtil.getString(this, Constants.APP_USER_CARD_ID, null);
-        return new GetCouponsAction(this, 1, 10, cardId, GetCouponsAction.Type.MY_COUPONS);
+        Map<String, String> parameters = new HashMap<>();
+        parameters.put(Constants.KEY_CARD_ID, PreferenceUtil.getString(this, Constants.APP_USER_CARD_ID, null));
+        return new CommonPaginationAction(this, 1, 10, Constants.URL_GET_MY_COUPONS, parameters, Coupon.class, "coupons");
     }
 
     public void showDetailActivity(Coupon coupon){

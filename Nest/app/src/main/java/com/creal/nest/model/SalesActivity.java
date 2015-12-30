@@ -3,10 +3,12 @@ package com.creal.nest.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.creal.nest.actions.ActionRespObject;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class SalesActivity extends Ad {
+public class SalesActivity extends Ad implements ActionRespObject<SalesActivity>{
 
     public static final Parcelable.Creator<SalesActivity> CREATOR
             = new Parcelable.Creator<SalesActivity>() {
@@ -19,17 +21,38 @@ public class SalesActivity extends Ad {
         }
     };
 
+    private String title;
+    private String content;
+
     public SalesActivity(){
     }
 
     public SalesActivity(Parcel in){
         super(in);
+        title = in.readString();
     }
 
     public void writeToParcel(Parcel dest, int flags) {
         super.writeToParcel(dest, flags);
+        dest.writeString(title);
     }
 
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
 
     public static SalesActivity fromJSON(JSONObject json) throws JSONException {
         if(json == null)
@@ -39,6 +62,17 @@ public class SalesActivity extends Ad {
         salesActivity.setId(ad.getId());
         salesActivity.setImageUrl(ad.getImageUrl());
         salesActivity.setUrl(ad.getUrl());
+        if(json.has("title")){
+            salesActivity.setTitle(json.getString("title"));
+        }
+        if(json.has("content")){
+            salesActivity.setContent(json.getString("content"));
+        }
         return salesActivity;
+    }
+
+    @Override
+    public SalesActivity fillWithJSON(JSONObject jsonObject) throws JSONException {
+        return fromJSON(jsonObject);
     }
 }

@@ -3,10 +3,12 @@ package com.creal.nest.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.creal.nest.actions.ActionRespObject;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class Coupon extends BaseModel {
+public class Coupon extends BaseModel implements ActionRespObject<Coupon>{
 
     public static final Parcelable.Creator<Coupon> CREATOR
             = new Parcelable.Creator<Coupon>() {
@@ -250,5 +252,10 @@ public class Coupon extends BaseModel {
             coupon.setIntegral(json.getInt("integral"));
         }
         return coupon;
+    }
+
+    @Override
+    public Coupon fillWithJSON(JSONObject jsonObject) throws JSONException {
+        return fromJSON(jsonObject);
     }
 }

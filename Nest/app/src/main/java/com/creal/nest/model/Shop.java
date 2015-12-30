@@ -2,11 +2,13 @@ package com.creal.nest.model;
 
 import android.annotation.SuppressLint;
 
+import com.creal.nest.actions.ActionRespObject;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
 @SuppressLint("ParcelCreator")
-public class Shop extends BaseModel implements PaginationItem<Shop>{
+public class Shop extends BaseModel implements ActionRespObject<Shop> {
 
     private String logo;
     private String title;

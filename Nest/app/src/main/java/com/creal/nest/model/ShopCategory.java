@@ -2,10 +2,12 @@ package com.creal.nest.model;
 
 import android.os.Parcel;
 
+import com.creal.nest.actions.ActionRespObject;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class ShopCategory extends BaseModel {
+public class ShopCategory extends BaseModel implements ActionRespObject<ShopCategory>{
 
     public static final Creator<ShopCategory> CREATOR
             = new Creator<ShopCategory>() {
@@ -49,5 +51,10 @@ public class ShopCategory extends BaseModel {
         if(json.has("title"))
             recharge.name = json.getString("title");
         return recharge;
+    }
+
+    @Override
+    public ShopCategory fillWithJSON(JSONObject jsonObject) throws JSONException {
+        return fromJSON(jsonObject);
     }
 }

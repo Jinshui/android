@@ -15,7 +15,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.creal.nest.actions.AbstractAction;
-import com.creal.nest.actions.GetShopListAction;
+import com.creal.nest.actions.CommonPaginationAction;
+import com.creal.nest.actions.PaginationAction;
 import com.creal.nest.model.Pagination;
 import com.creal.nest.model.Shop;
 import com.creal.nest.model.ShopCategory;
@@ -26,14 +27,16 @@ import com.creal.nest.views.ptr.HeaderLoadingSupportPTRListFragment;
 import com.creal.nest.views.ptr.PTRListAdapter;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class FragmentNearbyShopList extends HeaderLoadingSupportPTRListFragment {
 	private final static String tag = "TT-FragNearbyShopList";
     public static final String INTENT_EXTRA_CATEGORY = "category";
 	private ShopCategory mCategory;
 	private PTRListAdapter<Shop> mShopListAdapter;
-	private GetShopListAction mGetShopListAction;
+	private PaginationAction<Shop> mGetShopListAction;
     private View mContentView;
     private Location mLocation;
     private LocationManager mLocationManager;
@@ -65,7 +68,11 @@ public class FragmentNearbyShopList extends HeaderLoadingSupportPTRListFragment 
         if(isFirst)
             showLoadingView();
         mLocation = mLocationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-        mGetShopListAction = new GetShopListAction(getActivity(), mCategory.getId(), mLocation.getLatitude() , mLocation.getLongitude(), 1, 10);
+        Map<String,String> parameters = new HashMap<>();
+        parameters.put("class_id", mCategory.getId());
+//        parameters.put("latitude", mLocation.getLatitude());
+//        parameters.put("longitude", mLocation.getLongitude());
+        mGetShopListAction = new CommonPaginationAction(getActivity(), 1, 10, Constants.URL_GET_SHOPS, parameters, Shop.class, "cominfo");
 		mGetShopListAction.execute(
                 new AbstractAction.UICallBack<Pagination<Shop>>() {
                     public void onSuccess(Pagination<Shop> shopList) {

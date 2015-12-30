@@ -10,6 +10,7 @@ import com.creal.nest.Constants;
 import com.creal.nest.R;
 import com.creal.nest.util.PreferenceUtil;
 import com.creal.nest.util.Utils;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -50,7 +51,7 @@ public abstract class AbstractAction<Result> extends ParallelTask<AbstractAction
     private IBackgroundProcessor<Result> mBackgroundProcessor = new NetworkBackgroundProcessor();
     private boolean mSecurity = true;
     private boolean mCancelled = false;
-    public static enum ErrorCode{
+    public enum ErrorCode{
         APPLICATOIN_ERROR,
         INVALID_REQUEST,
         INVALID_RESPONSE,
@@ -104,9 +105,9 @@ public abstract class AbstractAction<Result> extends ParallelTask<AbstractAction
         }
     }
 
-    public static interface UICallBack<T>{
-        public void onSuccess(T result);
-        public void onFailure(ActionError error);
+    public interface UICallBack<T>{
+        void onSuccess(T result);
+        void onFailure(ActionError error);
     }
     
     public static abstract class BackgroundCallBack<T>{
@@ -114,8 +115,8 @@ public abstract class AbstractAction<Result> extends ParallelTask<AbstractAction
         public void onFailure(ActionError error){}
     }
     
-    public static interface IBackgroundProcessor<T> {
-    	public ActionResult<T> doInBackground();
+    public interface IBackgroundProcessor<T> {
+    	ActionResult<T> doInBackground();
     }
 
     public class NetworkBackgroundProcessor implements IBackgroundProcessor<Result>{
@@ -146,7 +147,7 @@ public abstract class AbstractAction<Result> extends ParallelTask<AbstractAction
                             mResult = parseJSONResponse (response);
 						} catch (Exception e) {
 							Log.e(tag, "Failed to process response message.", e);
-			            	mResult = new ActionResult<Result>(new ActionError(ErrorCode.INVALID_RESPONSE, e.getMessage()));
+			            	mResult = new ActionResult<>(new ActionError(ErrorCode.INVALID_RESPONSE, e.getMessage()));
 						} 
 	    			}
 	    			public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
@@ -176,15 +177,15 @@ public abstract class AbstractAction<Result> extends ParallelTask<AbstractAction
 	    				try {
 	    					if(statusCode >= HttpStatus.SC_BAD_REQUEST &&
 		    						statusCode < HttpStatus.SC_INTERNAL_SERVER_ERROR){
-		    					mResult = new ActionResult<Result>(new ActionError(ErrorCode.INVALID_REQUEST, responseString));
+		    					mResult = new ActionResult<>(new ActionError(ErrorCode.INVALID_REQUEST, responseString));
 				            } else if(statusCode >= HttpStatus.SC_INTERNAL_SERVER_ERROR){
-				            	mResult = new ActionResult<Result>(new ActionError(ErrorCode.SERVER_ERROR, responseString));
+				            	mResult = new ActionResult<>(new ActionError(ErrorCode.SERVER_ERROR, responseString));
 				            } else{
-				            	mResult = new ActionResult<Result>(new ActionError(ErrorCode.NETWORK_ERROR, mAppContext.getString(R.string.network_error)));
+				            	mResult = new ActionResult<>(new ActionError(ErrorCode.NETWORK_ERROR, mAppContext.getString(R.string.network_error)));
 				            }
 						} catch (Exception e) {
 							Log.e(tag, "Failed to process response message.", e);
-			            	mResult = new ActionResult<Result>(new ActionError(ErrorCode.INVALID_RESPONSE, mAppContext.getString(R.string.unknown_error)));
+			            	mResult = new ActionResult<>(new ActionError(ErrorCode.INVALID_RESPONSE, mAppContext.getString(R.string.unknown_error)));
 						} 
 	    			}
 
@@ -197,10 +198,13 @@ public abstract class AbstractAction<Result> extends ParallelTask<AbstractAction
                         if (jsonString != null) {
                             Log.d(tag, "Original jsonString: " + jsonString);
                             jsonString = jsonString.trim();
+                            while(!jsonString.startsWith("{")){
+                                jsonString = jsonString.substring(1);
+                            }
                             if (jsonString.startsWith("{") || jsonString.startsWith("[")) {
                                 result = new JSONTokener(jsonString).nextValue();
+                                mGsonObject = new JsonParser().parse(jsonString).getAsJsonObject();
                             }
-                            mGsonObject = new JsonParser().parse(jsonString).getAsJsonObject();
                         }
                         if (result == null) {
                             result = jsonString;
@@ -318,28 +322,27 @@ public abstract class AbstractAction<Result> extends ParallelTask<AbstractAction
                 ActionError error = new ActionError(ErrorCode.APPLICATOIN_ERROR, errorMessage);
                 return new ActionResult(error);
             }
-            if(!response.has("body")){
-                ActionError error = new ActionError(ErrorCode.APPLICATOIN_ERROR, "获取信息失败，请稍候重试！");
-                return new ActionResult(error);
-            }
-            JSONObject body = response.getJSONObject("body");
-            String key = null;
-//            if(body.has(KEY_KEY))
-//                key = body.getString(KEY_KEY);
             if(mSecurity && response.has("signature") && response.has("timestr")){
-                Log.e(tag, "Verifying the data...");
+                Log.d(tag, "Verifying the data...");
                 String signature = response.getString("signature");
                 String timestr = response.getString("timestr");
-                String bodyStr = mGsonObject.get("response").getAsJsonObject().get("body").toString();
-                if(key == null)
-                    key = PreferenceUtil.getString(mAppContext, Constants.APP_BINDING_KEY, Constants.APP_DEFAULT_KEY);
-                String clientSignature = Utils.md5(flag+bodyStr+timestr+key);
+                String bodyStr = "";
+                JsonElement body = mGsonObject.get("response").getAsJsonObject().get("body");
+                if(body != null){
+                    bodyStr = body.toString();
+                }
+                String key = PreferenceUtil.getString(mAppContext, Constants.APP_BINDING_KEY, Constants.APP_DEFAULT_KEY);
+                String clientSignature = Utils.md5(flag + bodyStr + timestr + key);
                 if(!clientSignature.equals(signature)){
                     Log.e(tag, "Verification failed, the data might be modified！！！");
                     ActionError error = new ActionError(ErrorCode.SECURITY_ERROR, "数据校验未通过！！！");
                     return new ActionResult(error);
                 }
             }
+            if(!response.has("body")){
+                return new ActionResult("");
+            }
+            JSONObject body = response.getJSONObject("body");
             return new ActionResult(createRespObject(body));
         } catch (JSONException e) {
             Log.e(tag, "Failed to parse Json response for request: " + mServiceId, e);
@@ -368,8 +371,7 @@ public abstract class AbstractAction<Result> extends ParallelTask<AbstractAction
         JSONObject requestBody = getRequestBody(timeStr);
         request.putOpt("body", requestBody);
         request.put("timestr", timeStr);
-        String key = PreferenceUtil.getString(mAppContext, Constants.APP_BINDING_KEY, Constants.APP_DEFAULT_KEY);
-        String hash = requestBody.toString() + timeStr + key;
+        String hash = requestBody.toString() + timeStr + getEncryptKey();
         String signature = Utils.md5(hash);
         request.put("signature", signature);
 
@@ -380,7 +382,9 @@ public abstract class AbstractAction<Result> extends ParallelTask<AbstractAction
 
     public String getUrl(){ return mURL; }
     public void setUrl(String url) { this.mURL = url;}
-
+    protected String getEncryptKey(){
+        return PreferenceUtil.getString(mAppContext, Constants.APP_BINDING_KEY, Constants.APP_DEFAULT_KEY);
+    }
     protected abstract JSONObject getRequestBody(String timeStr) throws JSONException;
 
     protected abstract Result createRespObject(JSONObject response) throws JSONException;

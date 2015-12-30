@@ -5,7 +5,6 @@ import android.content.Context;
 import android.util.Log;
 
 import com.creal.nest.model.Pagination;
-import com.creal.nest.model.PaginationItem;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -18,11 +17,12 @@ public abstract class PaginationAction<Result> extends AbstractAction<Pagination
     private static final String PAGE_SIZE   = "list_len";
     //response keys
     private static final String TOTAL_COUNT = "totalItem";
-    private static final String CONTENTS    = "contents";
+    private static final String CONTENTS_KEY    = "contents";
 
     private int mPageIndex;
     private int mPageSize;
     protected int mTotalCount = -1;
+    private String contentsKey = CONTENTS_KEY;
     /**
      * For GET_RECOMMENDATION and GET_HOT and GET_FAVORITE actions
      * @param context
@@ -78,7 +78,7 @@ public abstract class PaginationAction<Result> extends AbstractAction<Pagination
             pagination.setPageSize(mPageSize);
             pagination.setCurrentPage(mPageIndex);
             pagination.setTotalCounts(mTotalCount);
-    		return new ActionResult<Pagination<Result>>(pagination);
+    		return new ActionResult<>(pagination);
     	}
     }
 
@@ -102,7 +102,11 @@ public abstract class PaginationAction<Result> extends AbstractAction<Pagination
     }
 
     protected String getContentsKey(){
-        return CONTENTS;
+        return contentsKey;
+    }
+
+    public void setContentsKey(String contentsKey){
+        this.contentsKey = contentsKey;
     }
 
     public final int getPageIndex(){

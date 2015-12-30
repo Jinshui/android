@@ -10,7 +10,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class LoginAction extends AbstractAction {
-    private final static String tag = "N-LoginAction";
     private String mCardNum;
     private String mPassword;
 

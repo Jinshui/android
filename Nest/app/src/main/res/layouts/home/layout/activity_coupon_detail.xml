@@ -21,7 +21,7 @@
             android:layout_height="fill_parent"
             android:layout_centerVertical="true"
             android:contentDescription=""
-            android:background="@drawable/test_my_coupons_detail" />
+            android:background="@drawable/icon_list_default_bg" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -149,6 +149,7 @@
             android:layout_height="match_parent">
 
             <ImageView
+                android:id="@+id/id_img_coupons_type"
                 android:layout_width="70dip"
                 android:layout_height="70dip"
                 android:layout_alignParentRight="true"

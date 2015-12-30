@@ -20,13 +20,8 @@ import com.creal.nest.util.UIUtil;
 import com.creal.nest.views.HeaderView;
 
 public class LoginActivity extends Activity {
-    private final static String tag = "N-LoginActivity";
     private EditText mCardId;
     private EditText mPassword;
-    private Button mBtnLogin;
-    private TextView mBtnForgotPwd;
-//    private ProgressDialog mProgressDialog;
-    private Dialog mProgressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +35,6 @@ public class LoginActivity extends Activity {
 
         mCardId = (EditText)findViewById(R.id.id_txt_card_id);
         mPassword = (EditText)findViewById(R.id.id_txt_password);
-        mBtnLogin = (Button)findViewById(R.id.id_btn_login);
-        mBtnForgotPwd = (TextView)findViewById(R.id.id_btn_forget_pwd);
 
         mCardId.setText(PreferenceUtil.getString(this, Constants.APP_USER_CARD_NUM, ""));
         mPassword.setText(PreferenceUtil.getString(this, Constants.APP_USER_PWD, ""));
@@ -64,19 +57,18 @@ public class LoginActivity extends Activity {
         PreferenceUtil.saveString(this, Constants.APP_USER_CARD_NUM, cardId.toString());
         PreferenceUtil.saveString(this, Constants.APP_USER_PWD, password.toString());
         final LoginAction loginAction = new LoginAction(this, cardId.toString(), password.toString());
-//        mProgressDialog = ProgressDialog.show(this, null, "正在登录中...", true, false);
-        mProgressDialog = UIUtil.createLoadingDialog(this, getString(R.string.signing), false);
-        mProgressDialog.show();
+        final Dialog progressDialog = UIUtil.createLoadingDialog(this, getString(R.string.signing), false);
+        progressDialog.show();
         loginAction.execute(new AbstractAction.UICallBack() {
             public void onSuccess(Object result) {
-                mProgressDialog.dismiss();
+                progressDialog.dismiss();
                 Intent intent = new Intent(LoginActivity.this, GesturePwdActivity.class);
                 startActivity(intent);
                 finish();
             }
 
             public void onFailure(AbstractAction.ActionError error) {
-                mProgressDialog.dismiss();
+                progressDialog.dismiss();
                 Toast.makeText(LoginActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });

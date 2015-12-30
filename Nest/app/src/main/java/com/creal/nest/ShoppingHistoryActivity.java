@@ -29,7 +29,7 @@ public class ShoppingHistoryActivity extends PTRListActivity<Shopping> {
     }
 
     public View getListItemView(Shopping item, View convertView, ViewGroup parent, LayoutInflater inflater) {
-        ViewHolder holder = null;
+        ViewHolder holder;
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.view_list_item_shopping_history, parent, false);
             holder = new ViewHolder();

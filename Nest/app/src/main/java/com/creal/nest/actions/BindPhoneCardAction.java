@@ -42,7 +42,7 @@ public class BindPhoneCardAction extends AbstractAction<String> {
             PreferenceUtil.saveString(mAppContext, Constants.APP_USER_CARD_NUM, response.getString(Constants.KEY_CARD_NUM));
         if(response.has(Constants.KEY_MOBILE))
             PreferenceUtil.saveString(mAppContext, Constants.APP_USER_PHONE, response.getString(Constants.KEY_MOBILE));
-        if(response.has(Constants.KEY_INTEGRAL))
+        if(response.has(Constants.KEY_INTEGRAL) && response.getString(Constants.KEY_INTEGRAL).matches("[0-9]+"))
             PreferenceUtil.saveInt(mAppContext, Constants.APP_USER_POINTS, response.getInt(Constants.KEY_INTEGRAL));
         if(response.has(Constants.KEY_MONEY))
             PreferenceUtil.saveInt(mAppContext, Constants.APP_USER_AMOUNT, response.getInt(Constants.KEY_MONEY));

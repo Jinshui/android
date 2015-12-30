@@ -15,14 +15,14 @@ public class GesturePwdActivity extends Activity {
 
     private GestureLockViewGroup mGestureLockViewGroup;
     private ImageView mUserImage;
-    private TextView mUserName;
+    private TextView mHint;
     private TextView mSkipPwd;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gesture_pwd);
         mUserImage = (ImageView) findViewById(R.id.id_img_user_photo);
-        mUserName = (TextView) findViewById(R.id.id_text_user_name);
+        mHint = (TextView) findViewById(R.id.id_text_hint);
         mSkipPwd = (TextView) findViewById(R.id.id_btn_skip_gesture_pwd);
 
         mGestureLockViewGroup = (GestureLockViewGroup) findViewById(R.id.id_gestureLockViewGroup);

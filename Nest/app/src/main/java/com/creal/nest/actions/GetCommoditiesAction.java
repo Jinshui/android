@@ -10,7 +10,7 @@ import org.json.JSONObject;
 
 
 public class GetCommoditiesAction extends PaginationAction<Commodity> {
-    private static final String tag = "TT-GetLatestActivities";
+    private static final String tag = "TT-GetCommoditiesAction";
     //request keys
     private static final String NAME = "name";
 

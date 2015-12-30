@@ -2,10 +2,12 @@ package com.creal.nest.model;
 
 import android.os.Parcel;
 
+import com.creal.nest.actions.ActionRespObject;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class Shopping extends BaseModel implements PaginationItem<Shopping>{
+public class Shopping extends BaseModel implements ActionRespObject<Shopping> {
 
     public enum State {
         UNKNOWN("未知"),

@@ -2,10 +2,12 @@ package com.creal.nest.model;
 
 import android.os.Parcel;
 
+import com.creal.nest.actions.ActionRespObject;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class ExchangeIngot extends BaseModel {
+public class ExchangeIngot extends BaseModel implements ActionRespObject<ExchangeIngot>{
 
     public static final Creator<ExchangeIngot> CREATOR
             = new Creator<ExchangeIngot>() {
@@ -44,5 +46,10 @@ public class ExchangeIngot extends BaseModel {
             throw new IllegalArgumentException("JSONObject is null");
         ExchangeIngot recharge = new ExchangeIngot();
         return recharge;
+    }
+
+    @Override
+    public ExchangeIngot fillWithJSON(JSONObject jsonObject) throws JSONException {
+        return fromJSON(jsonObject);
     }
 }

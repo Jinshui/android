@@ -57,4 +57,8 @@ public class RegisterAction extends AbstractAction<String> {
             PreferenceUtil.saveString(mAppContext, Constants.APP_BINDING_KEY, response.getString(Constants.KEY_KEY));
         return response.getString(Constants.KEY_KEY);
     }
+
+    protected String getEncryptKey(){
+        return Constants.APP_DEFAULT_KEY;
+    }
 }

@@ -17,7 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.creal.nest.actions.AbstractAction;
-import com.creal.nest.actions.GetCategoryAction;
+import com.creal.nest.actions.CommonPaginationAction;
 import com.creal.nest.model.Pagination;
 import com.creal.nest.model.ShopCategory;
 import com.creal.nest.views.HeaderView;
@@ -80,7 +80,7 @@ public class FragmentNearby extends Fragment {
         Log.d(TAG, "loadCategories");
         mLoadingView.setVisibility(View.VISIBLE);
         mViewPager.setVisibility(View.GONE);
-        GetCategoryAction getCategoryAction = new GetCategoryAction(getActivity(), 1, 100);
+        CommonPaginationAction getCategoryAction = new CommonPaginationAction(getActivity(), 1, 100, Constants.URL_GET_SHOP_CATEGORY, null, ShopCategory.class, "comclass");
         getCategoryAction.execute(
                 new AbstractAction.UICallBack<Pagination<ShopCategory>>() {
                     public void onSuccess(Pagination<ShopCategory> result) {

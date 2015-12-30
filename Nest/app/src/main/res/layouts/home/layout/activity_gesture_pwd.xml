@@ -17,12 +17,12 @@
         android:src="@drawable/icon_gesture_pwd_user_bg" />
 
     <TextView
-        android:id="@+id/id_text_user_name"
+        android:id="@+id/id_text_hint"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp"
-        android:text="159******34"
+        android:text="@string/login_draw_gesture_pwd"
         android:textColor="@color/white" />
 
     <com.creal.nest.views.GestureLockViewGroup

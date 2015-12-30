@@ -89,6 +89,8 @@ public class CustomizeImageView extends ImageView {
                         Log.d(tag, "Loading img : " + url);
                         InputStream is = (InputStream) new URL(url).getContent();
                         com.creal.nest.util.Utils.saveDataToFile(is, cachedFileDir);
+                    }else{
+                        Log.d(tag, "img " + url + " exists: " + cachedFileDir);
                     }
                     return cachedFileDir;
                 } catch (Exception e) {

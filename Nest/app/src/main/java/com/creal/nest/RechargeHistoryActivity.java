@@ -33,7 +33,7 @@ public class RechargeHistoryActivity extends PTRListActivity<Recharge> {
         parameters.put("state", "");
         parameters.put("start_time", "");
         parameters.put("end_time", "");
-        return new CommonPaginationAction(this, 1, Constants.PAGE_SIZE, Constants.URL_GET_RECHARGE_HISTORY, parameters, Shopping.class);
+        return new CommonPaginationAction(this, 1, Constants.PAGE_SIZE, Constants.URL_GET_RECHARGE_HISTORY, parameters, Recharge.class);
     }
 
     public View getListItemView(Recharge item, View convertView, ViewGroup parent, LayoutInflater inflater) {

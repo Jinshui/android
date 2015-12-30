@@ -18,6 +18,8 @@
     <string name="login_password">请填写密码</string>
     <string name="login">登录</string>
     <string name="login_forgot_password">忘记密码?</string>
+    <string name="login_draw_gesture_pwd">绘制解锁密码</string>
+    <string name="login_draw_gesture_pwd_again">请再次绘制解锁密码</string>
     <!--绑定相关-->
     <string name="binding_title">安全手机绑定</string>
     <string name="binding_security_check">安全验证</string>

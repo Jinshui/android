@@ -24,7 +24,7 @@ import java.util.List;
 
 public abstract class PTRListActivity<Result> extends ListActivity implements PullToRefreshBase.OnRefreshListener2<ListView> {
 
-    private static final String TAG = "XYK-IngotsExchangeAct";
+    private static final String TAG = "XYK-PTRListActivity";
 
     private LoadingSupportPTRListView mLoadingSupportPTRListView;
     private ContentListAdapter mPtrListAdapter;
@@ -40,7 +40,22 @@ public abstract class PTRListActivity<Result> extends ListActivity implements Pu
         mLoadingSupportPTRListView = (LoadingSupportPTRListView)findViewById(R.id.refresh_widget);
         mLoadingSupportPTRListView.setOnRefreshListener(this);
         mLoadingSupportPTRListView.setMode(getPTRMode());
-        loadFirstPage(true);
+        if(!initOnResume())
+            loadFirstPage(true);
+    }
+
+    public void onResume(){
+        super.onResume();
+        if(initOnResume())
+            loadFirstPage(true);
+    }
+
+    public LoadingSupportPTRListView getLoadingSupportPTRListView(){
+        return mLoadingSupportPTRListView;
+    }
+
+    protected boolean initOnResume(){
+        return false;
     }
 
     private void loadFirstPage(boolean isInitialLoad){
@@ -78,6 +93,7 @@ public abstract class PTRListActivity<Result> extends ListActivity implements Pu
                 public void onSuccess(Pagination<Result> result) {
                     if(result.getItems().isEmpty()){
                         Toast.makeText(getBaseContext(), R.string.load_done, Toast.LENGTH_SHORT).show();
+                        mAction = mAction.getPreviousPageAction();
                     }else {
                         mPtrListAdapter.addMore(result.getItems());
                     }
@@ -132,7 +148,6 @@ public abstract class PTRListActivity<Result> extends ListActivity implements Pu
     public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
         loadNextPage();
     }
-
 
     public class ContentListAdapter extends PTRListAdapter<Result> {
         private LayoutInflater mInflater;
