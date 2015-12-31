@@ -20,10 +20,20 @@ import android.widget.Toast;
 
 import com.creal.nest.actions.AbstractAction;
 import com.creal.nest.actions.GetVerificationCodeAction;
+import com.creal.nest.actions.JSONObjectAction;
 import com.creal.nest.actions.RegisterAction;
+import com.creal.nest.util.PreferenceUtil;
 import com.creal.nest.util.TimeCountUtil;
 import com.creal.nest.util.UIUtil;
+import com.creal.nest.util.Utils;
 import com.creal.nest.views.HeaderView;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Hashtable;
+import java.util.Map;
 
 public class RegisterActivity extends Activity {
 
@@ -90,7 +100,7 @@ public class RegisterActivity extends Activity {
         });
     }
     public void onRegisterClick(View view){
-        CharSequence phone = mPhone.getText();
+        final CharSequence phone = mPhone.getText();
         if(TextUtils.isEmpty(phone) || phone.length() != 11){
             Animation shake = AnimationUtils.loadAnimation(this, R.anim.shake);
             mPhone.startAnimation(shake);
@@ -122,10 +132,21 @@ public class RegisterActivity extends Activity {
             return;
         }
 
-        RegisterAction registerAction = new RegisterAction(this, phone.toString(), code.toString(), password.toString(), name, id, address, delivery);
+        Map parameters = new HashMap();
+        parameters.put(Constants.KEY_MOBILE, phone.toString());
+        parameters.put(Constants.KEY_VERIFICATION_CODE, code.toString());
+        parameters.put(Constants.KEY_PASSWORD, Utils.md5(password.toString()));
+        if(name != null)
+            parameters.put("name", name);
+        if(id != null)
+            parameters.put("id_card", id);
+        if(address != null)
+            parameters.put("address", address);
+        parameters.put("is_mail", delivery);
+        RegisterAction action = new RegisterAction(this, Constants.URL_REGISTER, parameters);
         mProgressDialog.show();
-        registerAction.execute(new AbstractAction.UICallBack<String>() {
-            public void onSuccess(String result) {
+        action.execute(new AbstractAction.UICallBack<JSONObject>() {
+            public void onSuccess(JSONObject response) {
                 mProgressDialog.dismiss();
                 Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                 startActivity(intent);
@@ -141,9 +162,5 @@ public class RegisterActivity extends Activity {
 
     public void onViewTermsClick(View view){
 
-    }
-
-    void showToast(CharSequence msg) {
-        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
 }

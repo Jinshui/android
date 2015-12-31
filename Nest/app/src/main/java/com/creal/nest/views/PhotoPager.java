@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 
 import com.creal.nest.FragmentHomePager;
 import com.creal.nest.R;
@@ -25,14 +26,22 @@ public class PhotoPager extends LinearLayout implements ViewPager.OnPageChangeLi
 	private ViewPager mViewPager;
 	private LinearLayout mPagerIndicatorsContainer;
     private List<ImageView> mIndicators;
-
+    private ProgressBar mPrgressBar;
 	public PhotoPager(Context context, AttributeSet attrs) {
 		super(context, attrs);
         Log.d(tag, "PhotoPager");
 		LayoutInflater.from(context).inflate(R.layout.home_ad_photos, this);
+        mPrgressBar = (ProgressBar)findViewById(R.id.id_pager_loading);
 		mViewPager = (ViewPager)findViewById(R.id.id_photos_pager);
         mPagerIndicatorsContainer = (LinearLayout)findViewById(R.id.photo_pager_indicator);
 	}
+
+    public void showLoading(){
+        mPrgressBar.setVisibility(VISIBLE);
+    }
+    public void hideLoading(){
+        mPrgressBar.setVisibility(GONE);
+    }
 
 	public void addPhotos(FragmentManager fm, List<Ad> ads){
         Log.d(tag, "addPhotos: " + ads.size());

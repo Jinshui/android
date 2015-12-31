@@ -1,3 +1,11 @@
+<!--<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--xmlns:tools="http://schemas.android.com/tools"-->
+    <!--xmlns:xyk="http://schemas.android.com/apk/res/com.creal.nest"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:fadingEdgeLength="0dip"-->
+    <!--android:fillViewport="true"-->
+    <!--android:scrollbars="none">-->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:xyk="http://schemas.android.com/apk/res/com.creal.nest"
@@ -7,8 +15,13 @@
     android:background="@drawable/icon_guesture_pwd_bg"
     android:orientation="vertical">
 
+    <com.creal.nest.views.HeaderView
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal" />
+
     <ImageView
-        android:id="@+id/id_img_user_photo"
         android:layout_width="62dp"
         android:layout_height="62dp"
         android:layout_gravity="center_horizontal"
@@ -17,7 +30,7 @@
         android:src="@drawable/icon_gesture_pwd_user_bg" />
 
     <TextView
-        android:id="@+id/id_text_hint"
+        android:id="@+id/id_text_phone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -27,9 +40,9 @@
 
     <com.creal.nest.views.GestureLockViewGroup
         android:id="@+id/id_gestureLockViewGroup"
-        android:layout_margin="30dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="30dp"
         android:gravity="center_horizontal"
         xyk:color_finger_on_inner_circle_border="#000000"
         xyk:color_finger_on_inner_circle_fill="#FF1493"
@@ -41,13 +54,33 @@
         xyk:line_width="20"
         xyk:tryTimes="5" />
 
-    <TextView
-        android:id="@+id/id_btn_skip_gesture_pwd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="@string/guesture_pwd_skip"
-        android:textColor="@color/floralwhite"
-        android:textSize="@dimen/font_large" />
+    <LinearLayout
+        android:id="@+id/id_panel_action"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:gravity="center"
+            android:onClick="onForgotPwdClick"
+            android:text="@string/guesture_pwd_forgot"
+            android:textColor="@color/floralwhite"
+            android:textSize="@dimen/font_large" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:gravity="center"
+            android:onClick="onChangePwdClick"
+            android:text="@string/guesture_pwd_change"
+            android:textColor="@color/floralwhite"
+            android:textSize="@dimen/font_large" />
+    </LinearLayout>
+
 
 </LinearLayout>

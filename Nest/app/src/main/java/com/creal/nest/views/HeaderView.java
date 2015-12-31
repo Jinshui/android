@@ -64,6 +64,10 @@ public class HeaderView extends LinearLayout {
         mRightBtn.setVisibility(INVISIBLE);
     }
 
+    public void hideRightText(){
+        mRightTxt.setVisibility(GONE);
+    }
+
     public void setRightBtnListener(View.OnClickListener listener){
         mRightBtn.setOnClickListener(listener);
     }

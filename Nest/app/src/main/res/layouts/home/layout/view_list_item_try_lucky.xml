@@ -17,7 +17,7 @@
             android:id="@+id/id_coupon_thumbnail"
             android:layout_width="@dimen/lucky_coupons_list_item_icon_width"
             android:layout_height="@dimen/lucky_coupons_list_item_icon_height"
-            android:background="@drawable/default_icon"
+            android:background="@drawable/icon_list_default_bg"
             android:contentDescription="" />
 
         <LinearLayout
@@ -31,7 +31,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
-                android:text="10元优惠券"
                 android:textColor="@color/black"
                 android:textSize="@dimen/font_small" />
 
@@ -40,7 +39,6 @@
                 android:layout_height="wrap_content"
                 android:background="@color/white"
                 android:padding="0dp"
-                android:text="@string/try_lucky_usage_help"
                 android:textColor="@color/black"
                 android:textSize="@dimen/font_small" />
 
@@ -51,7 +49,6 @@
                 android:background="@color/white"
                 android:maxLines="2"
                 android:padding="0dp"
-                android:text="优惠券可用商铺: 北国先天下，保北购物广场，东丽花行，北斗星餐厅，庆丰包子铺"
                 android:textColor="@color/black" />
 
         </LinearLayout>

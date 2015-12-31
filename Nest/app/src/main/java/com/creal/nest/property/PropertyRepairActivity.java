@@ -34,7 +34,7 @@ public class PropertyRepairActivity extends Activity {
     private EditText mUname;
     private EditText mPhone;
     private EditText mSummary;
-    private EditText mVcode;
+//    private EditText mVcode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +48,7 @@ public class PropertyRepairActivity extends Activity {
         mUname = (EditText)findViewById(R.id.id_txt_repair_uname);
         mPhone = (EditText)findViewById(R.id.id_txt_repair_phone);
         mSummary = (EditText)findViewById(R.id.id_txt_repair_summary);
-        mVcode = (EditText)findViewById(R.id.id_txt_repair_vecode);
+//        mVcode = (EditText)findViewById(R.id.id_txt_repair_vecode);
 
         mBtnCommon = (RadioButton)findViewById(R.id.id_btn_common);
         mBtnPersonal = (RadioButton)findViewById(R.id.id_btn_personal);
@@ -82,7 +82,7 @@ public class PropertyRepairActivity extends Activity {
         parameters.put("linkman", mUname.getText().toString() );
         parameters.put("contact", mPhone.getText().toString() );
         parameters.put("description", mSummary.getText().toString() );
-        parameters.put("safecode", mVcode.getText().toString() );
+//        parameters.put("safecode", mVcode.getText().toString() );
         final Dialog dialog = UIUtil.showLoadingDialog(this, getString(R.string.loading), true);
         JSONObjectAction action = new JSONObjectAction(this, Constants.URL_REPORT_REPAIR, parameters);
         action.execute(new AbstractAction.UICallBack<JSONObject>() {

@@ -48,6 +48,7 @@ public interface Constants {
     public static final String APP_USER_CARD_NUM      = "app_user_card_num";
     public static final String APP_USER_POINTS        = "app_user_points";
     public static final String APP_USER_AMOUNT        = "app_user_amount";
+    public static final String APP_USER_GESTURE_PWD   = "app_user_gesture_pwd";
 
 
 

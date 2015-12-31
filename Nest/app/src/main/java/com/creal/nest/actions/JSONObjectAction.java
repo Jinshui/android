@@ -8,7 +8,7 @@ import org.json.JSONObject;
 import java.util.Map;
 
 public class JSONObjectAction extends AbstractAction<JSONObject> {
-    private Map mReqParams;
+    private Map<String, String> mReqParams;
     public JSONObjectAction(Context context, String url, Map parameters) {
         super(context);
         this.mReqParams = parameters;
@@ -18,6 +18,10 @@ public class JSONObjectAction extends AbstractAction<JSONObject> {
 
     protected JSONObject getRequestBody(String timeStr) throws JSONException{
         return new JSONObject(mReqParams);
+    }
+
+    public Map<String, String> getReqParams(){
+        return mReqParams;
     }
 
     @Override

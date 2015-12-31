@@ -29,7 +29,7 @@
                 android:id="@+id/id_coupon_thumbnail"
                 android:layout_width="fill_parent"
                 android:layout_height="180dip"
-                android:background="@drawable/test_latest_activity_detail"
+                android:background="@drawable/icon_list_default_bg"
                 android:contentDescription="" />
 
             <LinearLayout
@@ -40,56 +40,56 @@
                 android:padding="10dp">
 
                 <TextView
+                    android:id="@+id/id_txt_activity_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="保定百货大楼三楼运动部"
                     android:textColor="@color/black" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:background="@drawable/bg_pink_cornered"
-                    android:paddingLeft="3dp"
-                    android:paddingRight="3dp"
-                    android:text="百货类"
-                    android:textColor="@color/white" />
+                <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginLeft="10dp"-->
+                    <!--android:background="@drawable/bg_pink_cornered"-->
+                    <!--android:paddingLeft="3dp"-->
+                    <!--android:paddingRight="3dp"-->
+                    <!--android:text="百货类"-->
+                    <!--android:textColor="@color/white" />-->
             </LinearLayout>
 
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="1dip"
-                android:background="@drawable/divider_horizontal" />
+            <!--<View-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="1dip"-->
+                <!--android:background="@drawable/divider_horizontal" />-->
 
-            <TextView
-                android:id="@+id/id_txt_address"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:drawableLeft="@drawable/nearby_item_address_sm"
-                android:drawablePadding="4dp"
-                android:drawableRight="@drawable/right_arrow"
-                android:padding="10dp"
-                android:text="南市区保定百货大楼(裕华西路518号)三楼(运动专营)"
-                android:textColor="@color/black" />
+            <!--<TextView-->
+                <!--android:id="@+id/id_txt_address"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:background="@color/white"-->
+                <!--android:drawableLeft="@drawable/nearby_item_address_sm"-->
+                <!--android:drawablePadding="4dp"-->
+                <!--android:drawableRight="@drawable/right_arrow"-->
+                <!--android:padding="10dp"-->
+                <!--android:text="南市区保定百货大楼(裕华西路518号)三楼(运动专营)"-->
+                <!--android:textColor="@color/black" />-->
 
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="1dip"
-                android:background="@drawable/divider_horizontal" />
+            <!--<View-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="1dip"-->
+                <!--android:background="@drawable/divider_horizontal" />-->
 
-            <Button
-                android:id="@+id/id_txt_phone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:onClick="onDialPhoneClick"
-                android:drawableLeft="@drawable/icon_latest_activity_phone"
-                android:drawablePadding="4dp"
-                android:drawableRight="@drawable/right_arrow"
-                android:padding="10dp"
-                android:text="(0312)2066888"
-                android:textColor="@color/black" />
+            <!--<Button-->
+                <!--android:id="@+id/id_txt_phone"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:background="@color/white"-->
+                <!--android:onClick="onDialPhoneClick"-->
+                <!--android:drawableLeft="@drawable/icon_latest_activity_phone"-->
+                <!--android:drawablePadding="4dp"-->
+                <!--android:drawableRight="@drawable/right_arrow"-->
+                <!--android:padding="10dp"-->
+                <!--android:text="(0312)2066888"-->
+                <!--android:textColor="@color/black" />-->
 
             <View
                 android:layout_width="wrap_content"
@@ -109,41 +109,42 @@
                 android:layout_height="1dip"
                 android:background="@drawable/divider_horizontal" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:padding="10dp"
-                android:text="活动时间: 2015年10月30日-11月30日"
-                android:textColor="@color/black" />
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:background="@color/white"-->
+                <!--android:padding="10dp"-->
+                <!--android:text="活动时间: 2015年10月30日-11月30日"-->
+                <!--android:textColor="@color/black" />-->
 
             <TextView
+                android:id="@+id/id_txt_activity_content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
                 android:paddingBottom="10dip"
                 android:paddingLeft="10dp"
-                android:paddingTop="0dp"
+                android:paddingTop="10dp"
                 android:text="酷跑潮流-Mia mia精品店暑期夏日狂促周，保定百货大楼运动专区促销，众多的品牌狂欢大促，运动服，运动鞋全场3.4折起，想不到的优惠，就在这里"
                 android:textColor="@color/black" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:background="@color/white"
-                android:padding="10dp"
-                android:text="@string/photo_desc_detail"
-                android:textColor="@color/black"/>
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="center_vertical"-->
+                <!--android:background="@color/white"-->
+                <!--android:padding="10dp"-->
+                <!--android:text="@string/photo_desc_detail"-->
+                <!--android:textColor="@color/black"/>-->
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:background="@color/white"
-                android:paddingLeft="10dp"
-                android:text="天然蓝色 视网膜屏 2048 x 1536 分辨率\nWin10英特尔Z83000处理器+正版Win10操作系统\n4GB + 64Gb: 4G运行内存+64G超大存储 + HDMI + 蓝牙"
-                android:textColor="@color/black"/>
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="center_vertical"-->
+                <!--android:background="@color/white"-->
+                <!--android:paddingLeft="10dp"-->
+                <!--android:text="天然蓝色 视网膜屏 2048 x 1536 分辨率\nWin10英特尔Z83000处理器+正版Win10操作系统\n4GB + 64Gb: 4G运行内存+64G超大存储 + HDMI + 蓝牙"-->
+                <!--android:textColor="@color/black"/>-->
 
             <View
                 android:layout_width="wrap_content"

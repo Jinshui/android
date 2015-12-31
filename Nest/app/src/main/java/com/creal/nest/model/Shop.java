@@ -17,6 +17,10 @@ public class Shop extends BaseModel implements ActionRespObject<Shop> {
     private String keyword;
     private String latitude;
     private String longitude;
+    private String detail;
+    private String category;
+    private String phone;
+    private String imageUrl;
     private boolean recommend;
 
     public String getLogo() {
@@ -83,6 +87,38 @@ public class Shop extends BaseModel implements ActionRespObject<Shop> {
         this.recommend = recommend;
     }
 
+    public String getDetail() {
+        return detail;
+    }
+
+    public void setDetail(String detail) {
+        this.detail = detail;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
     public static Shop fromJSON(JSONObject json) throws JSONException {
         if(json == null)
             throw new IllegalArgumentException("JSONObject is null");
@@ -90,14 +126,26 @@ public class Shop extends BaseModel implements ActionRespObject<Shop> {
         if(json.has("id")){
             shop.setId(json.getString("id"));
         }
+        if(json.has("detail")){
+            shop.setDetail(json.getString("detail"));
+        }
         if(json.has("logo")){
             shop.setLogo(json.getString("logo"));
         }
         if(json.has("title")){
             shop.setTitle(json.getString("title"));
         }
+        if(json.has("img")){
+            shop.setImageUrl(json.getString("img"));
+        }
+        if(json.has("tel")){
+            shop.setPhone(json.getString("tel"));
+        }
         if(json.has("address")){
             shop.setAddress(json.getString("address"));
+        }
+        if(json.has("class")){
+            shop.setCategory(json.getString("class"));
         }
         if(json.has("description")){
             shop.setDescription(json.getString("description"));

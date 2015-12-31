@@ -34,7 +34,7 @@
                     android:id="@+id/id_coupon_thumbnail"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:background="@drawable/test_shop_detail"
+                    android:background="@drawable/icon_list_default_bg"
                     android:contentDescription="" />
 
                 <RelativeLayout
@@ -43,21 +43,21 @@
                     android:paddingBottom="20dp">
 
                     <TextView
+                        android:id="@+id/id_text_shop_img_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentBottom="true"
                         android:layout_centerHorizontal="true"
                         android:gravity="center_horizontal"
-                        android:text="咖啡之巽-咖啡厅"
                         android:textColor="@color/white"
                         android:textSize="@dimen/font_larger" />
 
                     <TextView
+                        android:id="@+id/id_text_shop_distance"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentBottom="true"
                         android:layout_alignParentRight="true"
-                        android:text="1.8 km"
                         android:textColor="@color/white"
                         android:textSize="@dimen/font_middle" />
 
@@ -74,18 +74,18 @@
                 android:padding="10dip">
 
                 <TextView
+                    android:id="@+id/id_text_shop_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="裕华西路沿线 咖啡厅"
                     android:textColor="@color/grey"
                     android:textSize="@dimen/font_middle" />
 
                 <TextView
+                    android:id="@+id/id_text_shop_category"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:background="@drawable/bg_pink_cornered"
-                    android:text="餐饮类"
                     android:textColor="@color/white"
                     android:textSize="@dimen/font_small" />
             </LinearLayout>
@@ -96,38 +96,38 @@
                 android:layout_height="1dip"
                 android:background="@drawable/divider_horizontal" />
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:drawableLeft="@drawable/icon_register_addr"
-                android:drawableRight="@drawable/right_arrow"
-                android:onClick="onGoToMapClick"
-                android:padding="10dip"
-                android:gravity="left"
-                android:text="南市区保定百货大楼（裕华西路518号）东北角（保百大楼咖啡之巽-咖啡厅）"
-                android:textColor="@color/gray"
-                android:textSize="@dimen/font_middle" />
+            <!--<Button-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:background="@color/white"-->
+                <!--android:drawableLeft="@drawable/icon_register_addr"-->
+                <!--android:drawableRight="@drawable/right_arrow"-->
+                <!--android:onClick="onGoToMapClick"-->
+                <!--android:padding="10dip"-->
+                <!--android:gravity="left"-->
+                <!--android:text="南市区保定百货大楼（裕华西路518号）东北角（保百大楼咖啡之巽-咖啡厅）"-->
+                <!--android:textColor="@color/gray"-->
+                <!--android:textSize="@dimen/font_middle" />-->
 
 
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="1dip"
-                android:background="@drawable/divider_horizontal" />
+            <!--<View-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="1dip"-->
+                <!--android:background="@drawable/divider_horizontal" />-->
 
-            <Button
-                android:id="@+id/id_txt_phone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:drawableLeft="@drawable/icon_register_phone"
-                android:drawableRight="@drawable/right_arrow"
-                android:padding="10dip"
-                android:gravity="left"
-                android:onClick="onDialPhoneClick"
-                android:text="0312 2066668"
-                android:textColor="@color/gray"
-                android:textSize="@dimen/font_middle" />
+            <!--<Button-->
+                <!--android:id="@+id/id_txt_phone"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:background="@color/white"-->
+                <!--android:drawableLeft="@drawable/icon_register_phone"-->
+                <!--android:drawableRight="@drawable/right_arrow"-->
+                <!--android:padding="10dip"-->
+                <!--android:gravity="left"-->
+                <!--android:onClick="onDialPhoneClick"-->
+                <!--android:text="0312 2066668"-->
+                <!--android:textColor="@color/gray"-->
+                <!--android:textSize="@dimen/font_middle" />-->
 
             <View
                 android:layout_width="wrap_content"
@@ -147,47 +147,47 @@
                 android:layout_height="1dip"
                 android:background="@drawable/divider_horizontal" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:padding="10dip"
-                android:text="经营类别： 咖啡/西餐/甜品"
-                android:textColor="@color/grey"
-                android:textSize="@dimen/font_middle" />
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:background="@color/white"-->
+                <!--android:padding="10dip"-->
+                <!--android:text="经营类别： 咖啡/西餐/甜品"-->
+                <!--android:textColor="@color/grey"-->
+                <!--android:textSize="@dimen/font_middle" />-->
 
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:paddingBottom="10dip"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:text="咖啡之巽-咖啡厅，是香港国际巽咖啡美食传播有限公司旗下的连锁咖啡餐厅，中国领先的咖啡餐厅连锁品牌，国内咖啡厅概念的首创者和领跑者，咖啡美食。"
-                android:textColor="@color/grey"
-                android:textSize="@dimen/font_middle" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:padding="10dip"
-                android:text="@string/photo_desc_detail"
-                android:textColor="@color/grey"
-                android:textSize="@dimen/font_middle" />
-
-
-            <TextView
+                android:id="@+id/id_text_shop_desc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
                 android:paddingBottom="10dip"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
-                android:text="咖啡之巽-咖啡厅，是香港国际巽咖啡美食传播有限公司旗下的连锁咖啡餐厅，中国领先的咖啡餐厅连锁品牌，国内咖啡厅概念的首创者和领跑者，咖啡美食。"
                 android:textColor="@color/grey"
                 android:textSize="@dimen/font_middle" />
+
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:background="@color/white"-->
+                <!--android:padding="10dip"-->
+                <!--android:text="@string/photo_desc_detail"-->
+                <!--android:textColor="@color/grey"-->
+                <!--android:textSize="@dimen/font_middle" />-->
+
+
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:background="@color/white"-->
+                <!--android:paddingBottom="10dip"-->
+                <!--android:paddingLeft="10dp"-->
+                <!--android:paddingRight="10dp"-->
+                <!--android:text="咖啡之巽-咖啡厅，是香港国际巽咖啡美食传播有限公司旗下的连锁咖啡餐厅，中国领先的咖啡餐厅连锁品牌，国内咖啡厅概念的首创者和领跑者，咖啡美食。"-->
+                <!--android:textColor="@color/grey"-->
+                <!--android:textSize="@dimen/font_middle" />-->
 
             <View
                 android:layout_width="wrap_content"

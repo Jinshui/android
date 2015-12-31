@@ -8,9 +8,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.creal.nest.actions.AbstractAction;
@@ -19,25 +17,21 @@ import com.creal.nest.util.PreferenceUtil;
 import com.creal.nest.util.UIUtil;
 import com.creal.nest.views.HeaderView;
 
-public class LoginActivity extends Activity {
+public class LoginDialog extends Activity {
+    public static final int DIALOG_ID = R.layout.dialog_login;
     private EditText mCardId;
     private EditText mPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-
-        HeaderView headerView = (HeaderView) findViewById(R.id.header);
-        headerView.hideRightImage();
-        headerView.setTitle(R.string.login_account_login);
-        headerView.setTitleLeft();
+        setContentView(R.layout.dialog_login);
 
         mCardId = (EditText)findViewById(R.id.id_txt_card_id);
         mPassword = (EditText)findViewById(R.id.id_txt_password);
 
         mCardId.setText(PreferenceUtil.getString(this, Constants.APP_USER_CARD_NUM, ""));
-        mPassword.setText(PreferenceUtil.getString(this, Constants.APP_USER_PWD, ""));
+//        mPassword.setText(PreferenceUtil.getString(this, Constants.APP_USER_PWD, ""));
     }
 
     public void onLoginClick(View view){
@@ -62,16 +56,28 @@ public class LoginActivity extends Activity {
         loginAction.execute(new AbstractAction.UICallBack() {
             public void onSuccess(Object result) {
                 progressDialog.dismiss();
-                Intent intent = new Intent(LoginActivity.this, GesturePwdActivity.class);
-                intent.putExtra(GesturePwdActivity.INTENT_EXTRA_ACTION_TYPE, GesturePwdActivity.State.SET_PWD.name());
-                startActivity(intent);
+                Intent activityResult = new Intent();
+                activityResult.putExtra(Constants.APP_USER_AUTHORIZED, Boolean.TRUE);
+                setResult(DIALOG_ID, activityResult);
                 finish();
             }
 
             public void onFailure(AbstractAction.ActionError error) {
                 progressDialog.dismiss();
-                Toast.makeText(LoginActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginDialog.this, error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
+
+
+    public void onBackPressed() {
+    }
+
+    public void onCancelClick(View view){
+        Intent activityResult = new Intent();
+        activityResult.putExtra(Constants.APP_USER_AUTHORIZED, Boolean.FALSE);
+        setResult(DIALOG_ID, activityResult);
+        finish();
+    }
+
 }

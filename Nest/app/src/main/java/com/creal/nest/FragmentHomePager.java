@@ -58,7 +58,7 @@ public class FragmentHomePager extends Fragment {
 		mImageView.setOnClickListener(new OnClickListener(){
 			public void onClick(View v) {
 				Intent showAdDetailIntent = new Intent(getActivity(), WebpageActivity.class);
-                showAdDetailIntent.putExtra("url", ad.getUrl());
+                showAdDetailIntent.putExtra(WebpageActivity.INTENT_EXTRA_URL, ad.getUrl());
 				getActivity().startActivity(showAdDetailIntent);
 			}
 		});

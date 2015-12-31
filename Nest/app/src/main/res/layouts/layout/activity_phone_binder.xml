@@ -56,7 +56,6 @@
                 android:background="@color/white"
                 android:drawableLeft="@drawable/icon_binding_phone_num"
                 android:hint="@string/binding_hint_phone_num"
-                android:text="18821002312"
                 android:inputType="phone"
                 android:textSize="16sp" />
 

@@ -88,10 +88,14 @@ public class QRCodeActivity extends Activity {
         new AsyncTask<String, Void, Drawable[]>(){
             protected Drawable[] doInBackground(String... code) {
                 try {
+                    float density = getResources().getDisplayMetrics().density;
+                    Log.d(TAG, "density: " + density);
                     Drawable[] result = new Drawable[2];
 //                    Bitmap logo = ImageUtil.drawable2Bitmap(getResources().getDrawable(R.drawable.logo_small));
-                    result[0] = ImageUtil.bitmap2Drawable(BitmapUtil.createBarcode(QRCodeActivity.this, code[0], 2000, 350, true, 200));
-                    result[1] = ImageUtil.bitmap2Drawable(BitmapUtil.createQRCode(code[0], 1600, null));
+//                    result[0] = ImageUtil.bitmap2Drawable(BitmapUtil.createBarcode(QRCodeActivity.this, code[0], 2000, 350, true, 200));
+//                    result[1] = ImageUtil.bitmap2Drawable(BitmapUtil.createQRCode(code[0], 1600, null));
+                    result[0] = ImageUtil.bitmap2Drawable(BitmapUtil.createBarcode(QRCodeActivity.this, code[0], (int)(666.6 * density + 0.5f), (int)(110 * density + 0.5f), true, 200));
+                    result[1] = ImageUtil.bitmap2Drawable(BitmapUtil.createQRCode(code[0], (int)(540 * density + 0.5f), null));
                     return result;
                 } catch (WriterException e) {
                     Log.e(TAG, "Failed to create qr code for code " + code[0], e);
@@ -101,11 +105,11 @@ public class QRCodeActivity extends Activity {
             protected void onPostExecute(Drawable[] qrCodeImg) {
                 if(Build.VERSION.SDK_INT >= 16) {
                     mImageBarcodeView.setBackground(qrCodeImg[0]);
-                    mImageQRCodeView.setImageDrawable(qrCodeImg[1]);
+                    mImageQRCodeView.setBackground(qrCodeImg[1]);
                 }else {
                     //noinspection deprecation
                     mImageBarcodeView.setBackgroundDrawable(qrCodeImg[0]);
-                    mImageQRCodeView.setImageDrawable(qrCodeImg[1]);
+                    mImageQRCodeView.setBackgroundDrawable(qrCodeImg[1]);
                 }
             }
         }.execute(code);

@@ -21,26 +21,39 @@ public class WelcomeActivity extends Activity {
 		new ParallelTask<Void>() {
 			protected Void doInBackground(Void... params) {
 				try {
-					Thread.sleep(3000);
+//					PreferenceUtil.saveString(WelcomeActivity.this, Constants.APP_USER_AUTHORIZED, Boolean.FALSE.toString());
+					Thread.sleep(2000);
 				} catch (InterruptedException e) {
 				}
 				return null;
 			}
 			
 			protected void onPostExecute(Void result){
-				String key = PreferenceUtil.getString(WelcomeActivity.this, Constants.APP_BINDING_KEY, null);
-				if(key == null){
-					startActivity(new Intent(WelcomeActivity.this, PhoneBinderActivity.class));
-				}else{
-					String authorized = PreferenceUtil.getString(WelcomeActivity.this, Constants.APP_USER_AUTHORIZED, null);
-					if(Boolean.TRUE.toString().equalsIgnoreCase(authorized)){
-						startActivity(new Intent(WelcomeActivity.this, GesturePwdActivity.class));
-					}else{
-						startActivity(new Intent(WelcomeActivity.this, LoginActivity.class));
-					}
-				}
-				finish();
+				startActivity(new Intent(WelcomeActivity.this, LoginActivity.class));
+//				showNext();
 			}
 		}.execute();
+	}
+
+	private void showNext(){
+		String key = PreferenceUtil.getString(WelcomeActivity.this, Constants.APP_BINDING_KEY, null);
+		if(key == null){
+			startActivity(new Intent(WelcomeActivity.this, PhoneBinderActivity.class));
+		}else{
+			String authorized = PreferenceUtil.getString(WelcomeActivity.this, Constants.APP_USER_AUTHORIZED, null);
+			if(Boolean.TRUE.toString().equalsIgnoreCase(authorized)){
+				String gesturePwd = PreferenceUtil.getString(WelcomeActivity.this, Constants.APP_USER_GESTURE_PWD, null);
+				if(gesturePwd != null){
+					Intent intent = new Intent(WelcomeActivity.this, GesturePwdActivity.class);
+					intent.putExtra(GesturePwdActivity.INTENT_EXTRA_ACTION_TYPE, GesturePwdActivity.State.VERIFY_PWD.name());
+					startActivity(intent);
+				}else{
+					startActivity(new Intent(WelcomeActivity.this, MainActivity.class));
+				}
+			}else{
+				startActivity(new Intent(WelcomeActivity.this, LoginActivity.class));
+			}
+		}
+		finish();
 	}
 }

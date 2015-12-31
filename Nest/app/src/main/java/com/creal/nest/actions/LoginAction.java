@@ -24,7 +24,7 @@ public class LoginAction extends AbstractAction {
     protected JSONObject getRequestBody(String timeStr) throws JSONException{
         JSONObject parameters = new JSONObject();
         parameters.put("card_num", mCardNum);
-        String key = PreferenceUtil.getString(mAppContext, Constants.APP_BINDING_KEY, null);
+        String key = PreferenceUtil.getString(mAppContext, Constants.APP_BINDING_KEY, Constants.APP_DEFAULT_KEY);
         parameters.put("password", Utils.md5(Utils.md5(mPassword) + key + timeStr));
         return parameters;
     }

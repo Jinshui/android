@@ -19,7 +19,7 @@ public class SnapCouponDialogActivity extends Activity {
         setContentView(R.layout.dialog_snap_coupons_succ);
         Coupon coupon = getIntent().getParcelableExtra(INTENT_EXTRA_COUPON);
         mAmount = (TextView)findViewById(R.id.id_txt_amount);
-        mAmount.setText(String.valueOf(coupon.getValue()));
+        mAmount.setText(coupon.getValue() > 0 ? String.valueOf(coupon.getValue()) : "");
     }
 
     public void onViewDetailClick(View view){

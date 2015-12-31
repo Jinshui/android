@@ -40,7 +40,6 @@
                     android:id="@+id/id_txt_coupon_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/test_coupon_name"
                     android:textSize="@dimen/font_middle" />
 
                 <!--<TextView-->
@@ -96,7 +95,6 @@
                 android:layout_height="wrap_content"
                 android:paddingTop="10dip"
                 android:paddingBottom="10dip"
-                android:text="@string/test_coupon_provider"
                 android:textColor="@color/grey" />
 
             <View

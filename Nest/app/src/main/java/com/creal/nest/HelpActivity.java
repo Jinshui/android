@@ -31,8 +31,8 @@ public class HelpActivity extends Activity {
 
     public void onHelpClick(View view){
         Intent intent = new Intent(this, WebpageActivity.class);
-        intent.putExtra("title", ((Button)view).getHint());
-        intent.putExtra("url", "http://www.baidu.com");
+        intent.putExtra(WebpageActivity.INTENT_EXTRA_TITLE, ((Button)view).getHint());
+        intent.putExtra(WebpageActivity.INTENT_EXTRA_URL, "http://www.baidu.com");
         startActivity(intent);
     }
 

@@ -12,6 +12,9 @@ import com.creal.nest.views.HeaderView;
 
 public class WebpageActivity extends Activity {
 
+    public static final String INTENT_EXTRA_URL          = "url";
+    public static final String INTENT_EXTRA_TITLE        = "title";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // Let's display the progress in the activity title bar, like the
@@ -22,7 +25,7 @@ public class WebpageActivity extends Activity {
 
         final HeaderView headerView = (HeaderView) findViewById(R.id.header);
         headerView.hideRightImage();
-        final String title = getIntent().getStringExtra("title");
+        final String title = getIntent().getStringExtra(INTENT_EXTRA_TITLE);
         headerView.setTitle(title);
         WebView webview = (WebView) findViewById(R.id.id_help_webview);
         webview.clearCache(true);
@@ -48,7 +51,7 @@ public class WebpageActivity extends Activity {
             }
         });
 
-        String url = getIntent().getStringExtra("url");
+        String url = getIntent().getStringExtra(INTENT_EXTRA_URL);
         if(url == null){
             url = "http://www.baidu.com";
         }

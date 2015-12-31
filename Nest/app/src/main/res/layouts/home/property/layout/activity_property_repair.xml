@@ -139,61 +139,61 @@
                     android:textSize="16sp" />
             </LinearLayout>
 
+            <!--<View-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="10dp" />-->
+
+            <!--<EditText-->
+                <!--android:id="@+id/id_txt_repair_vecode"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="@dimen/input_text_height_middle"-->
+                <!--android:layout_gravity="center_horizontal"-->
+                <!--android:background="@color/white"-->
+                <!--android:drawableLeft="@drawable/ic_property_repair_vecode"-->
+                <!--android:hint="@string/property_repair_vecode"-->
+                <!--android:inputType="number"-->
+                <!--android:paddingLeft="10dp"-->
+                <!--android:textSize="16sp" />-->
+
+            <!--<View-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="10dp" />-->
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginLeft="10dp"-->
+                <!--android:gravity="center_vertical"-->
+                <!--android:paddingLeft="5dp">-->
+
+                <!--<com.creal.nest.views.CustomizeImageView-->
+                    <!--android:id="@+id/id_coupon_thumbnail"-->
+                    <!--android:layout_width="@dimen/verification_code_icon_width"-->
+                    <!--android:layout_height="@dimen/verification_code_icon_height"-->
+                    <!--android:layout_centerVertical="true"-->
+                    <!--android:layout_gravity="center_vertical"-->
+                    <!--android:background="@drawable/test_verification_code"-->
+                    <!--android:contentDescription="" />-->
+
+                <!--<Button-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_gravity="center_vertical"-->
+                    <!--android:layout_marginLeft="10dip"-->
+                    <!--android:layout_marginRight="15dip"-->
+                    <!--android:background="@color/content_bg"-->
+                    <!--android:gravity="left"-->
+                    <!--android:onClick="onChangeVerificationCodeClick"-->
+                    <!--android:text="@string/change_verification_code"-->
+                    <!--android:textColor="@color/darkpink"-->
+                    <!--android:textSize="18sp" />-->
+
+            <!--</LinearLayout>-->
+
+
             <View
                 android:layout_width="match_parent"
-                android:layout_height="10dp" />
-
-            <EditText
-                android:id="@+id/id_txt_repair_vecode"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/input_text_height_middle"
-                android:layout_gravity="center_horizontal"
-                android:background="@color/white"
-                android:drawableLeft="@drawable/ic_property_repair_vecode"
-                android:hint="@string/property_repair_vecode"
-                android:inputType="number"
-                android:paddingLeft="10dp"
-                android:textSize="16sp" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="10dp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:gravity="center_vertical"
-                android:paddingLeft="5dp">
-
-                <com.creal.nest.views.CustomizeImageView
-                    android:id="@+id/id_coupon_thumbnail"
-                    android:layout_width="@dimen/verification_code_icon_width"
-                    android:layout_height="@dimen/verification_code_icon_height"
-                    android:layout_centerVertical="true"
-                    android:layout_gravity="center_vertical"
-                    android:background="@drawable/test_verification_code"
-                    android:contentDescription="" />
-
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="10dip"
-                    android:layout_marginRight="15dip"
-                    android:background="@color/content_bg"
-                    android:gravity="left"
-                    android:onClick="onChangeVerificationCodeClick"
-                    android:text="@string/change_verification_code"
-                    android:textColor="@color/darkpink"
-                    android:textSize="18sp" />
-
-            </LinearLayout>
-
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="10dp" />
+                android:layout_height="30dp" />
 
             <Button
                 android:layout_width="match_parent"

@@ -27,7 +27,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.nio.charset.Charset;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.concurrent.Executor;
 
 public abstract class AbstractAction<Result> extends ParallelTask<AbstractAction.ActionResult<Result>> {
@@ -198,7 +202,7 @@ public abstract class AbstractAction<Result> extends ParallelTask<AbstractAction
                         if (jsonString != null) {
                             Log.d(tag, "Original jsonString: " + jsonString);
                             jsonString = jsonString.trim();
-                            while(!jsonString.startsWith("{")){
+                            while(jsonString.length() > 1 && !jsonString.startsWith("{")){
                                 jsonString = jsonString.substring(1);
                             }
                             if (jsonString.startsWith("{") || jsonString.startsWith("[")) {
@@ -365,19 +369,30 @@ public abstract class AbstractAction<Result> extends ParallelTask<AbstractAction
         cancel(true);
     }
 
-    private JSONObject createJSONRequest() throws JSONException {
+    private JSONObject createJSONRequest() throws JSONException, UnsupportedEncodingException {
         JSONObject request = new JSONObject();
         String timeStr = Utils.formatDate("yyyy-MM-dd HH:mm:ss", new Date());
         JSONObject requestBody = getRequestBody(timeStr);
-        request.putOpt("body", requestBody);
         request.put("timestr", timeStr);
         String hash = requestBody.toString() + timeStr + getEncryptKey();
         String signature = Utils.md5(hash);
         request.put("signature", signature);
+        request.putOpt("body", encodeBody(requestBody));
 
         JSONObject wrapper = new JSONObject();
         wrapper.put("request", request);
         return wrapper;
+    }
+
+    private JSONObject encodeBody(JSONObject requestBody) throws JSONException, UnsupportedEncodingException {
+        JSONObject encodedRequestBody = new JSONObject();
+        Iterator<String> keys = requestBody.keys();
+        while(keys.hasNext()){
+            String key = keys.next();
+            String value = requestBody.getString(key);
+            encodedRequestBody.put(key, URLEncoder.encode(value, "utf-8"));
+        }
+        return encodedRequestBody;
     }
 
     public String getUrl(){ return mURL; }

@@ -16,7 +16,10 @@ import com.creal.nest.actions.BindPhoneCardAction;
 import com.creal.nest.actions.GetVerificationCodeAction;
 import com.creal.nest.test.TestActivity;
 import com.creal.nest.util.TimeCountUtil;
+import com.creal.nest.util.Utils;
 import com.creal.nest.views.HeaderView;
+
+import org.json.JSONObject;
 
 public class PhoneBinderActivity extends Activity {
 
@@ -24,7 +27,6 @@ public class PhoneBinderActivity extends Activity {
     private EditText mCardNum;
     private EditText mPassword;
     private EditText mVerificationCode;
-    private Button mBtnLogin;
     private Button mBtnGetCode;
 
     @Override
@@ -90,13 +92,6 @@ public class PhoneBinderActivity extends Activity {
                 Toast.makeText(PhoneBinderActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-
-    }
-
-    public void onTestClick(View view){
-        Intent intent = new Intent(this, TestActivity.class);
-        startActivity(intent);
-        finish();
     }
 
     public void onSendVerificationCodeClick(View view){

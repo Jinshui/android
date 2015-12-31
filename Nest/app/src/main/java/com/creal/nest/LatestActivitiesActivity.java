@@ -25,7 +25,7 @@ public class LatestActivitiesActivity extends PTRListActivity<SalesActivity> {
 
     public void showDetailActivity(SalesActivity salesActivity) {
         Intent intent = new Intent(this, LatestActivityDetailActivity.class);
-        intent.putExtra("salesActivity", salesActivity);
+        intent.putExtra(LatestActivityDetailActivity.INTENT_EXTRA_SALES_ACTIVITY, salesActivity);
         startActivity(intent);
     }
 

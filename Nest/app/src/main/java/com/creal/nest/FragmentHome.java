@@ -46,6 +46,7 @@ public class FragmentHome extends Fragment{
             return;
         }
         GetAdAction getAdAction = new GetAdAction(getActivity());
+        mViewPager.showLoading();
         getAdAction.execute(new AbstractAction.UICallBack<List<Ad>>() {
             public void onSuccess(List<Ad> result) {
                 Log.d(TAG, "onSuccess: " + result.size());
@@ -54,7 +55,7 @@ public class FragmentHome extends Fragment{
             }
 
             public void onFailure(AbstractAction.ActionError error) {
-
+                mViewPager.hideLoading();
             }
         });
     }

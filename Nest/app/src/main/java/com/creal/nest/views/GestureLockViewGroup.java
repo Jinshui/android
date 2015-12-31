@@ -1,6 +1,7 @@
 package com.creal.nest.views;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -324,7 +325,7 @@ public class GestureLockViewGroup extends RelativeLayout
 			reset();
 			break;
 		case MotionEvent.ACTION_MOVE:
-			Log.e(TAG, "ACTION_MOVE");
+//			Log.e(TAG, "ACTION_MOVE");
 			mPaint.setColor(mLineColor != 0 ? mLineColor : mColorFingerOnOuterBorder);
 			mPaint.setAlpha(80);
 			GestureLockView child = getChildIdByPos(x, y);
@@ -366,7 +367,7 @@ public class GestureLockViewGroup extends RelativeLayout
 			// 回调是否成功
 			if (mOnGestureLockViewListener != null && mChoose.size() > 0)
 			{
-				mOnGestureLockViewListener.onGestureEvent(checkAnswer());
+				mOnGestureLockViewListener.onInputComplete(mChoose);
 				if (this.mTryTimes == 0)
 				{
 					mOnGestureLockViewListener.onUnmatchedExceedBoundary();
@@ -419,11 +420,13 @@ public class GestureLockViewGroup extends RelativeLayout
 	 * 
 	 * 做一些必要的重置
 	 */
-	private void reset()
+	public void reset()
 	{
 		Log.e(TAG, "reset");
 		mChoose.clear();
 		mPath.reset();
+        if(mGestureLockViews == null)
+            return;
 		for (GestureLockView gestureLockView : mGestureLockViews)
 		{
 			gestureLockView.setMode(Mode.STATUS_NO_FINGER);
@@ -547,18 +550,18 @@ public class GestureLockViewGroup extends RelativeLayout
 		 * 
 		 * @param cId
 		 */
-		public void onBlockSelected(int cId);
+		void onBlockSelected(int cId);
 
 		/**
-		 * 是否匹配
+		 * 用户的输入
 		 * 
-		 * @param matched
+		 * @param password
 		 */
-		public void onGestureEvent(boolean matched);
+		void onInputComplete(List<Integer> password);
 
 		/**
 		 * 超过尝试次数
 		 */
-		public void onUnmatchedExceedBoundary();
+		void onUnmatchedExceedBoundary();
 	}
 }

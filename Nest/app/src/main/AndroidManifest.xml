@@ -43,6 +43,7 @@
         <activity android:name=".MainActivity" android:theme="@style/Theme.Custom.NoActionBar" android:screenOrientation="portrait"/>
         <activity android:name=".PhoneBinderActivity" android:screenOrientation="portrait"/>
         <activity android:name=".LoginActivity" android:theme="@style/Theme.Custom.NoActionBar" android:screenOrientation="portrait"/>
+        <activity android:name=".LoginDialog" android:theme="@style/Theme.CustomDialog" android:screenOrientation="portrait"/>
         <activity android:name=".test.TestActivity" android:screenOrientation="portrait"/>
         <activity android:name=".MipcaActivityCapture" android:screenOrientation="portrait"/>
         <activity android:name=".SearchActivity" android:screenOrientation="portrait"/>
