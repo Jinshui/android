@@ -22,14 +22,24 @@ public class HeaderView extends LinearLayout {
         LayoutInflater.from(context).inflate(R.layout.view_header, this, true);
         mLeftBtn = (TextView)findViewById(R.id.left_btn);
         mLeftBtn.setText(" ");
-        mLeftBtn.setOnClickListener(new OnClickListener() {
+        mTitle = (TextView)findViewById(R.id.title);
+        mRightTxt = (TextView)findViewById(R.id.id_text_help);
+        mRightBtn = (ImageView)findViewById(R.id.right_btn);
+        setLeftBtnListener(new OnClickListener() {
             public void onClick(View v) {
                 ((Activity)getContext()).finish();
             }
         });
-        mTitle = (TextView)findViewById(R.id.title);
-        mRightTxt = (TextView)findViewById(R.id.id_text_help);
-        mRightBtn = (ImageView)findViewById(R.id.right_btn);
+    }
+
+    public void hideLeftBtn(){
+//        mLeftBtn.setCompoundDrawables(null, null, getResources().getDrawable(R.drawable.logo_small), null);
+        mLeftBtn.setEnabled(false);
+    }
+
+    public void showLeftBtn(){
+//        mLeftBtn.setCompoundDrawables(getResources().getDrawable(R.drawable.icon_left_arrow), null, getResources().getDrawable(R.drawable.logo_small), null);
+        mLeftBtn.setEnabled(true);
     }
 
     public void setTitle(int resId){
@@ -66,6 +76,10 @@ public class HeaderView extends LinearLayout {
 
     public void hideRightText(){
         mRightTxt.setVisibility(GONE);
+    }
+
+    public void setLeftBtnListener(View.OnClickListener listener){
+        mLeftBtn.setOnClickListener(listener);
     }
 
     public void setRightBtnListener(View.OnClickListener listener){

@@ -60,6 +60,8 @@
     <string name="guesture_pwd_new_confirm">请确认新密码</string>
     <string name="guesture_pwd_skip">跳过</string>
     <string name="guesture_pwd_forgot">忘记密码</string>
+    <string name="guesture_pwd_login">重新登录</string>
+    <string name="guesture_pwd_forgot_dlg">忘记手势密码，需重新登录</string>
     <string name="guesture_pwd_change">修改密码</string>
     <string name="guesture_pwd_confirm_failed">与上次绘制不一致，请重新绘制</string>
     <string name="guesture_pwd_input_old_pwd">请验证原密码</string>
@@ -176,6 +178,7 @@
 
     <!--物业-->
     <string name="property_management">物业管理</string>
+    <string name="property_management_disabled">暂未开通此功能</string>
     <string name="property_user_sex" formatte="false">性别: %s</string>
     <string name="recharge_fee">缴费</string>
     <string name="recharge_property_fee">缴纳物业费</string>

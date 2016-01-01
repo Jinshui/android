@@ -1,6 +1,6 @@
 package com.creal.nest;
 
-public interface Constants {
+public class Constants {
     public static final String SERVER_HOST = "manager.go.wuxian114.com";
     public static final String URL_GET_VERIFICATION_CODE      = "http://" + SERVER_HOST + "/lmk_interface/vcode/index.php";
     public static final String URL_LOGIN                      = "http://" + SERVER_HOST + "/lmk_interface/login/index.php";

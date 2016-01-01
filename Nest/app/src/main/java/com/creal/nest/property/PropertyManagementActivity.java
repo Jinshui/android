@@ -14,6 +14,7 @@ import com.creal.nest.RechargeHistoryActivity;
 import com.creal.nest.actions.AbstractAction;
 import com.creal.nest.Constants;
 import com.creal.nest.actions.JSONObjectAction;
+import com.creal.nest.model.HouseInfo;
 import com.creal.nest.util.JSONUtil;
 import com.creal.nest.util.PreferenceUtil;
 import com.creal.nest.util.UIUtil;
@@ -27,6 +28,7 @@ import java.util.Map;
 public class PropertyManagementActivity extends Activity {
 
     private static final String TAG = "XYK-LatestActivities";
+    public static final String INTENT_EXTRA_HOUSE_INFO = "house_info";
     private TextView mSex;
     private TextView mName;
     private TextView mCommunityName;
@@ -63,31 +65,17 @@ public class PropertyManagementActivity extends Activity {
             }
         });
 
-        init();
+        HouseInfo info = getIntent().getParcelableExtra(INTENT_EXTRA_HOUSE_INFO);
+        init(info);
     }
 
 
-    private void init(){
-        String cardId = PreferenceUtil.getString(this, Constants.APP_USER_CARD_ID, null);
-        Map parameters = new HashMap<>();
-        parameters.put(Constants.KEY_CARD_ID, cardId);
-        final Dialog dialog = UIUtil.showLoadingDialog(this, getString(R.string.loading), true);
-        JSONObjectAction action = new JSONObjectAction(this, Constants.URL_BIND_PROPERTY, parameters);
-        action.execute(new AbstractAction.UICallBack<JSONObject>() {
-            public void onSuccess(JSONObject info) {
-                mSex.setText(String.format(getString(R.string.property_user_sex), JSONUtil.getString(info, "gender", "")));
-                mCommunityName.setText(JSONUtil.getString(info, "residential_quarter", ""));
-                mName.setText(JSONUtil.getString(info, "name", ""));
-                mAddress.setText(JSONUtil.getString(info, "address", ""));
-                mBill.setText(JSONUtil.getString(info, "arrear", ""));
-                dialog.dismiss();
-            }
-
-            public void onFailure(AbstractAction.ActionError error) {
-                dialog.dismiss();
-                Toast.makeText(PropertyManagementActivity.this, error.getMessage(), Toast.LENGTH_LONG).show();
-            }
-        });
+    private void init(HouseInfo info){
+        mSex.setText(String.format(getString(R.string.property_user_sex), info.getGender()));
+        mCommunityName.setText(info.getCommunityName());
+        mName.setText(info.getName());
+        mAddress.setText(info.getAddress());
+        mBill.setText(info.getBill());
     }
 
 

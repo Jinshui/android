@@ -362,8 +362,6 @@ public class GestureLockViewGroup extends RelativeLayout
             mPaint.setColor(mLineColor != 0 ? mLineColor : mColorFingerOnOuterBorder);
 			mPaint.setAlpha(80);
 			this.mTryTimes--;
-			Log.e(TAG, "mChoose = " + mChoose);
-
 			// 回调是否成功
 			if (mOnGestureLockViewListener != null && mChoose.size() > 0)
 			{

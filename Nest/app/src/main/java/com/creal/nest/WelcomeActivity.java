@@ -21,18 +21,24 @@ public class WelcomeActivity extends Activity {
 		new ParallelTask<Void>() {
 			protected Void doInBackground(Void... params) {
 				try {
-//					PreferenceUtil.saveString(WelcomeActivity.this, Constants.APP_USER_AUTHORIZED, Boolean.FALSE.toString());
-					Thread.sleep(2000);
+                    PreferenceUtil.saveString(WelcomeActivity.this, Constants.APP_BINDING_KEY, Constants.APP_DEFAULT_KEY);
+					//		PreferenceUtil.saveString(WelcomeActivity.this, Constants.APP_USER_AUTHORIZED, Boolean.FALSE.toString());
+					Thread.sleep(1000);
 				} catch (InterruptedException e) {
 				}
 				return null;
 			}
 			
 			protected void onPostExecute(Void result){
-				startActivity(new Intent(WelcomeActivity.this, LoginActivity.class));
-//				showNext();
+//				showTest();
+				showNext();
 			}
 		}.execute();
+	}
+
+	private void showTest(){
+		startActivity(new Intent(WelcomeActivity.this, LoginActivity.class));
+		finish();
 	}
 
 	private void showNext(){

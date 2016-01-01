@@ -37,16 +37,16 @@
                     android:layout_marginTop="7dp"
                     android:background="@drawable/border_white_cornered_hollow"
                     android:padding="2dp"
-                    android:text="性别： 男"
                     android:textColor="#D1BAFF" />
 
-                <com.creal.nest.views.CustomizeImageView
+                <ImageView
                     android:id="@+id/id_ingot_thumbnail"
                     android:layout_width="@dimen/ingot_mall_list_item_icon_width"
-                    android:layout_height="@dimen/ingot_mall_list_item_icon_height"
+                    android:layout_height="@dimen/ingot_mall_list_item_icon_width"
                     android:layout_gravity="center"
                     android:contentDescription=""
-                    android:src="@drawable/logo" />
+                    android:src="@drawable/circle_gray"
+                    android:background="@drawable/logo_round" />
 
                 <TextView
                     android:id="@+id/id_text_user_name"
@@ -54,7 +54,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
-                    android:text="张小明"
                     android:textColor="@color/white"
                     android:textSize="@dimen/font_middle" />
 
@@ -65,7 +64,6 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
                     android:drawableLeft="@drawable/ic_property_name"
-                    android:text="保定世纪华庭"
                     android:textColor="@color/white"
                     android:textSize="@dimen/font_larger" />
 
@@ -74,7 +72,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="绿色家园小区甲1号楼B栋503"
                     android:textColor="#D1BAFF"
                     android:textSize="@dimen/font_extra_smaller" />
 

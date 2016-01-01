@@ -1,8 +1,11 @@
 package com.creal.nest;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -18,6 +21,7 @@ import com.creal.nest.views.GestureLockViewGroup;
 import com.creal.nest.views.HeaderView;
 
 import java.util.List;
+import java.util.Stack;
 
 
 public class GesturePwdActivity extends Activity {
@@ -35,20 +39,30 @@ public class GesturePwdActivity extends Activity {
 
     private GestureLockViewGroup mGestureLockViewGroup;
     private TextView mPhone;
+    private View mOperationPanel;
     private HeaderView mHeaderView;
     private String mPassword;
+    private Stack<State> mStateStack;
     private State mState;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gesture_pwd);
+        mStateStack = new Stack<>();
         mHeaderView = (HeaderView) findViewById(R.id.header);
         mHeaderView.hideRightImage();
+        mHeaderView.setLeftBtnListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                if (!mStateStack.isEmpty()) {
+                    init(mStateStack.pop());
+                }
+            }
+        });
 
+        mOperationPanel = findViewById(R.id.id_panel_action);
         mPhone = (TextView) findViewById(R.id.id_text_phone);
         mGestureLockViewGroup = (GestureLockViewGroup) findViewById(R.id.id_gestureLockViewGroup);
 
-        mGestureLockViewGroup.setAnswer(new int[]{1, 2, 3, 4, 5});
         mGestureLockViewGroup.setOnGestureLockViewListener(new GestureLockViewGroup.OnGestureLockViewListener() {
             @Override
             public void onUnmatchedExceedBoundary() {
@@ -120,14 +134,13 @@ public class GesturePwdActivity extends Activity {
         }
     }
 
-    private boolean checkAnswer(String password1, String password2)
-    {
-        Log.d(tag, "password1： " + password1 + ", password2: " + password2);
+    private boolean checkAnswer(String password1, String password2){
         return password1 != null && TextUtils.equals(password1, password2);
     }
 
     private void init(State state){
         mState = state;
+        mOperationPanel.setVisibility(View.INVISIBLE);
         mGestureLockViewGroup.reset();
         mHeaderView.hideRightText();
         mPhone.setTextColor(Color.WHITE);
@@ -135,6 +148,7 @@ public class GesturePwdActivity extends Activity {
         switch (mState) {
             case SET_PWD:
                 mPassword = null;
+                PreferenceUtil.removeKey(this, Constants.APP_USER_GESTURE_PWD);
                 mHeaderView.setTitle(getIntent().getIntExtra(INTENT_EXTRA_TITLE, R.string.guesture_pwd_set));
                 mHeaderView.setRightText(R.string.guesture_pwd_skip);
                 mHeaderView.setRightTextListener(new View.OnClickListener() {
@@ -142,29 +156,25 @@ public class GesturePwdActivity extends Activity {
                         startMainActivity();
                     }
                 });
-//                findViewById(R.id.id_panel_action).setVisibility(View.GONE);
                 String phone = PreferenceUtil.getString(this, Constants.APP_USER_PHONE, "");
                 mPhone.setText(phone);
                 break;
             case CONFIRM_PWD:
+                mStateStack.push(State.SET_PWD);
                 mHeaderView.setTitle(R.string.guesture_pwd_confirm);
                 break;
             case INPUT_OLD_PWD:
+                mStateStack.push(State.VERIFY_PWD);
                 mHeaderView.setTitle(R.string.guesture_pwd_input_old_pwd);
                 break;
             case INPUT_NEW_PWD:
                 mPassword = null;
+                mStateStack.push(State.INPUT_OLD_PWD);
                 mHeaderView.setTitle(R.string.guesture_pwd_new);
-//                mHeaderView.setRightText(R.string.guesture_pwd_skip);
-//                mHeaderView.setRightTextListener(new View.OnClickListener() {
-//                    public void onClick(View v) {
-//                        startMainActivity();
-//                    }
-//                });
                 break;
             case CONFIRM_NEW_PWD:
+                mStateStack.push(State.INPUT_NEW_PWD);
                 mHeaderView.setTitle(R.string.guesture_pwd_new_confirm);
-                mHeaderView.setRightText(R.string.guesture_pwd_skip);
                 mHeaderView.setRightTextListener(new View.OnClickListener() {
                     public void onClick(View v) {
                         startMainActivity();
@@ -173,6 +183,7 @@ public class GesturePwdActivity extends Activity {
                 break;
             case VERIFY_PWD:
                 mHeaderView.setTitle(R.string.guesture_pwd_verify);
+                mOperationPanel.setVisibility(View.VISIBLE);
                 break;
         }
     }
@@ -184,17 +195,28 @@ public class GesturePwdActivity extends Activity {
     }
 
     public void onForgotPwdClick(View view){
-        Intent intent = new Intent(GesturePwdActivity.this, LoginDialog.class);
-        startActivityForResult(intent, LoginDialog.DIALOG_ID);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == LoginDialog.DIALOG_ID) {
-            if(data.getBooleanExtra(Constants.APP_USER_AUTHORIZED, Boolean.FALSE)){
-                init(State.INPUT_NEW_PWD);
+        AlertDialog.Builder builder = null;
+        if(Build.VERSION.SDK_INT > 10) {
+            builder = new AlertDialog.Builder(this, R.style.Theme_CustomDialog_Alert);
+        }else
+            builder = new AlertDialog.Builder(this);
+        builder.setMessage(R.string.guesture_pwd_forgot_dlg);
+        builder.setPositiveButton(R.string.guesture_pwd_login, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+                GesturePwdActivity.this.finish();
+                Intent intent = new Intent(GesturePwdActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
             }
-        }
+        });
+        builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        builder.create().show();
     }
 
     public void onChangePwdClick(View view) {
