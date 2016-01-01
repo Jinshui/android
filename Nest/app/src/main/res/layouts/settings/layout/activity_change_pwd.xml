@@ -38,6 +38,8 @@
                 android:drawableLeft="@drawable/icon_register_user_name"
                 android:drawableRight="@drawable/ic_delete"
                 android:paddingRight="10dp"
+                android:maxLength="12"
+                android:inputType="numberPassword"
                 android:hint="@string/old_pwd"
                 android:textSize="16sp" />
 
@@ -54,7 +56,8 @@
                 android:background="@color/input_bg"
                 android:drawableLeft="@drawable/icon_register_pwd"
                 android:hint="@string/new_pwd"
-                android:inputType="textPassword"
+                android:maxLength="12"
+                android:inputType="numberPassword"
                 android:textSize="16sp" />
 
             <View
@@ -70,7 +73,8 @@
                 android:background="@color/input_bg"
                 android:drawableLeft="@drawable/icon_register_pwd"
                 android:hint="@string/new_pwd_again"
-                android:inputType="textPassword"
+                android:maxLength="12"
+                android:inputType="numberPassword"
                 android:textSize="16sp" />
 
             <Button

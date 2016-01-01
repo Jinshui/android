@@ -6,10 +6,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.creal.nest.actions.CommonPaginationAction;
-import com.creal.nest.actions.GetRechargeAction;
 import com.creal.nest.actions.PaginationAction;
 import com.creal.nest.model.Recharge;
-import com.creal.nest.model.Shopping;
 import com.creal.nest.util.PreferenceUtil;
 import com.creal.nest.views.ptr.PTRListActivity;
 

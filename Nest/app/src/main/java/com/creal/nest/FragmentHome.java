@@ -12,9 +12,10 @@ import android.widget.Toast;
 
 import com.creal.nest.actions.AbstractAction;
 import com.creal.nest.actions.CommonObjectAction;
-import com.creal.nest.actions.GetAdAction;
+import com.creal.nest.actions.CommonPaginationAction;
 import com.creal.nest.model.Ad;
 import com.creal.nest.model.HouseInfo;
+import com.creal.nest.model.Pagination;
 import com.creal.nest.property.PropertyManagementActivity;
 import com.creal.nest.util.PreferenceUtil;
 import com.creal.nest.util.UIUtil;
@@ -22,7 +23,6 @@ import com.creal.nest.views.PhotoPager;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 
@@ -53,13 +53,11 @@ public class FragmentHome extends Fragment{
             mViewPager.addPhotos(getChildFragmentManager(), mAds);
             return;
         }
-        GetAdAction getAdAction = new GetAdAction(getActivity());
+        CommonPaginationAction getAdAction = new CommonPaginationAction(getActivity(), 1, 20, Constants.URL_GET_ADS, null, Ad.class, "article");
         mViewPager.showLoading();
-        getAdAction.execute(new AbstractAction.UICallBack<List<Ad>>() {
-            public void onSuccess(List<Ad> result) {
-                Log.d(TAG, "onSuccess: " + result.size());
-                mAds = (ArrayList) result;
-                mViewPager.addPhotos(getChildFragmentManager(), mAds);
+        getAdAction.execute(new AbstractAction.UICallBack<Pagination<Ad>>() {
+            public void onSuccess(Pagination<Ad> result) {
+                mViewPager.addPhotos(getChildFragmentManager(), result.getItems());
             }
 
             public void onFailure(AbstractAction.ActionError error) {
@@ -125,6 +123,7 @@ public class FragmentHome extends Fragment{
         });
         homeView.findViewById(R.id.id_btn_property).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                showHouseInfo();
             }
         });
         homeView.findViewById(R.id.id_btn_my_custom_service).setOnClickListener(new View.OnClickListener() {

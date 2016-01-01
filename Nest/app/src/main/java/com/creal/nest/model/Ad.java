@@ -2,10 +2,12 @@ package com.creal.nest.model;
 
 import android.os.Parcel;
 
+import com.creal.nest.actions.ActionRespObject;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class Ad extends BaseModel {
+public class Ad extends BaseModel implements ActionRespObject<Ad>{
 
     public static final Creator<Ad> CREATOR = new Creator<Ad>() {
         public Ad createFromParcel(Parcel in) {
@@ -68,5 +70,10 @@ public class Ad extends BaseModel {
             ad.setUrl(json.getString("url"));
         }
         return ad;
+    }
+
+    @Override
+    public Ad fillWithJSON(JSONObject jsonObject) throws JSONException {
+        return fromJSON(jsonObject);
     }
 }

@@ -8,9 +8,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.creal.nest.actions.AbstractAction;
-import com.creal.nest.actions.ExchangeIngotsAction;
+import com.creal.nest.actions.CommonObjectAction;
 import com.creal.nest.model.RechargeCard;
 import com.creal.nest.util.PreferenceUtil;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 
 public class ExchangeIngotsConfirmDialog extends Activity {
 
@@ -28,9 +32,13 @@ public class ExchangeIngotsConfirmDialog extends Activity {
 
     public void onConfirmExchange(View view){
         String cardId = PreferenceUtil.getString(this, Constants.APP_USER_CARD_ID, null);
-        ExchangeIngotsAction exchangeIngotsAction = new ExchangeIngotsAction(this, cardId, mRechargeCard.getId(), mRechargeCard.getNum());
-        exchangeIngotsAction.execute(new AbstractAction.UICallBack<Boolean>() {
-            public void onSuccess(Boolean result) {
+        Map parameters = new HashMap();
+        parameters.put(Constants.KEY_CARD_ID, cardId);
+        parameters.put("recharge_card_id", mRechargeCard.getId());
+        parameters.put("exchange_num", mRechargeCard.getNum());
+        CommonObjectAction exchangeIngotsAction = new CommonObjectAction(this, Constants.URL_EXCHANGE_INGOTS, parameters, null);
+        exchangeIngotsAction.execute(new AbstractAction.UICallBack<Objects>() {
+            public void onSuccess(Objects result) {
                 showSuccessDialog();
             }
 

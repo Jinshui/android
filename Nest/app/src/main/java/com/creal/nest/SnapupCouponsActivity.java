@@ -10,16 +10,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.creal.nest.actions.AbstractAction;
+import com.creal.nest.actions.CommonObjectAction;
 import com.creal.nest.actions.CommonPaginationAction;
-import com.creal.nest.actions.GetCouponDetailAction;
 import com.creal.nest.actions.PaginationAction;
-import com.creal.nest.actions.ReceiveCouponAction;
 import com.creal.nest.model.Coupon;
 import com.creal.nest.model.ReceiveCouponResult;
 import com.creal.nest.util.PreferenceUtil;
 import com.creal.nest.util.UIUtil;
 import com.creal.nest.views.CustomizeImageView;
 import com.creal.nest.views.ptr.PTRListActivity;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class SnapupCouponsActivity extends PTRListActivity<Coupon> {
 
@@ -40,7 +42,9 @@ public class SnapupCouponsActivity extends PTRListActivity<Coupon> {
         if(!coupon.isActive())
             return;
         final Dialog progressDialog = UIUtil.showLoadingDialog(this, getString(R.string.loading), false);
-        GetCouponDetailAction getCouponDetailAction = new GetCouponDetailAction(this, coupon.getId());
+        Map parameters = new HashMap();
+        parameters.put("coupons_id", coupon.getId());
+        CommonObjectAction getCouponDetailAction = new CommonObjectAction(this, Constants.URL_GET_COUPON_DETAIL, parameters, Coupon.class);
         getCouponDetailAction.execute(new AbstractAction.UICallBack<Coupon>() {
             public void onSuccess(Coupon result) {
                 Intent intent = new Intent(SnapupCouponsActivity.this, SnapCouponDetailActivity.class);
@@ -83,7 +87,10 @@ public class SnapupCouponsActivity extends PTRListActivity<Coupon> {
                 public void onClick(View v) {
                     String cardId = PreferenceUtil.getString(SnapupCouponsActivity.this, Constants.APP_USER_CARD_ID, null);
                     final Dialog progressDialog = UIUtil.showLoadingDialog(SnapupCouponsActivity.this, getString(R.string.loading), false);
-                    ReceiveCouponAction action = new ReceiveCouponAction(SnapupCouponsActivity.this, cardId, coupon.getId());
+                    Map parameters = new HashMap();
+                    parameters.put(Constants.KEY_CARD_ID, cardId);
+                    parameters.put("coupons_id", coupon.getId());
+                    CommonObjectAction action = new CommonObjectAction(getBaseContext(), Constants.URL_RECEIVE_COUPONS, parameters, ReceiveCouponResult.class);
                     action.execute(new AbstractAction.UICallBack<ReceiveCouponResult>() {
                         public void onSuccess(ReceiveCouponResult result) {
                             Intent intent = new Intent(SnapupCouponsActivity.this, SnapCouponDialogActivity.class);

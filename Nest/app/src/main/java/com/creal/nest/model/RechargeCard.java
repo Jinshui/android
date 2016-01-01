@@ -2,10 +2,12 @@ package com.creal.nest.model;
 
 import android.os.Parcel;
 
+import com.creal.nest.actions.ActionRespObject;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class RechargeCard extends BaseModel {
+public class RechargeCard extends BaseModel implements ActionRespObject<RechargeCard>{
 
     public static final Creator<RechargeCard> CREATOR = new Creator<RechargeCard>() {
         public RechargeCard createFromParcel(Parcel in) {
@@ -96,5 +98,10 @@ public class RechargeCard extends BaseModel {
             rechargeCard.setNum(json.getString("num"));
         }
         return rechargeCard;
+    }
+
+    @Override
+    public RechargeCard fillWithJSON(JSONObject jsonObject) throws JSONException {
+        return fromJSON(jsonObject);
     }
 }

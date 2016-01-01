@@ -28,6 +28,9 @@ public class Constants {
     public static final String URL_GET_SHOP_DETAIL            = "http://" + SERVER_HOST + "/lmk_interface/comdetail/index.php";
     public static final String URL_GET_SHOP_HISTORY           = "http://" + SERVER_HOST + "/lmk_interface/transactionlist/index.php";
     public static final String URL_GET_RECHARGE_HISTORY       = "http://" + SERVER_HOST + "/lmk_interface/rechargelist/index.php";
+    public static final String URL_GET_CARD_INFO              = "http://" + SERVER_HOST + "/lmk_interface/cardinfo/index.php";
+    public static final String URL_GET_EXCHANGE_LIST          = "http://" + SERVER_HOST + "/lmk_interface/exchangelist/index.php";
+    public static final String URL_SEARCH                     = "http://" + SERVER_HOST + "/lmk_interface/search/index.php";
 
     public final static String KEY_CARD_ID = "card_id";
     public final static String KEY_CARD_NUM = "card_num";

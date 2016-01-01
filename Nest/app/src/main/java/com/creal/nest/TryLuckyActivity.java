@@ -9,15 +9,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.creal.nest.actions.AbstractAction;
+import com.creal.nest.actions.CommonObjectAction;
 import com.creal.nest.actions.CommonPaginationAction;
 import com.creal.nest.actions.PaginationAction;
-import com.creal.nest.actions.ReceiveCouponAction;
 import com.creal.nest.model.Coupon;
 import com.creal.nest.model.ReceiveCouponResult;
 import com.creal.nest.util.PreferenceUtil;
 import com.creal.nest.util.UIUtil;
 import com.creal.nest.views.CustomizeImageView;
 import com.creal.nest.views.ptr.PTRListActivity;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class TryLuckyActivity extends PTRListActivity<Coupon> {
 
@@ -53,7 +56,12 @@ public class TryLuckyActivity extends PTRListActivity<Coupon> {
         convertView.findViewById(R.id.id_btn_try_lucky).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 String cardId = PreferenceUtil.getString(getBaseContext(), Constants.APP_USER_CARD_ID, null);
-                ReceiveCouponAction action = new ReceiveCouponAction(getBaseContext(), cardId, coupon.getId());
+
+                Map parameters = new HashMap();
+                parameters.put(Constants.KEY_CARD_ID, cardId);
+                parameters.put("coupons_id", coupon.getId());
+                CommonObjectAction action = new CommonObjectAction(getBaseContext(), Constants.URL_RECEIVE_COUPONS, parameters, ReceiveCouponResult.class);
+
                 final Dialog progressDialog = UIUtil.showLoadingDialog(TryLuckyActivity.this, getString(R.string.loading), false);
                 action.execute(new AbstractAction.UICallBack<ReceiveCouponResult>() {
                     public void onSuccess(ReceiveCouponResult result) {

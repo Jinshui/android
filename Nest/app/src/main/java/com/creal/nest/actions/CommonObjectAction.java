@@ -26,6 +26,8 @@ public class CommonObjectAction<T extends ActionRespObject<T>> extends AbstractA
 
     @Override
     protected T createRespObject(JSONObject response) throws JSONException {
+        if(mClass == null)
+            return null;
         try {
             T t = mClass.newInstance();
             return t.fillWithJSON(response);

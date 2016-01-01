@@ -13,13 +13,16 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.creal.nest.actions.AbstractAction;
-import com.creal.nest.actions.GetQRCodeAction;
+import com.creal.nest.actions.StringAction;
 import com.creal.nest.util.BitmapUtil;
 import com.creal.nest.util.ImageUtil;
 import com.creal.nest.util.PreferenceUtil;
 import com.creal.nest.util.UIUtil;
 import com.creal.nest.views.HeaderView;
 import com.google.zxing.WriterException;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class QRCodeActivity extends Activity {
 
@@ -67,7 +70,9 @@ public class QRCodeActivity extends Activity {
             mFirstLoad = false;
         }
         String cardId = PreferenceUtil.getString(this, Constants.APP_USER_CARD_ID, null);
-        GetQRCodeAction qrCodeAction = new GetQRCodeAction(this, cardId);
+        Map parameters = new HashMap<>();
+        parameters.put(Constants.KEY_CARD_ID, cardId);
+        StringAction qrCodeAction = new StringAction(this, Constants.URL_GET_QR_CODE, parameters, Constants.KEY_QR_CODE);
         qrCodeAction.execute(
                 new AbstractAction.UICallBack<String>() {
                     public void onSuccess(String result) {

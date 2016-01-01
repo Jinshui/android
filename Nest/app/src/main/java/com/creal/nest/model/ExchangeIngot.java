@@ -9,8 +9,7 @@ import org.json.JSONObject;
 
 public class ExchangeIngot extends BaseModel implements ActionRespObject<ExchangeIngot>{
 
-    public static final Creator<ExchangeIngot> CREATOR
-            = new Creator<ExchangeIngot>() {
+    public static final Creator<ExchangeIngot> CREATOR = new Creator<ExchangeIngot>() {
         public ExchangeIngot createFromParcel(Parcel in) {
             return new ExchangeIngot(in);
         }
@@ -21,7 +20,8 @@ public class ExchangeIngot extends BaseModel implements ActionRespObject<Exchang
     };
 
     private String amount;
-    private String desc;
+    private String money;
+
     private String dateTime;
 
     public ExchangeIngot(){
@@ -30,14 +30,38 @@ public class ExchangeIngot extends BaseModel implements ActionRespObject<Exchang
     public ExchangeIngot(Parcel in){
         super(in);
         amount = in.readString();
-        desc = in.readString();
+        money = in.readString();
         dateTime = in.readString();
     }
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(amount);
-        dest.writeString(desc);
+        dest.writeString(money);
         dest.writeString(dateTime);
+    }
+
+    public String getAmount() {
+        return amount;
+    }
+
+    public void setAmount(String amount) {
+        this.amount = amount;
+    }
+
+    public String getMoney() {
+        return money;
+    }
+
+    public void setMoney(String money) {
+        this.money = money;
+    }
+
+    public String getDateTime() {
+        return dateTime;
+    }
+
+    public void setDateTime(String dateTime) {
+        this.dateTime = dateTime;
     }
 
 
@@ -45,6 +69,15 @@ public class ExchangeIngot extends BaseModel implements ActionRespObject<Exchang
         if(json == null)
             throw new IllegalArgumentException("JSONObject is null");
         ExchangeIngot recharge = new ExchangeIngot();
+        if(json.has("money")){
+            recharge.setMoney(json.getString("money"));
+        }
+        if(json.has("amount")){
+            recharge.setAmount(json.getString("amount"));
+        }
+        if(json.has("time")){
+            recharge.setDateTime(json.getString("exchange_time"));
+        }
         return recharge;
     }
 

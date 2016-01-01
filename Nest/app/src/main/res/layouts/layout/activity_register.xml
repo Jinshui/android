@@ -99,6 +99,7 @@
                 android:background="@color/input_bg"
                 android:drawableLeft="@drawable/icon_register_pwd"
                 android:hint="@string/register_hint_pwd"
+                android:maxLength="12"
                 android:inputType="numberPassword"
                 android:textSize="16sp" />
 

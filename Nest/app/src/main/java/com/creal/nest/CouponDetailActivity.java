@@ -8,11 +8,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.creal.nest.actions.AbstractAction;
-import com.creal.nest.actions.GetCouponDetailAction;
+import com.creal.nest.actions.CommonObjectAction;
 import com.creal.nest.model.Coupon;
 import com.creal.nest.util.UIUtil;
 import com.creal.nest.views.CustomizeImageView;
 import com.creal.nest.views.HeaderView;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class CouponDetailActivity extends Activity {
 
@@ -47,7 +50,10 @@ public class CouponDetailActivity extends Activity {
         String cardId = getIntent().getStringExtra(INTENT_EXTRA_CARD_ID);
         String couponId = getIntent().getStringExtra(INTENT_EXTRA_COUPON_ID);
         final Dialog dialog = UIUtil.showLoadingDialog(this, getString(R.string.loading), true);
-        GetCouponDetailAction getCouponDetailAction = new GetCouponDetailAction(this, cardId, couponId);
+        Map parameters = new HashMap();
+        parameters.put(Constants.KEY_CARD_ID, cardId);
+        parameters.put("coupons_id", couponId);
+        CommonObjectAction getCouponDetailAction = new CommonObjectAction(this, Constants.URL_GET_MY_COUPON_DETAIL, parameters, Coupon.class);
         getCouponDetailAction.execute(new AbstractAction.UICallBack<Coupon>() {
             public void onSuccess(Coupon coupon) {
                 mImageView.loadImage(coupon.getImageUrl());

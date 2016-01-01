@@ -19,20 +19,16 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.creal.nest.actions.AbstractAction;
-import com.creal.nest.actions.GetVerificationCodeAction;
-import com.creal.nest.actions.JSONObjectAction;
 import com.creal.nest.actions.RegisterAction;
-import com.creal.nest.util.PreferenceUtil;
+import com.creal.nest.actions.StringAction;
 import com.creal.nest.util.TimeCountUtil;
 import com.creal.nest.util.UIUtil;
 import com.creal.nest.util.Utils;
 import com.creal.nest.views.HeaderView;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
-import java.util.Hashtable;
 import java.util.Map;
 
 public class RegisterActivity extends Activity {
@@ -83,7 +79,9 @@ public class RegisterActivity extends Activity {
         }
         final TimeCountUtil timeCountUtil = new TimeCountUtil(this, 60000, 1000, mBtnGetCode);
         timeCountUtil.start();
-        GetVerificationCodeAction getVerificationCodeAction = new GetVerificationCodeAction(this, phone.toString());
+        Map parameters = new HashMap<>();
+        parameters.put("mobile", phone.toString());
+        StringAction getVerificationCodeAction = new StringAction(this, Constants.URL_GET_VERIFICATION_CODE, parameters, "code");
         getVerificationCodeAction.execute(new AbstractAction.UICallBack<String>() {
             public void onSuccess(String result) {
                 mVerificationCode.setText(result);
@@ -107,7 +105,7 @@ public class RegisterActivity extends Activity {
             return;
         }
         CharSequence password = mPassword.getText();
-        if(TextUtils.isEmpty(password)){
+        if(TextUtils.isEmpty(password) || password.length() < 6){
             Animation shake = AnimationUtils.loadAnimation(this, R.anim.shake);
             mPassword.startAnimation(shake);
             return;

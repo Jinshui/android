@@ -8,7 +8,7 @@ import com.creal.nest.actions.ActionRespObject;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class SalesActivity extends Ad implements ActionRespObject<SalesActivity>{
+public class SalesActivity extends BaseModel implements ActionRespObject<SalesActivity>{
 
     public static final Parcelable.Creator<SalesActivity> CREATOR
             = new Parcelable.Creator<SalesActivity>() {
@@ -21,6 +21,8 @@ public class SalesActivity extends Ad implements ActionRespObject<SalesActivity>
         }
     };
 
+    private String imageUrl;
+    private String url;
     private String title;
     private String content;
 
@@ -29,14 +31,35 @@ public class SalesActivity extends Ad implements ActionRespObject<SalesActivity>
 
     public SalesActivity(Parcel in){
         super(in);
+        imageUrl = in.readString();
+        url = in.readString();
         title = in.readString();
+        content = in.readString();
     }
 
     public void writeToParcel(Parcel dest, int flags) {
         super.writeToParcel(dest, flags);
         dest.writeString(title);
+        dest.writeString(imageUrl);
+        dest.writeString(url);
+        dest.writeString(content);
     }
 
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
 
     public String getTitle() {
         return title;
@@ -58,10 +81,15 @@ public class SalesActivity extends Ad implements ActionRespObject<SalesActivity>
         if(json == null)
             throw new IllegalArgumentException("JSONObject is null");
         SalesActivity salesActivity = new SalesActivity();
-        Ad ad = Ad.fromJSON(json);
-        salesActivity.setId(ad.getId());
-        salesActivity.setImageUrl(ad.getImageUrl());
-        salesActivity.setUrl(ad.getUrl());
+        if(json.has("id")){
+            salesActivity.setId(json.getString("id"));
+        }
+        if(json.has("articleimg")){
+            salesActivity.setImageUrl(json.getString("articleimg"));
+        }
+        if(json.has("url")){
+            salesActivity.setUrl(json.getString("url"));
+        }
         if(json.has("title")){
             salesActivity.setTitle(json.getString("title"));
         }

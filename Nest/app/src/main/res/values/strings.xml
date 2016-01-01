@@ -259,6 +259,8 @@
     <string name="balance_recharge_time">充值时间:</string>
     <string name="points_accumulation_history">积分记录明细</string>
     <string name="ingots_accumulation_history">元宝记录明细</string>
+    <!--无宝兑换记录-->
+    <string name="ingot_exchange_ingots" formatted="false">兑换使用了%s元宝</string>
 
     <!-- Settings -->
     <string name="settings">设置</string>
@@ -285,8 +287,9 @@
     <string name="user_phone">绑定手机</string>
     <!-- 修必密码 -->
     <string name="old_pwd">输入原密码</string>
-    <string name="new_pwd">请输入新密码</string>
+    <string name="new_pwd">请输入6-12位数字作为新密码</string>
     <string name="new_pwd_again">确认新密码</string>
+    <string name="change_pwd_succ">成功修改密码</string>
     <string name="save_changes">保存修改</string>
     <!-- 帮助 -->
     <string name="help_center">帮助中心</string>
@@ -299,6 +302,8 @@
     <string name="help_return_commodity">我要退货/换货</string>
     <string name="help_return_time">申请退货/换货后，多久办理</string>
 
+
+    <!--积分兑换记录-->
 
     <!--消息类-->
     <string name="send_succ">短信已发送成功</string>

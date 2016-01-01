@@ -29,19 +29,24 @@ public abstract class PTRListActivity<Result> extends ListActivity implements Pu
     private LoadingSupportPTRListView mLoadingSupportPTRListView;
     private ContentListAdapter mPtrListAdapter;
     private PaginationAction<Result> mAction;
+    private HeaderView mHeaderView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_simple_ptr_list);
-        HeaderView headerView = (HeaderView) findViewById(R.id.header);
-        headerView.hideRightImage();
-        headerView.setTitle(getTitleResId());
+        mHeaderView = (HeaderView) findViewById(R.id.header);
+        mHeaderView.hideRightImage();
+        mHeaderView.setTitle(getTitleResId());
         mLoadingSupportPTRListView = (LoadingSupportPTRListView)findViewById(R.id.refresh_widget);
         mLoadingSupportPTRListView.setOnRefreshListener(this);
         mLoadingSupportPTRListView.setMode(getPTRMode());
         if(!initOnResume())
             loadFirstPage(true);
+    }
+
+    protected HeaderView getHeaderView(){
+        return mHeaderView;
     }
 
     public void onResume(){
@@ -50,7 +55,7 @@ public abstract class PTRListActivity<Result> extends ListActivity implements Pu
             loadFirstPage(true);
     }
 
-    public LoadingSupportPTRListView getLoadingSupportPTRListView(){
+    protected LoadingSupportPTRListView getLoadingSupportPTRListView(){
         return mLoadingSupportPTRListView;
     }
 
@@ -71,6 +76,7 @@ public abstract class PTRListActivity<Result> extends ListActivity implements Pu
                         getListView().setDivider(null);
                         mLoadingSupportPTRListView.showListView();
                         mLoadingSupportPTRListView.refreshComplete();
+                        onPostLoadFirstPage();
                     }
 
                     public void onFailure(AbstractAction.ActionError error) {
@@ -122,6 +128,8 @@ public abstract class PTRListActivity<Result> extends ListActivity implements Pu
         Result result = (Result)getListView().getItemAtPosition(position);
         showDetailActivity(result);
     }
+
+    protected void onPostLoadFirstPage(){ }
 
     public PullToRefreshBase.Mode getPTRMode(){
         return PullToRefreshBase.Mode.BOTH;

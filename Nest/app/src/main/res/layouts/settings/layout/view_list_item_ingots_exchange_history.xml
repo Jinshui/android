@@ -54,7 +54,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="14dp"
-                android:text="兑换使用了3000元宝"
+                android:text="@string/ingot_exchange_ingots"
                 android:textColor="#BBBDBC"
                 android:textSize="@dimen/font_middle" />
 

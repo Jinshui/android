@@ -35,7 +35,6 @@
             android:layout_alignParentBottom="true"
             android:layout_toRightOf="@+id/id_txt_my_points_title"
             android:padding="0dp"
-            android:text="26,000,000"
             android:textColor="@color/black"
             android:textSize="@dimen/font_xx_larger" />
 

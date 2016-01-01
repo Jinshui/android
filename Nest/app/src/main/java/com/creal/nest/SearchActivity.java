@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.creal.nest.actions.AbstractAction;
+import com.creal.nest.actions.CommonPaginationAction;
 import com.creal.nest.actions.GetShopListAction;
 import com.creal.nest.model.Pagination;
 import com.creal.nest.model.Shop;
@@ -48,6 +49,7 @@ public class SearchActivity extends ListActivity implements PullToRefreshBase.On
         mSearchHistoryPanel.setVisibility(View.INVISIBLE);
         mLoadingSupportPTRListView.setVisibility(View.VISIBLE);
         mLoadingSupportPTRListView.showLoadingView();
+
         mGetShopListAction = new GetShopListAction(this, "", 0, 0, 1, Constants.PAGE_SIZE);
         mGetShopListAction.execute(
             new AbstractAction.BackgroundCallBack<Pagination<Shop>>() {

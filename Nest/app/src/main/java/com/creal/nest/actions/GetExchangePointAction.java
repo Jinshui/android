@@ -10,7 +10,7 @@ import org.json.JSONObject;
 
 
 public class GetExchangePointAction extends PaginationAction<ExchangePoint> {
-    private static final String tag = "TT-GetRechargeAction";
+    private static final String tag = "TT-GetExchangePointAction";
     //request keys
     private static final String NAME = "name";
 

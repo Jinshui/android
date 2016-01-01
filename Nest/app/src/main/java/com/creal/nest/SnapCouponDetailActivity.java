@@ -9,12 +9,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.creal.nest.actions.AbstractAction;
-import com.creal.nest.actions.ReceiveCouponAction;
+import com.creal.nest.actions.CommonObjectAction;
 import com.creal.nest.model.Coupon;
 import com.creal.nest.model.ReceiveCouponResult;
 import com.creal.nest.util.PreferenceUtil;
 import com.creal.nest.util.UIUtil;
 import com.creal.nest.views.HeaderView;
+
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class SnapCouponDetailActivity extends Activity {
 
@@ -51,10 +56,14 @@ public class SnapCouponDetailActivity extends Activity {
     }
 
     public void onSnapClick(View view){
-        String cardId = PreferenceUtil.getString(this, Constants.APP_USER_CARD_ID, null);
         final Dialog progressDialog = UIUtil.createLoadingDialog(this, getString(R.string.loading), false);
         progressDialog.show();
-        ReceiveCouponAction action = new ReceiveCouponAction(this, cardId, mCoupon.getId());
+
+        String cardId = PreferenceUtil.getString(this, Constants.APP_USER_CARD_ID, null);
+        Map parameters = new HashMap();
+        parameters.put(Constants.KEY_CARD_ID, cardId);
+        parameters.put("coupons_id", mCoupon.getId());
+        CommonObjectAction action = new CommonObjectAction(this, Constants.URL_RECEIVE_COUPONS, parameters, ReceiveCouponResult.class);
         action.execute(new AbstractAction.UICallBack<ReceiveCouponResult>() {
             public void onSuccess(ReceiveCouponResult result) {
                 progressDialog.dismiss();

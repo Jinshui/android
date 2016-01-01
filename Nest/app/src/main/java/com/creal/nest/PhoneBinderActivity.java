@@ -13,13 +13,12 @@ import android.widget.Toast;
 
 import com.creal.nest.actions.AbstractAction;
 import com.creal.nest.actions.BindPhoneCardAction;
-import com.creal.nest.actions.GetVerificationCodeAction;
-import com.creal.nest.test.TestActivity;
+import com.creal.nest.actions.StringAction;
 import com.creal.nest.util.TimeCountUtil;
-import com.creal.nest.util.Utils;
 import com.creal.nest.views.HeaderView;
 
-import org.json.JSONObject;
+import java.util.HashMap;
+import java.util.Map;
 
 public class PhoneBinderActivity extends Activity {
 
@@ -104,7 +103,10 @@ public class PhoneBinderActivity extends Activity {
         }
         final TimeCountUtil timeCountUtil = new TimeCountUtil(this, 60000, 1000, mBtnGetCode);
         timeCountUtil.start();
-        GetVerificationCodeAction getVerificationCodeAction = new GetVerificationCodeAction(this, phone.toString());
+
+        Map parameters = new HashMap<>();
+        parameters.put("mobile", phone.toString());
+        StringAction getVerificationCodeAction = new StringAction(this, Constants.URL_GET_VERIFICATION_CODE, parameters, "code");
         getVerificationCodeAction.execute(new AbstractAction.UICallBack<String>() {
             public void onSuccess(String result) {
                 mVerificationCode.setText(result);
