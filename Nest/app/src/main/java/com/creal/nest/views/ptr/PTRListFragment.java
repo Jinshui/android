@@ -1,8 +1,9 @@
 package com.creal.nest.views.ptr;
 
-import android.app.ListActivity;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.ListFragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,14 +23,9 @@ import com.handmark.pulltorefresh.library.PullToRefreshBase;
 
 import java.util.List;
 
-/**
- * Deprecated, use PTRListFragment instead
- * @param <Result>
- */
-@Deprecated
-public abstract class PTRListActivity<Result> extends ListActivity implements PullToRefreshBase.OnRefreshListener2<ListView> {
+public abstract class PTRListFragment<Result> extends ListFragment implements PullToRefreshBase.OnRefreshListener2<ListView> {
 
-    private static final String TAG = "XYK-PTRListActivity";
+    private static final String TAG = "XYK-PTRListFragment";
 
     private LoadingSupportPTRListView mLoadingSupportPTRListView;
     private ContentListAdapter mPtrListAdapter;
@@ -37,15 +33,20 @@ public abstract class PTRListActivity<Result> extends ListActivity implements Pu
     private HeaderView mHeaderView;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_simple_ptr_list);
-        mHeaderView = (HeaderView) findViewById(R.id.header);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.activity_simple_ptr_list, null);
+        mHeaderView = (HeaderView) view.findViewById(R.id.header);
         mHeaderView.hideRightImage();
-        mHeaderView.setTitle(getTitleResId());
-        mLoadingSupportPTRListView = (LoadingSupportPTRListView)findViewById(R.id.refresh_widget);
+        if(getTitleResId() > 0)
+            mHeaderView.setTitle(getTitleResId());
+        mLoadingSupportPTRListView = (LoadingSupportPTRListView)view.findViewById(R.id.refresh_widget);
         mLoadingSupportPTRListView.setOnRefreshListener(this);
         mLoadingSupportPTRListView.setMode(getPTRMode());
+        return view;
+    }
+
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
         if(!initOnResume())
             loadFirstPage(true);
     }
@@ -76,7 +77,7 @@ public abstract class PTRListActivity<Result> extends ListActivity implements Pu
         mAction.execute(
                 new AbstractAction.UICallBack<Pagination<Result>>() {
                     public void onSuccess(Pagination<Result> result) {
-                        mPtrListAdapter = new ContentListAdapter(getBaseContext(), result.getItems());
+                        mPtrListAdapter = new ContentListAdapter(getActivity(), result.getItems());
                         setListAdapter(mPtrListAdapter);
                         getListView().setDivider(null);
                         mLoadingSupportPTRListView.showListView();
@@ -100,23 +101,23 @@ public abstract class PTRListActivity<Result> extends ListActivity implements Pu
         Log.d(TAG, "loadNextPage");
         mAction = mAction.getNextPageAction();
         mAction.execute(
-            new AbstractAction.UICallBack<Pagination<Result>>() {
-                public void onSuccess(Pagination<Result> result) {
-                    if(result.getItems().isEmpty()){
-                        Toast.makeText(getBaseContext(), R.string.load_done, Toast.LENGTH_SHORT).show();
-                        mAction = mAction.getPreviousPageAction();
-                    }else {
-                        mPtrListAdapter.addMore(result.getItems());
+                new AbstractAction.UICallBack<Pagination<Result>>() {
+                    public void onSuccess(Pagination<Result> result) {
+                        if(result.getItems().isEmpty()){
+                            Toast.makeText(getActivity(), R.string.load_done, Toast.LENGTH_SHORT).show();
+                            mAction = mAction.getPreviousPageAction();
+                        }else {
+                            mPtrListAdapter.addMore(result.getItems());
+                        }
+                        mLoadingSupportPTRListView.refreshComplete();
                     }
-                    mLoadingSupportPTRListView.refreshComplete();
-                }
 
-                public void onFailure(AbstractAction.ActionError error) {
-                    Toast.makeText(getBaseContext(), getLoadNextPageError(error), Toast.LENGTH_SHORT).show();
-                    mAction = mAction.getPreviousPageAction();
-                    mLoadingSupportPTRListView.refreshComplete();
+                    public void onFailure(AbstractAction.ActionError error) {
+                        Toast.makeText(getActivity(), getLoadNextPageError(error), Toast.LENGTH_SHORT).show();
+                        mAction = mAction.getPreviousPageAction();
+                        mLoadingSupportPTRListView.refreshComplete();
+                    }
                 }
-            }
         );
     }
 
@@ -124,7 +125,7 @@ public abstract class PTRListActivity<Result> extends ListActivity implements Pu
         return getString(R.string.load_failed);
     }
 
-    protected void onListItemClick(ListView l, View v, int position, long id){
+    public void onListItemClick(ListView l, View v, int position, long id){
         if ( getListAdapter() instanceof ErrorAdapter){
             loadFirstPage(true);
             return;
@@ -149,7 +150,7 @@ public abstract class PTRListActivity<Result> extends ListActivity implements Pu
     public void showDetailActivity(Result result){ }
 
     public ListAdapter getErrorAdapter(){
-        return new ErrorAdapter(getBaseContext());
+        return new ErrorAdapter(getActivity());
     }
 
     @Override
