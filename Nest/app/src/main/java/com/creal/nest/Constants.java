@@ -31,6 +31,7 @@ public class Constants {
     public static final String URL_GET_CARD_INFO              = "http://" + SERVER_HOST + "/lmk_interface/cardinfo/index.php";
     public static final String URL_GET_EXCHANGE_LIST          = "http://" + SERVER_HOST + "/lmk_interface/exchangelist/index.php";
     public static final String URL_SEARCH                     = "http://" + SERVER_HOST + "/lmk_interface/search/index.php";
+    public static final String URL_PAY_HISTORY                = "http://" + SERVER_HOST + "/lmk_interface/paymentlist/index.php";
 
     public final static String KEY_CARD_ID = "card_id";
     public final static String KEY_CARD_NUM = "card_num";
@@ -52,6 +53,9 @@ public class Constants {
     public static final String APP_USER_POINTS        = "app_user_points";
     public static final String APP_USER_AMOUNT        = "app_user_amount";
     public static final String APP_USER_GESTURE_PWD   = "app_user_gesture_pwd";
+    public static final String APP_SEARCH_KEYWORDS    = "app_user_search_keywords";
+
+    public static final String APP_KEYWORDS_SPLITTER  = "\\|\\|";
 
 
 

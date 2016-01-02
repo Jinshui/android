@@ -24,6 +24,7 @@
             android:onClick="onBackClick" />
 
         <EditText
+            android:id="@+id/id_text_keyword"
             android:layout_width="0dip"
             android:layout_height="27dip"
             android:layout_marginTop="5dip"
@@ -52,105 +53,13 @@
 
     </LinearLayout>
 
-    <!--<ScrollView-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:fadingEdgeLength="0dip"-->
-        <!--android:fillViewport="true"-->
-        <!--android:scrollbars="none">-->
+    <fragment
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:name="com.creal.nest.SearchHistoryListFragment"
+        android:orientation="vertical">
+    </fragment>
 
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <LinearLayout
-                android:id="@+id/id_search_history"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:gravity="top|center_horizontal"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingBottom="15dp"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="20dp"
-                    android:paddingTop="15dp"
-                    android:text="@string/search_history"
-                    android:textColor="#625F5F"
-                    android:textSize="@dimen/font_middle" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/white"
-                    android:paddingBottom="15dp"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="20dp"
-                    android:paddingTop="15dp"
-                    android:text="热词一"
-                    android:textColor="#625F5F"
-                    android:textSize="@dimen/font_middle" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1px"
-                    android:background="@drawable/divider_horizontal" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/white"
-                    android:paddingBottom="15dp"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="20dp"
-                    android:paddingTop="15dp"
-                    android:text="热词二"
-                    android:textColor="#625F5F"
-                    android:textSize="@dimen/font_middle" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1px"
-                    android:background="@drawable/divider_horizontal" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/white"
-                    android:paddingBottom="15dp"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="20dp"
-                    android:paddingTop="15dp"
-                    android:text="热词三"
-                    android:textColor="#625F5F"
-                    android:textSize="@dimen/font_middle" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1px"
-                    android:background="@drawable/divider_horizontal" />
-
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/white"
-                    android:paddingBottom="15dp"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="20dp"
-                    android:paddingTop="15dp"
-                    android:onClick="onCleanClick"
-                    android:text="清除"
-                    android:textColor="#625F5F"
-                    android:textSize="@dimen/font_middle" />
-            </LinearLayout>
-            <com.creal.nest.views.ptr.LoadingSupportPTRListView
-                android:id="@+id/refresh_widget"
-                android:visibility="gone"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-        </FrameLayout>
-    <!--</ScrollView>-->
 </LinearLayout>

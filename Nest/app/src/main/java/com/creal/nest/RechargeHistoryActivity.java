@@ -19,18 +19,37 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class RechargeHistoryActivity extends FragmentActivity {
+
+    public static final String INTENT_EXTRA_ACTION_TYPE = "action_type";
+    public static final String INTENT_EXTRA_ACTION_TYPE_RECHARGE = "RECHARGE_HISTORY";
+    public static final String INTENT_EXTRA_ACTION_TYPE_PROPERTY_PAYMENT = "PROPERTY_PAYMENT_HISTORY";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getSupportFragmentManager().findFragmentById(android.R.id.content) == null) {
-            getSupportFragmentManager().beginTransaction().add(android.R.id.content, new RechargeListFragment()).commit();
+            RechargeListFragment fragment = new RechargeListFragment();
+            Bundle bundle = new Bundle();
+            bundle.putString(INTENT_EXTRA_ACTION_TYPE, getIntent().getStringExtra(INTENT_EXTRA_ACTION_TYPE));
+            fragment.setArguments(bundle);
+            getSupportFragmentManager().beginTransaction().add(android.R.id.content, fragment).commit();
         }
     }
 
     public static class RechargeListFragment extends PTRListFragment<Recharge> {
+        private String mActionType;
+        public void onCreate(Bundle bundle){
+            super.onCreate(bundle);
+            mActionType = getArguments().getString(INTENT_EXTRA_ACTION_TYPE);
+        }
+
         @Override
         public int getTitleResId() {
-            return R.string.recharge_history;
+            if(INTENT_EXTRA_ACTION_TYPE_RECHARGE.equals(mActionType)){
+                return R.string.recharge_history;
+            }else {
+                return R.string.pay_history;
+            }
         }
 
         @Override
@@ -41,11 +60,15 @@ public class RechargeHistoryActivity extends FragmentActivity {
             parameters.put("state", "");
             parameters.put("start_time", "");
             parameters.put("end_time", "");
-            return new CommonPaginationAction(getActivity(), 1, Constants.PAGE_SIZE, Constants.URL_GET_RECHARGE_HISTORY, parameters, Recharge.class);
+            if(INTENT_EXTRA_ACTION_TYPE_RECHARGE.equals(mActionType)){
+                return new CommonPaginationAction(getActivity(), 1, Constants.PAGE_SIZE, Constants.URL_GET_RECHARGE_HISTORY, parameters, Recharge.class);
+            }else{
+                return new CommonPaginationAction(getActivity(), 1, Constants.PAGE_SIZE, Constants.URL_PAY_HISTORY, parameters, Recharge.class);
+            }
         }
 
         public View getListItemView(Recharge item, View convertView, ViewGroup parent, LayoutInflater inflater) {
-            ViewHolder holder = null;
+            ViewHolder holder;
             if (convertView == null) {
                 convertView = inflater.inflate(R.layout.view_list_item_recharge_history, parent, false);
                 holder = new ViewHolder();

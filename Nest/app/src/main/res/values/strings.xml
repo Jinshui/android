@@ -12,6 +12,8 @@
     <string name="scan">扫描二维码</string>
     <string name="search">搜索</string>
     <string name="search_history">搜索记录</string>
+    <string name="search_history_clean">清除</string>
+
     <!--登录相关-->
     <string name="login_account_login">账号登录</string>
     <string name="login_card_id">卡号/手机号/邮箱</string>

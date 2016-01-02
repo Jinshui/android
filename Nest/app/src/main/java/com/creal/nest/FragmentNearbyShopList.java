@@ -29,12 +29,14 @@ public class FragmentNearbyShopList extends PTRListFragment<Shop> {
     private View mContentView;
     private Location mLocation;
     private LocationManager mLocationManager;
+    private PaginationAction<Shop> mPaginationAction;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         Log.d(tag, mCategory + " onCreate()");
         super.onCreate(savedInstanceState);
-        mCategory = getArguments().getParcelable(INTENT_EXTRA_CATEGORY);
+        if(getArguments()!=null && getArguments().containsKey(INTENT_EXTRA_CATEGORY))
+            mCategory = getArguments().getParcelable(INTENT_EXTRA_CATEGORY);
         if (savedInstanceState != null) {
             mCategory = savedInstanceState.getParcelable(INTENT_EXTRA_CATEGORY);
         }
@@ -52,18 +54,28 @@ public class FragmentNearbyShopList extends PTRListFragment<Shop> {
     }
 
     public PaginationAction<Shop> getPaginationAction() {
+        if(mPaginationAction != null){
+            //action can only be executed once
+            return mPaginationAction.cloneCurrentPageAction();
+        }
         Map<String, String> parameters = new HashMap<>();
-        parameters.put("class_id", mCategory.getId());
+        if(mCategory != null)
+            parameters.put("class_id", mCategory.getId());
         mLocation = mLocationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
 //        parameters.put("latitude", mLocation.getLatitude());
 //        parameters.put("longitude", mLocation.getLongitude());
         return new CommonPaginationAction(getActivity(), 1, 10, Constants.URL_GET_SHOPS, parameters, Shop.class, "cominfo");
     }
 
+    public void setPaginationAction(PaginationAction<Shop> paginationAction){
+        mPaginationAction = paginationAction;
+    }
+
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         Log.d(tag, mCategory + " onSaveInstanceState");
-        outState.putParcelable(INTENT_EXTRA_CATEGORY, mCategory);
+        if(mCategory!=null)
+            outState.putParcelable(INTENT_EXTRA_CATEGORY, mCategory);
     }
 
     public void showDetailActivity(Shop shop) {

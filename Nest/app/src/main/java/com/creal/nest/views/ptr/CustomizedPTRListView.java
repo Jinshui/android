@@ -13,6 +13,7 @@ import com.handmark.pulltorefresh.library.PullToRefreshListView;
 public class CustomizedPTRListView extends PullToRefreshListView {
 
 	private LinearLayout mListViewHeader;
+    private LinearLayout mListViewFooter;
 
 	public CustomizedPTRListView(Context context) {
 		super(context);

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/content_bg">
+
+    <TextView
+        android:id="@+id/id_txt_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="15dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="20dp"
+        android:paddingTop="15dp"
+        android:text="@string/search_history"
+        android:textColor="#625F5F"
+        android:textSize="@dimen/font_middle" />
+
+    <ListView
+        android:id="@android:id/list"
+        android:divider="@null"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <!--<Button-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="@color/white"-->
+        <!--android:onClick="onCleanClick"-->
+        <!--android:paddingBottom="15dp"-->
+        <!--android:paddingLeft="20dp"-->
+        <!--android:paddingRight="20dp"-->
+        <!--android:paddingTop="15dp"-->
+        <!--android:text="清除"-->
+        <!--android:textColor="#625F5F"-->
+        <!--android:textSize="@dimen/font_middle" />-->
+</LinearLayout>

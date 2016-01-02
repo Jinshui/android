@@ -34,7 +34,8 @@ public class CommonPaginationAction<T extends ActionRespObject<T>> extends Pagin
                 getPageSize(),
                 mURL,
                 mParameter,
-                mClass
+                mClass,
+                getContentsKey()
         );
         return action;
     }
