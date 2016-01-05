@@ -200,7 +200,7 @@
                 android:layout_height="@dimen/input_text_height_middle"
                 android:layout_marginLeft="15dip"
                 android:layout_marginRight="15dip"
-                android:background="@drawable/search_text_view_border"
+                android:background="@drawable/bg_darkred_big_cornered"
                 android:onClick="onSubmitClick"
                 android:text="@string/exchange_submit"
                 android:textColor="@color/white"

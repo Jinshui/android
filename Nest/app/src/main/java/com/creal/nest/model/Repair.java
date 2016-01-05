@@ -3,13 +3,15 @@ package com.creal.nest.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.creal.nest.actions.ActionRespObject;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Repair extends BaseModel {
+public class Repair extends BaseModel implements ActionRespObject<Repair>{
 
     public static final Creator<Repair> CREATOR
             = new Creator<Repair>() {
@@ -80,6 +82,8 @@ public class Repair extends BaseModel {
         }
 
         public static String toString(State state){
+            if(state == null)
+                return "等待处理...";
             switch (state) {
                 case UNPROCESSED:
                     return "等待处理...";
@@ -172,8 +176,8 @@ public class Repair extends BaseModel {
         if (json == null)
             throw new IllegalArgumentException("JSONObject is null");
         Repair repair = new Repair();
-        if(json.has("repair_id")){
-            repair.setId(json.getString("repair_id"));
+        if(json.has("id")){
+            repair.setId(json.getString("id"));
         }
         if(json.has("title")){
             repair.setTitle(json.getString("title"));
@@ -188,5 +192,10 @@ public class Repair extends BaseModel {
             repair.setSummary(json.getString("description"));
         }
         return repair;
+    }
+
+    @Override
+    public Repair fillWithJSON(JSONObject jsonObject) throws JSONException {
+        return fromJSON(jsonObject);
     }
 }

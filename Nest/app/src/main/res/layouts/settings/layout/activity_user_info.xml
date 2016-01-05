@@ -160,6 +160,43 @@
 
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:paddingBottom="15dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingTop="30dp">
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="35dip"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/bg_darkred_big_cornered"
+                    android:paddingLeft="20dip"
+                    android:paddingRight="20dip"
+                    android:onClick="onChangeCard"
+                    android:text="@string/user_rebind"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="35dip"
+                    android:paddingLeft="20dip"
+                    android:paddingRight="20dip"
+                    android:layout_marginLeft="20dp"
+                    android:background="@drawable/bg_darkred_big_cornered"
+                    android:onClick="onExitClick"
+                    android:text="@string/user_exit"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

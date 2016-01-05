@@ -21,3 +21,5 @@ Nest/.gradle/
 *.iml
 .idea
 local.properties
+alipay_demo/
+wechat_sdk_sample_android/

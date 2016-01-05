@@ -75,25 +75,25 @@ public abstract class PTRListFragment<Result> extends ListFragment implements Pu
             mLoadingSupportPTRListView.showLoadingView();
         mAction = getPaginationAction();
         mAction.execute(
-                new AbstractAction.UICallBack<Pagination<Result>>() {
-                    public void onSuccess(Pagination<Result> result) {
-                        mPtrListAdapter = new ContentListAdapter(getActivity(), result.getItems());
-                        setListAdapter(mPtrListAdapter);
-                        getListView().setDivider(null);
-                        mLoadingSupportPTRListView.showListView();
-                        mLoadingSupportPTRListView.refreshComplete();
-                        onPostLoadFirstPage();
-                    }
-
-                    public void onFailure(AbstractAction.ActionError error) {
-                        mAction = mAction.cloneCurrentPageAction();
-                        getListView().getLayoutParams().height = AbsListView.LayoutParams.MATCH_PARENT;
-                        setListAdapter(getErrorAdapter());
-                        getListView().setDivider(null);
-                        mLoadingSupportPTRListView.showListView();
-                        mLoadingSupportPTRListView.refreshComplete();
-                    }
+            new AbstractAction.UICallBack<Pagination<Result>>() {
+                public void onSuccess(Pagination<Result> result) {
+                    mPtrListAdapter = new ContentListAdapter(getActivity(), result.getItems());
+                    setListAdapter(mPtrListAdapter);
+                    getListView().setDivider(null);
+                    mLoadingSupportPTRListView.showListView();
+                    mLoadingSupportPTRListView.refreshComplete();
+                    onPostLoadFirstPage();
                 }
+
+                public void onFailure(AbstractAction.ActionError error) {
+                    mAction = mAction.cloneCurrentPageAction();
+                    getListView().getLayoutParams().height = AbsListView.LayoutParams.MATCH_PARENT;
+                    setListAdapter(getErrorAdapter());
+                    getListView().setDivider(null);
+                    mLoadingSupportPTRListView.showListView();
+                    mLoadingSupportPTRListView.refreshComplete();
+                }
+            }
         );
     }
 

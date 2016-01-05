@@ -83,7 +83,7 @@
                 android:layout_marginLeft="15dip"
                 android:layout_marginRight="15dip"
                 android:layout_marginTop="20dip"
-                android:background="@drawable/search_text_view_border"
+                android:background="@drawable/bg_darkred_big_cornered"
                 android:onClick="onSaveChangesClick"
                 android:text="@string/save_changes"
                 android:textColor="@color/white"

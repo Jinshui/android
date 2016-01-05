@@ -86,7 +86,7 @@ public class PropertyManagementActivity extends Activity {
     }
 
     public void onPayHistoryClick(View view) {
-        Intent intent = new Intent(this, RechargeHistoryActivity.class);
+        Intent intent = new Intent(this, PayHistoryActivity.class);
         startActivity(intent);
     }
 

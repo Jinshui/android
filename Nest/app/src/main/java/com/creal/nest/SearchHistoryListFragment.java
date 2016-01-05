@@ -98,7 +98,8 @@ public class SearchHistoryListFragment extends ListFragment {
                 }else{
                     List<String> keywordList = Arrays.asList(keywords.split(Constants.APP_KEYWORDS_SPLITTER));
                     StringBuilder sb = new StringBuilder(keyword).append("||");
-                    for(String savedKeyword: keywordList) {
+                    for(int i = 0; i < keywordList.size() && i < Constants.MAX_CACHED_KEYWORD_SIZE - 1; i ++) {
+                        String savedKeyword =  keywordList.get(i);
                         if (!keyword.equals(savedKeyword)) {
                             sb.append(savedKeyword).append("||");
                         }

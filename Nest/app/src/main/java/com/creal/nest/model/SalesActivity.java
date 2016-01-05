@@ -31,9 +31,9 @@ public class SalesActivity extends BaseModel implements ActionRespObject<SalesAc
 
     public SalesActivity(Parcel in){
         super(in);
+        title = in.readString();
         imageUrl = in.readString();
         url = in.readString();
-        title = in.readString();
         content = in.readString();
     }
 

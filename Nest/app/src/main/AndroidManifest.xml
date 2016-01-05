@@ -59,6 +59,7 @@
         <activity android:name=".property.PropertyRepairActivity" android:screenOrientation="portrait"/>
         <activity android:name=".property.RepairsActivity" android:screenOrientation="portrait"/>
         <activity android:name=".property.RepairDetailActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".property.PayHistoryActivity" android:screenOrientation="portrait"/>
         <activity android:name=".IngotsMallActivity" android:screenOrientation="portrait"/>
         <activity android:name=".TryLuckyActivity" android:screenOrientation="portrait"/>
         <activity android:name=".TryLuckyFailDialogActivity" android:theme="@style/Theme.CustomDialog" android:screenOrientation="portrait"/>

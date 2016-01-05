@@ -57,7 +57,7 @@
     <!--手势密码-->
     <string name="guesture_pwd_set">设置手势密码</string>
     <string name="guesture_pwd_confirm">确认手势密码</string>
-    <string name="guesture_pwd_verify">验证手势密码</string>
+    <string name="guesture_pwd_verify">请输入手势密码</string>
     <string name="guesture_pwd_new">请输入新密码</string>
     <string name="guesture_pwd_new_confirm">请确认新密码</string>
     <string name="guesture_pwd_skip">跳过</string>
@@ -207,6 +207,7 @@
     <string name="property_repair_vecode">请输入验证码</string>
     <string name="property_repair_report_list">报修列表</string>
     <string name="property_repair_report_time">报修时间:</string>
+    <string name="property_repair_report_time_detail" formatted="false">报修时间: %s</string>
     <string name="property_repair_finish_time">完成时间:</string>
     <string name="property_repair_detail">报修详情</string>
 
@@ -287,6 +288,8 @@
     <string name="user_sex">性别</string>
     <string name="user_card">卡号</string>
     <string name="user_phone">绑定手机</string>
+    <string name="user_exit">退出登录</string>
+    <string name="user_rebind">重新绑定</string>
     <!-- 修必密码 -->
     <string name="old_pwd">输入原密码</string>
     <string name="new_pwd">请输入6-12位数字作为新密码</string>

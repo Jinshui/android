@@ -34,7 +34,6 @@
                     android:layout_height="wrap_content"
                     android:paddingLeft="10dp"
                     android:paddingTop="10dp"
-                    android:text="防盗门破损进行维修"
                     android:textColor="@color/black"
                     android:textSize="@dimen/font_large" />
 
@@ -45,7 +44,6 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/bg_pink_cornered"
-                    android:text="进行中"
                     android:textColor="@color/black"
                     android:textSize="@dimen/font_middle" />
 
@@ -63,7 +61,6 @@
                     android:drawablePadding="5dp"
                     android:paddingLeft="10dp"
                     android:paddingTop="10dp"
-                    android:text="报修时间：2015年6月30日 15：30"
                     android:textColor="@color/grey"
                     android:textSize="@dimen/font_middle" />
 
@@ -73,7 +70,6 @@
                     android:layout_height="wrap_content"
                     android:paddingLeft="10dp"
                     android:paddingTop="10dp"
-                    android:text="防盗门破损待修理，主要位置门把门下方，出现划痕。防盗门破损待修理主要位置门把门下方，出现划痕。防盗门破损待修理主要位置门把门下方，出现划痕。"
                     android:textColor="@color/grey"
                     android:textSize="@dimen/font_middle" />
             </LinearLayout>

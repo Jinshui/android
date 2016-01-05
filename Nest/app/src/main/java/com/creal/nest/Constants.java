@@ -62,6 +62,8 @@ public class Constants {
     public static final String CACHE_DIR = "/nest";
     //Pagination
     public static final int PAGE_SIZE = 10;
+    //Cached Keywords
+    public static final int MAX_CACHED_KEYWORD_SIZE = 10;
 
     public final static String SERVICE_ID_CATEGORY = "S1112";
     public final static String SERVICE_ID_NEWS = "S1116";

@@ -83,7 +83,6 @@ public class GesturePwdActivity extends Activity {
             public void onBlockSelected(int cId) {
             }
         });
-
         init(State.valueOf(getIntent().getStringExtra(INTENT_EXTRA_ACTION_TYPE)));
     }
 

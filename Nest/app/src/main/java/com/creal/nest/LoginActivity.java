@@ -63,7 +63,11 @@ public class LoginActivity extends Activity {
             public void onSuccess(Object result) {
                 progressDialog.dismiss();
                 Intent intent = new Intent(LoginActivity.this, GesturePwdActivity.class);
-                intent.putExtra(GesturePwdActivity.INTENT_EXTRA_ACTION_TYPE, GesturePwdActivity.State.SET_PWD.name());
+                String savedPwd = PreferenceUtil.getString(LoginActivity.this, Constants.APP_USER_GESTURE_PWD, null);
+                if(TextUtils.isEmpty(savedPwd))
+                    intent.putExtra(GesturePwdActivity.INTENT_EXTRA_ACTION_TYPE, GesturePwdActivity.State.SET_PWD.name());
+                else
+                    intent.putExtra(GesturePwdActivity.INTENT_EXTRA_ACTION_TYPE, GesturePwdActivity.State.VERIFY_PWD.name());
                 startActivity(intent);
                 finish();
             }

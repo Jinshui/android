@@ -19,7 +19,7 @@
             android:layout_width="@dimen/my_coupons_list_item_icon_width"
             android:layout_height="@dimen/my_coupons_list_item_icon_height"
             android:layout_centerVertical="true"
-            android:background="@drawable/test_my_coupons"
+            android:background="@drawable/icon_list_default_bg"
             android:contentDescription="" />
 
         <RelativeLayout
@@ -44,8 +44,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#646462"
-                    android:maxLines="2"
-                    android:text="@string/test_description"/>
+                    android:maxLines="2"/>
                 <!--<TextView-->
                     <!--android:layout_width="wrap_content"-->
                     <!--android:layout_height="wrap_content"-->
@@ -60,8 +59,7 @@
                 android:layout_width="fill_parent"
                 android:background="#F3F6EF"
                 android:layout_height="wrap_content"
-                android:textColor="#646462"
-                android:text="@string/my_coupons_expire_date"/>
+                android:textColor="#646462"/>
         </RelativeLayout>
     </LinearLayout>
 

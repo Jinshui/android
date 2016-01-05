@@ -51,7 +51,7 @@ public class FragmentSetting extends Fragment {
         mGeneralInfo.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), UserInfoActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent, UserInfoActivity.REQUEST_CODE);
             }
         });
         mChangePwd.setOnClickListener(new View.OnClickListener() {
@@ -100,4 +100,13 @@ public class FragmentSetting extends Fragment {
             }
         });
     }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(requestCode == UserInfoActivity.REQUEST_CODE){
+            if(data.getBooleanExtra(UserInfoActivity.INTENT_EXTRA_RESULT, false)){
+                getActivity().finish();
+            }
+        }
+    }
+
 }

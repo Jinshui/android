@@ -3,24 +3,23 @@ package com.creal.nest;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.Intent;
 import android.location.Location;
 import android.location.LocationManager;
-import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.creal.nest.actions.AbstractAction;
-import com.creal.nest.actions.GetShopDetailAction;
+import com.creal.nest.actions.CommonObjectAction;
 import com.creal.nest.model.Shop;
 import com.creal.nest.util.MapDistance;
 import com.creal.nest.util.UIUtil;
 import com.creal.nest.views.CustomizeImageView;
 import com.creal.nest.views.HeaderView;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class ShopDetailActivity extends Activity {
 
@@ -57,7 +56,9 @@ public class ShopDetailActivity extends Activity {
     }
 
     private void init(final String shopId){
-        GetShopDetailAction getShopDetailAction = new GetShopDetailAction(this, shopId);
+        Map parameters = new HashMap();
+        parameters.put("id", shopId);
+        CommonObjectAction getShopDetailAction = new CommonObjectAction(this, Constants.URL_GET_SHOP_DETAIL, parameters, Shop.class);
         final Dialog dialog = UIUtil.showLoadingDialog(this, getString(R.string.loading), true);
         getShopDetailAction.execute(new AbstractAction.UICallBack<Shop>() {
             public void onSuccess(Shop shop) {

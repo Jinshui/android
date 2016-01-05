@@ -18,6 +18,8 @@
         android:background="@drawable/bg_white_big_cornered"
         android:drawableLeft="@drawable/home_header_search_icon"
         android:drawablePadding="10dp"
+        android:paddingLeft="10dp"
+        android:editable="false"
         android:gravity="center_vertical"
         android:hint="@string/search_hint"
         android:singleLine="true"

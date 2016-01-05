@@ -32,7 +32,7 @@
         android:layout_height="@dimen/input_text_height_middle"
         android:layout_marginBottom="20dp"
         android:layout_marginTop="20dp"
-        android:background="@drawable/search_text_view_border"
+        android:background="@drawable/bg_darkred_big_cornered"
         android:onClick="onConfirmExchange"
         android:paddingBottom="10dp"
         android:paddingLeft="30dp"

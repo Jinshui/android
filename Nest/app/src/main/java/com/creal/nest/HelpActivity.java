@@ -19,14 +19,7 @@ public class HelpActivity extends Activity {
         HeaderView headerView = (HeaderView) findViewById(R.id.header);
         headerView.hideRightImage();
         headerView.setTitle(R.string.help_center);
-        headerView.setRightImage(R.drawable.header_search_icon);
         headerView.setTitleCenter();
-        headerView.setRightBtnListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent intent = new Intent(HelpActivity.this, SearchActivity.class);
-                startActivity(intent);
-            }
-        });
     }
 
     public void onHelpClick(View view){
@@ -34,9 +27,5 @@ public class HelpActivity extends Activity {
         intent.putExtra(WebpageActivity.INTENT_EXTRA_TITLE, ((Button)view).getHint());
         intent.putExtra(WebpageActivity.INTENT_EXTRA_URL, "http://www.baidu.com");
         startActivity(intent);
-    }
-
-    void showToast(CharSequence msg) {
-        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
 }

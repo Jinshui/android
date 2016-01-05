@@ -25,7 +25,6 @@
 <color name="darkorange">#ff8c00</color><!--暗桔黄色 -->
 <color name="coral">#ff7f50</color><!--珊瑚色 -->
 <color name="hotpink">#ff69b4</color><!--热粉红色 -->
-<color name="deeperpink">#FF68B9</color><!--粉红色 -->
 <color name="tomato">#ff6347</color><!--西红柿色 -->
 <color name="orangered">#ff4500</color><!--红橙色 -->
 <color name="deeppink">#ff1493</color><!--深粉红色 -->
@@ -160,7 +159,9 @@
 <color name="my_coupons_list_item_bg">#F3F6EF</color>
 <color name="translucence">#88000000</color>
 <color name="white_translucence">#CCFFFFFF</color>
+<color name="highlight_color">#F0453E</color>
 <color name="important_color">#F0453E</color>
-<color name="darkpink">#F71BA3</color>
-<color name="darkpink_translucence">#55F71BA3</color>
+<color name="deeperpink">#ef463e</color><!--粉红色 -->
+<color name="darkpink">#ef463e</color>
+<color name="darkpink_translucence">#55ef463e</color>
 </resources>

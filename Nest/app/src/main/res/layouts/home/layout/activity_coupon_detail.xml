@@ -116,7 +116,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingBottom="5dip"
-                android:text="@string/coupon_date_range"
                 android:textColor="@color/grey" />
 
             <View
@@ -152,8 +151,7 @@
                 android:layout_height="70dip"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginRight="20dip"
-                android:src="@drawable/icon_coupon_return" />
+                android:layout_marginRight="20dip"/>
 
         </RelativeLayout>
     </FrameLayout>

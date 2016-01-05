@@ -9,7 +9,6 @@ import org.json.JSONObject;
 import java.util.Iterator;
 import java.util.Map;
 
-
 public class CommonPaginationAction<T extends ActionRespObject<T>> extends PaginationAction<T> {
     private static final String tag = "TT-ComPaginationAction";
     private Map<String, String> mParameter;

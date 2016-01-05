@@ -121,7 +121,14 @@ public class Recharge extends BaseModel {
     public static Recharge fromJSON(JSONObject json) throws JSONException {
         if(json == null)
             throw new IllegalArgumentException("JSONObject is null");
+
+//                "arrear_name": "2013年度物业费用",
+//                "payment_time": "0000-00-00 00:00:00",
+//                "alias": "",
+//                "area_name": "国中华宅"
         Recharge recharge = new Recharge();
+        if (json.has("id"))
+            recharge.setId(json.getString("id"));
         if (json.has("seller_name"))
             recharge.setSellerName(json.getString("seller_name"));
         if (json.has("order_id"))
@@ -133,9 +140,9 @@ public class Recharge extends BaseModel {
         if (json.has("state"))
             recharge.setState(State.from(json.getInt("state")));
         if (json.has("pay_money"))
-            recharge.setPayAmount(json.getInt("money"));
+            recharge.setPayAmount(json.getInt("pay_money"));
         if (json.has("payment_id"))
-            recharge.setPaymentId(json.getInt("money"));
+            recharge.setPaymentId(json.getInt("payment_id"));
         return recharge;
     }
 }

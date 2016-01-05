@@ -125,7 +125,6 @@
                 android:paddingBottom="10dip"
                 android:paddingLeft="10dp"
                 android:paddingTop="10dp"
-                android:text="酷跑潮流-Mia mia精品店暑期夏日狂促周，保定百货大楼运动专区促销，众多的品牌狂欢大促，运动服，运动鞋全场3.4折起，想不到的优惠，就在这里"
                 android:textColor="@color/black" />
 
             <!--<TextView-->
