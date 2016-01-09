@@ -73,7 +73,7 @@ public class ShopDetailActivity extends Activity {
                 if(lat1 != 0 && lon1 != 0){
                     mLocation = mLocationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
                     String distance = MapDistance.getLongDistance(lon1, lat1, mLocation.getLongitude(), mLocation.getLatitude());
-                    mDistance.setText(distance + " M");
+                    mDistance.setText(distance);
                 }
                 mTitle.setText(shop.getTitle());
                 mCategory.setText(shop.getCategory());

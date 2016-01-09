@@ -25,7 +25,7 @@
 
             <FrameLayout
                 android:layout_width="fill_parent"
-                android:layout_height="@dimen/my_coupons_detail_image_height">
+                android:layout_height="@dimen/points_mall_detail_image_height">
 
                 <com.creal.nest.views.CustomizeImageView
                     android:id="@+id/id_coupon_thumbnail"
@@ -33,7 +33,7 @@
                     android:layout_height="fill_parent"
                     android:layout_centerVertical="true"
                     android:contentDescription=""
-                    android:src="@drawable/test_my_coupons_detail" />
+                    android:background="@drawable/test_my_coupons_detail" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"

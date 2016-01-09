@@ -1,6 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        config {
+            keyAlias 'android keystore'
+            keyPassword 'moto1234'
+            storeFile file('/home/jinshui/.android/nest.keystore')
+            storePassword 'moto1234'
+        }
+    }
     compileSdkVersion 21
     buildToolsVersion "23.0.1"
 //    useLibrary 'org.apache.http.legacy'
@@ -8,28 +16,35 @@ android {
         applicationId "com.creal.nest"
         minSdkVersion 10
         targetSdkVersion 19
+        signingConfig signingConfigs.config
     }
     sourceSets {
         main {
             res.srcDirs =
-                [
-                    'src/main/res/layouts/nearby',
-                    'src/main/res/layouts/balance',
-                    'src/main/res/layouts/common',
-                    'src/main/res/layouts/home',
-                    'src/main/res/layouts/home/property',
-                    'src/main/res/layouts/settings',
-                    'src/main/res/layouts/test',
-                    'src/main/res/layouts',
-                    'src/main/res'
-                ]
+                    [
+                            'src/main/res/layouts/nearby',
+                            'src/main/res/layouts/balance',
+                            'src/main/res/layouts/common',
+                            'src/main/res/layouts/home',
+                            'src/main/res/layouts/home/property',
+                            'src/main/res/layouts/settings',
+                            'src/main/res/layouts/test',
+                            'src/main/res/layouts',
+                            'src/main/res'
+                    ]
         }
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+            signingConfig signingConfigs.config
         }
+        debug {
+            signingConfig signingConfigs.config
+        }
+    }
+    productFlavors {
     }
 }
 
@@ -37,8 +52,9 @@ dependencies {
     compile project(':library')
     compile files('libs/android-async-http-1.4.5.jar')
     compile files('libs/zxing.jar')
+    compile files('libs/libammsdk.jar')
     compile 'com.google.code.gson:gson:2.2.4'
     compile 'com.android.support:support-v4:21.0.0'
-    compile "com.android.support:appcompat-v7:21.0.0"
-//    compile 'org.apache.httpcomponents:httpcore:4.4.2'
+    compile 'com.android.support:appcompat-v7:21.0.0'
+    //    compile 'org.apache.httpcomponents:httpcore:4.4.2'
 }

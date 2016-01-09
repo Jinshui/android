@@ -17,7 +17,8 @@
 
     <dimen name="points_mall_header_icon_height">80dp</dimen>
     <dimen name="points_mall_item_icon_width">150dp</dimen>
-    <dimen name="points_mall_item_icon_height">100dp</dimen>
+    <dimen name="points_mall_item_icon_height">150dp</dimen>
+    <dimen name="points_mall_detail_image_height">320dp</dimen>
 
     <dimen name="snapup_coupons_list_item_icon_width">100dp</dimen>
     <dimen name="snapup_coupons_list_item_icon_height">70dp</dimen>

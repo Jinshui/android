@@ -1,7 +1,11 @@
 package com.creal.nest.util;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.Animation;
@@ -10,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.creal.nest.LoginActivity;
 import com.creal.nest.R;
 
 public class UIUtil {
@@ -63,4 +68,20 @@ public class UIUtil {
         loadingDialog.show();
         return loadingDialog;
     }
+
+
+    public static void showConfirmDialog(Context context, int msgResId, int positiveBtnResId, DialogInterface.OnClickListener positiveBtnListener, int negativeBtnResId, DialogInterface.OnClickListener negativeBtnListener){
+        AlertDialog.Builder builder;
+        if(Build.VERSION.SDK_INT > 10) {
+            builder = new AlertDialog.Builder(context, R.style.Theme_CustomDialog_Alert);
+        }else
+            builder = new AlertDialog.Builder(context);
+        builder.setMessage(msgResId);
+        builder.setPositiveButton(positiveBtnResId, positiveBtnListener);
+
+        if(negativeBtnResId !=0 && negativeBtnListener != null)
+            builder.setNegativeButton(negativeBtnResId,negativeBtnListener);
+        builder.create().show();
+    }
+
 }

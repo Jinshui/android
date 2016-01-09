@@ -25,7 +25,7 @@ import java.util.Map;
 
 public class PropertyRepairActivity extends Activity {
 
-    private static final String TAG = "XYK-LatestActivities";
+    private static final String TAG = "XYK-PropertyRepairActivity";
 
     private RadioButton mBtnCommon;
     private RadioButton mBtnPersonal;

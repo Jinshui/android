@@ -3,6 +3,8 @@ package com.creal.nest.property;
 import android.app.Activity;
 import android.app.Dialog;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,13 +23,14 @@ import java.util.Map;
 
 public class RepairDetailActivity extends Activity {
 
-    private static final String TAG = "XYK-LatestActivities";
     public static final String INTENT_EXTRA_REPAIR_ID = "repair_id";
 
     private TextView mTitle;
     private TextView mState;
     private TextView mTime;
     private TextView mDesc;
+    private TextView mDealOpinion;
+    private TextView mDealTime;
 
     private LinearLayout mStepsPanel;
     private String mRepairId;
@@ -39,11 +42,13 @@ public class RepairDetailActivity extends Activity {
         HeaderView headerView = (HeaderView) findViewById(R.id.header);
         headerView.hideRightImage();
         headerView.setTitle(R.string.property_repair_detail);
-        mStepsPanel = (LinearLayout)findViewById(R.id.id_panel_repair_steps);
+//        mStepsPanel = (LinearLayout)findViewById(R.id.id_panel_repair_steps);
         mTitle = (TextView)findViewById(R.id.id_txt_repair_name);
         mState = (TextView)findViewById(R.id.id_txt_repair_state);
         mTime = (TextView)findViewById(R.id.id_txt_repair_time);
         mDesc = (TextView)findViewById(R.id.id_txt_repair_desc);
+        mDealOpinion = (TextView)findViewById(R.id.id_txt_deal_opinion);
+        mDealTime = (TextView)findViewById(R.id.id_txt_deal_time);
 
         mRepairId = getIntent().getStringExtra(INTENT_EXTRA_REPAIR_ID);
 
@@ -59,7 +64,7 @@ public class RepairDetailActivity extends Activity {
         CommonObjectAction repairDetailAction = new CommonObjectAction(this, Constants.URL_REPORT_REPAIR_DETAIL, parameters, Repair.class);
         repairDetailAction.execute(new AbstractAction.UICallBack<Repair>() {
             public void onSuccess(Repair repair) {
-                initSteps(repair);
+                updateUI(repair);
                 dialog.dismiss();
             }
 
@@ -70,12 +75,16 @@ public class RepairDetailActivity extends Activity {
         });
     }
 
-    private void initSteps(Repair repair){
+    private void updateUI(Repair repair){
 
         mTitle.setText(repair.getTitle());
         mState.setText(Repair.State.toString(repair.getState()));
         mTime.setText(String.format(getString(R.string.property_repair_report_time_detail), repair.getTime() == null ? "" : repair.getTime()));
         mDesc.setText(repair.getSummary());
+        if(!TextUtils.isEmpty(repair.getDealOpinion())) {
+            mDealOpinion.setText(String.format(getString(R.string.property_repair_deal_opinion), repair.getDealOpinion()));
+            mDealTime.setText(String.format(getString(R.string.property_repair_deal_time), repair.getDealTime()));
+        }
 
 //        repair.getStepList().add(new Repair.Step("维修中...", "2015.6.11 16:20"));
 //        repair.getStepList().add(new Repair.Step("维修师傅返回准备所需物料", "2015.6.11 16:10"));

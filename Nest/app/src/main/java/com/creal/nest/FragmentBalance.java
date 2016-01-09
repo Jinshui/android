@@ -72,20 +72,20 @@ public class FragmentBalance extends Fragment {
                 startActivity(intent);
             }
         });
-        mMyPoints.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), AccumulationHistoryActivity.class);
-                intent.putExtra(AccumulationHistoryActivity.ACCUMULATION_TYPE, AccumulationHistoryActivity.ACCUMULATION_TYPE_POINTS);
-                startActivity(intent);
-            }
-        });
-        mMyIngots.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), AccumulationHistoryActivity.class);
-                intent.putExtra(AccumulationHistoryActivity.ACCUMULATION_TYPE, AccumulationHistoryActivity.ACCUMULATION_TYPE_INGOTS);
-                startActivity(intent);
-            }
-        });
+//        mMyPoints.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v) {
+//                Intent intent = new Intent(getActivity(), AccumulationHistoryActivity.class);
+//                intent.putExtra(AccumulationHistoryActivity.ACCUMULATION_TYPE, AccumulationHistoryActivity.ACCUMULATION_TYPE_POINTS);
+//                startActivity(intent);
+//            }
+//        });
+//        mMyIngots.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v) {
+//                Intent intent = new Intent(getActivity(), AccumulationHistoryActivity.class);
+//                intent.putExtra(AccumulationHistoryActivity.ACCUMULATION_TYPE, AccumulationHistoryActivity.ACCUMULATION_TYPE_INGOTS);
+//                startActivity(intent);
+//            }
+//        });
     }
 
     private void loadData(){
@@ -97,8 +97,8 @@ public class FragmentBalance extends Fragment {
         CommonObjectAction<CardInfo> action = new CommonObjectAction<>(getActivity(), Constants.URL_GET_CARD_INFO, paras, CardInfo.class);
         action.execute(new AbstractAction.UICallBack<CardInfo>() {
             public void onSuccess(CardInfo cardInfo) {
-                mAmounts.setText(cardInfo.getMoney());
-                mMyPoints.setText(cardInfo.getPoints());
+                mAmounts.setText(String.valueOf(cardInfo.getMoney()));
+                mMyPoints.setText(String.valueOf(cardInfo.getPoints()));
                 afterAction(dialog);
             }
 

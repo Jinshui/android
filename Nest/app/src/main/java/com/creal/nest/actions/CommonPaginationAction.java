@@ -53,8 +53,11 @@ public class CommonPaginationAction<T extends ActionRespObject<T>> extends Pagin
 
     public T convertJsonToResult(JSONObject item) throws JSONException{
         try {
-            T t = mClass.newInstance();
-            return t.fillWithJSON(item);
+            if(mClass != null) {
+                T t = mClass.newInstance();
+                return t.fillWithJSON(item);
+            }
+            return null;
         } catch (Exception e) {
             Log.e(tag, "Failed to create pagination item : " + mClass.getSimpleName(), e);
             return null;

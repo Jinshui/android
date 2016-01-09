@@ -102,6 +102,8 @@ public class Repair extends BaseModel implements ActionRespObject<Repair>{
     private State state;
     private String time;
     private String summary;
+    private String dealOpinion;
+    private String dealTime;
     private List<Step> stepList;
 
 
@@ -114,6 +116,8 @@ public class Repair extends BaseModel implements ActionRespObject<Repair>{
         state = State.valueOf(in.readString());
         time = in.readString();
         summary = in.readString();
+        dealOpinion = in.readString();
+        dealTime = in.readString();
 //        in.readTypedList( getStepList(), Step.CREATOR);
     }
 
@@ -123,6 +127,8 @@ public class Repair extends BaseModel implements ActionRespObject<Repair>{
         dest.writeString(state.name());
         dest.writeString(time);
         dest.writeString(summary);
+        dest.writeString(dealOpinion);
+        dest.writeString(dealTime);
 //        dest.writeTypedList(getStepList());
     }
 
@@ -158,6 +164,23 @@ public class Repair extends BaseModel implements ActionRespObject<Repair>{
         this.summary = summary;
     }
 
+    public String getDealOpinion() {
+        return dealOpinion;
+    }
+
+    public void setDealOpinion(String dealOpinion) {
+        this.dealOpinion = dealOpinion;
+    }
+
+    public String getDealTime() {
+        return dealTime;
+    }
+
+    public void setDealTime(String dealTime) {
+        this.dealTime = dealTime;
+    }
+
+
     public List<Step> getStepList() {
         if (stepList == null)
             stepList = new ArrayList<>();
@@ -188,9 +211,16 @@ public class Repair extends BaseModel implements ActionRespObject<Repair>{
         if(json.has("time")){
             repair.setTime(json.getString("time"));
         }
+        if(json.has("deal_opinion")){
+            repair.setDealOpinion(json.getString("deal_opinion"));
+        }
+        if(json.has("deal_time")){
+            repair.setDealTime(json.getString("deal_time"));
+        }
         if(json.has("description")){
             repair.setSummary(json.getString("description"));
         }
+
         return repair;
     }
 

@@ -28,7 +28,7 @@
 
             <FrameLayout
                 android:layout_width="fill_parent"
-                android:layout_height="@dimen/my_coupons_detail_image_height">
+                android:layout_height="380dip">
 
                 <com.creal.nest.views.CustomizeImageView
                     android:id="@+id/id_coupon_thumbnail"

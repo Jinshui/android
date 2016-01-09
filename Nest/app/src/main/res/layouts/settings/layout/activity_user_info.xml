@@ -52,7 +52,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="李雷"
                     android:textColor="#A5A2A2"
                     android:textSize="@dimen/font_small" />
 
@@ -86,7 +85,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="男"
                     android:textColor="#A5A2A2"
                     android:textSize="@dimen/font_small" />
 
@@ -120,7 +118,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="622134687999"
                     android:textColor="#A5A2A2"
                     android:textSize="@dimen/font_small" />
 
@@ -154,7 +151,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="13728889076"
                     android:textColor="#A5A2A2"
                     android:textSize="@dimen/font_small" />
 

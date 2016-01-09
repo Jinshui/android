@@ -26,11 +26,12 @@ public class CommonObjectAction<T extends ActionRespObject<T>> extends AbstractA
 
     @Override
     protected T createRespObject(JSONObject response) throws JSONException {
-        if(mClass == null)
-            return null;
         try {
-            T t = mClass.newInstance();
-            return t.fillWithJSON(response);
+            if(mClass != null) {
+                T t = mClass.newInstance();
+                return t.fillWithJSON(response);
+            }
+            return null;
         } catch (Exception e) {
             Log.e(tag, "Failed to create pagination item : " + mClass.getSimpleName(), e);
             return null;

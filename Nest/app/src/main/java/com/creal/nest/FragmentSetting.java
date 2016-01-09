@@ -102,11 +102,10 @@ public class FragmentSetting extends Fragment {
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(requestCode == UserInfoActivity.REQUEST_CODE){
+        if(data != null && requestCode == UserInfoActivity.REQUEST_CODE){
             if(data.getBooleanExtra(UserInfoActivity.INTENT_EXTRA_RESULT, false)){
                 getActivity().finish();
             }
         }
     }
-
 }

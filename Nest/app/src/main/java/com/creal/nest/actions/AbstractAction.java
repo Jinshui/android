@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Build;
+import android.text.TextUtils;
 import android.util.Log;
 
 import com.creal.nest.Constants;
@@ -32,6 +33,7 @@ import java.net.URLEncoder;
 import java.nio.charset.Charset;
 import java.util.Date;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.concurrent.Executor;
 
 public abstract class AbstractAction<Result> extends ParallelTask<AbstractAction.ActionResult<Result>> {
@@ -329,14 +331,14 @@ public abstract class AbstractAction<Result> extends ParallelTask<AbstractAction
             if(mSecurity && response.has("signature") && response.has("timestr")){
                 Log.d(tag, "Verifying the data...");
                 String signature = response.getString("signature");
-                String timestr = response.getString("timestr");
+                String timeStr = response.getString("timestr");
                 String bodyStr = "";
                 JsonElement body = mGsonObject.get("response").getAsJsonObject().get("body");
                 if(body != null){
                     bodyStr = body.toString();
                 }
                 String key = PreferenceUtil.getString(mAppContext, Constants.APP_BINDING_KEY, Constants.APP_DEFAULT_KEY);
-                String clientSignature = Utils.md5(flag + bodyStr + timestr + key);
+                String clientSignature = Utils.md5(flag + bodyStr + timeStr + key);
                 if(!clientSignature.equals(signature)){
                     Log.e(tag, "Verification failed, the data might be modified！！！");
                     ActionError error = new ActionError(ErrorCode.SECURITY_ERROR, "数据校验未通过！！！");
@@ -372,7 +374,7 @@ public abstract class AbstractAction<Result> extends ParallelTask<AbstractAction
     private JSONObject createJSONRequest() throws JSONException, UnsupportedEncodingException {
         JSONObject request = new JSONObject();
         String timeStr = Utils.formatDate("yyyy-MM-dd HH:mm:ss", new Date());
-        JSONObject requestBody = getRequestBody(timeStr);
+        JSONObject requestBody = removeInvalidParas(getRequestBody(timeStr));
         request.put("timestr", timeStr);
         String hash = requestBody.toString() + timeStr + getEncryptKey();
         String signature = Utils.md5(hash);
@@ -382,6 +384,21 @@ public abstract class AbstractAction<Result> extends ParallelTask<AbstractAction
         JSONObject wrapper = new JSONObject();
         wrapper.put("request", request);
         return wrapper;
+    }
+
+    private JSONObject removeInvalidParas(JSONObject requestParams) throws JSONException {
+        JSONObject newPara = new JSONObject();
+        Iterator<String> keyIterator = requestParams.keys();
+        while (keyIterator.hasNext()) {
+            String key = keyIterator.next();
+            Object value = requestParams.get(key);
+            if(value == null || !(value instanceof String) || TextUtils.isEmpty(value.toString())) {
+                Log.w(tag, "Found empty parameter: " + key + " for " + mServiceId);
+                continue;
+            }
+            newPara.put(key, value.toString());
+        }
+        return newPara;
     }
 
     private JSONObject encodeBody(JSONObject requestBody) throws JSONException, UnsupportedEncodingException {

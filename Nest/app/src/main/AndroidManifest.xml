@@ -54,12 +54,17 @@
         <activity android:name=".ExchangePointHistoryActivity" android:screenOrientation="portrait"/>
         <activity android:name=".ExchangeIngotsConfirmDialog" android:theme="@style/Theme.CustomDialog" android:screenOrientation="portrait"/>
         <activity android:name=".ExchangeSuccDialog" android:theme="@style/Theme.CustomDialog" android:screenOrientation="portrait"/>
+
+
         <activity android:name=".property.PropertyManagementActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".property.PropertyBaseInfoActivity" android:screenOrientation="portrait"/>
         <activity android:name=".property.PropertyPayActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".property.PropertyBillListActivity" android:screenOrientation="portrait"/>
         <activity android:name=".property.PropertyRepairActivity" android:screenOrientation="portrait"/>
         <activity android:name=".property.RepairsActivity" android:screenOrientation="portrait"/>
         <activity android:name=".property.RepairDetailActivity" android:screenOrientation="portrait"/>
         <activity android:name=".property.PayHistoryActivity" android:screenOrientation="portrait"/>
+
         <activity android:name=".IngotsMallActivity" android:screenOrientation="portrait"/>
         <activity android:name=".TryLuckyActivity" android:screenOrientation="portrait"/>
         <activity android:name=".TryLuckyFailDialogActivity" android:theme="@style/Theme.CustomDialog" android:screenOrientation="portrait"/>
@@ -79,6 +84,7 @@
 
 
         <activity android:name=".balance.AccumulationHistoryActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".wxapi.WXPayEntryActivity" android:screenOrientation="portrait"/>
 
 
         <activity android:name=".UserInfoActivity" android:screenOrientation="portrait"/>

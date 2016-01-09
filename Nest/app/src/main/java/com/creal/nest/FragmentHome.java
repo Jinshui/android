@@ -57,10 +57,14 @@ public class FragmentHome extends Fragment{
         mViewPager.showLoading();
         getAdAction.execute(new AbstractAction.UICallBack<Pagination<Ad>>() {
             public void onSuccess(Pagination<Ad> result) {
+                if(isDetached() || getActivity() == null) //DO NOT update the view if this fragment is detached from the activity.
+                    return;
                 mViewPager.addPhotos(getChildFragmentManager(), result.getItems());
             }
 
             public void onFailure(AbstractAction.ActionError error) {
+                if(isDetached() || getActivity() == null) //DO NOT update the view if this fragment is detached from the activity.
+                    return;
                 mViewPager.hideLoading();
             }
         });

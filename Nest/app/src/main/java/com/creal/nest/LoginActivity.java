@@ -22,6 +22,8 @@ import com.creal.nest.views.HeaderView;
 public class LoginActivity extends Activity {
     private EditText mCardId;
     private EditText mPassword;
+    public static final String INTENT_EXTRA_ACTION_TYPE = "action_type";
+    public static final String ACTION_REST_GESTURE_PWD = "reset_gesture_password";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +66,7 @@ public class LoginActivity extends Activity {
                 progressDialog.dismiss();
                 Intent intent = new Intent(LoginActivity.this, GesturePwdActivity.class);
                 String savedPwd = PreferenceUtil.getString(LoginActivity.this, Constants.APP_USER_GESTURE_PWD, null);
-                if(TextUtils.isEmpty(savedPwd))
+                if(ACTION_REST_GESTURE_PWD.equals(getIntent().getStringExtra(INTENT_EXTRA_ACTION_TYPE)) || TextUtils.isEmpty(savedPwd))
                     intent.putExtra(GesturePwdActivity.INTENT_EXTRA_ACTION_TYPE, GesturePwdActivity.State.SET_PWD.name());
                 else
                     intent.putExtra(GesturePwdActivity.INTENT_EXTRA_ACTION_TYPE, GesturePwdActivity.State.VERIFY_PWD.name());

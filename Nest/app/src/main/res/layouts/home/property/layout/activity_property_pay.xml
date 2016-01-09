@@ -56,7 +56,8 @@
                 android:orientation="horizontal"
                 android:padding="10dp">
 
-                <TextView
+                <Button
+                    android:id="@+id/id_btn_remaining_balance"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
@@ -65,7 +66,20 @@
                     android:drawableRight="@drawable/right_arrow"
                     android:text="@string/query_remaining_balance"
                     android:textColor="#484B52"
-                    android:textSize="@dimen/font_middle" />
+                    android:textStyle="bold"
+                    android:background="@android:color/transparent"
+                    android:onClick="onQueryBalanceClick"
+                    android:textSize="@dimen/font_small" />
+
+                <TextView
+                    android:id="@+id/id_txt_remaining_balance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/id_btn_remaining_balance"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#484B52"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="@dimen/font_small" />
 
                 <Button
                     android:layout_width="wrap_content"

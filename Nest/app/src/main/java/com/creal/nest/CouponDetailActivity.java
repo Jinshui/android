@@ -66,13 +66,13 @@ public class CouponDetailActivity extends Activity {
                     case "2":
                         mCouponsTypeImageView.setImageResource(R.drawable.icon_coupon_return);
                     case "3":
-                        mCouponsTypeImageView.setImageResource(R.drawable.icon_coupon_activity);
-                    case "4":
-                        mCouponsTypeImageView.setImageResource(R.drawable.icon_coupon_award);
-                    case "5":
-                        mCouponsTypeImageView.setImageResource(R.drawable.icon_coupon_award);
-                    case "6":
                         mCouponsTypeImageView.setImageResource(R.drawable.icon_coupon_system);
+                    case "4":
+                        mCouponsTypeImageView.setImageResource(R.drawable.icon_coupon_return);
+                    case "5":
+                        mCouponsTypeImageView.setImageResource(R.drawable.icon_coupon_activity);
+                    case "6":
+                        mCouponsTypeImageView.setImageResource(R.drawable.icon_coupon_award);
                         break;
                 }
                 dialog.dismiss();

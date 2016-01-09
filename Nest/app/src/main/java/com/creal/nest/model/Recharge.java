@@ -2,10 +2,12 @@ package com.creal.nest.model;
 
 import android.os.Parcel;
 
+import com.creal.nest.actions.ActionRespObject;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class Recharge extends BaseModel {
+public class Recharge extends BaseModel implements ActionRespObject<Recharge> {
 
     public static final Creator<Recharge> CREATOR
             = new Creator<Recharge>() {
@@ -17,6 +19,7 @@ public class Recharge extends BaseModel {
             return new Recharge[size];
         }
     };
+
     public enum State {
         SUCC,
         FAILED;
@@ -144,5 +147,10 @@ public class Recharge extends BaseModel {
         if (json.has("payment_id"))
             recharge.setPaymentId(json.getInt("payment_id"));
         return recharge;
+    }
+
+    @Override
+    public Recharge fillWithJSON(JSONObject jsonObject) throws JSONException {
+        return fromJSON(jsonObject);
     }
 }

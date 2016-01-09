@@ -77,6 +77,8 @@ public abstract class PTRListFragment<Result> extends ListFragment implements Pu
         mAction.execute(
             new AbstractAction.UICallBack<Pagination<Result>>() {
                 public void onSuccess(Pagination<Result> result) {
+                    if(isDetached() || getActivity() == null) //DO NOT update the view if this fragment is detached from the activity.
+                        return;
                     mPtrListAdapter = new ContentListAdapter(getActivity(), result.getItems());
                     setListAdapter(mPtrListAdapter);
                     getListView().setDivider(null);
@@ -86,6 +88,8 @@ public abstract class PTRListFragment<Result> extends ListFragment implements Pu
                 }
 
                 public void onFailure(AbstractAction.ActionError error) {
+                    if(isDetached() || getActivity() == null) //DO NOT update the view if this fragment is detached from the activity.
+                        return;
                     mAction = mAction.cloneCurrentPageAction();
                     getListView().getLayoutParams().height = AbsListView.LayoutParams.MATCH_PARENT;
                     setListAdapter(getErrorAdapter());
@@ -103,6 +107,8 @@ public abstract class PTRListFragment<Result> extends ListFragment implements Pu
         mAction.execute(
                 new AbstractAction.UICallBack<Pagination<Result>>() {
                     public void onSuccess(Pagination<Result> result) {
+                        if(isDetached() || getActivity() == null) //DO NOT update the view if this fragment is detached from the activity.
+                            return;
                         if(result.getItems().isEmpty()){
                             Toast.makeText(getActivity(), R.string.load_done, Toast.LENGTH_SHORT).show();
                             mAction = mAction.getPreviousPageAction();
@@ -113,6 +119,8 @@ public abstract class PTRListFragment<Result> extends ListFragment implements Pu
                     }
 
                     public void onFailure(AbstractAction.ActionError error) {
+                        if(isDetached() || getActivity() == null) //DO NOT update the view if this fragment is detached from the activity.
+                            return;
                         Toast.makeText(getActivity(), getLoadNextPageError(error), Toast.LENGTH_SHORT).show();
                         mAction = mAction.getPreviousPageAction();
                         mLoadingSupportPTRListView.refreshComplete();

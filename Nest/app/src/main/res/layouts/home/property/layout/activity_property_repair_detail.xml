@@ -79,11 +79,34 @@
                 android:layout_height="10dp" />
 
             <LinearLayout
-                android:id="@+id/id_panel_repair_steps"
-                android:layout_width="match_parent"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
-                android:orientation="vertical" />
+                android:orientation="vertical"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp">
+
+                <TextView
+                    android:id="@+id/id_txt_deal_opinion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/triangle_grey"
+                    android:textSize="@dimen/font_middle" />
+
+                <TextView
+                    android:id="@+id/id_txt_deal_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:textSize="@dimen/font_middle" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dip"
+                    android:background="@drawable/divider_horizontal" />
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

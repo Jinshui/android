@@ -87,11 +87,11 @@ public class PointsMallActivity extends ListActivity implements PullToRefreshBas
         mGetCommoditiesAction.execute(
             new AbstractAction.BackgroundCallBack<Pagination<Commodity>>() {
                 public void onSuccess(Pagination<Commodity> result) {
-                    try { Thread.sleep(2000); } catch (InterruptedException e) {  }
+                    try { Thread.sleep(1000); } catch (InterruptedException e) {  }
                 }
 
                 public void onFailure(AbstractAction.ActionError error) {
-                    try {  Thread.sleep(2000); } catch (InterruptedException e) { }
+                    try {  Thread.sleep(1000); } catch (InterruptedException e) { }
                 }
             },
             new AbstractAction.UICallBack<Pagination<Commodity>>() {
@@ -132,7 +132,7 @@ public class PointsMallActivity extends ListActivity implements PullToRefreshBas
                 new AbstractAction.BackgroundCallBack<Pagination<Commodity>>() {
                     public void onSuccess(Pagination<Commodity> result) {
                         try {
-                            Thread.sleep(2000);
+                            Thread.sleep(1000);
                         } catch (InterruptedException e) {
                         }
                     }

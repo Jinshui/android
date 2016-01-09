@@ -171,7 +171,8 @@
                 android:orientation="horizontal"
                 android:padding="10dp">
 
-                <TextView
+                <Button
+                    android:id="@+id/id_btn_remaining_balance"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
@@ -180,6 +181,19 @@
                     android:drawableRight="@drawable/right_arrow"
                     android:text="@string/query_remaining_balance"
                     android:textColor="#484B52"
+                    android:textStyle="bold"
+                    android:background="@android:color/transparent"
+                    android:onClick="onQueryBalanceClick"
+                    android:textSize="@dimen/font_small" />
+
+                <TextView
+                    android:id="@+id/id_txt_remaining_balance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/id_btn_remaining_balance"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#484B52"
+                    android:layout_marginLeft="10dp"
                     android:textSize="@dimen/font_small" />
 
                 <Button
@@ -253,48 +267,48 @@
                 android:layout_width="match_parent"
                 android:layout_height="10dp" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:background="@color/white"
-                android:paddingBottom="5dp"
-                android:paddingLeft="10dp"
-                android:paddingTop="5dp"
-                android:text="@string/recharge_property_fee"
-                android:textColor="#56585D"
-                android:textSize="@dimen/font_smaller" />
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_alignParentLeft="true"-->
+                <!--android:background="@color/white"-->
+                <!--android:paddingBottom="5dp"-->
+                <!--android:paddingLeft="10dp"-->
+                <!--android:paddingTop="5dp"-->
+                <!--android:text="@string/recharge_property_fee"-->
+                <!--android:textColor="#56585D"-->
+                <!--android:textSize="@dimen/font_smaller" />-->
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:paddingBottom="5dp"
-                android:paddingLeft="10dp"
-                android:paddingTop="5dp">
+            <!--<RelativeLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:background="@color/white"-->
+                <!--android:gravity="center_vertical"-->
+                <!--android:orientation="horizontal"-->
+                <!--android:paddingBottom="5dp"-->
+                <!--android:paddingLeft="10dp"-->
+                <!--android:paddingTop="5dp">-->
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:drawableLeft="@drawable/ic_clock"
-                    android:drawablePadding="5dp"
-                    android:text="兑换时间2015年10月30日"
-                    android:textColor="#848587"
-                    android:textSize="@dimen/font_smaller" />
+                <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_alignParentLeft="true"-->
+                    <!--android:drawableLeft="@drawable/ic_clock"-->
+                    <!--android:drawablePadding="5dp"-->
+                    <!--android:text="兑换时间2015年10月30日"-->
+                    <!--android:textColor="#848587"-->
+                    <!--android:textSize="@dimen/font_smaller" />-->
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="10dp"
-                    android:paddingRight="15dp"
-                    android:text="-20.00"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/font_small" />
-            </RelativeLayout>
+                <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_alignParentRight="true"-->
+                    <!--android:layout_marginRight="10dp"-->
+                    <!--android:paddingRight="15dp"-->
+                    <!--android:text="-20.00"-->
+                    <!--android:textColor="@color/black"-->
+                    <!--android:textSize="@dimen/font_small" />-->
+            <!--</RelativeLayout>-->
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

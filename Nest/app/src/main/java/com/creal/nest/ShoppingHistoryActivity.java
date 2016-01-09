@@ -53,7 +53,7 @@ public class ShoppingHistoryActivity extends FragmentActivity {
             } else {
                 holder = (ViewHolder) convertView.getTag();
             }
-            holder.card.setText(item.getOrderId());
+            holder.card.setText(item.getSellerName());
             holder.status.setText(item.getState().toString());
             holder.time.setText(String.format(getString(R.string.shop_time), item.getOrderTime()));
             holder.cost.setText("" + ((float) item.getAmount() / 100) + "元");

@@ -27,7 +27,7 @@ public class HeaderView extends LinearLayout {
         mRightBtn = (ImageView)findViewById(R.id.right_btn);
         setLeftBtnListener(new OnClickListener() {
             public void onClick(View v) {
-                ((Activity)getContext()).finish();
+                ((Activity)getContext()).onBackPressed();
             }
         });
     }

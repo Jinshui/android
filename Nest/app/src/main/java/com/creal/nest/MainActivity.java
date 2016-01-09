@@ -72,7 +72,6 @@ public class MainActivity extends FragmentActivity {
         popup.show();
     }
 
-
     /**
      * 初始化组件
      */
@@ -104,5 +103,13 @@ public class MainActivity extends FragmentActivity {
         TextView textView = (TextView) view.findViewById(R.id.textview);
         textView.setText(mTextviewArray[index]);
         return view;
+    }
+
+    public void onBackPressed(){
+        if(mTabHost.getCurrentTab() != 0){
+            mTabHost.setCurrentTab(0);
+        }else{
+            super.onBackPressed();
+        }
     }
 }

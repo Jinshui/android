@@ -33,6 +33,7 @@
                 android:layout_gravity="center_horizontal"
                 android:drawableLeft="@drawable/icon_recharge_card_id"
                 android:hint="@string/hint_card_id"
+                android:inputType="number"
                 android:textSize="16sp" />
 
             <View
