@@ -15,7 +15,6 @@ public class FragmentSetting extends Fragment {
 
     TextView mGeneralInfo;
     TextView mChangePwd;
-    TextView mShoppingHistory;
     TextView mPointsHistory;
     TextView mIngotsHistory;
     TextView mAppSettings;
@@ -35,7 +34,6 @@ public class FragmentSetting extends Fragment {
 
         mGeneralInfo = (TextView) view.findViewById(R.id.id_text_general_info);
         mChangePwd = (TextView) view.findViewById(R.id.id_text_change_pwd);
-        mShoppingHistory = (TextView) view.findViewById(R.id.id_text_shopping_history);
         mPointsHistory = (TextView) view.findViewById(R.id.id_text_points_exchange_history);
         mIngotsHistory = (TextView) view.findViewById(R.id.id_text_ingots_exchange_history);
         mAppSettings = (TextView) view.findViewById(R.id.id_text_app_settings);
@@ -57,12 +55,6 @@ public class FragmentSetting extends Fragment {
         mChangePwd.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), ChangePwdActivity.class);
-                startActivity(intent);
-            }
-        });
-        mShoppingHistory.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), ShoppingHistoryActivity.class);
                 startActivity(intent);
             }
         });

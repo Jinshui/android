@@ -39,6 +39,7 @@
                 android:layout_height="wrap_content"
                 android:background="@color/white"
                 android:padding="0dp"
+                android:text="@string/usage_help"
                 android:textColor="@color/black"
                 android:textSize="@dimen/font_small" />
 

@@ -36,7 +36,7 @@ public class Shopping extends BaseModel implements ActionRespObject<Shopping> {
                     return SUBSCRIPTION;
                 case 4:
                     return RETURN_SUBSCRIPTION;
-                case 5:
+                case 9:
                     return CANCELLED;
             }
             return UNKNOWN;

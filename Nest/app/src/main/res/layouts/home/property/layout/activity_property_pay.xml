@@ -41,9 +41,9 @@
                     android:textSize="@dimen/font_small" />
 
                 <TextView
+                    android:id="@+id/id_txt_pay_amount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="300元"
                     android:textColor="@color/black"
                     android:textSize="@dimen/font_extra_larger" />
             </LinearLayout>
@@ -112,21 +112,21 @@
                 android:textColor="#C4C6C5"
                 android:textSize="@dimen/font_small" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="10dp" />
+            <!--<View-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="10dp" />-->
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:background="@color/white"
-                android:drawableLeft="@drawable/ic_clock"
-                android:drawablePadding="5dp"
-                android:padding="10dp"
-                android:text="物业缴费到期时间 2015年10月30日"
-                android:textColor="#56585D"
-                android:textSize="@dimen/font_small" />
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_alignParentLeft="true"-->
+                <!--android:background="@color/white"-->
+                <!--android:drawableLeft="@drawable/ic_clock"-->
+                <!--android:drawablePadding="5dp"-->
+                <!--android:padding="10dp"-->
+                <!--android:text="物业缴费到期时间 2015年10月30日"-->
+                <!--android:textColor="#56585D"-->
+                <!--android:textSize="@dimen/font_small" />-->
 
 
             <View
@@ -169,45 +169,45 @@
                 android:layout_height="@dimen/input_text_height_middle"
                 android:layout_gravity="center_horizontal"
                 android:background="@color/white"
-                android:drawableLeft="@drawable/icon_binding_input_verificatoin_code"
-                android:hint="@string/binding_hint_input_verification_code"
+                android:drawableLeft="@drawable/icon_binding_input_verification_code"
+                android:hint="@string/binding_hint_input_password"
                 android:inputType="number"
                 android:textSize="16sp" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="10dp" />
+            <!--<View-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="10dp" />-->
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:gravity="center_vertical"
-                android:paddingLeft="5dp">
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginLeft="10dp"-->
+                <!--android:gravity="center_vertical"-->
+                <!--android:paddingLeft="5dp">-->
 
-                <com.creal.nest.views.CustomizeImageView
-                    android:id="@+id/id_coupon_thumbnail"
-                    android:layout_width="@dimen/verification_code_icon_width"
-                    android:layout_height="@dimen/verification_code_icon_height"
-                    android:layout_centerVertical="true"
-                    android:layout_gravity="center_vertical"
-                    android:background="@drawable/test_verification_code"
-                    android:contentDescription="" />
+                <!--<com.creal.nest.views.CustomizeImageView-->
+                    <!--android:id="@+id/id_coupon_thumbnail"-->
+                    <!--android:layout_width="@dimen/verification_code_icon_width"-->
+                    <!--android:layout_height="@dimen/verification_code_icon_height"-->
+                    <!--android:layout_centerVertical="true"-->
+                    <!--android:layout_gravity="center_vertical"-->
+                    <!--android:background="@drawable/test_verification_code"-->
+                    <!--android:contentDescription="" />-->
 
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="10dip"
-                    android:layout_marginRight="15dip"
-                    android:background="@color/content_bg"
-                    android:gravity="left"
-                    android:onClick="onChangeVerificatoinCodeClick"
-                    android:text="@string/change_verification_code"
-                    android:textColor="@color/darkpink"
-                    android:textSize="18sp" />
+                <!--<Button-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_gravity="center_vertical"-->
+                    <!--android:layout_marginLeft="10dip"-->
+                    <!--android:layout_marginRight="15dip"-->
+                    <!--android:background="@color/content_bg"-->
+                    <!--android:gravity="left"-->
+                    <!--android:onClick="onChangeVerificatoinCodeClick"-->
+                    <!--android:text="@string/change_verification_code"-->
+                    <!--android:textColor="@color/darkpink"-->
+                    <!--android:textSize="18sp" />-->
 
-            </LinearLayout>
+            <!--</LinearLayout>-->
 
 
             <View

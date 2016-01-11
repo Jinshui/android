@@ -39,10 +39,14 @@ public class PropertyBillListActivity extends FragmentActivity {
             String cardId = PreferenceUtil.getString(getActivity(), Constants.APP_USER_CARD_ID, null);
             Map<String, String> parameters = new HashMap<>();
             parameters.put(Constants.KEY_CARD_ID, cardId);
-            return new CommonPaginationAction(getActivity(), 1, Constants.PAGE_SIZE, Constants.URL_REPORT_REPAIR_LIST, parameters, ArrearageInfo.class, "repair");
+            return new CommonPaginationAction(getActivity(), 1, Constants.PAGE_SIZE, Constants.URL_GET_BILL, parameters, ArrearageInfo.class);
         }
 
-        public View getListItemView(ArrearageInfo item, View convertView, ViewGroup parent, LayoutInflater inflater) {
+        protected boolean initOnResume(){
+            return true;
+        }
+
+        public View getListItemView(final ArrearageInfo item, View convertView, ViewGroup parent, LayoutInflater inflater) {
             ViewHolder holder;
             if (convertView == null) {
                 convertView = inflater.inflate(R.layout.view_list_item_property_pay_item, parent, false);
@@ -58,6 +62,7 @@ public class PropertyBillListActivity extends FragmentActivity {
             holder.payBtn.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     Intent intent = new Intent(getActivity(), PropertyPayActivity.class);
+                    intent.putExtra(PropertyPayActivity.INTENT_EXTRA_ARREARAGE_INFO, item);
                     startActivity(intent);
                 }
             });

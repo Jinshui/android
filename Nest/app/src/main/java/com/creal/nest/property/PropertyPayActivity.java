@@ -4,7 +4,11 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,6 +34,8 @@ public class PropertyPayActivity extends Activity {
 
     private static final String TAG = "XYK-LatestActivities";
     private TextView mRemainingBalance;
+    private EditText mPassword;
+    private TextView mPayAmount;
     private ArrearageInfo mArrearageInfo;
     public static final String INTENT_EXTRA_ARREARAGE_INFO = "arrearage_info";
 
@@ -41,7 +47,10 @@ public class PropertyPayActivity extends Activity {
         headerView.hideRightImage();
         headerView.setTitle(R.string.property_pay);
         mRemainingBalance = (TextView)findViewById(R.id.id_txt_remaining_balance);
+        mPayAmount = (TextView)findViewById(R.id.id_txt_pay_amount);
+        mPassword = (EditText)findViewById(R.id.id_txt_password);
         mArrearageInfo = getIntent().getParcelableExtra(INTENT_EXTRA_ARREARAGE_INFO);
+        mPayAmount.setText(String.format(getString(R.string.pay_amount), mArrearageInfo.getMoney()));
     }
 
     public void onQueryBalanceClick(View view) {
@@ -69,6 +78,14 @@ public class PropertyPayActivity extends Activity {
     }
 
     public void onPayClick(View view) {
+
+        final CharSequence password = mPassword.getText();
+        if(TextUtils.isEmpty(password)){
+            Animation shake = AnimationUtils.loadAnimation(this, R.anim.shake);
+            mPassword.startAnimation(shake);
+            return;
+        }
+
         Map map = new HashMap();
         String cardId = PreferenceUtil.getString(this, Constants.APP_USER_CARD_ID, null);
         map.put(Constants.KEY_CARD_ID, cardId);

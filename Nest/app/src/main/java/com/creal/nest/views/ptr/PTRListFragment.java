@@ -81,7 +81,9 @@ public abstract class PTRListFragment<Result> extends ListFragment implements Pu
                         return;
                     mPtrListAdapter = new ContentListAdapter(getActivity(), result.getItems());
                     setListAdapter(mPtrListAdapter);
-                    getListView().setDivider(null);
+                    try {
+                        getListView().setDivider(null);
+                    }catch (Exception e){}
                     mLoadingSupportPTRListView.showListView();
                     mLoadingSupportPTRListView.refreshComplete();
                     onPostLoadFirstPage();
@@ -93,7 +95,9 @@ public abstract class PTRListFragment<Result> extends ListFragment implements Pu
                     mAction = mAction.cloneCurrentPageAction();
                     getListView().getLayoutParams().height = AbsListView.LayoutParams.MATCH_PARENT;
                     setListAdapter(getErrorAdapter());
-                    getListView().setDivider(null);
+                    try {
+                        getListView().setDivider(null);
+                    }catch (Exception e){}
                     mLoadingSupportPTRListView.showListView();
                     mLoadingSupportPTRListView.refreshComplete();
                 }

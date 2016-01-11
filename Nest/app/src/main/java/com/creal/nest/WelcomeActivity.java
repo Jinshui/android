@@ -20,7 +20,7 @@ public class WelcomeActivity extends Activity {
 		new ParallelTask<Void>() {
 			protected Void doInBackground(Void... params) {
 				try {
-//                    PreferenceUtil.saveString(WelcomeActivity.this, Constants.APP_BINDING_KEY, Constants.APP_DEFAULT_KEY);
+//                  PreferenceUtil.saveString(WelcomeActivity.this, Constants.APP_BINDING_KEY, Constants.APP_DEFAULT_KEY);
 //					PreferenceUtil.saveString(WelcomeActivity.this, Constants.APP_USER_AUTHORIZED, Boolean.FALSE.toString());
 					Thread.sleep(1000);
 				} catch (InterruptedException e) {
@@ -46,6 +46,7 @@ public class WelcomeActivity extends Activity {
 			startActivity(new Intent(WelcomeActivity.this, PhoneBinderActivity.class));
 		}else{
 			String authorized = PreferenceUtil.getString(WelcomeActivity.this, Constants.APP_USER_AUTHORIZED, null);
+			//TODO： 登录期限检查
 			if(Boolean.TRUE.toString().equalsIgnoreCase(authorized)){
 				String gesturePwd = PreferenceUtil.getString(WelcomeActivity.this, Constants.APP_USER_GESTURE_PWD, null);
 				if(gesturePwd != null){

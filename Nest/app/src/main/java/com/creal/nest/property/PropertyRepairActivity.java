@@ -4,7 +4,10 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -74,6 +77,37 @@ public class PropertyRepairActivity extends Activity {
     }
 
     public void onSubmitClick(View view) {
+
+        final CharSequence title = mTitle.getText();
+        if(TextUtils.isEmpty(title) || title.length() > 20){
+            Animation shake = AnimationUtils.loadAnimation(this, R.anim.shake);
+            Toast.makeText(this, R.string.property_repair_err_name, Toast.LENGTH_LONG).show();
+            mTitle.startAnimation(shake);
+            return;
+        }
+
+        final CharSequence contact = mUname.getText();
+        if(TextUtils.isEmpty(contact)){
+            Animation shake = AnimationUtils.loadAnimation(this, R.anim.shake);
+            Toast.makeText(this, R.string.property_repair_err_uname, Toast.LENGTH_LONG).show();
+            mUname.startAnimation(shake);
+            return;
+        }
+
+        final CharSequence phone = mPhone.getText();
+        if(TextUtils.isEmpty(phone)){
+            Animation shake = AnimationUtils.loadAnimation(this, R.anim.shake);
+            mPhone.startAnimation(shake);
+            return;
+        }
+
+        final CharSequence summary = mSummary.getText();
+        if(TextUtils.isEmpty(summary)){
+            Animation shake = AnimationUtils.loadAnimation(this, R.anim.shake);
+            mSummary.startAnimation(shake);
+            return;
+        }
+
         String cardId = PreferenceUtil.getString(this, Constants.APP_USER_CARD_ID, null);
         Map parameters = new HashMap<>();
         parameters.put(Constants.KEY_CARD_ID, cardId);

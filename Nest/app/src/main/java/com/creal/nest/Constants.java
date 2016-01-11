@@ -32,6 +32,7 @@ public class Constants {
     public static final String URL_GET_EXCHANGE_LIST          = "http://" + SERVER_HOST + "/lmk_interface/exchangelist/index.php";
     public static final String URL_SEARCH                     = "http://" + SERVER_HOST + "/lmk_interface/search/index.php";
     public static final String URL_PAY                        = "http://" + SERVER_HOST + "/lmk_interface/payment/index.php";
+    public static final String URL_GET_BILL                   = "http://" + SERVER_HOST + "/lmk_interface/paymentarrear/index.php";
     public static final String URL_GET_PAY_HISTORY            = "http://" + SERVER_HOST + "/lmk_interface/paymentlist/index.php";
     public static final String URL_GET_HELP_LIST              = "http://" + SERVER_HOST + "/lmk_interface/helplist/index.php";
     public static final String URL_GET_USER_INFO              = "http://" + SERVER_HOST + "/lmk_interface/personalinfo/index.php";

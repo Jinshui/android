@@ -73,7 +73,7 @@ public class UserInfoActivity extends Activity {
     }
 
     public void onChangeCard(View view){
-        PreferenceUtil.removeKey(this, Constants.APP_USER_AUTHORIZED);
+        PreferenceUtil.removeKey(this, Constants.APP_BINDING_KEY);
         onExitClick(view);
     }
 }

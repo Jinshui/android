@@ -36,7 +36,6 @@ public class PropertyManagementActivity extends Activity {
     private TextView mName;
     private TextView mCommunityName;
     private TextView mAddress;
-    private TextView mBill;
     private TextView mRemainingBalance;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +50,6 @@ public class PropertyManagementActivity extends Activity {
         mCommunityName = (TextView)findViewById(R.id.id_text_property_name);
         mAddress = (TextView)findViewById(R.id.id_text_property_address);
         mSex = (TextView)findViewById(R.id.id_text_user_sex);
-        mBill = (TextView)findViewById(R.id.id_txt_bill);
         mRemainingBalance = (TextView)findViewById(R.id.id_txt_remaining_balance);
 
         findViewById(R.id.id_btn_property_pay).setOnClickListener(new View.OnClickListener() {
@@ -87,7 +85,6 @@ public class PropertyManagementActivity extends Activity {
         mCommunityName.setText(info.getCommunityName());
         mName.setText(info.getName());
         mAddress.setText(info.getAddress());
-        mBill.setText(info.getBill());
     }
 
     public void onQueryBalanceClick(View view) {

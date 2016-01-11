@@ -100,7 +100,7 @@
             android:layout_height="@dimen/input_text_height_middle"
             android:layout_gravity="center_horizontal"
             android:background="@color/white"
-            android:drawableLeft="@drawable/icon_binding_input_verificatoin_code"
+            android:drawableLeft="@drawable/icon_binding_input_verification_code"
             android:hint="@string/binding_hint_input_password"
             android:inputType="number"
             android:textSize="16sp" />
@@ -116,7 +116,7 @@
             android:layout_height="@dimen/input_text_height_middle"
             android:layout_gravity="center_horizontal"
             android:background="@color/white"
-            android:drawableLeft="@drawable/icon_binding_input_verificatoin_code"
+            android:drawableLeft="@drawable/icon_binding_input_verification_code"
             android:hint="@string/binding_hint_input_verification_code"
             android:inputType="number"
             android:textSize="16sp" />
