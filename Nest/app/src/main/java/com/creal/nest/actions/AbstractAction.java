@@ -11,9 +11,12 @@ import com.creal.nest.Constants;
 import com.creal.nest.R;
 import com.creal.nest.util.PreferenceUtil;
 import com.creal.nest.util.Utils;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.google.gson.JsonPrimitive;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -38,9 +41,8 @@ import java.util.concurrent.Executor;
 
 public abstract class AbstractAction<Result> extends ParallelTask<AbstractAction.ActionResult<Result>> {
     private static final String tag = "TT-AbstractRequest";
+    public static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
     //For Test only START
-    private Object mOriginalRequest;
-    public Object getOriginalRequest(){return mOriginalRequest;}
     private Object mOriginalResponse;
     public Object getOriginalResponse(){return mOriginalResponse;}
     private Throwable mOriginalError;
@@ -130,9 +132,8 @@ public abstract class AbstractAction<Result> extends ParallelTask<AbstractAction
 		public ActionResult<Result> doInBackground() {
 	        String response = null;
 	        try{
-	            JSONObject jsonReq = createJSONRequest();
-                mOriginalRequest = jsonReq;
-	            Log.d(tag, "Sending JSON request to " + getUrl() + "\n" + jsonReq.toString(4));
+	            JsonObject jsonReq = createJSONRequest();
+	            Log.d(tag, "Sending JSON request to " + getUrl() + "\n" + gson.toJson(jsonReq));
 //                if("URL_REGISTER".equals(mServiceId)){
 //                    return mResult;
 //                }
@@ -371,18 +372,16 @@ public abstract class AbstractAction<Result> extends ParallelTask<AbstractAction
         cancel(true);
     }
 
-    private JSONObject createJSONRequest() throws JSONException, UnsupportedEncodingException {
-        JSONObject request = new JSONObject();
+    private JsonObject createJSONRequest() throws JSONException, UnsupportedEncodingException {
+        JsonObject request = new JsonObject();
         String timeStr = Utils.formatDate("yyyy-MM-dd HH:mm:ss", new Date());
-        JSONObject requestBody = removeInvalidParas(getRequestBody(timeStr));
-        request.put("timestr", timeStr);
-        String hash = requestBody.toString() + timeStr + getEncryptKey();
-        String signature = Utils.md5(hash);
-        request.put("signature", signature);
-        request.putOpt("body", encodeBody(requestBody));
-
-        JSONObject wrapper = new JSONObject();
-        wrapper.put("request", request);
+        JSONObject actionBody = removeInvalidParas(getRequestBody(timeStr));
+        JsonObject requestBody = new JsonParser().parse(actionBody.toString()).getAsJsonObject();
+        request.add("timestr", new JsonPrimitive(timeStr));
+        request.add("signature", new JsonPrimitive(Utils.md5(requestBody.toString() + timeStr + getEncryptKey())));
+        request.add("body", encodeBody(requestBody));
+        JsonObject wrapper = new JsonObject();
+        wrapper.add("request", request);
         return wrapper;
     }
 
@@ -401,14 +400,15 @@ public abstract class AbstractAction<Result> extends ParallelTask<AbstractAction
         return newPara;
     }
 
-    private JSONObject encodeBody(JSONObject requestBody) throws JSONException, UnsupportedEncodingException {
-        JSONObject encodedRequestBody = new JSONObject();
-        Iterator<String> keys = requestBody.keys();
+    private JsonObject encodeBody(JsonObject requestBody) throws JSONException, UnsupportedEncodingException {
+//        Log.d(tag, "before encoding: " + gson.toJson(requestBody));
+        JsonObject encodedRequestBody = new JsonObject();
+        Iterator<Map.Entry<String, JsonElement>> keys = requestBody.entrySet().iterator();
         while(keys.hasNext()){
-            String key = keys.next();
-            String value = requestBody.getString(key);
-            encodedRequestBody.put(key, URLEncoder.encode(value, "utf-8"));
+            Map.Entry<String, JsonElement> entry = keys.next();
+            encodedRequestBody.add(entry.getKey(), new JsonPrimitive(URLEncoder.encode(entry.getValue().getAsString(), "utf-8")));
         }
+//        Log.d(tag, "after encoding: " + gson.toJson(encodedRequestBody));
         return encodedRequestBody;
     }
 
