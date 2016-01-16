@@ -13,6 +13,7 @@ import com.creal.nest.actions.CommonPaginationAction;
 import com.creal.nest.actions.PaginationAction;
 import com.creal.nest.model.Payment;
 import com.creal.nest.util.PreferenceUtil;
+import com.creal.nest.util.Utils;
 import com.creal.nest.views.ptr.PTRListFragment;
 
 import java.util.HashMap;
@@ -56,7 +57,7 @@ public class PayHistoryActivity extends FragmentActivity {
             } else {
                 holder = (ViewHolder) convertView.getTag();
             }
-            holder.amount.setText(String.valueOf(item.getAmount()));
+            holder.amount.setText(Utils.formatMoney(item.getAmount()));
             holder.time.setText(item.getTime());
             return convertView;
         }

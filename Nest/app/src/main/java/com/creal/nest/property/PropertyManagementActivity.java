@@ -21,6 +21,7 @@ import com.creal.nest.model.HouseInfo;
 import com.creal.nest.util.JSONUtil;
 import com.creal.nest.util.PreferenceUtil;
 import com.creal.nest.util.UIUtil;
+import com.creal.nest.util.Utils;
 import com.creal.nest.views.HeaderView;
 
 import org.json.JSONObject;
@@ -68,8 +69,8 @@ public class PropertyManagementActivity extends Activity {
 
         View.OnClickListener baseInfoListener = new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(PropertyManagementActivity.this, PropertyBaseInfoActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent(PropertyManagementActivity.this, PropertyBaseInfoActivity.class);
+//                startActivity(intent);
             }
         };
         mSex.setOnClickListener(baseInfoListener);
@@ -95,7 +96,7 @@ public class PropertyManagementActivity extends Activity {
         CommonObjectAction<CardInfo> action = new CommonObjectAction<>(this, Constants.URL_GET_CARD_INFO, paras, CardInfo.class);
         action.execute(new AbstractAction.UICallBack<CardInfo>() {
             public void onSuccess(CardInfo cardInfo) {
-                mRemainingBalance.setText(String.valueOf(cardInfo.getMoney()));
+                mRemainingBalance.setText(Utils.formatMoney(cardInfo.getMoney()));
                 dialog.dismiss();
             }
 

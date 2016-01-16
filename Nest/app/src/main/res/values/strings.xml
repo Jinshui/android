@@ -243,7 +243,7 @@
     <string name="alipay">支付宝</string>
     <string name="hint_alipay">推荐有支付宝的用户使用</string>
     <string name="weichat">微信</string>
-    <string name="hint_weichat">推荐安装微信5.0及以上版报本的用户使用</string>
+    <string name="hint_weichat">推荐安装微信5.0及以上版本的使用</string>
     <string name="pay_result_tips">提示</string>
     <string name="wx_pay_result_callback_msg" formatted="false">微信支付结果：%s</string>
 

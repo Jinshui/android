@@ -12,6 +12,7 @@ import com.creal.nest.actions.PaginationAction;
 import com.creal.nest.model.Coupon;
 import com.creal.nest.model.Recharge;
 import com.creal.nest.util.PreferenceUtil;
+import com.creal.nest.util.Utils;
 import com.creal.nest.views.ptr.PTRListActivity;
 import com.creal.nest.views.ptr.PTRListFragment;
 
@@ -55,7 +56,7 @@ public class RechargeHistoryActivity extends FragmentActivity {
             } else {
                 holder = (ViewHolder) convertView.getTag();
             }
-            holder.amount.setText(String.valueOf(item.getAmount()));
+            holder.amount.setText(Utils.formatMoney(item.getAmount()));
             holder.time.setText(item.getOrderTime());
             return convertView;
         }

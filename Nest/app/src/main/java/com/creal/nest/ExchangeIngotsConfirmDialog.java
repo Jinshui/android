@@ -2,7 +2,11 @@ package com.creal.nest;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,7 +31,18 @@ public class ExchangeIngotsConfirmDialog extends Activity {
         setContentView(R.layout.dialog_echange_ingots_confirm);
         TextView mMsgView = (TextView)findViewById(R.id.id_text_message);
         mRechargeCard = getIntent().getParcelableExtra(INTENT_EXTRA_RECHARGE_CARD);
-        mMsgView.setText(String.format(getString(R.string.exchange_recharge_card_hint), mRechargeCard.getNum(), mRechargeCard.getAmount()));
+
+        String desc = String.format(getString(R.string.exchange_recharge_card_hint), mRechargeCard.getNum(), mRechargeCard.getAmount() / 100);
+        Spannable span = new SpannableString(desc);
+        String highlightStr1 = String.valueOf(mRechargeCard.getNum());
+        int start1 = desc.indexOf(highlightStr1);
+        int length1 = highlightStr1.length() + 2;
+        span.setSpan(new ForegroundColorSpan(Color.RED), start1, start1+length1, Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
+        String highlightStr2 = String.valueOf(mRechargeCard.getAmount() / 100);
+        int start2 = desc.lastIndexOf(highlightStr2);
+        int length2= highlightStr2.length() + 1;
+        span.setSpan(new ForegroundColorSpan(Color.RED), start2, start2+length2, Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
+        mMsgView.setText(span);
     }
 
     public void onConfirmExchange(View view){

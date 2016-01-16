@@ -32,7 +32,7 @@ public class HelpActivity extends Activity {
         HeaderView headerView = (HeaderView) findViewById(R.id.header);
         headerView.hideRightImage();
         headerView.setTitle(R.string.help_center);
-        headerView.setTitleCenter();
+        headerView.setTitleLeft();
 
         mContainer = (LinearLayout)findViewById(R.id.id_help_container);
 

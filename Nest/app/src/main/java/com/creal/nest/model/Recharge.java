@@ -40,7 +40,7 @@ public class Recharge extends BaseModel implements ActionRespObject<Recharge> {
     private int amount;
     private State state;
     private int payAmount;//实付金额
-    private int paymentId;
+    private String paymentId;
 
     public Recharge(){
     }
@@ -53,7 +53,7 @@ public class Recharge extends BaseModel implements ActionRespObject<Recharge> {
         amount = in.readInt();
         state = State.valueOf(in.readString());
         payAmount = in.readInt();
-        paymentId = in.readInt();
+        paymentId = in.readString();
     }
     @Override
     public void writeToParcel(Parcel dest, int flags) {
@@ -63,7 +63,7 @@ public class Recharge extends BaseModel implements ActionRespObject<Recharge> {
         dest.writeInt(amount);
         dest.writeString(state.name());
         dest.writeInt(payAmount);
-        dest.writeInt(paymentId);
+        dest.writeString(paymentId);
     }
     public String getSellerName() {
         return sellerName;
@@ -113,11 +113,11 @@ public class Recharge extends BaseModel implements ActionRespObject<Recharge> {
         this.payAmount = payAmount;
     }
 
-    public int getPaymentId() {
+    public String getPaymentId() {
         return paymentId;
     }
 
-    public void setPaymentId(int paymentId) {
+    public void setPaymentId(String paymentId) {
         this.paymentId = paymentId;
     }
 
@@ -138,14 +138,14 @@ public class Recharge extends BaseModel implements ActionRespObject<Recharge> {
             recharge.setOrderId(json.getString("order_id"));
         if (json.has("order_time"))
             recharge.setOrderTime(json.getString("order_time"));
-        if (json.has("money"))
+        if (json.has("money") && json.getString("money").length() > 0)
             recharge.setAmount(json.getInt("money"));
-        if (json.has("state"))
+        if (json.has("state") && json.getString("state").length() > 0)
             recharge.setState(State.from(json.getInt("state")));
-        if (json.has("pay_money"))
+        if (json.has("pay_money") && json.getString("pay_money").length() > 0)
             recharge.setPayAmount(json.getInt("pay_money"));
         if (json.has("payment_id"))
-            recharge.setPaymentId(json.getInt("payment_id"));
+            recharge.setPaymentId(json.getString("payment_id"));
         return recharge;
     }
 

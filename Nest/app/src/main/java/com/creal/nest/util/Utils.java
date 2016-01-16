@@ -68,7 +68,7 @@ public class Utils {
     public static String formatMoney(String number){
         try {
             double amount = Double.parseDouble(number);
-            DecimalFormat formatter = new DecimalFormat("#,###.00");
+            DecimalFormat formatter = new DecimalFormat("#,##0.00");
             return formatter.format(amount / 100);
         } catch (Exception e) {
             Log.e(tag, "Failed to format number" + number);

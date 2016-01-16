@@ -20,8 +20,8 @@ public class WelcomeActivity extends Activity {
 		new ParallelTask<Void>() {
 			protected Void doInBackground(Void... params) {
 				try {
-                  	PreferenceUtil.saveString(WelcomeActivity.this, Constants.APP_BINDING_KEY, Constants.APP_DEFAULT_KEY);
-					PreferenceUtil.saveString(WelcomeActivity.this, Constants.APP_USER_AUTHORIZED, Boolean.FALSE.toString());
+//                  	PreferenceUtil.saveString(WelcomeActivity.this, Constants.APP_BINDING_KEY, Constants.APP_DEFAULT_KEY);
+//					PreferenceUtil.saveString(WelcomeActivity.this, Constants.APP_USER_AUTHORIZED, Boolean.FALSE.toString());
 					Thread.sleep(1000);
 				} catch (InterruptedException e) {
 				}

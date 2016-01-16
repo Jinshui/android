@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.creal.nest.actions.AbstractAction;
+import com.creal.nest.actions.JSONObjectAction;
 import com.creal.nest.actions.StringAction;
 import com.creal.nest.util.BitmapUtil;
 import com.creal.nest.util.ImageUtil;
@@ -20,6 +21,8 @@ import com.creal.nest.util.PreferenceUtil;
 import com.creal.nest.util.UIUtil;
 import com.creal.nest.views.HeaderView;
 import com.google.zxing.WriterException;
+
+import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -35,6 +38,11 @@ public class QRCodeActivity extends Activity {
     private Runnable mLoadCodeTask = new Runnable() {
         public void run() {
             loadQRCode();
+        }
+    };
+    private Runnable mLoadChargeInfoTask = new Runnable() {
+        public void run() {
+            loadChargeInfo();
         }
     };
 
@@ -61,13 +69,34 @@ public class QRCodeActivity extends Activity {
     public void onPause() {
         super.onPause();
         mFirstLoad = true;
+        Log.d(TAG, "removeCallbacks");
         mHandler.removeCallbacks(mLoadCodeTask);
+        mHandler.removeCallbacks(mLoadChargeInfoTask);
+    }
+
+    private void loadChargeInfo() {
+        Log.d(TAG, "loadChargeInfo");
+        String cardId = PreferenceUtil.getString(this, Constants.APP_USER_CARD_ID, null);
+        Map parameters = new HashMap<>();
+        parameters.put(Constants.KEY_CARD_ID, cardId);
+        JSONObjectAction qrCodeAction = new JSONObjectAction(this, Constants.URL_GET_CHARGE_INFO, parameters);
+        qrCodeAction.execute(
+                new AbstractAction.UICallBack<JSONObject>() {
+                    public void onSuccess(JSONObject result) {
+                        mHandler.postDelayed(mLoadChargeInfoTask, 5000);
+                    }
+
+                    public void onFailure(AbstractAction.ActionError error) {
+                        mHandler.postDelayed(mLoadChargeInfoTask, 5000);
+                        Toast.makeText(QRCodeActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 
     private void loadQRCode() {
+        Log.d(TAG, "loadQRCode");
         if(mFirstLoad) {
             mProgressDialog.show();
-            mFirstLoad = false;
         }
         String cardId = PreferenceUtil.getString(this, Constants.APP_USER_CARD_ID, null);
         Map parameters = new HashMap<>();
@@ -77,12 +106,18 @@ public class QRCodeActivity extends Activity {
                 new AbstractAction.UICallBack<String>() {
                     public void onSuccess(String result) {
                         updateImageView(result);
-                        mProgressDialog.dismiss();
+                        if(mFirstLoad) {
+                            mProgressDialog.dismiss();
+                            mFirstLoad = false;
+                            mHandler.postDelayed(mLoadChargeInfoTask, 5000);
+                        }
                         mHandler.postDelayed(mLoadCodeTask, 60000);
                     }
 
                     public void onFailure(AbstractAction.ActionError error) {
-                        mProgressDialog.dismiss();
+                        if(mFirstLoad) {
+                            mProgressDialog.dismiss();
+                        }
                         mHandler.post(mLoadCodeTask);
                         Toast.makeText(QRCodeActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
                     }

@@ -19,6 +19,7 @@ import com.creal.nest.balance.AccumulationHistoryActivity;
 import com.creal.nest.model.CardInfo;
 import com.creal.nest.util.PreferenceUtil;
 import com.creal.nest.util.UIUtil;
+import com.creal.nest.util.Utils;
 import com.creal.nest.views.HeaderView;
 
 import java.util.HashMap;
@@ -97,7 +98,7 @@ public class FragmentBalance extends Fragment {
         CommonObjectAction<CardInfo> action = new CommonObjectAction<>(getActivity(), Constants.URL_GET_CARD_INFO, paras, CardInfo.class);
         action.execute(new AbstractAction.UICallBack<CardInfo>() {
             public void onSuccess(CardInfo cardInfo) {
-                mAmounts.setText(String.valueOf(cardInfo.getMoney()));
+                mAmounts.setText(Utils.formatMoney(cardInfo.getMoney()));
                 mMyPoints.setText(String.valueOf(cardInfo.getPoints()));
                 afterAction(dialog);
             }

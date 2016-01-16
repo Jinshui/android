@@ -6,6 +6,7 @@ public class Constants {
     public static final String URL_LOGIN                      = "http://" + SERVER_HOST + "/lmk_interface/login/index.php";
     public static final String URL_BIND_PHONE_CARD            = "http://" + SERVER_HOST + "/lmk_interface/bding/index.php";
     public static final String URL_GET_QR_CODE                = "http://" + SERVER_HOST + "/lmk_interface/qr/index.php";
+    public static final String URL_GET_CHARGE_INFO            = "http://" + SERVER_HOST + "/lmk_interface/sellertemporderinfo/index.php";
     public static final String URL_CHANGE_PWD                 = "http://" + SERVER_HOST + "/lmk_interface/cpwd/index.php";
     public static final String URL_REGISTER                   = "http://" + SERVER_HOST + "/lmk_interface/register/index.php";
     public static final String URL_GET_ADS                    = "http://" + SERVER_HOST + "/lmk_interface/ads/index.php";

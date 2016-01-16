@@ -15,6 +15,7 @@ import android.widget.RadioButton;
 import android.widget.Toast;
 
 import com.creal.nest.util.HttpUtil;
+import com.creal.nest.util.PreferenceUtil;
 import com.creal.nest.views.HeaderView;
 import com.creal.nest.views.UncheckableRadioButton;
 import com.tencent.mm.sdk.modelpay.PayReq;
@@ -46,6 +47,7 @@ public class RechargeActivity extends Activity {
         headerView.setTitleLeft();
 
         mCardId = (EditText) findViewById(R.id.id_txt_card_id);
+        mCardId.setText(PreferenceUtil.getString(this, Constants.APP_USER_CARD_NUM, null));
         mAmount = (EditText) findViewById(R.id.id_txt_amount);
 
         mAmountBtns = new ArrayList<>();

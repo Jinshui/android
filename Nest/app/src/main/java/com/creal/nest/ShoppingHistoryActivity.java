@@ -12,6 +12,7 @@ import com.creal.nest.actions.PaginationAction;
 import com.creal.nest.model.RechargeCard;
 import com.creal.nest.model.Shopping;
 import com.creal.nest.util.PreferenceUtil;
+import com.creal.nest.util.Utils;
 import com.creal.nest.views.ptr.PTRListActivity;
 import com.creal.nest.views.ptr.PTRListFragment;
 
@@ -56,7 +57,7 @@ public class ShoppingHistoryActivity extends FragmentActivity {
             holder.card.setText(item.getSellerName());
             holder.status.setText(item.getState().toString());
             holder.time.setText(String.format(getString(R.string.shop_time), item.getOrderTime()));
-            holder.cost.setText("" + ((float) item.getAmount() / 100) + "元");
+            holder.cost.setText(Utils.formatMoney(item.getAmount()) +  "元");
             return convertView;
         }
 
