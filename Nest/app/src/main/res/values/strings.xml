@@ -190,10 +190,11 @@
     <string name="report_maintenance_service">报修服务</string>
     <string name="query_remaining_balance">查询账户余额</string>
     <string name="recharge_property_hint">缴纳物业费请保证余额大于缴纳的资金</string>
-    <string name="pay_amount" formatted="false">%s元</string>
+    <string name="money_unit" formatted="false">%s元</string>
     <string name="pay_history">缴费记录</string>
     <string name="repair_history">报修记录</string>
     <string name="property_pay_desc">缴费说明</string>
+    <string name="property_pay_enter_pay_password">请输入支付密码</string>
     <string name="property_pay_desc_text">点击确定将从您的小燕卡账户中扣除并进行缴费，请保持余额大于缴费金额。</string>
     <string name="property_pay">缴费</string>
     <string name="property_pay_succ">缴费成功</string>
@@ -315,6 +316,19 @@
     <string name="help_cancel">退货/换货</string>
     <string name="help_return_commodity">我要退货/换货</string>
     <string name="help_return_time">申请退货/换货后，多久办理</string>
+    <!--关于我们-->
+    <string name="aboutus_th_name">名称</string>
+    <string name="aboutus_td_name">小燕卡商户端</string>
+    <string name="aboutus_th_version">版本</string>
+    <string name="aboutus_td_version">V101.23</string>
+    <string name="aboutus_th_provider">运营商</string>
+    <string name="aboutus_td_provider">小燕卡公司</string>
+    <string name="aboutus_th_phone">联系方式</string>
+    <string name="aboutus_td_phone">0312-768123</string>
+    <string name="aboutus_th_fax">传真</string>
+    <string name="aboutus_td_fax">0312-8273699</string>
+    <string name="aboutus_th_address">地址</string>
+    <string name="aboutus_td_address">保定市新市区建设南路123号</string>
 
 
     <!--积分兑换记录-->

@@ -65,20 +65,20 @@
 
 
             <!--<TextView-->
-                <!--android:id="@+id/id_text_shopping_history"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginTop="10dip"-->
-                <!--android:background="@color/white"-->
-                <!--android:drawableLeft="@drawable/ic_settings_shop_history"-->
-                <!--android:drawablePadding="5dp"-->
-                <!--android:drawableRight="@drawable/right_arrow"-->
-                <!--android:gravity="center|left"-->
-                <!--android:padding="10dip"-->
-                <!--android:paddingLeft="30dip"-->
-                <!--android:text="@string/shop_history"-->
-                <!--android:textColor="@color/black"-->
-                <!--android:textSize="16sp" />-->
+            <!--android:id="@+id/id_text_shopping_history"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginTop="10dip"-->
+            <!--android:background="@color/white"-->
+            <!--android:drawableLeft="@drawable/ic_settings_shop_history"-->
+            <!--android:drawablePadding="5dp"-->
+            <!--android:drawableRight="@drawable/right_arrow"-->
+            <!--android:gravity="center|left"-->
+            <!--android:padding="10dip"-->
+            <!--android:paddingLeft="30dip"-->
+            <!--android:text="@string/shop_history"-->
+            <!--android:textColor="@color/black"-->
+            <!--android:textSize="16sp" />-->
 
 
             <TextView
@@ -118,31 +118,32 @@
                 android:textSize="16sp" />
 
 
-            <TextView
-                android:id="@+id/id_text_app_settings"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dip"
-                android:background="@color/white"
-                android:drawableLeft="@drawable/ic_settings_app_set"
-                android:drawablePadding="5dp"
-                android:drawableRight="@drawable/right_arrow"
-                android:gravity="center|left"
-                android:padding="10dip"
-                android:paddingLeft="30dip"
-                android:text="@string/app_settings"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
+            <!--<TextView-->
+            <!--android:id="@+id/id_text_app_settings"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginTop="10dip"-->
+            <!--android:background="@color/white"-->
+            <!--android:drawableLeft="@drawable/ic_settings_app_set"-->
+            <!--android:drawablePadding="5dp"-->
+            <!--android:drawableRight="@drawable/right_arrow"-->
+            <!--android:gravity="center|left"-->
+            <!--android:padding="10dip"-->
+            <!--android:paddingLeft="30dip"-->
+            <!--android:text="@string/app_settings"-->
+            <!--android:textColor="@color/black"-->
+            <!--android:textSize="16sp" />-->
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:background="@drawable/divider_horizontal" />
+            <!--<View-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="1px"-->
+            <!--android:background="@drawable/divider_horizontal" />-->
 
             <TextView
                 android:id="@+id/id_text_check_updates"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dip"
                 android:background="@color/white"
                 android:drawableLeft="@drawable/ic_settings_updates"
                 android:drawablePadding="5dp"

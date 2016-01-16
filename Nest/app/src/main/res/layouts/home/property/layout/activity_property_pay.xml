@@ -170,7 +170,7 @@
                 android:layout_gravity="center_horizontal"
                 android:background="@color/white"
                 android:drawableLeft="@drawable/icon_binding_input_verification_code"
-                android:hint="@string/binding_hint_input_password"
+                android:hint="@string/property_pay_enter_pay_password"
                 android:inputType="number"
                 android:textSize="16sp" />
 

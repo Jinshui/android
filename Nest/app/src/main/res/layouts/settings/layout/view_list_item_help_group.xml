@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="15dp" />
+
+    <TextView
+        android:id="@+id/id_txt_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/input_bg"
+        android:drawableLeft="@drawable/ic_help_account"
+        android:drawablePadding="5dp"
+        android:padding="15dp"
+        android:textColor="@color/black"
+        android:textSize="@dimen/font_small"
+        android:textStyle="bold" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@drawable/divider_horizontal" />
+
+    <LinearLayout
+        android:id="@+id/id_help_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" />
+</LinearLayout>

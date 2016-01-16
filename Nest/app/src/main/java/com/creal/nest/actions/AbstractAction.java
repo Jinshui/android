@@ -33,7 +33,6 @@ import org.json.JSONTokener;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.nio.charset.Charset;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.Map;
@@ -94,7 +93,7 @@ public abstract class AbstractAction<Result> extends ParallelTask<AbstractAction
     public static class ActionResult<T>{
         private ActionError mError;
         private T mObject;
-
+        public ActionResult(){}
         public ActionResult(T object){
             mObject = object;
         }
@@ -347,7 +346,7 @@ public abstract class AbstractAction<Result> extends ParallelTask<AbstractAction
                 }
             }
             if(!response.has("body")){
-                return new ActionResult("");
+                return new ActionResult();
             }
             JSONObject body = response.getJSONObject("body");
             return new ActionResult(createRespObject(body));
@@ -361,7 +360,6 @@ public abstract class AbstractAction<Result> extends ParallelTask<AbstractAction
     public void setSecurity(boolean security){
         this.mSecurity = security;
     }
-
 
     /**
      * Cancel the action, and will not call the callback.

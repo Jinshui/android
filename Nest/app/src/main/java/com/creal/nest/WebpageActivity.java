@@ -21,13 +21,13 @@ public class WebpageActivity extends Activity {
         // browser app does.
         getWindow().requestFeature(Window.FEATURE_PROGRESS);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_help_detail);
+        setContentView(R.layout.activity_web);
 
         final HeaderView headerView = (HeaderView) findViewById(R.id.header);
         headerView.hideRightImage();
         final String title = getIntent().getStringExtra(INTENT_EXTRA_TITLE);
         headerView.setTitle(title);
-        WebView webview = (WebView) findViewById(R.id.id_help_webview);
+        WebView webview = (WebView) findViewById(R.id.id_webview);
         webview.clearCache(true);
         webview.clearHistory();
 

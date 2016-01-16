@@ -17,7 +17,7 @@ public class FragmentSetting extends Fragment {
     TextView mChangePwd;
     TextView mPointsHistory;
     TextView mIngotsHistory;
-    TextView mAppSettings;
+//    TextView mAppSettings;
     TextView mCheckUpdates;
     TextView mHelp;
     TextView mAboutUs;
@@ -36,7 +36,7 @@ public class FragmentSetting extends Fragment {
         mChangePwd = (TextView) view.findViewById(R.id.id_text_change_pwd);
         mPointsHistory = (TextView) view.findViewById(R.id.id_text_points_exchange_history);
         mIngotsHistory = (TextView) view.findViewById(R.id.id_text_ingots_exchange_history);
-        mAppSettings = (TextView) view.findViewById(R.id.id_text_app_settings);
+//        mAppSettings = (TextView) view.findViewById(R.id.id_text_app_settings);
         mCheckUpdates = (TextView) view.findViewById(R.id.id_text_check_updates);
         mHelp = (TextView) view.findViewById(R.id.id_text_settings_help);
         mAboutUs = (TextView) view.findViewById(R.id.id_text_about);
@@ -70,11 +70,11 @@ public class FragmentSetting extends Fragment {
                 startActivity(intent);
             }
         });
-        mAppSettings.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Toast.makeText(getActivity(), "Not implemented yet!", Toast.LENGTH_SHORT).show();
-            }
-        });
+//        mAppSettings.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v) {
+//                Toast.makeText(getActivity(), "Not implemented yet!", Toast.LENGTH_SHORT).show();
+//            }
+//        });
         mCheckUpdates.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Toast.makeText(getActivity(), "Not implemented yet!", Toast.LENGTH_SHORT).show();
@@ -88,7 +88,8 @@ public class FragmentSetting extends Fragment {
         });
         mAboutUs.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "Not implemented yet!", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getActivity(), AboutUsActivity.class);
+                startActivity(intent);
             }
         });
     }
